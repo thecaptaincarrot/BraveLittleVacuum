@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://pin.gd" type="Script" id=1]
+[ext_resource path="res://ChainTest/PinJoint2D.gd" type="Script" id=2]
+
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.037
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.49208, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4.90486, 2.57961 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 297.703, 604.087, 108.198, 466.201, 421.446, 324.073, 734.695, 435.795 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 237.856, 114.209 )
+
+[node name="Hose" type="RigidBody2D" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hose"]
+position = Vector2( 0.280945, 0.749153 )
+shape = SubResource( 2 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D/Hose"]
+position = Vector2( 0.21022, 0.21022 )
+softness = 16.0
+script = ExtResource( 2 )
+
+[node name="Connector" type="RigidBody2D" parent="Node2D/Hose"]
+position = Vector2( 0.420914, 0.140312 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hose/Connector"]
+position = Vector2( 3.78831, 0.0261841 )
+shape = SubResource( 3 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D/Hose/Connector"]
+position = Vector2( 7.71721, 0.569824 )
+script = ExtResource( 1 )
+
+[node name="Hose" type="RigidBody2D" parent="Node2D/Hose/Connector"]
+position = Vector2( 7.70683, 0.306389 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hose/Connector/Hose"]
+position = Vector2( 0.280945, 0.749153 )
+shape = SubResource( 2 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D/Hose/Connector/Hose"]
+position = Vector2( 0.21022, 0.21022 )
+softness = 16.0
+script = ExtResource( 2 )
+
+[node name="Connector" type="RigidBody2D" parent="Node2D/Hose/Connector/Hose"]
+position = Vector2( -3.28014, -0.174667 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hose/Connector/Hose/Connector"]
+position = Vector2( 7.56807, -0.0525589 )
+shape = SubResource( 3 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D/Hose/Connector/Hose/Connector"]
+position = Vector2( 15.1192, 0.491081 )
+script = ExtResource( 1 )
+
+[node name="Hose" type="RigidBody2D" parent="Node2D/Hose/Connector/Hose/Connector"]
+position = Vector2( 15.0919, 0.647141 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hose/Connector/Hose/Connector/Hose"]
+position = Vector2( 0.280945, 0.749153 )
+shape = SubResource( 2 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D/Hose/Connector/Hose/Connector/Hose"]
+position = Vector2( 0.21022, 0.21022 )
+softness = 16.0
+script = ExtResource( 2 )
+
+[node name="Connector" type="RigidBody2D" parent="Node2D/Hose/Connector/Hose/Connector/Hose"]
+position = Vector2( 0.420914, 0.140312 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hose/Connector/Hose/Connector/Hose/Connector"]
+position = Vector2( 7.56807, -0.0525589 )
+shape = SubResource( 3 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Node2D/Hose/Connector/Hose/Connector/Hose/Connector"]
+position = Vector2( 15.1192, 0.491081 )
