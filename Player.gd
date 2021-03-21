@@ -12,6 +12,8 @@ var nozzle
 
 var gravity = 9.8
 
+signal shoot
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_hose_skeleton(hose_length)
@@ -24,10 +26,7 @@ func _process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
-	motion.y += gravity * delta
-	
-	#Stop nozzle from exceeding length
+	pass
 
 
 
@@ -78,6 +77,10 @@ func add_nozzle(parent):
 	
 	new_nozzle.connect("collide_hose",self,"collide_hose")
 	new_nozzle.connect("uncollide_hose",self,"uncollide_hose")
+	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
+	new_nozzle.connect("shoot",get_node("/root/RobotTest"),"nozzle_shoot")
+	
+	$CanvasLayer/Tank.connect("shoot",new_nozzle,"shoot")
 	
 	add_child(new_nozzle)
 	return new_nozzle
@@ -151,8 +154,8 @@ func check_hose_length():
 
 func collide_hose():
 	for N in hose_segments:
-		N.collision_layer = 10
-		N.collision_mask = 10
+		N.collision_layer = 2
+		N.collision_mask = 2
 	
 
 func uncollide_hose():

@@ -22,6 +22,6 @@ func _physics_process(delta):
 		if motion.x < 5:
 			motion.x += acceleration
 	else:
-		motion.x = lerp(motion.x,0,.01)
+		motion.x = lerp(motion.x,0,.05)
 	
 	move_and_slide(motion)
