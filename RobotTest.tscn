@@ -50,7 +50,7 @@ position = Vector2( 240.207, 98.2154 )
 position = Vector2( 153.216, 101.583 )
 
 [node name="Rock3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 150.41, 37.0412 )
+position = Vector2( 195.967, 154.642 )
 
 [node name="Rock4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 222.187, 153.611 )
@@ -65,34 +65,10 @@ position = Vector2( 132.39, 92.437 )
 position = Vector2( 249.551, 192.989 )
 
 [node name="Rock8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 162.56, 196.357 )
+position = Vector2( 213.944, 125.373 )
 
 [node name="Rock9" parent="." instance=ExtResource( 2 )]
 position = Vector2( 159.754, 131.815 )
 
 [node name="Rock10" parent="." instance=ExtResource( 2 )]
 position = Vector2( 272.243, 115.568 )
-
-[node name="Rock11" parent="." instance=ExtResource( 2 )]
-position = Vector2( 185.252, 118.936 )
-
-[node name="Rock12" parent="." instance=ExtResource( 2 )]
-position = Vector2( 182.446, 54.3941 )
-
-[node name="Rock13" parent="." instance=ExtResource( 2 )]
-position = Vector2( 229.528, 253.057 )
-
-[node name="Rock14" parent="." instance=ExtResource( 2 )]
-position = Vector2( 142.537, 256.424 )
-
-[node name="Rock15" parent="." instance=ExtResource( 2 )]
-position = Vector2( 139.731, 191.883 )
-
-[node name="Rock16" parent="." instance=ExtResource( 2 )]
-position = Vector2( 254.223, 219.686 )
-
-[node name="Rock17" parent="." instance=ExtResource( 2 )]
-position = Vector2( 167.232, 223.053 )
-
-[node name="Rock18" parent="." instance=ExtResource( 2 )]
-position = Vector2( 164.426, 158.512 )

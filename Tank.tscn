@@ -8,6 +8,7 @@
 extents = Vector2( 3.10913, 42.9817 )
 
 [sub_resource type="CapsuleShape2D" id=2]
+height = 32.2203
 
 [node name="Tank" type="Sprite"]
 scale = Vector2( 0.75, 0.75 )
@@ -34,12 +35,12 @@ polygon = PoolVector2Array( -30.9011, 23.7749, -22.161, 29.1439, 22.7882, 29.643
 polygon = PoolVector2Array( -28.5288, -42.2754, -17.9514, -49.0101, -12.2971, -64.1257, 14.2978, -64.3755, 18.5075, -50.6332, 33.5261, -39.4037, 34.2753, -47.6444, 18.2933, -70.8681, -12.7966, -70.6184, -35.7706, -48.1438 )
 
 [node name="Exit" type="Area2D" parent="."]
-position = Vector2( 0, -61.525 )
+position = Vector2( 0, -57 )
 collision_layer = 2147483680
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2( 0.667419, -4.00452 )
+position = Vector2( 0.766521, 0.355904 )
 rotation = 17.2788
 shape = SubResource( 2 )
 
@@ -50,4 +51,9 @@ z_index = -1
 position = Vector2( -0.67602, 25.432 )
 z_index = -2
 texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
+[connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]
