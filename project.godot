@@ -17,11 +17,11 @@ _global_script_class_icons={
 
 config/name="Brave Little Vacuum"
 run/main_scene="res://RobotTest.tscn"
-config/icon="res://icon.png"
+config/icon="res://_Shit/icon.png"
 
 [autoload]
 
-SuckableObjects="*res://SuckableObjects.gd"
+SuckableObjects="*res://SuckableObjects/SuckableObjects.gd"
 
 [display]
 
@@ -86,4 +86,4 @@ blow={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://_Shit/default_env.tres"

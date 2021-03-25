@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Rock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://RobotTest.gd" type="Script" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/RobotTest.gd" type="Script" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 2.625
@@ -17,9 +17,71 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Clutter" type="Node2D" parent="."]
+
+[node name="Rock" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 240.207, 98.2154 )
+
+[node name="Rock2" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 153.216, 101.583 )
+
+[node name="Rock3" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 195.967, 154.642 )
+
+[node name="Rock4" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 222.187, 153.611 )
+
+[node name="Rock5" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 135.196, 156.979 )
+
+[node name="Rock6" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 132.39, 92.437 )
+
+[node name="Rock7" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 249.551, 192.989 )
+
+[node name="Rock8" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 213.944, 125.373 )
+
+[node name="Rock9" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 159.754, 131.815 )
+
+[node name="Rock10" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 272.243, 115.568 )
+
+[node name="Rock11" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 203.499, 114.567 )
+
+[node name="Rock12" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 159.259, 170.994 )
+
+[node name="Rock13" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 185.479, 169.963 )
+
+[node name="Rock14" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 177.236, 141.725 )
+
+[node name="Rock15" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 235.535, 131.92 )
+
+[node name="Rock16" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 217.848, 40.8173 )
+
+[node name="Rock17" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 173.608, 97.2439 )
+
+[node name="Rock18" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 199.828, 96.2129 )
+
+[node name="Rock19" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 191.585, 67.9749 )
+
+[node name="Rock20" parent="Clutter" instance=ExtResource( 2 )]
+position = Vector2( 249.884, 58.1699 )
+
 [node name="World" type="StaticBody2D" parent="."]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 23
+collision_mask = 23
 physics_material_override = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World"]
@@ -34,41 +96,11 @@ polygon = PoolVector2Array( 0.267487, 517.652, 1045.14, 514.82, 1040.42, 621.478
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 23
+collision_mask = 23
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 271.658, 206.47, 287.342, 206.47, 289.011, 290.565, 341.737, 291.566, 343.739, 140.729, 319.045, 142.064, 318.044, 227.16, 307.365, 227.493, 307.699, 127.047, 378.111, 129.383, 381.782, 335.282, 270.323, 334.281 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 306.697, 227.827, 317.71, 226.826, 320.046, 143.065, 342.738, 141.063, 341.737, 291.566, 289.678, 292.901, 287.676, 206.136, 270.657, 206.803, 271.324, 334.614, 383.117, 334.948, 379.112, 129.716, 307.365, 127.38 )
-
-[node name="Rock" parent="." instance=ExtResource( 2 )]
-position = Vector2( 240.207, 98.2154 )
-
-[node name="Rock2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 153.216, 101.583 )
-
-[node name="Rock3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 195.967, 154.642 )
-
-[node name="Rock4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 222.187, 153.611 )
-
-[node name="Rock5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 135.196, 156.979 )
-
-[node name="Rock6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 132.39, 92.437 )
-
-[node name="Rock7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 249.551, 192.989 )
-
-[node name="Rock8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 213.944, 125.373 )
-
-[node name="Rock9" parent="." instance=ExtResource( 2 )]
-position = Vector2( 159.754, 131.815 )
-
-[node name="Rock10" parent="." instance=ExtResource( 2 )]
-position = Vector2( 272.243, 115.568 )

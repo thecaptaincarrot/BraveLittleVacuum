@@ -1,0 +1,153 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Player/Scripts/PlayerBody.gd" type="Script" id=1]
+[ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/Tank.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Sprites/ShopVac.png" type="Texture" id=4]
+[ext_resource path="res://Player/Sprites/HoseSegment.png" type="Texture" id=5]
+[ext_resource path="res://Player/Scripts/PlayerSprite.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.50197
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "Sucking",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 23.9997, 24.068 )
+
+[node name="Player" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerBody" type="KinematicBody2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="Hose" type="Node2D" parent="PlayerBody"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HoseStart" type="StaticBody2D" parent="PlayerBody/Hose"]
+position = Vector2( 0, -20 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/Hose/HoseStart"]
+shape = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="PlayerBody/Hose"]
+width = 8.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 5 )
+texture_mode = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
+frames = SubResource( 18 )
+animation = "Default"
+playing = true
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
+position = Vector2( -0.23439, 6.6395 )
+shape = SubResource( 19 )
+
+[node name="HoseConnection" type="PinJoint2D" parent="PlayerBody"]
+visible = false
+position = Vector2( 0, -26 )
+node_a = NodePath("..")
+node_b = NodePath("../Node2D/HoseBase")
+bias = 0.722
+softness = 1.4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tank" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 373.219, 49.3883 )

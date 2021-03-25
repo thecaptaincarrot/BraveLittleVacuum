@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Sprites/Nozzle.png" type="Texture" id=1]
+[ext_resource path="res://OldTests/TestNozzle.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.27917
+height = 14.8606
+
+[node name="MouseCaptureTest" type="Node2D"]
+
+[node name="TestNozzle" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestNozzle"]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="TestNozzle"]
+texture = ExtResource( 1 )
