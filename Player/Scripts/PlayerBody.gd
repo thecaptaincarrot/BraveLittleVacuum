@@ -25,9 +25,9 @@ func _physics_process(delta):
 	else:
 		motion.x = lerp(motion.x,0,.05)
 	
-	move_and_slide(motion,Vector2(0,0),false,4,4/PI,false)
+	move_and_slide(motion,Vector2(0,0),false,4,4/PI,true)
 	
-	for index in get_slide_count():
-		var collision = get_slide_collision(index)
-		if collision.collider.is_in_group("Bodies"):
-			collision.collider.apply_central_impulse(-collision.normal * inertia)
+#	for index in get_slide_count():
+#		var collision = get_slide_collision(index)
+#		if collision.collider.is_in_group("Bodies"):
+#			collision.collider.apply_central_impulse(-collision.normal * inertia)
