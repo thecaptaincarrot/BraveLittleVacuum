@@ -25,7 +25,8 @@ func _physics_process(delta):
 	else:
 		motion.x = lerp(motion.x,0,.05)
 	
-	move_and_slide(motion,Vector2(0,0),false,4,4/PI,true)
+#	move_and_slide(motion,Vector2(0,0),false,4,4/PI,true)
+	move_and_collide(motion)
 	
 #	for index in get_slide_count():
 #		var collision = get_slide_collision(index)
