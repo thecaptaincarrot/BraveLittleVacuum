@@ -12,10 +12,21 @@ radius = 1.57766
 height = 12.6856
 
 [node name="Nozzle" type="KinematicBody2D"]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 2
+collision_mask = 2
 collision/safe_margin = 0.1
 script = ExtResource( 2 )
+
+[node name="Suck" type="Area2D" parent="."]
+position = Vector2( -3.105, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Suck"]
+polygon = PoolVector2Array( 3.04723, -0.0756054, -36.895, -69.0625, -26.77, -74.125, -16.77, -78, -7.02, -79.0625, 3.48, -79.9375, 13.73, -79, 23.2925, -78.0625, 33.1675, -74.125, 43.1675, -68.8125 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Suck"]
+color = Color( 1, 1, 1, 0.231373 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -25,25 +36,85 @@ position = Vector2( 0, -0.57 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="Suck" type="Area2D" parent="."]
-position = Vector2( -3.105, 0 )
-collision_layer = 1024
-collision_mask = 1024
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Suck"]
-visible = false
-polygon = PoolVector2Array( -3.29623, -3.95748, -42.7981, -66.5062, 52.9767, -67.3405, 9.09383, -3.60185 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Suck"]
-color = Color( 1, 1, 1, 0.231373 )
-polygon = PoolVector2Array( -3.20417, -4.10081, -42.7354, -66.6091, 52.8149, -67.3375, 9.1121, -3.6373 )
-
 [node name="NozzleHole" type="Area2D" parent="."]
 rotation = 1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NozzleHole"]
 position = Vector2( -4.11926, -0.0795476 )
 shape = SubResource( 2 )
+
+[node name="RayCasts" type="Node2D" parent="."]
+
+[node name="left30" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( -40, -69 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left225" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( -30, -74 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left15" type="RayCast2D" parent="RayCasts"]
+position = Vector2( 0, -1 )
+enabled = true
+cast_to = Vector2( -20, -76.5 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left75" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( -10.5, -79 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="zero" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( 0, -80 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right75" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( 10.5, -79 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right15" type="RayCast2D" parent="RayCasts"]
+position = Vector2( 0, -1 )
+enabled = true
+cast_to = Vector2( 20, -76.5 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right225" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( 30, -74 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right30" type="RayCast2D" parent="RayCasts"]
+enabled = true
+cast_to = Vector2( 40, -69 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="LiquidSpawn" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+[connection signal="area_entered" from="Suck" to="." method="_on_Suck_area_entered"]
+[connection signal="area_exited" from="Suck" to="." method="_on_Suck_area_exited"]
 [connection signal="body_entered" from="Suck" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Suck" to="." method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="NozzleHole" to="." method="_on_NozzleHole_body_entered"]

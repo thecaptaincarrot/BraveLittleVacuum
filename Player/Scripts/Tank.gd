@@ -28,7 +28,6 @@ func _process(delta):
 					to_shoot.erase(body)
 					body.queue_free()
 					current_size -= body.size
-					print(current_size)
 					$Timer.start()
 
 

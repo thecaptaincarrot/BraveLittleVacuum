@@ -16,6 +16,8 @@ func _ready():
 func nozzle_shoot(body):
 	var new_rock = SuckableObjects.decode_to_world(body).instance()
 	new_rock.position = nozzle.position
+	new_rock.collision_layer = 0
+	new_rock.collision_mask = 1025
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$Clutter.call_deferred("add_child",new_rock)
 	new_rock.apply_central_impulse(vector * shoot_force)

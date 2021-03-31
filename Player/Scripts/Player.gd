@@ -7,7 +7,7 @@ var hose_segments = []
 
 var motion = Vector2(0,0)
 
-var hose_length = 6
+var hose_length = 10
 var nozzle
 
 var gravity = 9.8
@@ -155,8 +155,8 @@ func check_hose_length():
 
 func collide_hose():
 	for N in hose_segments:
-		N.collision_layer = 2
-		N.collision_mask = 2
+		N.collision_layer = 4
+		N.collision_mask = 4
 	
 
 func uncollide_hose():

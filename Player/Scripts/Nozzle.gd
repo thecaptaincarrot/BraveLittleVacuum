@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const WATER = preload("res://Player/WaterAnimator.tscn")
+
 var returning = false
 var anchor
 var force = 1
@@ -19,6 +21,8 @@ var global_mouse
 var suckables = []
 var suck_strength = 5
 
+var water_source = null
+
 signal uncollide_hose
 signal collide_hose
 signal sucked
@@ -26,11 +30,10 @@ signal shoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
 
 
 func _process(delta):
-	pass
 	if Input.is_action_pressed("suck"):
 		$Suck/Polygon2D.show()
 		suck()
@@ -39,6 +42,8 @@ func _process(delta):
 		blow()
 	else:
 		$Suck/Polygon2D.hide()
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,11 +55,10 @@ func _physics_process(delta):
 	var target = Vector2()
 	
 	if (global_position - anchor.global_position).length() > collision_limit: #Snapback
-		
 		target = (anchor.global_position - global_position)
 		target.x = target.x * 2
 		target.y = target.y * 2
-	elif (global_position - anchor.global_position).length() > limit and (global_position + movement_vector - anchor.global_position).length() > limit: #Orthogonal
+	elif (global_position - anchor.global_position).length() > limit and (global_position + movement_vector - anchor.global_position).length() > collision_limit: #Orthogonal
 		target = vector_projection(global_position - anchor.global_position)
 	elif local_mouse.length() > 5: #Normal Movement
 		target = movement_vector #Normal Moement
@@ -65,8 +69,8 @@ func _physics_process(delta):
 		collision_mask = 0
 	else:
 		emit_signal("collide_hose")
-		collision_layer = 16
-		collision_mask = 16
+		collision_layer = 2
+		collision_mask = 2
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)
 	
@@ -77,7 +81,8 @@ func _physics_process(delta):
 		var to_angle = movement_vector.angle() + PI/2
 		if to_angle > PI:
 			to_angle -= 2 * PI #Could just fix this by changing the sprite
-		rotation = lerp(rotation,to_angle,angular_drag)
+		rotation = to_angle
+#		rotation = lerp(rotation,to_angle,angular_drag)
 
 
 func _input(event):
@@ -96,20 +101,52 @@ func vector_projection(origin_vector):
 	return rejection
 
 
+func get_midpoint(vector_array):
+	var x = 0
+	var y = 0
+	for vector in vector_array:
+		x += vector.x
+		y += vector.y
+	
+	x = x / len(vector_array)
+	y = y / len(vector_array)
+
+	return Vector2(x,y)
+
+
 func suck():
 	$Suck/Polygon2D.show()
+	
+	if water_source != null:
+		var position_arr = []
+		for cast in $RayCasts.get_children():
+			if cast.is_colliding():
+				var local_position = cast.get_collision_point()
+				position_arr.append(local_position)
+		
+		if position_arr != [] and $LiquidSpawn.is_stopped(): 
+			var new_pos = get_midpoint(position_arr)
+			var new_water = WATER.instance()
+			new_water.position = new_pos
+			new_water.connect("freed",self,"water_freed")
+			get_node("/root/RobotTest/Clutter").add_child(new_water)
+			$LiquidSpawn.start()
+	
 	for object in suckables:
 		object.apply_central_impulse((global_position - object.global_position).normalized() * suck_strength)
 
 
 func blow():
-	$Suck/Polygon2D.show()
-	for object in suckables:
-		object.apply_central_impulse((object.global_position - global_position).normalized() * suck_strength)
+	pass
+
+
+func water_freed(water):
+	suckables.erase(water)
 
 
 func _on_Area2D_body_entered(body):
-	suckables.append(body)
+	if body.is_in_group("Bodies") or body.is_in_group("Liquid"):
+		suckables.append(body)
 
 
 func _on_Area2D_body_exited(body):
@@ -119,3 +156,13 @@ func _on_Area2D_body_exited(body):
 func _on_NozzleHole_body_entered(body):
 	if Input.is_action_pressed("suck") and body.get("suckable"):
 		emit_signal("sucked",body)
+
+
+func _on_Suck_area_entered(area):
+	if area.is_in_group("Water"):
+		water_source = area
+
+
+func _on_Suck_area_exited(area):
+	if area == water_source: #This is going to cause weird behaviors
+		water_source = null

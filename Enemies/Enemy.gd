@@ -13,6 +13,10 @@ func _ready():
 func _physics_process(delta):
 	#I mean, it alwasy needs to be moving, rgiht???
 	
-	var collision = move_and_collide(motion)
+	var collision = move_and_slide(motion)
 
 
+func collision(body,collision_speed):
+	if collision_speed.length() > 100:
+		health -= collision_speed.length() / 100
+		print("new_health: ", health)
