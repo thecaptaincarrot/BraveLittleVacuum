@@ -22,10 +22,12 @@ var suckables = []
 var suck_strength = 5
 
 var water_source = null
+var is_in_liquid = false
 
 signal uncollide_hose
 signal collide_hose
 signal sucked
+signal liquid_sucked
 signal shoot
 
 # Called when the node enters the scene tree for the first time.
@@ -117,7 +119,7 @@ func get_midpoint(vector_array):
 func suck():
 	$Suck/Polygon2D.show()
 	
-	if water_source != null:
+	if water_source != null and !is_in_liquid:
 		var position_arr = []
 		for cast in $RayCasts.get_children():
 			if cast.is_colliding():
@@ -131,6 +133,11 @@ func suck():
 			new_water.connect("freed",self,"water_freed")
 			get_node("/root/RobotTest/Clutter").add_child(new_water)
 			$LiquidSpawn.start()
+	
+	if is_in_liquid and $LiquidSpawn.is_stopped():
+		$LiquidSpawn.start()
+		emit_signal("liquid_sucked",WATER.instance())
+		
 	
 	for object in suckables:
 		object.apply_central_impulse((global_position - object.global_position).normalized() * suck_strength)
@@ -154,8 +161,11 @@ func _on_Area2D_body_exited(body):
 
 
 func _on_NozzleHole_body_entered(body):
-	if Input.is_action_pressed("suck") and body.get("suckable"):
-		emit_signal("sucked",body)
+	if Input.is_action_pressed("suck"):
+		if body.is_in_group("Bodies"):
+			emit_signal("sucked",body)
+		if body.is_in_group("Liquid"):
+			emit_signal("liquid_sucked",body)
 
 
 func _on_Suck_area_entered(area):
@@ -166,3 +176,16 @@ func _on_Suck_area_entered(area):
 func _on_Suck_area_exited(area):
 	if area == water_source: #This is going to cause weird behaviors
 		water_source = null
+
+
+func _on_NozzleHole_area_entered(area):
+	print(area)
+	if area.is_in_group("Water"):
+		print("entered Liquid")
+		is_in_liquid = true
+
+
+func _on_NozzleHole_area_exited(area):
+	if area.is_in_group("Water"):
+		print("Exitted liquid")
+		is_in_liquid = false

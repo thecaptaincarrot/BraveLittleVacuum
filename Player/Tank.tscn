@@ -20,11 +20,20 @@ z_index = 1
 texture = ExtResource( 1 )
 script = ExtResource( 4 )
 
+[node name="Watercolum" type="Polygon2D" parent="."]
+visible = false
+show_behind_parent = true
+color = Color( 0.168627, 0.823529, 1, 0.32549 )
+polygon = PoolVector2Array( -10.6667, -64, 10.6667, -64, 10.6667, 32, -10.6667, 32 )
+
+[node name="WaterTimer" type="Timer" parent="Watercolum"]
+wait_time = 0.4
+one_shot = true
+
 [node name="Water" type="Sprite" parent="."]
 show_behind_parent = true
 material = ExtResource( 5 )
-position = Vector2( -0.0935321, 8.25922 )
-scale = Vector2( 0.921077, 0.714408 )
+scale = Vector2( 0.9, 1 )
 texture = ExtResource( 3 )
 script = ExtResource( 6 )
 
@@ -64,8 +73,13 @@ position = Vector2( -0.67602, 25.432 )
 z_index = -2
 texture = ExtResource( 2 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SolidShotTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="LiquidShotTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+[connection signal="timeout" from="Watercolum/WaterTimer" to="." method="_on_WaterTimer_timeout"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]

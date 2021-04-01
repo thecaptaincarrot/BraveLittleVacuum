@@ -2,6 +2,7 @@ extends RigidBody2D
 
 signal freed
 
+var type = "Water"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

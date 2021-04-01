@@ -1,5 +1,7 @@
 extends Node2D
 
+const WATER = preload("res://SuckableObjects/WaterShotPlaceholder.tscn")
+
 var shoot_force = 500
 var nozzle
 
@@ -21,3 +23,11 @@ func nozzle_shoot(body):
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$Clutter.call_deferred("add_child",new_rock)
 	new_rock.apply_central_impulse(vector * shoot_force)
+
+
+func liquid_nozzle_shoot(unused):
+	var new_water = WATER.instance()
+	new_water.position = nozzle.position
+	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
+	$Clutter.call_deferred("add_child",new_water)
+	new_water.apply_central_impulse(vector * shoot_force / 2)

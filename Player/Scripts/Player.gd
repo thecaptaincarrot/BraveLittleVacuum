@@ -19,6 +19,7 @@ signal shoot
 func _ready():
 	create_hose_skeleton(hose_length)
 	$CanvasLayer/Tank.connect("shoot",get_node("/root/RobotTest"),"nozzle_shoot")
+	$CanvasLayer/Tank.connect("liquidshoot",get_node("/root/RobotTest"),"liquid_nozzle_shoot")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -80,6 +81,8 @@ func add_nozzle(parent):
 	new_nozzle.connect("collide_hose",self,"collide_hose")
 	new_nozzle.connect("uncollide_hose",self,"uncollide_hose")
 	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
+	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
+	
 	
 	get_node("/root/RobotTest").nozzle = new_nozzle
 	
