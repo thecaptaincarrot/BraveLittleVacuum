@@ -29,7 +29,14 @@ func _physics_process(delta):
 		motion.x = lerp(motion.x,0,.05)
 		
 	move_and_slide(motion,Vector2(0,-1))
-#	move_and_collide(motion)
+	
+	var floor_normal = get_floor_normal()
+	var angle = 0
+	if floor_normal != Vector2(0,0):
+		angle = floor_normal.angle() + PI/2
+	
+	$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.25)
+#	rotation = lerp(rotation,angle,.25)
 	
 #	for index in get_slide_count():
 #		var collision = get_slide_collision(index)
