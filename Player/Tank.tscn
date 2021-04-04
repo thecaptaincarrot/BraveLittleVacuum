@@ -23,6 +23,8 @@ script = ExtResource( 4 )
 [node name="Watercolum" type="Polygon2D" parent="."]
 visible = false
 show_behind_parent = true
+position = Vector2( 0, -32 )
+scale = Vector2( 1, 0.1 )
 color = Color( 0.168627, 0.823529, 1, 0.32549 )
 polygon = PoolVector2Array( -10.6667, -64, 10.6667, -64, 10.6667, 32, -10.6667, 32 )
 
@@ -33,7 +35,7 @@ one_shot = true
 [node name="Water" type="Sprite" parent="."]
 show_behind_parent = true
 material = ExtResource( 5 )
-scale = Vector2( 0.9, 1 )
+scale = Vector2( 0.9, 1e-05 )
 texture = ExtResource( 3 )
 script = ExtResource( 6 )
 
@@ -53,7 +55,10 @@ shape = SubResource( 1 )
 polygon = PoolVector2Array( -30.9011, 23.7749, -22.161, 29.1439, 22.7882, 29.6433, 31.2786, 25.1484, 31.9029, 39.0077, -31.026, 38.1337 )
 
 [node name="Top" type="CollisionPolygon2D" parent="TankSTatic"]
-polygon = PoolVector2Array( -28.5288, -42.2754, -17.9514, -49.0101, -12.2971, -64.1257, 14.2978, -64.3755, 18.5224, -48.7492, 33.5261, -39.4037, 34.2753, -47.6444, 18.2933, -70.8681, -12.7966, -70.6184, -35.7706, -48.1438 )
+position = Vector2( 6.25278e-13, -117.333 )
+rotation = 3.14159
+polygon = PoolVector2Array( 32, -74.6667, 16.2802, -67.7164, 13.7036, -53.6441, -16.8194, -53.7432, -17.2158, -67.3199, -31.4862, -73.3651, -29.9997, -43.0403, 32.83, -42.6439 )
+one_way_collision = true
 
 [node name="Exit" type="Area2D" parent="."]
 position = Vector2( 0, -57 )
@@ -80,6 +85,9 @@ one_shot = true
 [node name="LiquidShotTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -71.947 )
 [connection signal="timeout" from="Watercolum/WaterTimer" to="." method="_on_WaterTimer_timeout"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]

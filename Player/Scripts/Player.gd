@@ -7,7 +7,8 @@ var hose_segments = []
 
 var motion = Vector2(0,0)
 
-var hose_length = 10
+var hose_length = 14
+var hose_size = 0
 var nozzle
 
 var gravity = 9.8
@@ -61,10 +62,13 @@ func create_hose_skeleton(length):
 
 func add_hose(parent):
 	var new_hose = HOSE.instance()
+	hose_size = new_hose.size
 	new_hose.position = parent.position
-	new_hose.position.y -= 12
+	new_hose.position.y -= 2 * hose_size
 	
 	new_hose.previous_segment = parent
+	if parent.name != "HoseStart":
+		parent.next_segment = new_hose
 	
 	$PlayerBody/Hose.add_child(new_hose)
 	return new_hose
@@ -73,18 +77,16 @@ func add_hose(parent):
 func add_nozzle(parent):
 	var new_nozzle = NOZZLE.instance()
 	new_nozzle.position = parent.position
-	new_nozzle.position.y -= 0
-	new_nozzle.position.x -= 0
 	
 	new_nozzle.anchor = $PlayerBody/Hose/HoseStart
 	
-	new_nozzle.connect("collide_hose",self,"collide_hose")
-	new_nozzle.connect("uncollide_hose",self,"uncollide_hose")
 	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
 	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
 	
+	new_nozzle.limit = (hose_size + 1) * hose_length * 2
+	new_nozzle.collision_limit = new_nozzle.limit + 5
 	
-	get_node("/root/RobotTest").nozzle = new_nozzle
+	get_node("/root/RobotTest").nozzle = new_nozzle #fix this to be the Main variable, as it were
 	
 	add_child(new_nozzle)
 	return new_nozzle
@@ -117,16 +119,6 @@ func add_pin_nozzle(parent,child):
 	pin.softness = 0.05
 	pin.bias = 0.0
 	pin.disable_collision = true
-	parent.add_child(pin)
-
-
-func add_spring(parent,child):
-	var pin = DampedSpringJoint2D.new()
-	pin.node_a = parent.get_path()
-	pin.node_b = child.get_path()
-	pin.length = 6.0
-	pin.damping = 1.0
-	pin.stiffness = 100.0
 	parent.add_child(pin)
 
 

@@ -32,10 +32,10 @@ func _physics_process(delta):
 	
 	var floor_normal = get_floor_normal()
 	var angle = 0
-	if floor_normal != Vector2(0,0):
+	if is_on_floor():
 		angle = floor_normal.angle() + PI/2
 	
-	$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.25)
+	$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.20)
 #	rotation = lerp(rotation,angle,.25)
 	
 #	for index in get_slide_count():

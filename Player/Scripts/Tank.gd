@@ -44,26 +44,26 @@ func _process(delta):
 	
 	#liquid level
 	$Water.scale.y = lerp($Water.scale.y,liquid_level / float(size),.1)
-	$Water.position.y = lerp($Water.position.y,33 - ($Water.scale.y * 33),.1)
+	$Water.position.y = lerp($Water.position.y,33 - ($Water.scale.y * 33) - 1,.1)
+	$Watercolum.scale.y = lerp($Watercolum.scale.y, 1.0 - .9* (liquid_level / float(size)),.1)
+	$Watercolum.position.y = lerp($Watercolum.position.y,-32 * (liquid_level / float(size)) + 4,.1)
 
 
 func add_suckable(body):
 	if current_size + body.size <= size:
 		body.queue_free()
 		var new_contents = SuckableObjects.decode_to_tank(body).instance()
-		new_contents.position.y -= 30
+		new_contents.position.y -= 35
 		current_size += body.size
 		$Contents.call_deferred("add_child",new_contents)
 
 
 func add_liquid(body):
-	print("liquiding")
 	if liquid_level < size:
 		body.queue_free()
 		liquid_level += 1
 		$Watercolum/WaterTimer.start()
 		$Watercolum.show()
-		print(liquid_level)
 		#animation
 		#Change color based on contents
 

@@ -60,8 +60,8 @@ position = Vector2( 352, 184 )
 [node name="World" type="StaticBody2D" parent="." groups=[
 "World",
 ]]
-collision_layer = 2051
-collision_mask = 3
+collision_layer = 2055
+collision_mask = 0
 physics_material_override = SubResource( 1 )
 script = ExtResource( 5 )
 

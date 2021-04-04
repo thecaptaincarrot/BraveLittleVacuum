@@ -12,7 +12,7 @@ var collision_limit = 130
 var movement_vector = Vector2(0,0)
 var direction = 0
 
-var drag = .08
+var drag = .1
 var angular_drag = .3
 
 var local_mouse
@@ -33,6 +33,7 @@ signal shoot
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
+	collision_limit = limit + 5
 
 
 func _process(delta):
@@ -57,22 +58,26 @@ func _physics_process(delta):
 	var target = Vector2()
 	
 	if (global_position - anchor.global_position).length() > collision_limit: #Snapback
+		returning = true
+	elif (global_position - anchor.global_position).length() > limit and (global_position + movement_vector - anchor.global_position).length() > collision_limit: #Orthogonal
+		returning = false
+		target = vector_projection(global_position - anchor.global_position)
+	else: #Normal Movement
+		returning = false
+		target = movement_vector #Normal Moement
+	
+	if returning:
 		target = (anchor.global_position - global_position)
 		target.x = target.x * 2
 		target.y = target.y * 2
-	elif (global_position - anchor.global_position).length() > limit and (global_position + movement_vector - anchor.global_position).length() > collision_limit: #Orthogonal
-		target = vector_projection(global_position - anchor.global_position)
-	elif local_mouse.length() > 5: #Normal Movement
-		target = movement_vector #Normal Moement
-	
-	if (global_position - anchor.global_position).length() > collision_limit:
-		emit_signal("uncollide_hose")
+#		emit_signal("uncollide_hose")
 		collision_layer = 0
 		collision_mask = 0
 	else:
-		emit_signal("collide_hose")
+#		emit_signal("collide_hose")
 		collision_layer = 2
 		collision_mask = 2
+
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)
 	
