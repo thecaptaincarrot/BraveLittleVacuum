@@ -19,15 +19,17 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("move_left"):
 		motion.x -= acceleration
-		if motion.x > 5:
-			motion.x -= acceleration
+#		if motion.x > -5:
+#			motion.x -= acceleration
 	if Input.is_action_pressed("move_right"):
 		motion.x += acceleration
-		if motion.x < 5:
-			motion.x += acceleration
+#		if motion.x < 5:
+#			motion.x += acceleration
 	else:
 		motion.x = lerp(motion.x,0,.05)
-		
+	
+	motion.x = clamp(motion.x, -300.0, 300.0)
+	
 	move_and_slide(motion,Vector2(0,-1))
 	
 	var floor_normal = get_floor_normal()

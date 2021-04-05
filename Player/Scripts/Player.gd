@@ -3,6 +3,9 @@ extends Node2D
 const HOSE = preload("res://Player/Hose.tscn")
 const NOZZLE = preload("res://Player/Nozzle.tscn")
 
+export var main_path = ""
+var main
+
 var hose_segments = []
 
 var motion = Vector2(0,0)
@@ -18,9 +21,10 @@ signal shoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	main = get_node(main_path)
 	create_hose_skeleton(hose_length)
-	$CanvasLayer/Tank.connect("shoot",get_node("/root/RobotTest"),"nozzle_shoot")
-	$CanvasLayer/Tank.connect("liquidshoot",get_node("/root/RobotTest"),"liquid_nozzle_shoot")
+	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
+	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -86,7 +90,7 @@ func add_nozzle(parent):
 	new_nozzle.limit = (hose_size + 1) * hose_length * 2
 	new_nozzle.collision_limit = new_nozzle.limit + 5
 	
-	get_node("/root/RobotTest").nozzle = new_nozzle #fix this to be the Main variable, as it were
+	main.nozzle = new_nozzle #fix this to be the Main variable, as it were
 	
 	add_child(new_nozzle)
 	return new_nozzle

@@ -135,7 +135,6 @@ __meta__ = {
 }
 
 [node name="PlayerBody" type="KinematicBody2D" parent="."]
-visible = false
 script = ExtResource( 1 )
 
 [node name="Hose" type="Node2D" parent="PlayerBody"]
@@ -190,6 +189,7 @@ __meta__ = {
 position = Vector2( 373.219, 49.3883 )
 
 [node name="Sprite" type="AnimatedSprite" parent="CanvasLayer"]
+visible = false
 frames = SubResource( 27 )
 frame = 4
 centered = false
