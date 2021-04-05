@@ -5,6 +5,7 @@ const NOZZLE = preload("res://Player/Nozzle.tscn")
 
 export var main_path = ""
 var main
+var camera
 
 var hose_segments = []
 
@@ -22,6 +23,7 @@ signal shoot
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main = get_node(main_path)
+	camera = main.get_node("PlayerCamera")
 	create_hose_skeleton(hose_length)
 	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
 	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")
@@ -37,10 +39,17 @@ func _physics_process(delta):
 	pass
 
 
+func _input(event):
+	if event.is_action_pressed("Jump"):
+		hose_length += 1
+		create_hose_skeleton(hose_length)
+
+
 
 func create_hose_skeleton(length):
 	var parent = $PlayerBody/Hose/HoseStart
 	var child
+
 	hose_segments.clear()
 	hose_segments.append(parent)
 	child = add_hose(parent)
@@ -62,6 +71,8 @@ func create_hose_skeleton(length):
 	for base_hose in hose_segments:
 		for hose in hose_segments:
 			base_hose.add_collision_exception_with(hose)
+	
+	update_line()
 	
 
 func add_hose(parent):
@@ -91,8 +102,9 @@ func add_nozzle(parent):
 	new_nozzle.collision_limit = new_nozzle.limit + 5
 	
 	main.nozzle = new_nozzle #fix this to be the Main variable, as it were
+	camera.nozzle = new_nozzle
 	
-	add_child(new_nozzle)
+	$PlayerBody/Hose.add_child(new_nozzle)
 	return new_nozzle
 
 
@@ -138,8 +150,9 @@ func update_line():
 			pass
 	
 	for hose in hose_segments:
-		line.points[i] = hose.position
-		i += 1
+		if hose != null:
+			line.points[i] = hose.position
+			i += 1
 
 
 func check_hose_length():

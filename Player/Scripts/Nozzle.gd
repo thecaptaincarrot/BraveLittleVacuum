@@ -184,7 +184,6 @@ func _on_Suck_area_exited(area):
 
 
 func _on_NozzleHole_area_entered(area):
-	print(area)
 	if area.is_in_group("Water"):
 		print("entered Liquid")
 		is_in_liquid = true

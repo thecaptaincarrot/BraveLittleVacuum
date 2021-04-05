@@ -2,7 +2,10 @@ extends Camera2D
 
 export var player_path = ""
 var player
+var nozzle 
+
 var camera_drag = .03
+var nozzle_reduction = 3
 
 var player_in = true
 
@@ -13,15 +16,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player_in:
-		print("I am in")
-	else:
+	if !player_in:
 		var target_pos = Vector2()
 		if (player.position.x < position.x - $Area2D/CollisionShape2D.shape.extents.x) or (player.position.x > position.x + $Area2D/CollisionShape2D.shape.extents.x):
 			position.x = lerp(position.x, player.position.x,camera_drag)
 		if (player.position.y < position.y - $Area2D/CollisionShape2D.shape.extents.y) or (player.position.y > position.y + $Area2D/CollisionShape2D.shape.extents.y):
 			position.y = lerp(position.y, player.position.y,camera_drag)
-		print("I am not in")
+	
+	offset.x = nozzle.position.x / nozzle_reduction
+	offset.y = nozzle.position.y / nozzle_reduction
 
 
 func _on_Area2D_body_entered(body):
