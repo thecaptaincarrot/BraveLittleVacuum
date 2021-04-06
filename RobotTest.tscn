@@ -71,10 +71,10 @@ script = ExtResource( 5 )
 color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World"]
-polygon = PoolVector2Array( 152, 288, 224, 288, 256, 256, 1544, 256, 1536, 384, -768, 384, -768, 256, 120, 256 )
+polygon = PoolVector2Array( 152, 288, 224, 288, 256, 256, 1536, 256, 1664, 192, 1792, 64, 1984, 64, 1984, 256, 2176, 256, 2176, 64, 2240, 64, 2240, 384, 1784, 384, 1536, 384, -768, 384, -768, 256, 120, 256 )
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 384, 224 )
+position = Vector2( -256, 216 )
 
 [node name="WaterBody" parent="." instance=ExtResource( 6 )]
 

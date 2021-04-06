@@ -3,8 +3,15 @@ extends KinematicBody2D
 var motion = Vector2()
 
 var gravity = 9.8
-var acceleration = 5
+var acceleration = 4
+var skid_friction = 1.0
+
+var neutral_drag = 0.01
+
+var max_speed = 200
 var inertia = 100
+
+var downhill = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,32 +19,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	motion.y += gravity
 	
-	if is_on_floor():
-		motion.y = 0
+	movement(delta)
 	
-	if Input.is_action_pressed("move_left"):
-		motion.x -= acceleration
-#		if motion.x > -5:
-#			motion.x -= acceleration
-	if Input.is_action_pressed("move_right"):
-		motion.x += acceleration
-#		if motion.x < 5:
-#			motion.x += acceleration
-	else:
-		motion.x = lerp(motion.x,0,.05)
-	
-	motion.x = clamp(motion.x, -300.0, 300.0)
-	
-	move_and_slide(motion,Vector2(0,-1))
-	
-	var floor_normal = get_floor_normal()
+	var floor_normal = Vector2(0,-1)
 	var angle = 0
-	if is_on_floor():
-		angle = floor_normal.angle() + PI/2
 	
-	$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.20)
+	
+	if $GroundNormal.is_colliding():
+		floor_normal = $GroundNormal.get_collision_normal()
+	
+	angle = floor_normal.angle() + PI/2
+	
+	$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.10)
 #	rotation = lerp(rotation,angle,.25)
 	
 #	for index in get_slide_count():
@@ -45,3 +39,34 @@ func _physics_process(delta):
 #		if collision.collider.is_in_group("Bodies"):
 #			print("By Golly that was a collision")
 #			collision.collider.apply_central_impulse(-collision.normal * inertia)
+
+
+func movement(delta):
+	if !is_on_floor():
+		motion.y += gravity
+	else:
+		motion.y += gravity / 5
+	
+	#"""Horizontal""" movement
+	var horizontal_vector = get_floor_normal().rotated(PI/2)
+	if Input.is_action_pressed("move_right"):
+		if motion.x < 0:
+			motion += horizontal_vector * (acceleration + acceleration * skid_friction)
+		else:
+			motion += horizontal_vector * acceleration
+	elif Input.is_action_pressed("move_left"):
+		if motion.x > 0:
+			motion -= horizontal_vector * (acceleration + acceleration * skid_friction)
+		else:
+			motion -= horizontal_vector * (acceleration)
+	
+	elif is_on_floor():
+		motion.x = lerp(motion.x, 0,(max_speed / motion.length()) * neutral_drag)
+	
+	#Clamp
+	if motion.length() > max_speed and motion.y <= 10 : #can fall faster than normal
+		motion.x = motion.normalized().x * max_speed
+		motion.y = motion.normalized().y * max_speed
+	
+	motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+	print(motion.length())
