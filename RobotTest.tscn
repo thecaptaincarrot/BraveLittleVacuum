@@ -82,5 +82,6 @@ position = Vector2( -256, 216 )
 polygon = PoolVector2Array( 128, 264, 248, 264, 224, 288, 152, 288 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
+zoom = Vector2( 0.75, 0.75 )
 
 [editable path="WaterBody"]

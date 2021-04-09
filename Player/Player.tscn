@@ -1,96 +1,112 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player/Scripts/PlayerBody.gd" type="Script" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/Tank.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Sprites/ShopVac.png" type="Texture" id=4]
+[ext_resource path="res://Player/Sprites/VacuumScreen.png" type="Texture" id=4]
 [ext_resource path="res://Player/Sprites/HoseSegment.png" type="Texture" id=5]
 [ext_resource path="res://Player/Scripts/PlayerSprite.gd" type="Script" id=6]
 [ext_resource path="res://Player/Sprites/Battery.png" type="Texture" id=7]
+[ext_resource path="res://Player/Sprites/Vacuum.png" type="Texture" id=8]
+[ext_resource path="res://Player/Scripts/PlayerScreen.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.50197
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 8 )
+region = Rect2( 192, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 8 )
+region = Rect2( 240, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 64, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 4 )
-region = Rect2( 64, 64, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 4 )
-region = Rect2( 128, 64, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 64, 64, 64 )
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "Default",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
 "loop": true,
 "name": "Sucking",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "Default",
+"speed": 4.0
+} ]
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ SubResource( 34 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"loop": false,
+"name": "blink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ) ],
+"loop": false,
+"name": "doubleblink",
+"speed": 12.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=19]
-radius = 20.023
-height = 15.1625
+radius = 14.1084
+height = 10.5004
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 7 )
@@ -154,7 +170,8 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="PlayerBody/Hose"]
-width = 8.0
+points = PoolVector2Array( 181.375, -62.5672 )
+width = 6.0
 default_color = Color( 1, 1, 1, 1 )
 texture = ExtResource( 5 )
 texture_mode = 1
@@ -168,12 +185,26 @@ animation = "Default"
 playing = true
 script = ExtResource( 6 )
 
+[node name="PlayerScreen" type="AnimatedSprite" parent="PlayerBody/PlayerSprite"]
+frames = SubResource( 35 )
+animation = "doubleblink"
+frame = 4
+playing = true
+offset = Vector2( 0, 1 )
+script = ExtResource( 9 )
+
+[node name="NewAnimation" type="Timer" parent="PlayerBody/PlayerSprite/PlayerScreen"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="GroundNormal" type="RayCast2D" parent="PlayerBody"]
+visible = false
 enabled = true
-cast_to = Vector2( 0, 50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
-position = Vector2( 0.119164, 4.97095 )
+visible = false
+position = Vector2( 0.445465, -0.222725 )
 shape = SubResource( 19 )
 
 [node name="HoseConnection" type="PinJoint2D" parent="PlayerBody"]
@@ -197,3 +228,4 @@ visible = false
 frames = SubResource( 27 )
 frame = 4
 centered = false
+[connection signal="timeout" from="PlayerBody/PlayerSprite/PlayerScreen/NewAnimation" to="PlayerBody/PlayerSprite/PlayerScreen" method="_on_NewAnimation_timeout"]

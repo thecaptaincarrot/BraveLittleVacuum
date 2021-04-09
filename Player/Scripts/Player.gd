@@ -11,7 +11,7 @@ var hose_segments = []
 
 var motion = Vector2(0,0)
 
-var hose_length = 14
+var hose_length = 8
 var hose_size = 0
 var nozzle
 
@@ -40,9 +40,10 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event.is_action_pressed("Jump"):
-		hose_length += 1
-		create_hose_skeleton(hose_length)
+	pass
+#	if event.is_action_pressed("Jump"):
+#		hose_length += 1
+#		create_hose_skeleton(hose_length)
 
 
 
@@ -73,7 +74,11 @@ func create_hose_skeleton(length):
 			base_hose.add_collision_exception_with(hose)
 	
 	update_line()
-	
+
+
+func remove_hose():
+	pass
+
 
 func add_hose(parent):
 	var new_hose = HOSE.instance()
@@ -145,9 +150,13 @@ func update_line():
 	
 	if len(hose_segments) != len(line.points):
 		line.clear_points()
+		line.add_point(Vector2(0,0))
 		for j in range(len(hose_segments)):
 			line.add_point(Vector2(0,0))
 			pass
+	
+	line.points[i] = Vector2(0,0)
+	i += 1
 	
 	for hose in hose_segments:
 		if hose != null:
