@@ -4,7 +4,8 @@ enum {IDLE, WALK, HURT, DEAD}
 
 enum DIRECTIONS {RIGHT,LEFT}
 
-var walk_speed = 100
+var walk_speed = 5
+var max_speed = 30
 var direction = DIRECTIONS.RIGHT
 
 # Called when the node enters the scene tree for the first time.
@@ -32,16 +33,23 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	motion.y += Globals.GRAVITY
+	
 	match state: #All actions are 
 		IDLE:
 			motion.x = 0
 		WALK:
-			motion += walk()
+			if motion.length() < max_speed:
+				motion += walk()
 		HURT:
 			motion.x = 0
 	
-	motion = move_and_slide(motion)
+	print("Enemy Motion: ", motion)
+	if is_on_floor():
+		motion.y += Globals.GRAVITY * 0.2
+	else:
+		motion.y += Globals.GRAVITY
+	
+	motion = move_and_slide(motion, Vector2(0,-1))
 
 
 func walk():
@@ -52,10 +60,9 @@ func walk():
 	var walk_vector = Vector2(0,0)
 	match direction:
 		DIRECTIONS.RIGHT:
-			walk_vector += horizontal_vector
+			walk_vector = horizontal_vector * walk_speed
 		DIRECTIONS.LEFT:
-			walk_vector -= horizontal_vector
-	
+			walk_vector = -horizontal_vector * walk_speed
 	return walk_vector
 		
 

@@ -23,7 +23,7 @@ __meta__ = {
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Mutant" parent="Enemies" instance=ExtResource( 9 )]
-position = Vector2( 72, 0 )
+position = Vector2( 576, 200 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 main_path = "/root/RobotTest"
