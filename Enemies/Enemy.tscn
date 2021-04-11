@@ -1,21 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Sprite/TrainingDummyt.png" type="Texture" id=2]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 9.30878
-height = 36.1505
 
 [node name="Enemy" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
 script = ExtResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5.94883, 10.2296 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.444999, 4.13317 )
-shape = SubResource( 1 )
