@@ -22,6 +22,7 @@ config/icon="res://_Shit/icon.png"
 [autoload]
 
 SuckableObjects="*res://SuckableObjects/SuckableObjects.gd"
+Globals="*res://Globals.gd"
 
 [display]
 

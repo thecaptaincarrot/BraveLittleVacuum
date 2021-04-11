@@ -1,22 +1,40 @@
 extends KinematicBody2D
 
+enum {DEFAULT}
+
 export var health = 1
 
 var motion = Vector2(0,0)
+var state = DEFAULT
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
+
+func _process(delta):
+	if health <= 0:
+		die()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	#I mean, it alwasy needs to be moving, rgiht???
-	
-	var collision = move_and_slide(motion)
+	#moving and sliding is done deeper
+	pass
 
 
 func collision(body,collision_speed):
 	if collision_speed.length() > 100:
-		health -= collision_speed.length() / 100
+		var damage = collision_speed.length() / 100
+		hurt(damage)
 		print("new_health: ", health)
+
+
+func die():
+	pass
+	
+
+func hurt(damage):
+	health -= damage
+	print("Default Hurt")

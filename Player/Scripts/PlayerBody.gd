@@ -69,4 +69,3 @@ func movement(delta):
 		motion.y = motion.normalized().y * max_speed
 	
 	motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
-	print(motion.length())
