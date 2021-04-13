@@ -63,7 +63,6 @@ func create_hose_skeleton(length):
 		add_pin(parent,child)
 		hose_segments.append(child)
 		parent = child
-	print(hose_segments)
 	
 	child = add_nozzle(parent)
 	nozzle = child

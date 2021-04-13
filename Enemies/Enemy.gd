@@ -37,4 +37,3 @@ func die():
 
 func hurt(damage):
 	health -= damage
-	print("Default Hurt")

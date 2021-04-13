@@ -13,6 +13,7 @@ func _ready():
 	state = IDLE #Is this necessesarily the case
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	match direction:
@@ -34,7 +35,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	
-	match state: #All actions are 
+	match state: #All actions are possible. AI is handled one floor down.
 		IDLE:
 			motion.x = 0
 		WALK:
@@ -43,7 +44,6 @@ func _physics_process(delta):
 		HURT:
 			motion.x = 0
 	
-	print("Enemy Motion: ", motion)
 	if is_on_floor():
 		motion.y += Globals.GRAVITY * 0.2
 	else:
@@ -63,6 +63,7 @@ func walk():
 			walk_vector = horizontal_vector * walk_speed
 		DIRECTIONS.LEFT:
 			walk_vector = -horizontal_vector * walk_speed
+	print(walk_vector)
 	return walk_vector
 		
 

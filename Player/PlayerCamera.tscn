@@ -3,7 +3,7 @@
 [ext_resource path="res://PlayerCamera.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 100 )
+extents = Vector2( 37.0453, 52.5003 )
 
 [node name="PlayerCamera" type="Camera2D"]
 current = true

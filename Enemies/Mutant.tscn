@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 2, 2 )
-frame = 8
+frame = 7
 
 [node name="CollisionShape2D" parent="Sprite/PlayerDetector" index="0"]
 position = Vector2( 52.7663, 7.14763 )

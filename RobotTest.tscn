@@ -7,7 +7,7 @@
 [ext_resource path="res://World.gd" type="Script" id=5]
 [ext_resource path="res://WaterBody.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemies/EyeSpider.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Speyeder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Mutant.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -24,6 +24,30 @@ __meta__ = {
 
 [node name="Mutant" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 576, 200 )
+
+[node name="Crawler" parent="Enemies" groups=[
+"Enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( -160, 192 )
+rotation = 3.14159
+
+[node name="Crawler2" parent="Enemies" groups=[
+"Enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( -280, 104 )
+rotation = 4.7392
+
+[node name="Crawler3" parent="Enemies" groups=[
+"Enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( -40, 112 )
+rotation = 1.6001
+
+[node name="Crawler4" parent="Enemies" groups=[
+"Enemy",
+] instance=ExtResource( 8 )]
+position = Vector2( -160, 8 )
+rotation = 0.0379932
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 main_path = "/root/RobotTest"
@@ -80,6 +104,20 @@ color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World"]
 polygon = PoolVector2Array( 152, 288, 224, 288, 256, 256, 1536, 256, 1664, 192, 1792, 64, 1984, 64, 1984, 256, 2176, 256, 2176, 64, 2240, 64, 2240, 384, 1784, 384, 1536, 384, -768, 384, -768, 256, 120, 256 )
 
+[node name="World2" type="StaticBody2D" parent="." groups=[
+"World",
+]]
+collision_layer = 2055
+collision_mask = 0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 5 )
+
+[node name="Polygon2D" type="Polygon2D" parent="World2"]
+color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World2"]
+polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
+
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( -256, 216 )
 
@@ -90,8 +128,5 @@ polygon = PoolVector2Array( 128, 264, 248, 264, 224, 288, 152, 288 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 zoom = Vector2( 0.75, 0.75 )
-
-[node name="EyeSpider" parent="." instance=ExtResource( 8 )]
-position = Vector2( 96, 240 )
 
 [editable path="WaterBody"]
