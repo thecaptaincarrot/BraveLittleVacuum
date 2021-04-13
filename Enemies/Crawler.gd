@@ -1,7 +1,8 @@
 extends "res://Enemies/Enemy.gd"
 
-enum {IDLE, WALK, HURT, DEAD, SEEKING,FIRING}
+onready var corpse = preload("res://Enemies/SpiderCorpse.tscn")
 
+enum {IDLE, WALK, HURT, DEAD, SEEKING,FIRING}
 enum DIRECTIONS {RIGHT,LEFT}
 
 var floor_direction = Vector2(0,1)
@@ -79,3 +80,12 @@ func _on_gap_detector_body_exited(body):
 		direction = DIRECTIONS.LEFT
 	elif direction == DIRECTIONS.LEFT:
 		direction = DIRECTIONS.RIGHT
+
+
+func die():
+	var new_corpse = corpse.instance()
+	new_corpse.position = position
+	new_corpse.rotation  = rotation
+	new_corpse.apply_central_impulse(floor_direction.rotated(PI) * 30)
+	get_parent().add_child(new_corpse)
+	queue_free()

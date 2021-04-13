@@ -17,6 +17,16 @@ var downhill = false
 func _ready():
 	pass
 
+
+func _process(delta):
+	if motion.x > 10:
+		$PlayerSprite.flip_h = false
+		$PlayerSprite/PlayerScreen.flip_h = false
+	elif motion.x < -10:
+		$PlayerSprite.flip_h = true
+		$PlayerSprite/PlayerScreen.flip_h = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	

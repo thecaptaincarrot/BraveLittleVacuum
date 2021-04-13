@@ -36,4 +36,5 @@ func _on_PlayerDetector_body_exited(body):
 
 
 func _on_WalkTimer_timeout():
-	state = IDLE
+	if state != DEAD:
+		state = IDLE

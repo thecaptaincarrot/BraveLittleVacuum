@@ -30,7 +30,7 @@ func _process(delta):
 		HURT:
 			$Sprite.animation = "hurt"
 		DEAD:
-			$Sprite.animation = "die"
+			pass
 
 
 func _physics_process(delta):
@@ -43,6 +43,10 @@ func _physics_process(delta):
 				motion += walk()
 		HURT:
 			motion.x = 0
+		DEAD:
+			motion.x = 0
+			collision_layer = 0
+			
 	
 	if is_on_floor():
 		motion.y += Globals.GRAVITY * 0.2
@@ -69,4 +73,10 @@ func walk():
 
 
 func die():
+	$Sprite.animation = "die"
 	state = DEAD
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "die":
+		$Sprite.animation = "dead"

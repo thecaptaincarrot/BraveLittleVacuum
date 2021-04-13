@@ -14,8 +14,7 @@ func _ready():
 
 
 func _process(delta):
-	if health <= 0:
-		die()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,6 +28,8 @@ func collision(body,collision_speed):
 		var damage = collision_speed.length() / 100
 		hurt(damage)
 		print("new_health: ", health)
+		if health <= 0:
+			die()
 
 
 func die():

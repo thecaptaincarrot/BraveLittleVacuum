@@ -22,7 +22,10 @@ func _process(delta):
 		if get_parent().frame % 2 == 0:
 			offset = Vector2(0,1)
 		else:
-			offset = Vector2(-1,2)
+			if flip_h:
+				offset = Vector2(1,2)
+			else:
+				offset = Vector2(-1,2)
 
 
 func _on_NewAnimation_timeout():
