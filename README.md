@@ -1,2 +1,2 @@
 # BraveLittleVacuum
-New Physics Based Roguelike
+New Physics Based Metroidvania
