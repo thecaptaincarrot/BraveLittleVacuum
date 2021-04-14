@@ -19,10 +19,11 @@ func _on_DefaultSuckableObject_body_entered(body):
 	if body.is_in_group("Enemy"):
 		body.collision(self,linear_velocity)
 		collision_layer = 8
-		collision_mask = 1033
+		collision_mask = 13
 	elif body.is_in_group("World"):
-		collision_mask = 1033
+		collision_layer = 8
+		collision_mask = 13
 
 
 func _on_CollideTimer_timeout():
-	collision_mask = 1033
+	collision_mask = 13

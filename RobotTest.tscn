@@ -23,77 +23,104 @@ __meta__ = {
 
 [node name="Mutant" parent="Enemies" instance=ExtResource( 9 )]
 position = Vector2( 576, 200 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="Crawler" parent="Enemies" groups=[
 "Enemy",
 ] instance=ExtResource( 8 )]
 position = Vector2( -160, 192 )
 rotation = 3.14159
+collision_layer = 4
+collision_mask = 11
 
 [node name="Crawler2" parent="Enemies" groups=[
 "Enemy",
 ] instance=ExtResource( 8 )]
 position = Vector2( -280, 104 )
 rotation = 4.7392
+collision_layer = 4
+collision_mask = 11
 
 [node name="Crawler3" parent="Enemies" groups=[
 "Enemy",
 ] instance=ExtResource( 8 )]
 position = Vector2( -40, 112 )
 rotation = 1.6001
+collision_layer = 4
+collision_mask = 11
 
 [node name="Crawler4" parent="Enemies" groups=[
 "Enemy",
 ] instance=ExtResource( 8 )]
 position = Vector2( -160, 8 )
 rotation = 0.0379932
+collision_layer = 4
+collision_mask = 11
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 main_path = "/root/RobotTest"
+
+[node name="PlayerBody" parent="Player" index="0"]
+position = Vector2( 312, 104 )
+
+[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
+frame = 0
 
 [node name="Clutter" type="Node2D" parent="."]
 
 [node name="Rock" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
+collision_mask = 1033
 
 [node name="Rock2" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 288, 192 )
+collision_mask = 1033
 
 [node name="Rock3" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 328, 184 )
+collision_mask = 1033
 
 [node name="Rock4" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 312, 216 )
+collision_mask = 1033
 
 [node name="Rock5" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 280, 240 )
+collision_mask = 1033
 
 [node name="Rock6" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 232 )
+collision_mask = 1033
 
 [node name="Rock7" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 336, 128 )
+collision_mask = 1033
 
 [node name="Rock8" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 304, 152 )
+collision_mask = 1033
 
 [node name="Rock9" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 344, 144 )
+collision_mask = 1033
 
 [node name="Rock10" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 344, 168 )
+collision_mask = 1033
 
 [node name="Rock11" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 312, 192 )
+collision_mask = 1033
 
 [node name="Rock12" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 352, 184 )
+collision_mask = 1033
 
 [node name="World" type="StaticBody2D" parent="." groups=[
 "World",
 ]]
-collision_layer = 2055
-collision_mask = 0
+collision_mask = 31
 physics_material_override = SubResource( 1 )
 script = ExtResource( 5 )
 
@@ -106,8 +133,7 @@ polygon = PoolVector2Array( 152, 256, 224, 256, 256, 256, 1536, 256, 1664, 192, 
 [node name="World2" type="StaticBody2D" parent="." groups=[
 "World",
 ]]
-collision_layer = 2055
-collision_mask = 0
+collision_mask = 31
 physics_material_override = SubResource( 1 )
 script = ExtResource( 5 )
 
@@ -121,4 +147,7 @@ polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
 position = Vector2( -256, 216 )
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
+position = Vector2( 312, 88 )
 zoom = Vector2( 0.75, 0.75 )
+
+[editable path="Player"]

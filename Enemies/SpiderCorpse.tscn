@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Enemies/Sprite/spider_corpse.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/Sprite/Creepy_spider_eye-Sheet.png" type="Texture" id=1]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.26809
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 96, 48, 48 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.1731
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 0
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.27451, 0.27451, 0.27451, 1 )
-texture = ExtResource( 1 )
+modulate = Color( 0.835294, 0.835294, 0.835294, 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.111362, 6.55229 )
 rotation = 1.5708
-shape = SubResource( 1 )
+shape = SubResource( 2 )

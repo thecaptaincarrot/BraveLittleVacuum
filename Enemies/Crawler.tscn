@@ -75,19 +75,17 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 [node name="gap_detector_left" type="Area2D" parent="." index="2"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gap_detector_left" index="0"]
-position = Vector2( -21.703, 19.4733 )
+position = Vector2( -13.8458, 19.8942 )
 shape = SubResource( 11 )
 
 [node name="gap_detector_right" type="Area2D" parent="." index="3"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="gap_detector_right" index="0"]
-position = Vector2( 20.0679, 19.6219 )
+position = Vector2( 14.8765, 19.7622 )
 shape = SubResource( 12 )
 [connection signal="body_exited" from="gap_detector_left" to="." method="_on_gap_detector_body_exited"]
 [connection signal="body_exited" from="gap_detector_right" to="." method="_on_gap_detector_body_exited"]

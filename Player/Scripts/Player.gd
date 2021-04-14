@@ -108,6 +108,8 @@ func add_nozzle(parent):
 	main.nozzle = new_nozzle #fix this to be the Main variable, as it were
 	camera.nozzle = new_nozzle
 	
+	new_nozzle.add_collision_exception_with($PlayerBody)
+	
 	$PlayerBody/Hose.add_child(new_nozzle)
 	return new_nozzle
 

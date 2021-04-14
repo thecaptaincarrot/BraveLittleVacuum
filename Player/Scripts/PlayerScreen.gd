@@ -15,9 +15,9 @@ func _ready():
 func _process(delta):
 	if get_parent().animation == "Default":
 		if get_parent().frame % 2 == 0:
-			offset.y = 0
+			offset = Vector2(0,0)
 		else:
-			offset.y = 1
+			offset = Vector2(0,1)
 	else:
 		if get_parent().frame % 2 == 0:
 			offset = Vector2(0,1)

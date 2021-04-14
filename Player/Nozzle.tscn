@@ -19,8 +19,8 @@ script = ExtResource( 2 )
 
 [node name="Suck" type="Area2D" parent="."]
 position = Vector2( -3.105, 0 )
-collision_layer = 1024
-collision_mask = 1024
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Suck"]
 polygon = PoolVector2Array( 3.04723, -0.0756054, -36.895, -69.0625, -26.77, -74.125, -16.77, -78, -7.02, -79.0625, 3.48, -79.9375, 13.73, -79, 23.2925, -78.0625, 33.1675, -74.125, 43.1675, -68.8125 )
@@ -38,7 +38,8 @@ shape = SubResource( 1 )
 
 [node name="NozzleHole" type="Area2D" parent="."]
 rotation = 1.5708
-collision_mask = 2049
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NozzleHole"]
 position = Vector2( 0.00108337, 0.107731 )
@@ -49,14 +50,14 @@ shape = SubResource( 2 )
 [node name="left30" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( -40, -69 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="left225" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( -30, -74 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -64,28 +65,28 @@ collide_with_bodies = false
 position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( -20, -76.5 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="left75" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( -10.5, -79 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="zero" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( 0, -80 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="right75" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( 10.5, -79 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -93,21 +94,21 @@ collide_with_bodies = false
 position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( 20, -76.5 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="right225" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( 30, -74 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="right30" type="RayCast2D" parent="RayCasts"]
 enabled = true
 cast_to = Vector2( 40, -69 )
-collision_mask = 2048
+collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 

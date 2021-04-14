@@ -12,67 +12,67 @@ region = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 144, 48, 48 )
+region = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 144, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 0, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 48, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 48, 48, 48 )
+region = Rect2( 96, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 48, 48, 48 )
+region = Rect2( 144, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 48, 48, 48 )
+region = Rect2( 0, 96, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 48, 48, 48 )
+region = Rect2( 48, 96, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 96, 48, 48 )
+region = Rect2( 96, 96, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 96, 48, 48 )
+region = Rect2( 144, 96, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 96, 48, 48 )
+region = Rect2( 0, 144, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 96, 48, 48 )
+region = Rect2( 48, 144, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 144, 48, 48 )
+region = Rect2( 96, 144, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 144, 48, 48 )
+region = Rect2( 144, 144, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
@@ -89,15 +89,15 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
-"loop": true,
-"name": "shooting",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "fire",
 "speed": 14.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "shooting",
+"speed": 8.0
 } ]
 
 [sub_resource type="AtlasTexture" id=21]
@@ -196,12 +196,18 @@ script = ExtResource( 5 )
 
 [node name="EyeSprite" type="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 20 )
-animation = "shooting"
-frame = 1
 playing = true
 
 [node name="RayCast2D" type="RayCast2D" parent="EyeSprite" index="0"]
 cast_to = Vector2( 0, -256 )
+collision_mask = 2
+
+[node name="EyeBeam" type="Line2D" parent="EyeSprite" index="1"]
+visible = false
+show_behind_parent = true
+points = PoolVector2Array( 0, 0, 0, -256 )
+width = 8.0
+default_color = Color( 0.564706, 0.564706, 0.564706, 1 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 36 )
@@ -224,12 +230,16 @@ one_shot = true
 autostart = true
 
 [node name="ShootTimer" type="Timer" parent="." index="6"]
+wait_time = 1.5
+one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." index="7"]
-collision_mask = 2147483649
+collision_layer = 0
+collision_mask = 2147483650
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" index="0"]
 polygon = PoolVector2Array( 0, 0, -256, -256, 256, -256 )
 [connection signal="timeout" from="WalkTimer" to="." method="_on_WalkTimer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

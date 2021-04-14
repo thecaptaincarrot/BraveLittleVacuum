@@ -10,7 +10,7 @@ extents = Vector2( 8.09181, 7.7713 )
 "Bodies",
 ]]
 collision_layer = 8
-collision_mask = 1033
+collision_mask = 13
 contacts_reported = 5
 contact_monitor = true
 script = ExtResource( 1 )

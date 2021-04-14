@@ -15,7 +15,7 @@ signal liquidshoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,7 +69,7 @@ func add_liquid(body):
 
 
 func _on_Exit_body_entered(body):
-	if Input.is_action_pressed("blow"):
+	if body != $TankSTatic:
 		to_shoot.append(body)
 
 
