@@ -175,7 +175,7 @@ shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="PlayerBody/Hose"]
 points = PoolVector2Array( 181.375, -62.5672 )
-width = 6.0
+width = 8.0
 default_color = Color( 1, 1, 1, 1 )
 texture = ExtResource( 5 )
 texture_mode = 1
