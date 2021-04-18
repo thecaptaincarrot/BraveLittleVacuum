@@ -5,6 +5,8 @@ const WATER = preload("res://SuckableObjects/WaterShotPlaceholder.tscn")
 var shoot_force = 300
 var nozzle
 
+var paused = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,6 +15,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _input(event):
+	if event.is_action_pressed("ui_pause"):
+		if !get_tree().paused:
+			pause()
+		else:
+			unpause()
 
 
 func nozzle_shoot(body):
@@ -31,3 +41,17 @@ func liquid_nozzle_shoot(unused):
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$Clutter.call_deferred("add_child",new_water)
 	new_water.apply_central_impulse(vector * shoot_force / 2)
+
+
+func pause():
+	get_tree().paused = true
+	$CanvasLayer/UI/Pause.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func unpause():
+	get_tree().paused = false
+	$CanvasLayer/UI/Pause.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+

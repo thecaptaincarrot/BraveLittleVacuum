@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Player/Sprites/jarry.png" type="Texture" id=1]
+[ext_resource path="res://Player/Sprites/Tank.png" type="Texture" id=1]
+[ext_resource path="res://Player/Sprites/TankBottom.png" type="Texture" id=2]
 [ext_resource path="res://_Shit/icon.png" type="Texture" id=3]
 [ext_resource path="res://Player/Scripts/Tank.gd" type="Script" id=4]
 [ext_resource path="res://Shaders/water.tres" type="Material" id=5]
@@ -17,6 +18,11 @@ height = 17.4516
 z_index = 1
 texture = ExtResource( 1 )
 script = ExtResource( 4 )
+
+[node name="TankBack" type="Sprite" parent="."]
+show_behind_parent = true
+z_index = -1
+texture = ExtResource( 2 )
 
 [node name="Watercolum" type="Polygon2D" parent="."]
 visible = false
@@ -42,10 +48,10 @@ collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TankSTatic"]
-polygon = PoolVector2Array( -15.1346, -29.1697, -24.9273, -20.7928, -29.0567, 35.7217, -21.7417, 39.8512, -6.52172, 42.9187, 5.27671, 43.0367, 20.6147, 40.2051, 28.9916, 35.9577, 24.9801, -20.6748, 15.5414, -29.1697, 15.0694, -46.5134, 39.0202, -46.6313, 41.0897, 56.091, -42.7897, 56.9319, -41.1079, -45.4472, -15.2504, -45.6575 )
+polygon = PoolVector2Array( -23.75, -35, -25.7085, -22.716, -28.7761, 28.7252, -20.2812, 39.9337, -9.78063, 43.9452, 7.44508, 44.2991, 22.3111, 39.4618, 29.0362, 29.3151, 25.7326, -22.834, 24, -34.75, 14.5, -42, 13.75, -48.5, 43.9761, -49.661, 41.0897, 56.091, -42.7897, 56.9319, -46.5336, -50.0145, -13.25, -48.25, -14, -41.75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankSTatic"]
-position = Vector2( -0.374588, -54.5009 )
+position = Vector2( 0.33252, -57.6829 )
 shape = SubResource( 1 )
 
 [node name="Exit" type="Area2D" parent="."]
@@ -54,7 +60,7 @@ collision_layer = 2147483680
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2( -0.54303, -0.0182495 )
+position = Vector2( -1.01497, -4.97359 )
 rotation = 17.2788
 shape = SubResource( 2 )
 
