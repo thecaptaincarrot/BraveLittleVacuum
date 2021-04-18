@@ -49,50 +49,53 @@ rotation = 0.0379932
 [node name="Rock" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock2" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 288, 192 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock3" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 328, 184 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock4" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 312, 216 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock5" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 280, 240 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock6" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 320, 232 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock7" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 336, 128 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock8" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 304, 152 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock9" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 344, 144 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
+angular_velocity = 0.0
 
 [node name="Rock10" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 344, 168 )
+position = Vector2( 320, 168 )
 collision_mask = 1033
-
-[node name="Rock11" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 312, 192 )
-collision_mask = 1033
-
-[node name="Rock12" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 352, 184 )
-collision_mask = 1033
+gravity_scale = 1.5
+angular_velocity = 0.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 pause_mode = 1
@@ -100,9 +103,6 @@ main_path = "/root/RobotTest"
 
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
-
-[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
-frame = 1
 
 [node name="World" type="StaticBody2D" parent="." groups=[
 "World",

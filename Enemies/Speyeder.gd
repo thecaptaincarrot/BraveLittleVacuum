@@ -21,7 +21,6 @@ func _process(delta):
 	match state:
 		SEEKING:
 			if !seen_player and $WalkTimer.is_stopped():
-				print("walking")
 				$WalkTimer.wait_time = rand_range(8.0,12.0)
 				$WalkTimer.start()
 			motion = Vector2(0,0)
@@ -91,7 +90,6 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("Player"):
-		print("seeking due to body exit")
 		seen_player = false
 
 

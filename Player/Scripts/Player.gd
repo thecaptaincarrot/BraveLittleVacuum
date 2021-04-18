@@ -18,6 +18,9 @@ var nozzle
 var gravity = 9.8
 var inertia = 100
 
+var health = 44.0
+var max_health = 100.0
+
 signal shoot
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +34,7 @@ func _ready():
 
 
 func _process(delta):
+	update_health()
 	update_line()
 
 
@@ -44,6 +48,11 @@ func _input(event):
 #	if event.is_action_pressed("Jump"):
 #		hose_length += 1
 #		create_hose_skeleton(hose_length)
+
+
+func update_health():
+	var health_percentage = health/max_health
+	$CanvasLayer/HealthBar.update_bar(health_percentage)
 
 
 

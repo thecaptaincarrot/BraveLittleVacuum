@@ -31,6 +31,9 @@ func _process(delta):
 func _on_NewAnimation_timeout():
 	$NewAnimation.wait_time = rand_range(1.0,2.0)
 	var animations = frames.get_animation_names()
+	#Default
+	if true: #Health is high
+		animations = ["happy","blink","doubleblink"]
 	
 	var next_anim = randi() % len(animations)
 	
