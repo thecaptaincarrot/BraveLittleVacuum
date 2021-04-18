@@ -88,8 +88,10 @@ func _physics_process(delta):
 		var to_angle = movement_vector.angle() + PI/2
 		if to_angle > PI:
 			to_angle -= 2 * PI #Could just fix this by changing the sprite
-		rotation = to_angle
-#		rotation = lerp(rotation,to_angle,angular_drag)
+		if movement_vector.length() > 50.0:
+			rotation = to_angle
+		else:
+			rotation = lerp(rotation,to_angle,movement_vector.length()/400.0)
 
 
 func _input(event):
