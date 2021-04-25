@@ -14,6 +14,7 @@ var motion = Vector2(0,0)
 var hose_length = 8
 var hose_size = 0
 var nozzle
+var update_line = false
 
 var gravity = 9.8
 var inertia = 100
@@ -23,6 +24,10 @@ var max_health = 100.0
 
 signal shoot
 
+
+
+var test
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main = get_node(main_path)
@@ -31,23 +36,25 @@ func _ready():
 	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
 	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	update_line = true
 
 
 func _process(delta):
 	update_health()
-	update_line()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	pass
+	if update_line:
+		update_line()
 
 
 func _input(event):
 	pass
-#	if event.is_action_pressed("Jump"):
-#		hose_length += 1
-#		create_hose_skeleton(hose_length)
+	if event.is_action_pressed("Jump"):
+		hose_length += 1
+		regenerate_hose(hose_length)
 
 
 func update_health():
@@ -78,14 +85,34 @@ func create_hose_skeleton(length):
 	add_pin_nozzle(parent,child)
 	
 	for base_hose in hose_segments:
+		base_hose.set_process(true)
 		for hose in hose_segments:
 			base_hose.add_collision_exception_with(hose)
 	
-	update_line()
-
+	nozzle.set_physics_process(true)
 
 func remove_hose():
-	pass
+	
+	nozzle.set_physics_process(false)
+	for hose in hose_segments:
+		hose.set_process(false)
+	
+	camera.nozzle = null
+	nozzle.queue_free()
+	nozzle = null
+
+	for hose in hose_segments:
+		if hose != $PlayerBody/Hose/HoseStart:
+			hose.queue_free()
+	
+	hose_segments = []
+
+
+func regenerate_hose(length):
+	update_line = false
+	remove_hose()
+	create_hose_skeleton(length)
+	update_line = true
 
 
 func add_hose(parent):
@@ -158,7 +185,8 @@ func update_line():
 	
 	var line = $PlayerBody/Hose/Line2D
 	
-	if len(hose_segments) != len(line.points):
+	if len(hose_segments) >= len(line.points):
+		print("mismatch between ", len(hose_segments), " ", len(line.points))
 		line.clear_points()
 		line.add_point(Vector2(0,0))
 		for j in range(len(hose_segments)):

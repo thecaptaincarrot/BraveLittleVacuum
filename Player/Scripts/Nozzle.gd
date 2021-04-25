@@ -34,6 +34,7 @@ signal shoot
 func _ready():
 	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
 	collision_limit = limit + 5
+	set_physics_process(false)
 
 
 func _process(delta):
@@ -45,8 +46,6 @@ func _process(delta):
 		blow()
 	else:
 		$Suck/Polygon2D.hide()
-	
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
