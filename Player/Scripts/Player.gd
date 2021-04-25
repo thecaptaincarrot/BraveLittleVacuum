@@ -11,7 +11,6 @@ var hose_segments = []
 
 var motion = Vector2(0,0)
 
-var hose_length = 8
 var hose_size = 0
 var nozzle
 var update_line = false
@@ -32,7 +31,7 @@ var test
 func _ready():
 	main = get_node(main_path)
 	camera = main.get_node("PlayerCamera")
-	create_hose_skeleton(hose_length)
+	create_hose_skeleton(Upgrades.hose_length)
 	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
 	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -52,9 +51,12 @@ func _physics_process(delta):
 
 func _input(event):
 	pass
-	if event.is_action_pressed("Jump"):
-		hose_length += 1
-		regenerate_hose(hose_length)
+	if event is InputEventKey and event.scancode == KEY_PAGEUP:
+		Upgrades.hose_length += 1
+		regenerate_hose(Upgrades.hose_length)
+	if event is InputEventKey and event.scancode == KEY_PAGEDOWN:
+		Upgrades.hose_length -= 1
+		regenerate_hose(Upgrades.hose_length)
 
 
 func update_health():
@@ -74,7 +76,7 @@ func create_hose_skeleton(length):
 	hose_segments.append(child)
 	parent = child
 	
-	for i in range (hose_length):
+	for i in range (Upgrades.hose_length):
 		child = add_hose(parent)
 		add_pin(parent,child)
 		hose_segments.append(child)
@@ -138,7 +140,7 @@ func add_nozzle(parent):
 	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
 	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
 	
-	new_nozzle.limit = (hose_size + 1) * hose_length * 2
+	new_nozzle.limit = (hose_size + 1) * Upgrades.hose_length * 2
 	new_nozzle.collision_limit = new_nozzle.limit + 5
 	
 	main.nozzle = new_nozzle #fix this to be the Main variable, as it were

@@ -1,6 +1,6 @@
 extends "res://Enemies/Enemy.gd"
 
-onready var corpse = preload("res://Enemies/SpiderCorpse.tscn")
+onready var corpse = preload("res://Enemies/Aliens/SpiderCorpse.tscn")
 onready var spider_eye
 
 enum {IDLE, WALK, HURT, DEAD, SEEKING,FIRING}

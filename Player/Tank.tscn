@@ -77,6 +77,7 @@ one_shot = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, -29.697 )
+
 [connection signal="timeout" from="Watercolum/WaterTimer" to="." method="_on_WaterTimer_timeout"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]

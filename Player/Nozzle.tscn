@@ -115,6 +115,7 @@ collide_with_bodies = false
 [node name="LiquidSpawn" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
 [connection signal="area_entered" from="Suck" to="." method="_on_Suck_area_entered"]
 [connection signal="area_exited" from="Suck" to="." method="_on_Suck_area_exited"]
 [connection signal="body_entered" from="Suck" to="." method="_on_Area2D_body_entered"]

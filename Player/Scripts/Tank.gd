@@ -1,6 +1,6 @@
 extends Sprite
 
-var blow_force = 5
+var blow_force = 20
 
 var size = 30
 var current_size = 0
