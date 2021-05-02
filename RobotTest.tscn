@@ -684,9 +684,6 @@ main_path = "/root/RobotTest"
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
 
-[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
-frame = 0
-
 [node name="WaterBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1088, 256 )
 
@@ -740,5 +737,4 @@ margin_right = 780.0
 margin_bottom = 580.0
 
 [editable path="Player"]
-
 [editable path="WaterBody"]

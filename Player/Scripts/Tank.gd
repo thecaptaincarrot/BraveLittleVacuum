@@ -2,7 +2,7 @@ extends Sprite
 
 var blow_force = 20
 
-var size = 30
+var size = 10
 var current_size = 0
 
 var liquid_level = 0
