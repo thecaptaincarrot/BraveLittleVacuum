@@ -81,12 +81,15 @@ one_shot = true
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, -29.697 )
 
+<<<<<<< HEAD
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 7 )
 mode = 3
 range_layer_min = 1
 range_layer_max = 1
 range_item_cull_mask = -2147483647
+=======
+>>>>>>> be72312129a4a447fe455ae1f29cf19b763572c0
 [connection signal="timeout" from="Watercolum/WaterTimer" to="." method="_on_WaterTimer_timeout"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]
