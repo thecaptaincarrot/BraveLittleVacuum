@@ -54,38 +54,6 @@ animations = [ {
 atlas = ExtResource( 4 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 48, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 4 )
-region = Rect2( 144, 192, 48, 48 )
-
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
 region = Rect2( 48, 0, 48, 48 )
@@ -100,72 +68,104 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 4 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 4 )
 region = Rect2( 144, 0, 48, 48 )
 
-[sub_resource type="SpriteFrames" id=18]
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 4 )
+region = Rect2( 144, 192, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=27]
 animations = [ {
 "frames": [ SubResource( 9 ) ],
 "loop": false,
 "name": "happy",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 22 ) ],
-"loop": true,
-"name": "Nblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 24 ), SubResource( 25 ), SubResource( 24 ) ],
-"loop": true,
-"name": "Ndoubleblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 26 ), SubResource( 27 ) ],
-"loop": false,
-"name": "XD",
-"speed": 2.0
-}, {
-"frames": [ SubResource( 20 ), SubResource( 21 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": false,
-"name": "blink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": false,
 "name": "doubleblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 28 ) ],
+"frames": [ SubResource( 15 ) ],
 "loop": true,
 "name": "neutral",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "blink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 19 ) ],
+"loop": true,
+"name": "Nblink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 21 ), SubResource( 22 ), SubResource( 21 ) ],
+"loop": true,
+"name": "Ndoubleblink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"loop": false,
+"name": "XD",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 8.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=19]
+[sub_resource type="CapsuleShape2D" id=28]
 radius = 14.1084
 height = 10.5004
 
@@ -211,12 +211,11 @@ __meta__ = {
 [node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
 frames = SubResource( 8 )
 animation = "Default"
-frame = 1
 playing = true
 script = ExtResource( 6 )
 
 [node name="PlayerScreen" type="AnimatedSprite" parent="PlayerBody/PlayerSprite"]
-frames = SubResource( 18 )
+frames = SubResource( 27 )
 animation = "XD"
 frame = 1
 playing = true
@@ -235,7 +234,7 @@ enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
 visible = false
 position = Vector2( 0.445465, -0.222725 )
-shape = SubResource( 19 )
+shape = SubResource( 28 )
 
 [node name="HoseConnection" type="PinJoint2D" parent="PlayerBody"]
 visible = false

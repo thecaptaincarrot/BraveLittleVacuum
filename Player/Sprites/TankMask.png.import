@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-c06593f769e9c258f18c20542e0356b3.stex"
+path="res://.import/TankMask.png-ee3411feeb8277e7540685b00157ff77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Shit/icon.png"
-dest_files=[ "res://.import/icon.png-c06593f769e9c258f18c20542e0356b3.stex" ]
+source_file="res://Player/Sprites/TankMask.png"
+dest_files=[ "res://.import/TankMask.png-ee3411feeb8277e7540685b00157ff77.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
-flags/filter=true
+flags/repeat=0
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

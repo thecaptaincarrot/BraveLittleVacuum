@@ -1,7 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform vec4 blue_tint : hint_color;
 
@@ -34,8 +31,8 @@ void fragment(){
 	vec2 motion1 = vec2(TIME *0.3, TIME * -0.4);
 	vec2 motion2 = vec2(TIME * 0.1, TIME * 0.5);
 	
-	vec2 distort1 = vec2(noise(noisecoord1 + motion1), noise(noisecoord2 + motion1) / 2.0) - vec2(0.5);
-	vec2 distort2 = vec2(noise(noisecoord1 + motion2), noise(noisecoord2 + motion2) / 2.0) - vec2(0.5);
+	vec2 distort1 = vec2(noise(noisecoord1 + motion1), noise(noisecoord2 + motion1)) - vec2(0.5);
+	vec2 distort2 = vec2(noise(noisecoord1 + motion2), noise(noisecoord2 + motion2)) - vec2(0.5);
 	
 	
 	
@@ -65,9 +62,4 @@ void fragment(){
 	}
 	
 	COLOR = color;
-}"
-
-[resource]
-shader = SubResource( 1 )
-shader_param/blue_tint = Color( 0, 0.784314, 1, 1 )
-shader_param/sprite_scale = Vector2( 1, 1 )
+}

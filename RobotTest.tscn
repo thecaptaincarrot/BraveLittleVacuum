@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/RobotTest.gd" type="Script" id=3]
+[ext_resource path="res://WaterBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World.gd" type="Script" id=5]
 [ext_resource path="res://UI/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=7]
@@ -104,6 +105,15 @@ main_path = "/root/RobotTest"
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
 
+[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
+frame = 0
+
+[node name="WaterBody" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1088, 256 )
+
+[node name="CollisionPolygon2D" parent="WaterBody" index="0"]
+polygon = PoolVector2Array( -136, 0, 136, 0, 80, 72, -80, 72 )
+
 [node name="World" type="StaticBody2D" parent="." groups=[
 "World",
 ]]
@@ -115,7 +125,7 @@ script = ExtResource( 5 )
 color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World"]
-polygon = PoolVector2Array( 152, 256, 224, 256, 256, 256, 1536, 256, 1664, 192, 1792, 64, 1984, 64, 1984, 256, 2176, 256, 2176, 64, 2240, 64, 2240, 384, 1784, 384, 1536, 384, -768, 384, -768, 256, 120, 256 )
+polygon = PoolVector2Array( 152, 256, 224, 256, 256, 256, 960, 256, 1024, 320, 1152, 320, 1217, 256, 1536, 256, 1664, 192, 1792, 64, 1984, 64, 1984, 256, 2176, 256, 2176, 64, 2240, 64, 2240, 384, 1784, 384, 1536, 384, -768, 384, -768, 256, 120, 256 )
 
 [node name="World2" type="StaticBody2D" parent="." groups=[
 "World",
@@ -151,3 +161,5 @@ margin_right = 780.0
 margin_bottom = 580.0
 
 [editable path="Player"]
+
+[editable path="WaterBody"]
