@@ -23,8 +23,11 @@ func _process(delta):
 		if (player.position.y < position.y - $Area2D/CollisionShape2D.shape.extents.y) or (player.position.y > position.y + $Area2D/CollisionShape2D.shape.extents.y):
 			position.y = lerp(position.y, player.position.y,camera_drag)
 	
-	offset.x = nozzle.position.x / nozzle_reduction
-	offset.y = nozzle.position.y / nozzle_reduction
+	if nozzle != null:
+		offset.x = nozzle.position.x / nozzle_reduction
+		offset.y = nozzle.position.y / nozzle_reduction
+	else:
+		offset = Vector2(0,0)
 
 
 func _on_Area2D_body_entered(body):

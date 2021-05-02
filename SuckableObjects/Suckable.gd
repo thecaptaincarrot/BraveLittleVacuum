@@ -3,6 +3,7 @@ extends RigidBody2D
 const suckable = true
 export var size = 0
 export var identifier = "Default"
+var damaging = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,10 +21,11 @@ func _on_DefaultSuckableObject_body_entered(body):
 		body.collision(self,linear_velocity)
 		collision_layer = 8
 		collision_mask = 13
+		damaging = false
 	elif body.is_in_group("World"):
 		collision_layer = 8
 		collision_mask = 13
-
+		damaging = false
 
 func _on_CollideTimer_timeout():
 	collision_mask = 13

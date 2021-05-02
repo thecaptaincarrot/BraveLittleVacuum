@@ -11,6 +11,7 @@ var collision_limit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_process(false)
 	$CollisionShape2D.shape.radius = size
 	collision_limit = (size + 2 ) * 2
 
@@ -23,4 +24,4 @@ func _process(delta):
 	elif global_position.distance_to(next_segment.global_position) > collision_limit:
 		collision_mask = 0
 	else:
-		collision_mask = 4
+		collision_mask = 1

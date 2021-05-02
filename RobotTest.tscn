@@ -7,8 +7,8 @@
 [ext_resource path="res://World.gd" type="Script" id=5]
 [ext_resource path="res://UI/Pause.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemies/Speyeder.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemies/Mutant.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/Aliens/Speyeder.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Mutants/Mutant.tscn" type="PackedScene" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 2.625
@@ -50,52 +50,631 @@ rotation = 0.0379932
 [node name="Rock" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock2" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock3" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock4" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock5" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock6" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock7" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock8" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock9" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock10" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 320, 168 )
 collision_mask = 1033
 gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock11" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock12" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock13" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock14" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock15" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock16" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock17" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock18" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock19" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock20" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 416, 168 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock21" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock22" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock23" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock24" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock25" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock26" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock27" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock28" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock29" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock30" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 392, 56 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock31" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock32" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock33" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock34" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock35" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock36" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock37" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock38" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock39" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock40" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 376, 160 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock41" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock42" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock43" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock44" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock45" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock46" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock47" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock48" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock49" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock50" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 464, 80 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock51" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock52" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock53" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock54" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock55" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock56" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock57" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock58" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock59" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock60" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 848, 120 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock61" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock62" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock63" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock64" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock65" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock66" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock67" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock68" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock69" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock70" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1176, 112 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock71" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock72" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock73" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock74" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock75" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock76" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock77" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock78" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock79" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock80" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( 1384, 104 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock81" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock82" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock83" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock84" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock85" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock86" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock87" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock88" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock89" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 2.0
+contacts_reported = 5
+angular_velocity = 0.0
+
+[node name="Rock90" parent="Clutter" instance=ExtResource( 7 )]
+position = Vector2( -512, 152 )
+collision_mask = 1033
+gravity_scale = 1.5
+contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

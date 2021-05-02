@@ -19,7 +19,6 @@ var local_mouse
 var global_mouse
 
 var suckables = []
-var suck_strength = 5
 
 var water_source = null
 var is_in_liquid = false
@@ -34,6 +33,7 @@ signal shoot
 func _ready():
 	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
 	collision_limit = limit + 5
+	set_physics_process(false)
 
 
 func _process(delta):
@@ -45,8 +45,6 @@ func _process(delta):
 		blow()
 	else:
 		$Suck/Polygon2D.hide()
-	
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,6 +95,10 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		movement_vector += event.relative
+		
+	if event.is_action_released("suck"):
+		for object in suckables:
+			object.gravity_scale = 1
 
 
 func vector_projection(origin_vector):
@@ -147,8 +149,8 @@ func suck():
 		
 	
 	for object in suckables:
-		object.apply_central_impulse((global_position - object.global_position).normalized() * suck_strength)
-
+		object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
+		object.gravity_scale = 0
 
 func blow():
 	pass
@@ -165,6 +167,8 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	suckables.erase(body)
+	if body.is_in_group("Bodies") or body.is_in_group("Liquid"):
+		body.gravity_scale = 1
 
 
 func _on_NozzleHole_body_entered(body):
