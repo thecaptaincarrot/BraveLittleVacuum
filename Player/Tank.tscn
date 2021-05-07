@@ -26,10 +26,8 @@ z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Watercolum" type="Polygon2D" parent="."]
-visible = false
 show_behind_parent = true
-position = Vector2( 0, -32 )
-scale = Vector2( 1, 0.1 )
+position = Vector2( 0, -45.884 )
 color = Color( 0.168627, 0.823529, 1, 0.32549 )
 polygon = PoolVector2Array( -10.6667, -64, 10.6667, -64, 10.6667, 32, -10.6667, 32 )
 
@@ -40,8 +38,7 @@ one_shot = true
 [node name="Water" type="Sprite" parent="."]
 show_behind_parent = true
 material = ExtResource( 5 )
-position = Vector2( 0.236, 44 )
-scale = Vector2( 0.95, 1e-05 )
+position = Vector2( 0, 13 )
 texture = ExtResource( 3 )
 script = ExtResource( 6 )
 
@@ -86,6 +83,9 @@ texture = ExtResource( 7 )
 mode = 3
 range_layer_min = 1
 range_layer_max = 10
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="timeout" from="Watercolum/WaterTimer" to="." method="_on_WaterTimer_timeout"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]

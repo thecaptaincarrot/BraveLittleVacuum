@@ -12,7 +12,7 @@ height = 29.2542
 
 [node name="Mutant" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-health = 5
+health = 2
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 2, 2 )

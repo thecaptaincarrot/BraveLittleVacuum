@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Aliens/Speyeder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Mutants/Mutant.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/UpgradeSphere.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 2.625
@@ -690,31 +691,37 @@ position = Vector2( 1088, 256 )
 [node name="CollisionPolygon2D" parent="WaterBody" index="0"]
 polygon = PoolVector2Array( -136, 0, 136, 0, 80, 72, -80, 72 )
 
-[node name="World" type="StaticBody2D" parent="." groups=[
+[node name="World" type="Node2D" parent="."]
+
+[node name="World" type="StaticBody2D" parent="World" groups=[
 "World",
 ]]
 collision_mask = 31
 physics_material_override = SubResource( 1 )
 script = ExtResource( 5 )
 
-[node name="Polygon2D" type="Polygon2D" parent="World"]
+[node name="Polygon2D" type="Polygon2D" parent="World/World"]
 color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World"]
-polygon = PoolVector2Array( 152, 256, 224, 256, 256, 256, 960, 256, 1024, 320, 1152, 320, 1217, 256, 1536, 256, 1664, 192, 1792, 64, 1984, 64, 1984, 256, 2176, 256, 2176, 64, 2240, 64, 2240, 384, 1784, 384, 1536, 384, -768, 384, -768, 256, 120, 256 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/World"]
+polygon = PoolVector2Array( 960, 256, 1024, 320, 1152, 320, 1217, 256, 1536, 256, 1664, 192, 1792, 64, 1984, 64, 1984, 256, 2176, 256, 2176, 64, 2240, 64, 2240, 384, 1784, 384, 1536, 384, -768, 384, -768, 256 )
 
-[node name="World2" type="StaticBody2D" parent="." groups=[
+[node name="World2" type="StaticBody2D" parent="World" groups=[
 "World",
 ]]
 collision_mask = 31
 physics_material_override = SubResource( 1 )
 script = ExtResource( 5 )
 
-[node name="Polygon2D" type="Polygon2D" parent="World2"]
+[node name="Polygon2D" type="Polygon2D" parent="World/World2"]
 color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/World2"]
 polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
+
+[node name="UpgradeSphere" parent="World" instance=ExtResource( 10 )]
+position = Vector2( 1352, 224 )
+frame = 3
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 312, 88 )

@@ -20,7 +20,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print($Light2D.enabled)
 	if Input.is_action_pressed("blow"):
 		for object in $Contents.get_children():
 			var vector = $Exit.position - object.position
@@ -41,13 +40,12 @@ func _process(delta):
 			$LiquidShotTimer.start()
 			emit_signal("liquidshoot",null)
 	
-		
-	
 	#liquid level
 	$Water.scale.y = lerp($Water.scale.y,liquid_level / float(size),.1)
-	$Water.position.y = lerp($Water.position.y,44 - ($Water.scale.y * 44) - 1,.1)
-	$Watercolum.scale.y = lerp($Watercolum.scale.y, 1.0 - .9* (liquid_level / float(size)),.1)
-	$Watercolum.position.y = lerp($Watercolum.position.y,-32 * (liquid_level / float(size)) + 4,.1)
+	$Water.position.y = lerp($Water.position.y,45 - (liquid_level / float(size) * 32.0),.1)
+#	$Watercolum.scale.y = lerp($Watercolum.scale.y, 1.0 - .4* (liquid_level / float(size)),.1)
+#	$Watercolum.position.y = lerp($Watercolum.position.y,13 - 35 * (liquid_level / float(size)),.1)
+#	print($Watercolum.scale.y)
 
 
 func add_suckable(body):
