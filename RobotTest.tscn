@@ -26,7 +26,7 @@ __meta__ = {
 pause_mode = 1
 
 [node name="Mutant" parent="Enemies" instance=ExtResource( 9 )]
-position = Vector2( 576, 200 )
+position = Vector2( 816, 192 )
 collision_layer = 1
 collision_mask = 1
 
@@ -685,6 +685,9 @@ main_path = "/root/RobotTest"
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
 
+[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
+frame = 0
+
 [node name="WaterBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1088, 256 )
 
@@ -721,7 +724,7 @@ polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
 
 [node name="UpgradeSphere" parent="World" instance=ExtResource( 10 )]
 position = Vector2( 1352, 224 )
-frame = 3
+frame = 6
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 312, 88 )
