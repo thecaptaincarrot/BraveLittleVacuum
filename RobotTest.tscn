@@ -398,76 +398,6 @@ gravity_scale = 1.5
 contacts_reported = 5
 angular_velocity = 0.0
 
-[node name="Rock51" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock52" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock53" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock54" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock55" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock56" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock57" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock58" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock59" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 2.0
-contacts_reported = 5
-angular_velocity = 0.0
-
-[node name="Rock60" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 848, 120 )
-collision_mask = 1033
-gravity_scale = 1.5
-contacts_reported = 5
-angular_velocity = 0.0
-
 [node name="Rock61" parent="Clutter" instance=ExtResource( 7 )]
 position = Vector2( 1176, 112 )
 collision_mask = 1033
@@ -685,9 +615,6 @@ main_path = "/root/RobotTest"
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
 
-[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
-frame = 0
-
 [node name="WaterBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1088, 256 )
 
@@ -724,7 +651,7 @@ polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
 
 [node name="UpgradeSphere" parent="World" instance=ExtResource( 10 )]
 position = Vector2( 1352, 224 )
-frame = 6
+frame = 7
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 312, 88 )
@@ -747,4 +674,5 @@ margin_right = 780.0
 margin_bottom = 580.0
 
 [editable path="Player"]
+
 [editable path="WaterBody"]

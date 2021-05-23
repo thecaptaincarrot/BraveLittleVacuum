@@ -11,6 +11,7 @@ region = Rect2( 0, 0, 48, 48 )
 radius = 9.03608
 
 [node name="SpiderEyeTank" instance=ExtResource( 1 )]
+size = 2
 identifier = "SpiderEye"
 
 [node name="Sprite" parent="." index="0"]

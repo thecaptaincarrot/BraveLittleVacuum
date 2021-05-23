@@ -13,6 +13,8 @@ var inertia = 100
 
 var downhill = false
 
+var jump_impulse = 300
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -58,8 +60,12 @@ func movement(delta):
 		motion.y += gravity / 5
 	
 	#"""Horizontal""" movement
-	var horizontal_vector = get_floor_normal().rotated(PI/2)
+	var horizontal_vector = Vector2(1,0)
+	if is_on_floor():
+		horizontal_vector = get_floor_normal().rotated(PI/2)
+		
 	if Input.is_action_pressed("move_right"):
+		print("moving")
 		if motion.x < 0:
 			motion += horizontal_vector * (acceleration + acceleration * skid_friction)
 		else:
@@ -74,8 +80,17 @@ func movement(delta):
 		motion.x = lerp(motion.x, 0,(max_speed / motion.length()) * neutral_drag)
 	
 	#Clamp
-	if motion.length() > max_speed and motion.y <= 10 : #can fall faster than normal
+	if (motion.length() > max_speed and motion.y <= 10) and is_on_floor(): #can fall faster than normal
 		motion.x = motion.normalized().x * max_speed
 		motion.y = motion.normalized().y * max_speed
+	elif !is_on_floor() and motion.x > max_speed:
+		motion.x = max_speed
+	elif !is_on_floor() and motion.x < -max_speed:
+		motion.x = -max_speed
+	#Jumping
+	#need to check whether jumping has been unlocked globally
+	if Input.is_action_pressed("Jump") and is_on_floor():
+		print("JUMP")
+		motion.y -= jump_impulse
 	
 	motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?

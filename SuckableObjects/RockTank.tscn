@@ -8,7 +8,7 @@ radius = 3.18813
 height = 9.60276
 
 [node name="DefaultSuckableObject" instance=ExtResource( 2 )]
-size = 3
+size = 1
 identifier = "Rock"
 
 [node name="Sprite" parent="." index="0"]

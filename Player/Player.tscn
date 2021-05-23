@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Player/Scripts/PlayerBody.gd" type="Script" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -9,54 +9,56 @@
 [ext_resource path="res://Player/HealthBar.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Sprites/Vacuum.png" type="Texture" id=8]
 [ext_resource path="res://Player/Scripts/PlayerScreen.gd" type="Script" id=9]
+[ext_resource path="res://Player/Sounds/vacuum_complete.wav" type="AudioStream" id=10]
+[ext_resource path="res://Player/Scripts/VacuumNoise.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.50197
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 8 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 0, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 8 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 8 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 8 )
-region = Rect2( 240, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "Sucking",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "Default",
 "speed": 4.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "Sucking",
+"speed": 15.0
 } ]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 48, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 192, 48, 48 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
@@ -64,11 +66,11 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
@@ -84,11 +86,11 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 4 )
@@ -104,44 +106,44 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 0, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 144, 192, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "hurt",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 9 ) ],
 "loop": false,
 "name": "happy",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": false,
-"name": "doubleblink",
+"name": "XD",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 12 ) ],
+"loop": true,
+"name": "Nblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 17 ), SubResource( 18 ), SubResource( 17 ) ],
-"loop": true,
-"name": "Ndoubleblink",
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "doubleblink",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
@@ -149,20 +151,20 @@ animations = [ {
 "name": "blink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 22 ), SubResource( 23 ) ],
-"loop": false,
-"name": "XD",
-"speed": 2.0
-}, {
-"frames": [ SubResource( 24 ) ],
+"frames": [ SubResource( 22 ) ],
 "loop": true,
 "name": "neutral",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 25 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 23 ), SubResource( 24 ), SubResource( 23 ) ],
 "loop": true,
-"name": "Nblink",
+"name": "Ndoubleblink",
 "speed": 12.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 8.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=28]
@@ -211,7 +213,6 @@ __meta__ = {
 [node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
 frames = SubResource( 8 )
 animation = "Default"
-frame = 1
 playing = true
 script = ExtResource( 6 )
 
@@ -255,4 +256,9 @@ position = Vector2( 767.693, 47.6663 )
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource( 7 )]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+script = ExtResource( 11 )
 [connection signal="timeout" from="PlayerBody/PlayerSprite/PlayerScreen/NewAnimation" to="PlayerBody/PlayerSprite/PlayerScreen" method="_on_NewAnimation_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_AudioStreamPlayer_finished"]
