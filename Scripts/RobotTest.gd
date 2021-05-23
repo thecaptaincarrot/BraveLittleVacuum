@@ -34,12 +34,12 @@ func nozzle_shoot(body):
 	new_rock.apply_central_impulse(vector * Upgrades.blow_force)
 
 
-func liquid_nozzle_shoot(unused):
-	var new_water = WATER.instance()
-	new_water.position = nozzle.global_position
-	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
-	$Clutter.call_deferred("add_child",new_water)
-	new_water.apply_central_impulse(vector * Upgrades.blow_force / 2)
+#func liquid_nozzle_shoot(unused):
+#	var new_water = WATER.instance()
+#	new_water.position = nozzle.global_position
+#	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
+#	$Clutter.call_deferred("add_child",new_water)
+#	new_water.apply_central_impulse(vector * Upgrades.blow_force / 2)
 
 
 func pause():

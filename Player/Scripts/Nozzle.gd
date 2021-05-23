@@ -127,25 +127,20 @@ func get_midpoint(vector_array):
 
 func suck():
 	$Suck/Polygon2D.show()
-	
-	if water_source != null and !is_in_liquid:
-		var position_arr = []
-		for cast in $RayCasts.get_children():
-			if cast.is_colliding():
-				var local_position = cast.get_collision_point()
-				position_arr.append(local_position)
-		
-		if position_arr != [] and $LiquidSpawn.is_stopped(): 
-			var new_pos = get_midpoint(position_arr)
-			var new_water = WATER.instance()
-			new_water.position = new_pos
-			new_water.connect("freed",self,"water_freed")
-			get_node("/root/RobotTest/Clutter").add_child(new_water)
-			$LiquidSpawn.start()
-	
-	if is_in_liquid and $LiquidSpawn.is_stopped():
-		$LiquidSpawn.start()
-		emit_signal("liquid_sucked",WATER.instance())
+
+#	if water_source != null and !is_in_liquid:
+#		var position_arr = []
+#		for cast in $RayCasts.get_children():
+#			if cast.is_colliding():
+#				var local_position = cast.get_collision_point()
+#				position_arr.append(local_position)
+#		if position_arr != [] and $LiquidSpawn.is_stopped(): 
+#			var new_pos = get_midpoint(position_arr)
+#			var new_water = WATER.instance()
+#			new_water.position = new_pos
+#			new_water.connect("freed",self,"water_freed")
+#			get_node("/root/RobotTest/Clutter").add_child(new_water)
+#			$LiquidSpawn.start()
 		
 	
 	for object in suckables:
@@ -161,13 +156,13 @@ func water_freed(water):
 
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("Bodies") or body.is_in_group("Liquid"):
+	if body.is_in_group("Bodies"):
 		suckables.append(body)
 
 
 func _on_Area2D_body_exited(body):
 	suckables.erase(body)
-	if body.is_in_group("Bodies") or body.is_in_group("Liquid"):
+	if body.is_in_group("Bodies"):
 		body.gravity_scale = 1
 
 
@@ -175,27 +170,31 @@ func _on_NozzleHole_body_entered(body):
 	if Input.is_action_pressed("suck"):
 		if body.is_in_group("Bodies"):
 			emit_signal("sucked",body)
-		if body.is_in_group("Liquid"):
-			emit_signal("liquid_sucked",body)
+#		if body.is_in_group("Liquid"):
+#			emit_signal("liquid_sucked",body)
 
 
 func _on_Suck_area_entered(area):
-	if area.is_in_group("Water"):
-		water_source = area
+	pass
+#	if area.is_in_group("Water"):
+#		water_source = area
 
 
 func _on_Suck_area_exited(area):
-	if area == water_source: #This is going to cause weird behaviors
-		water_source = null
+	pass
+#	if area == water_source: #This is going to cause weird behaviors
+#		water_source = null
 
 
 func _on_NozzleHole_area_entered(area):
-	if area.is_in_group("Water"):
-		print("entered Liquid")
-		is_in_liquid = true
+	pass
+#	if area.is_in_group("Water"):
+#		print("entered Liquid")
+#		is_in_liquid = true
 
 
 func _on_NozzleHole_area_exited(area):
-	if area.is_in_group("Water"):
-		print("Exitted liquid")
-		is_in_liquid = false
+	pass
+#	if area.is_in_group("Water"):
+#		print("Exitted liquid")
+#		is_in_liquid = false
