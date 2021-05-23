@@ -9,7 +9,7 @@
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Aliens/Speyeder.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Mutants/Mutant.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/UpgradeSphere.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/Upgrades/BaseUpgrade.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 2.625
@@ -127,70 +127,70 @@ contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock61" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock62" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock63" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock64" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock65" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock66" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock67" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock68" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock69" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock70" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( 1176, 112 )
+position = Vector2( 1088, 112 )
 collision_mask = 1033
 gravity_scale = 1.5
 contacts_reported = 5
@@ -267,70 +267,70 @@ contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock81" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock82" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock83" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock84" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock85" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock86" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock87" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock88" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock89" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 2.0
 contacts_reported = 5
 angular_velocity = 0.0
 
 [node name="Rock90" parent="Clutter" instance=ExtResource( 7 )]
-position = Vector2( -512, 152 )
+position = Vector2( 1856, 0 )
 collision_mask = 1033
 gravity_scale = 1.5
 contacts_reported = 5
@@ -342,9 +342,6 @@ main_path = "/root/RobotTest"
 
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
-
-[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
-frame = 1
 
 [node name="WaterBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1088, 256 )
@@ -382,7 +379,7 @@ polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
 
 [node name="UpgradeSphere" parent="World" instance=ExtResource( 10 )]
 position = Vector2( 1352, 224 )
-frame = 1
+ugrade_type = "UPGRADE"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 312, 88 )

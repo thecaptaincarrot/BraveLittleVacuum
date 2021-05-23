@@ -10,7 +10,6 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
@@ -96,5 +95,5 @@ ui_pause={
 
 [rendering]
 
-environment/default_environment="res://_Shit/default_env.tres"
 2d/snapping/use_gpu_pixel_snap=true
+environment/default_environment="res://_Shit/default_env.tres"

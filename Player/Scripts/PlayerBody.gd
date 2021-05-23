@@ -65,7 +65,6 @@ func movement(delta):
 		horizontal_vector = get_floor_normal().rotated(PI/2)
 		
 	if Input.is_action_pressed("move_right"):
-		print("moving")
 		if motion.x < 0:
 			motion += horizontal_vector * (acceleration + acceleration * skid_friction)
 		else:

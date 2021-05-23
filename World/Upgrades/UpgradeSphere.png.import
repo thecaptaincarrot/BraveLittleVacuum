@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UpgradeSphere.png-6aa91a4f10758ea436bde583677e7b69.stex"
+path="res://.import/UpgradeSphere.png-c1bccb2d93f7865e5ee489af05466f01.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/UpgradeSphere.png"
-dest_files=[ "res://.import/UpgradeSphere.png-6aa91a4f10758ea436bde583677e7b69.stex" ]
+source_file="res://World/Upgrades/UpgradeSphere.png"
+dest_files=[ "res://.import/UpgradeSphere.png-c1bccb2d93f7865e5ee489af05466f01.stex" ]
 
 [params]
 
