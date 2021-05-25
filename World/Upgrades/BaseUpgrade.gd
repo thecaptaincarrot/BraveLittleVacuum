@@ -17,5 +17,9 @@ func _ready():
 
 func _on_CollectionArea_body_entered(body):
 	if body.is_in_group("Player") and active:
-		print("Yo, found and upgrade")
+		print("Yo, found and upgrade: ",ugrade_type)
 		emit_signal("upgrade_collected",ugrade_type)
+		body.motion = Vector2(0,0)
+		
+		active = false
+		animation = "Deactivated"

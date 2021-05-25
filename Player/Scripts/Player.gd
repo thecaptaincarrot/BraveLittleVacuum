@@ -112,8 +112,10 @@ func remove_hose():
 
 func regenerate_hose(length):
 	update_line = false
+	var previous_nozzle_pos = nozzle.position
 	remove_hose()
 	create_hose_skeleton(length)
+	nozzle.position = previous_nozzle_pos
 	update_line = true
 
 

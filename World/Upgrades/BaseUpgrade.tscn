@@ -5,6 +5,10 @@
 [ext_resource path="res://World/Upgrades/BaseUpgrade.gd" type="Script" id=3]
 [ext_resource path="res://World/Upgrades/HINTTEXT.gd" type="Script" id=4]
 
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 64, 64 )
@@ -45,21 +49,17 @@ region = Rect2( 512, 0, 64, 64 )
 atlas = ExtResource( 1 )
 region = Rect2( 576, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 64, 64 )
-
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "Active",
-"speed": 16.0
-}, {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "Deactivated",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "Active",
+"speed": 16.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=13]
@@ -71,7 +71,6 @@ height = 25.7011
 ]]
 frames = SubResource( 12 )
 animation = "Active"
-frame = 8
 playing = true
 script = ExtResource( 3 )
 
@@ -86,7 +85,7 @@ margin_left = -72.0
 margin_top = -64.0
 margin_right = 72.0
 margin_bottom = -26.0
-text = "DEFAULT UPGRADE"
+text = "DEFAULT"
 align = 1
 valign = 1
 autowrap = true

@@ -1,10 +1,14 @@
 extends Node
 
+var PLAYER = null
+
 var blow_force = 500
-
 var suck_strength = 20
-
 var hose_length = 8
+
+#booleans
+var jump = false
+var hover = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,3 +18,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func upgrade(collected_upgrade):
+	print(collected_upgrade)
+	match collected_upgrade:
+		"DEFAULT":
+			print("Saw default upgrade. I probably shouldn't have if this wasn't a test")
+		"HOSE LENGTH":
+			print("hose length up")
+			hose_length += 5 #Adjust as needed
+			PLAYER.regenerate_hose(hose_length)

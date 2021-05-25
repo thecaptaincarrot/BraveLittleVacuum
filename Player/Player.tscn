@@ -62,27 +62,27 @@ region = Rect2( 144, 192, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
@@ -90,11 +90,11 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 4 )
@@ -110,19 +110,19 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
@@ -131,40 +131,40 @@ animations = [ {
 "name": "hurt",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 11 ) ],
-"loop": false,
-"name": "happy",
-"speed": 5.0
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 11 ) ],
+"loop": true,
+"name": "Nblink",
+"speed": 12.0
 }, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 13 ) ],
 "loop": true,
 "name": "neutral",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ) ],
-"loop": false,
-"name": "XD",
-"speed": 2.0
-}, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
-"loop": false,
-"name": "doubleblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
-"loop": false,
-"name": "blink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 23 ), SubResource( 24 ), SubResource( 23 ) ],
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 15 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Ndoubleblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 25 ) ],
-"loop": true,
-"name": "Nblink",
+"frames": [ SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "XD",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": false,
+"name": "doubleblink",
 "speed": 12.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "blink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 26 ) ],
+"loop": false,
+"name": "happy",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=28]
@@ -249,6 +249,10 @@ softness = 1.4
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="InputDelay" type="Timer" parent="PlayerBody"]
+wait_time = 0.1
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

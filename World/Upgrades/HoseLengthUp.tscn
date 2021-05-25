@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Upgrades/BaseUpgrade.tscn" type="PackedScene" id=1]
+
+[node name="UpgradeSphere" instance=ExtResource( 1 )]
+ugrade_type = "HOSE LENGTH"
+
+[node name="HINTTEXT" parent="." index="1"]
+text = "HOSE LENGTH"

@@ -54,6 +54,9 @@ func _physics_process(delta):
 
 
 func movement(delta):
+	if !$InputDelay.is_stopped():
+		return
+	
 	if !is_on_floor():
 		motion.y += gravity
 	else:
@@ -88,8 +91,12 @@ func movement(delta):
 		motion.x = -max_speed
 	#Jumping
 	#need to check whether jumping has been unlocked globally
-	if Input.is_action_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		print("JUMP")
 		motion.y -= jump_impulse
 	
 	motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+
+
+func menu_unpause():
+	$InputDelay.start()

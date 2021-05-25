@@ -1,7 +1,9 @@
 extends NinePatchRect
 
 var expand_speed = 300
+var complete = false
 
+signal menu_unpause
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,5 +29,11 @@ func _process(delta):
 			rect_size.x += delta * expand_speed * 2
 		else:
 			$Label.show()
+			complete = true
 
+
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept") and complete:
+		emit_signal("menu_unpause")
+		queue_free()
 
