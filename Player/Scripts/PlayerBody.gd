@@ -28,9 +28,6 @@ func _process(delta):
 		$HoverTimer.paused = false
 		$HoverTimer.stop()
 	
-	if is_hovering:
-		print($HoverTimer.time_left)
-	
 	if motion.x > 10:
 		$PlayerSprite.flip_h = false
 		$PlayerSprite/PlayerScreen.flip_h = false

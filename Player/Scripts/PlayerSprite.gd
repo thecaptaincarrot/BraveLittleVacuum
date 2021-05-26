@@ -22,6 +22,8 @@ func _process(delta):
 				animation = "Hover"
 			else:
 				animation = "HoverLoop"
+		elif PlayerBody.can_hover == false:
+			animation = "HoverSpent"
 		else:
 			hover_start = true
 			animation = "Jump"

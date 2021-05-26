@@ -335,9 +335,6 @@ main_path = "/root/RobotTest"
 [node name="PlayerBody" parent="Player" index="0"]
 position = Vector2( 312, 104 )
 
-[node name="PlayerSprite" parent="Player/PlayerBody" index="1"]
-frame = 0
-
 [node name="WaterBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1088, 256 )
 
@@ -374,11 +371,11 @@ polygon = PoolVector2Array( -256, 32, -64, 32, -64, 168, -256, 168 )
 
 [node name="UpgradeSphere2" parent="World" instance=ExtResource( 10 )]
 position = Vector2( 1472, 224 )
-frame = 5
+frame = 4
 
 [node name="UpgradeSphere3" parent="World" instance=ExtResource( 10 )]
 position = Vector2( 1304, 224 )
-frame = 5
+frame = 4
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 312, 88 )
@@ -408,9 +405,9 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 780.0
 margin_bottom = 580.0
-
 [connection signal="upgrade_collected" from="World/UpgradeSphere2" to="." method="_on_UpgradeSphere_upgrade_collected"]
 [connection signal="upgrade_collected" from="World/UpgradeSphere3" to="." method="_on_UpgradeSphere_upgrade_collected"]
 
 [editable path="Player"]
+
 [editable path="WaterBody"]
