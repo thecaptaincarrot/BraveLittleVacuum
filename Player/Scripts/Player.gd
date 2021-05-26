@@ -226,3 +226,4 @@ func uncollide_hose():
 	for N in hose_segments:
 		N.collision_layer = 0
 		N.collision_mask = 0
+

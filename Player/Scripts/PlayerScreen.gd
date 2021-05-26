@@ -18,7 +18,7 @@ func _process(delta):
 			offset = Vector2(0,0)
 		else:
 			offset = Vector2(0,1)
-	else:
+	elif get_parent().animation == "Sucking":
 		if get_parent().frame % 2 == 0:
 			offset = Vector2(0,1)
 		else:
@@ -26,7 +26,8 @@ func _process(delta):
 				offset = Vector2(1,2)
 			else:
 				offset = Vector2(-1,2)
-
+	else:
+		offset = Vector2(0,0)
 
 func _on_NewAnimation_timeout():
 	$NewAnimation.wait_time = rand_range(1.0,2.0)

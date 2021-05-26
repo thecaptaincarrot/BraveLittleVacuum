@@ -12,6 +12,8 @@ var max_speed = 200
 var inertia = 100
 
 var downhill = false
+var can_hover = true
+var is_hovering = false
 
 var jump_impulse = 300
 
@@ -21,6 +23,14 @@ func _ready():
 
 
 func _process(delta):
+	if is_on_floor() and (!can_hover or $HoverTimer.time_left < $HoverTimer.wait_time):
+		can_hover = true
+		$HoverTimer.paused = false
+		$HoverTimer.stop()
+	
+	if is_hovering:
+		print($HoverTimer.time_left)
+	
 	if motion.x > 10:
 		$PlayerSprite.flip_h = false
 		$PlayerSprite/PlayerScreen.flip_h = false
@@ -43,7 +53,10 @@ func _physics_process(delta):
 	
 	angle = floor_normal.angle() + PI/2
 	
-	$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.10)
+	if is_on_floor():
+		$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.10)
+	else:
+		$PlayerSprite.rotation = lerp($PlayerSprite.rotation,0,.10)
 #	rotation = lerp(rotation,angle,.25)
 	
 #	for index in get_slide_count():
@@ -57,10 +70,13 @@ func movement(delta):
 	if !$InputDelay.is_stopped():
 		return
 	
-	if !is_on_floor():
-		motion.y += gravity
+	if !is_hovering:
+		if !is_on_floor():
+			motion.y += gravity
+		else:
+			motion.y += gravity / 5
 	else:
-		motion.y += gravity / 5
+		motion.y = 0
 	
 	#"""Horizontal""" movement
 	var horizontal_vector = Vector2(1,0)
@@ -91,12 +107,33 @@ func movement(delta):
 		motion.x = -max_speed
 	#Jumping
 	#need to check whether jumping has been unlocked globally
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and Upgrades.jump:
 		print("JUMP")
 		motion.y -= jump_impulse
+	
+	#Hover
+	if !is_on_floor() and can_hover and Input.is_action_just_pressed("Jump"):
+		print("I am hovering")
+		is_hovering = true
+		can_hover = false
+		if $HoverTimer.is_stopped():
+			$HoverTimer.start()
+		else:
+			$HoverTimer.paused = false
+	if is_hovering and !Input.is_action_pressed("Jump"):
+		print("I stopped hovering on purpose")
+		is_hovering = false
+		if !$HoverTimer.is_stopped():
+			can_hover = true
+		$HoverTimer.paused = true
 	
 	motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
 
 
 func menu_unpause():
 	$InputDelay.start()
+
+
+func _on_HoverTimer_timeout():
+	print("Fuck I fell out of the sky!")
+	is_hovering = false

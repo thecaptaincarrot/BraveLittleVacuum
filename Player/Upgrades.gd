@@ -7,8 +7,8 @@ var suck_strength = 20
 var hose_length = 8
 
 #booleans
-var jump = false
-var hover = false
+var jump = true
+var hover = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Player/Scripts/PlayerBody.gd" type="Script" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -15,41 +15,104 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.50197
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 8 )
 region = Rect2( 48, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 8 )
 region = Rect2( 96, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 8 )
 region = Rect2( 144, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 8 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 0, 48, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 8 )
-region = Rect2( 240, 0, 48, 48 )
+region = Rect2( 96, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 144, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 30 ), SubResource( 29 ) ],
 "loop": true,
 "name": "Default",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
 "loop": true,
 "name": "Sucking",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 35 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "HoverLoop",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"loop": true,
+"name": "Hover",
+"speed": 12.0
 } ]
 
 [sub_resource type="AtlasTexture" id=9]
@@ -62,39 +125,39 @@ region = Rect2( 144, 192, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 4 )
@@ -110,19 +173,19 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
@@ -131,40 +194,40 @@ animations = [ {
 "name": "hurt",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 11 ) ],
-"loop": true,
-"name": "Nblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 13 ) ],
-"loop": true,
-"name": "neutral",
+"frames": [ SubResource( 11 ) ],
+"loop": false,
+"name": "happy",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 14 ), SubResource( 15 ), SubResource( 14 ) ],
-"loop": true,
-"name": "Ndoubleblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 16 ), SubResource( 17 ) ],
-"loop": false,
-"name": "XD",
-"speed": 2.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
 "name": "doubleblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "neutral",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ) ],
+"loop": false,
+"name": "XD",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": false,
 "name": "blink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 26 ) ],
-"loop": false,
-"name": "happy",
-"speed": 5.0
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 23 ) ],
+"loop": true,
+"name": "Nblink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 25 ), SubResource( 26 ), SubResource( 25 ) ],
+"loop": true,
+"name": "Ndoubleblink",
+"speed": 12.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=28]
@@ -212,8 +275,8 @@ __meta__ = {
 
 [node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
 frames = SubResource( 8 )
-animation = "Default"
-frame = 1
+animation = "Hover"
+frame = 5
 playing = true
 script = ExtResource( 6 )
 
@@ -254,6 +317,10 @@ __meta__ = {
 wait_time = 0.1
 one_shot = true
 
+[node name="HoverTimer" type="Timer" parent="PlayerBody"]
+wait_time = 2.0
+one_shot = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Tank" parent="CanvasLayer" instance=ExtResource( 3 )]
@@ -266,5 +333,7 @@ stream = ExtResource( 10 )
 volume_db = -10.0
 script = ExtResource( 11 )
 
+[connection signal="animation_finished" from="PlayerBody/PlayerSprite" to="PlayerBody/PlayerSprite" method="_on_PlayerSprite_animation_finished"]
 [connection signal="timeout" from="PlayerBody/PlayerSprite/PlayerScreen/NewAnimation" to="PlayerBody/PlayerSprite/PlayerScreen" method="_on_NewAnimation_timeout"]
+[connection signal="timeout" from="PlayerBody/HoverTimer" to="PlayerBody" method="_on_HoverTimer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_AudioStreamPlayer_finished"]
