@@ -13,7 +13,7 @@ height = 12.6856
 
 [node name="Nozzle" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 collision/safe_margin = 0.1
 script = ExtResource( 2 )
 
@@ -115,7 +115,6 @@ collide_with_bodies = false
 [node name="LiquidSpawn" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
-
 [connection signal="area_entered" from="Suck" to="." method="_on_Suck_area_entered"]
 [connection signal="area_exited" from="Suck" to="." method="_on_Suck_area_exited"]
 [connection signal="body_entered" from="Suck" to="." method="_on_Area2D_body_entered"]

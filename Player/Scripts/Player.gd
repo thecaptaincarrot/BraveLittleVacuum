@@ -23,9 +23,8 @@ var max_health = 100.0
 
 signal shoot
 
-
-
 var test
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,7 +39,6 @@ func _ready():
 
 func _process(delta):
 	update_health()
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -92,6 +90,7 @@ func create_hose_skeleton(length):
 			base_hose.add_collision_exception_with(hose)
 	
 	nozzle.set_physics_process(true)
+
 
 func remove_hose():
 	
@@ -227,3 +226,6 @@ func uncollide_hose():
 		N.collision_layer = 0
 		N.collision_mask = 0
 
+
+func place_body(new_position):
+	$PlayerBody.position = new_position
