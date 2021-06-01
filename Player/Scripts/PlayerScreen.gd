@@ -1,25 +1,38 @@
 extends AnimatedSprite
 
+var PlayerSprite
+var PlayerBody
+var PlayerNode
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var hover_start = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	PlayerSprite = get_parent()
+	PlayerBody = PlayerSprite.get_parent()
+	PlayerNode = PlayerBody.get_parent()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_parent().animation == "Default":
-		if get_parent().frame % 2 == 0:
+	
+	#Offset Get
+	if PlayerSprite.animation == "Default":
+		if PlayerSprite.frame % 2 == 0:
 			offset = Vector2(0,0)
 		else:
 			offset = Vector2(0,1)
-	elif get_parent().animation == "Sucking":
-		if get_parent().frame % 2 == 0:
+	elif PlayerSprite.animation == "Sucking":
+		if PlayerSprite.frame % 2 == 0:
+			offset = Vector2(0,1)
+		else:
+			if flip_h:
+				offset = Vector2(1,2)
+			else:
+				offset = Vector2(-1,2)
+	elif PlayerSprite.animation == "Shocked":
+		animation = "hurt"
+		if PlayerSprite.frame % 2 == 1:
 			offset = Vector2(0,1)
 		else:
 			if flip_h:

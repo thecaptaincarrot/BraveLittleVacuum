@@ -13,6 +13,9 @@ script = ExtResource( 1 )
 
 [node name="World" type="Node2D" parent="."]
 
+[node name="Water" type="Node2D" parent="World"]
+show_behind_parent = true
+
 [node name="Entry0" type="Position2D" parent="."]
 
 [node name="Entry1" type="Position2D" parent="."]

@@ -21,6 +21,8 @@ var inertia = 100
 var health = 44.0
 var max_health = 100.0
 
+var is_in_water = false
+
 signal shoot
 
 var test
@@ -229,3 +231,14 @@ func uncollide_hose():
 
 func place_body(new_position):
 	$PlayerBody.position = new_position
+
+
+func _on_HitBox_area_entered(area):
+	if area.is_in_group("Water"):
+		is_in_water = true
+
+
+
+func _on_HitBox_area_exited(area):
+	if area.is_in_group("Water") and is_in_water:
+		is_in_water = false

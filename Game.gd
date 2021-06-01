@@ -46,17 +46,17 @@ func menu_unpause():
 
 
 func pause():
-	$CanvasLayer/InGameMenus.pause_mode = Node.PAUSE_MODE_STOP
+	$Overlay/InGameMenus.pause_mode = Node.PAUSE_MODE_STOP
 	get_tree().paused = true
-	$CanvasLayer/UI/Pause.show()
+	$Overlay/UI/Pause.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func unpause():
-	$CanvasLayer/InGameMenus.pause_mode = Node.PAUSE_MODE_PROCESS
+	$Overlay/InGameMenus.pause_mode = Node.PAUSE_MODE_PROCESS
 	if !paused:
 		get_tree().paused = false
-	$CanvasLayer/UI/Pause.hide()
+	$Overlay/UI/Pause.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
@@ -70,5 +70,5 @@ func _on_UpgradeSphere_upgrade_collected(upgrade):
 	var new_window = UPGRADE.instance()
 	new_window.connect("menu_unpause",self,"menu_unpause")
 	new_window.connect("menu_unpause",$Player/PlayerBody,"menu_unpause")
-	$CanvasLayer/InGameMenus.add_child(new_window)
+	$Overlay/InGameMenus.add_child(new_window)
 	upgrade_on_deck = upgrade
