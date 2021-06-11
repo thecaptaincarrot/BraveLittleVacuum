@@ -43,7 +43,7 @@ func _process(delta):
 			else:
 				offset = Vector2(-1,2)
 	elif PlayerSprite.animation == "Shocked":
-		if PlayerSprite.frame % 2 == 1:
+		if PlayerSprite.frame % 2 == 0:
 			offset = Vector2(0,1)
 		else:
 			if flip_h:
@@ -52,6 +52,13 @@ func _process(delta):
 				offset = Vector2(-1,2)
 	else:
 		offset = Vector2(0,0)
+
+
+func hurt():
+	animation = "Hurt"
+	$NewAnimation.wait_time = 1.0
+	$NewAnimation.start()
+
 
 func _on_NewAnimation_timeout():
 	$NewAnimation.wait_time = rand_range(1.0,2.0)

@@ -9,6 +9,7 @@ var hose_length = 8
 #booleans
 var jump = true
 var hover = true
+var waterproof = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

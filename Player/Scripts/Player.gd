@@ -17,8 +17,9 @@ var update_line = false
 
 var gravity = 9.8
 var inertia = 100
+var hurt_damage_vector = Vector2(500,-500)
 
-var health = 44.0
+var health = 100.0
 var max_health = 100.0
 
 var is_in_water = false
@@ -40,6 +41,8 @@ func _ready():
 
 
 func _process(delta):
+	if is_in_water and !Upgrades.waterproof:
+		health -= 10.0 * delta #10 is a placeholder
 	update_health()
 
 
@@ -57,6 +60,17 @@ func _input(event):
 	if event is InputEventKey and event.scancode == KEY_PAGEDOWN:
 		Upgrades.hose_length -= 1
 		regenerate_hose(Upgrades.hose_length)
+
+
+func hurt(damage):
+	print("I am hurt")
+	health -= damage
+	$PlayerBody/PlayerSprite/PlayerScreen.hurt()
+	if $PlayerBody/PlayerSprite.flip_h:
+		$PlayerBody.motion = hurt_damage_vector
+	else:
+		var new_vector = Vector2(-hurt_damage_vector.x, hurt_damage_vector.y)
+		$PlayerBody.motion = new_vector
 
 
 func update_health():
@@ -238,7 +252,11 @@ func _on_HitBox_area_entered(area):
 		is_in_water = true
 
 
-
 func _on_HitBox_area_exited(area):
 	if area.is_in_group("Water") and is_in_water:
 		is_in_water = false
+
+
+func _on_HitBox_body_entered(body):
+	if body.is_in_group("Enemy"):
+		hurt(40.0)
