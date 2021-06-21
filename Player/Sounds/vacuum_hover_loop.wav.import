@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/vacuum_hover_loop.wav-a7452d8ad469d93571b9d45c0cdf4d83.sample"
+
+[deps]
+
+source_file="res://Player/Sounds/vacuum_hover_loop.wav"
+dest_files=[ "res://.import/vacuum_hover_loop.wav-a7452d8ad469d93571b9d45c0cdf4d83.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

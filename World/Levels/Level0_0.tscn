@@ -30,7 +30,8 @@ position = Vector2( 168, 24 )
 position = Vector2( 344, 72 )
 
 [node name="Mutant" parent="Enemies" index="0" instance=ExtResource( 5 )]
-position = Vector2( 832, 336 )
+position = Vector2( 680, 272 )
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Water" parent="World" index="0"]
 show_behind_parent = false

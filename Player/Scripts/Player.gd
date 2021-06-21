@@ -3,6 +3,8 @@ extends Node2D
 const HOSE = preload("res://Player/Hose.tscn")
 const NOZZLE = preload("res://Player/Nozzle.tscn")
 
+onready var body = $PlayerBody
+
 export var main_path = ""
 var main
 var camera

@@ -47,5 +47,4 @@ margin_bottom = 580.0
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 4 )]
 pause_mode = 1
-zoom = Vector2( 0.75, 0.75 )
 player_path = "/root/Game/Player/PlayerBody"
