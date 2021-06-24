@@ -28,3 +28,7 @@ func get_entry(entry_number):
 			return $Entry3.position
 		4:
 			return $Entry4.position
+
+
+func get_exits():
+	return $Exits.get_children()

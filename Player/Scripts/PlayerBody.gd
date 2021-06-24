@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 var motion = Vector2()
 
+var inactive = false
+
 var gravity = 9.8
 var acceleration = 4
 var skid_friction = 1.0
@@ -38,7 +40,6 @@ func _process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
 	movement(delta)
 	
 	var floor_normal = Vector2(0,-1)

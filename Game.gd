@@ -2,6 +2,10 @@ extends Node2D
 
 const UPGRADE = preload("res://UI/Popup window.tscn")
 
+var level_path = "res://World/Levels/Level"
+var current_level = null
+
+var player
 var nozzle
 
 var paused = false
@@ -10,10 +14,10 @@ var upgrade_on_deck = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = $Player
 	Upgrades.PLAYER = $Player
 	
-	$Player.place_body($LevelHolder/Level0_0.get_entry(0))
-
+	new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -38,10 +42,39 @@ func nozzle_shoot(body):
 	new_rock.apply_central_impulse(vector * Upgrades.blow_force)
 
 
-func goto_new_level(level_vector : Vector2, exit : int):
-	
-	pass
+func new_game():
+	player.deactivate()
+	$Overlay/ColorOverlay.fadeout = true
+	current_level = add_level(Vector2(0,0))
+	player.place_body(current_level.get_entry(0))
+	$Overlay/ColorOverlay.fadeout = false
+	player.activate()
 
+
+func goto_new_level(level_vector : Vector2, exit : int):
+	player.deactivate()
+	$Overlay/ColorOverlay.fadeout = true
+	yield(get_tree().create_timer(0.5), "timeout")
+	current_level.queue_free()
+	current_level = add_level(level_vector)
+	print("went to new level: ",current_level.name)
+	player.place_body(current_level.get_entry(exit))
+	$PlayerCamera.position = player.body.position
+	yield(get_tree().create_timer(0.5), "timeout")
+	$Overlay/ColorOverlay.fadeout = false
+	player.activate()
+	
+
+func add_level(level_vector : Vector2):
+	var new_level_path = level_path + str(level_vector.x) + "_" + str(level_vector.y) + str(".tscn")
+	print("Level path: ", new_level_path )
+	var new_level = load(new_level_path).instance()
+	print ("Added new level ", new_level.name)
+	for N in new_level.get_exits():
+		print(N.name)
+		N.connect("level_exit",self,"goto_new_level")
+	$LevelHolder.add_child(new_level)
+	return new_level
 
 func menu_unpause():
 	get_tree().paused = false

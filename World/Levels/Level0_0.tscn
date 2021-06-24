@@ -36,6 +36,7 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 6 )]
 position = Vector2( 824, 320 )
+level_code = Vector2( 1, 0 )
 
 [node name="Water" parent="World" index="0"]
 show_behind_parent = false
@@ -65,7 +66,7 @@ polygon = PoolVector2Array( 1024, 128, 1024, 576, 1152, 576, 1152, 128 )
 position = Vector2( 128, 64 )
 
 [node name="Entry1" parent="." index="5"]
-position = Vector2( 800, 320 )
+position = Vector2( 725.047, 330.607 )
 
 [node name="ColorRect" type="ColorRect" parent="." index="10"]
 margin_left = 832.0
@@ -77,9 +78,6 @@ __meta__ = {
 }
 
 [editable path="World/Water/WaterBody"]
-
 [editable path="World/TestCollider"]
-
 [editable path="World/TestCollider2"]
-
 [editable path="World/TestCollider3"]

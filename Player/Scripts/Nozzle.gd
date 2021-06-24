@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 const WATER = preload("res://Player/WaterAnimator.tscn")
 
+var player_body = null 
+var inactive = false
+
 var returning = false
 var anchor
 var force = 1
@@ -93,6 +96,9 @@ func _physics_process(delta):
 
 
 func _input(event):
+	if inactive:
+		return
+	
 	if event is InputEventMouseMotion:
 		movement_vector += event.relative
 		

@@ -23,6 +23,7 @@ var hurt_damage_vector = Vector2(500,-500)
 
 var health = 100.0
 var max_health = 100.0
+var invulnerable = false
 
 var is_in_water = false
 
@@ -65,7 +66,7 @@ func _input(event):
 
 
 func hurt(damage):
-	print("I am hurt")
+	if invulnerable: return
 	health -= damage
 	$PlayerBody/PlayerSprite/PlayerScreen.hurt()
 	if $PlayerBody/PlayerSprite.flip_h:
@@ -80,7 +81,37 @@ func update_health():
 	$CanvasLayer/HealthBar.update_bar(health_percentage)
 
 
+func deactivate():
+	invulnerable = true
+	$PlayerBody.set_process(false)
+	$PlayerBody.set_physics_process(false)
+	$PlayerBody.set_process_input(false)
+	$PlayerBody.motion = Vector2(0,0)
+	
+	nozzle.set_process(false)
+	nozzle.set_physics_process(false)
+	nozzle.set_process_input(false)
 
+
+func activate():
+	invulnerable = false
+	$PlayerBody.set_process(true)
+	$PlayerBody.set_physics_process(true)
+	$PlayerBody.set_process_input(true)
+	$PlayerBody.motion = Vector2(0,0)
+	
+	nozzle.set_process(true)
+	nozzle.set_physics_process(true)
+	nozzle.set_process_input(true)
+
+
+func place_body(new_position):
+	$PlayerBody.position = new_position
+	nozzle.position = Vector2(0,-64)
+	for segment in hose_segments:
+		segment.position = Vector2(0,-16)
+
+#HOSE STUFF
 func create_hose_skeleton(length):
 	var parent = $PlayerBody/Hose/HoseStart
 	var child
@@ -164,6 +195,7 @@ func add_nozzle(parent):
 	
 	main.nozzle = new_nozzle #fix this to be the Main variable, as it were
 	camera.nozzle = new_nozzle
+	new_nozzle.player_body = $PlayerBody
 	
 	new_nozzle.add_collision_exception_with($PlayerBody)
 	
@@ -244,10 +276,7 @@ func uncollide_hose():
 		N.collision_layer = 0
 		N.collision_mask = 0
 
-
-func place_body(new_position):
-	$PlayerBody.position = new_position
-
+#SIGNALS
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("Water"):
