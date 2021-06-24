@@ -23,9 +23,9 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("ui_pause"):
 		if !get_tree().paused:
-			pause()
+			system_pause()
 		else:
-			unpause()
+			system_unpause()
 
 
 func nozzle_shoot(body):
@@ -38,6 +38,11 @@ func nozzle_shoot(body):
 	new_rock.apply_central_impulse(vector * Upgrades.blow_force)
 
 
+func goto_new_level(level_vector : Vector2, exit : int):
+	
+	pass
+
+
 func menu_unpause():
 	get_tree().paused = false
 	if upgrade_on_deck != null:
@@ -45,14 +50,14 @@ func menu_unpause():
 		upgrade_on_deck = null
 
 
-func pause():
+func system_pause(): #This will obsolete when menu is fleshed out
 	$Overlay/InGameMenus.pause_mode = Node.PAUSE_MODE_STOP
 	get_tree().paused = true
 	$Overlay/UI/Pause.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func unpause():
+func system_unpause():
 	$Overlay/InGameMenus.pause_mode = Node.PAUSE_MODE_PROCESS
 	if !paused:
 		get_tree().paused = false

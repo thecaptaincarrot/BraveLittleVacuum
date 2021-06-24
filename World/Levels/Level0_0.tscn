@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/TestCollider.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://WaterBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/Mutants/Mutant.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/LevelExit.tscn" type="PackedScene" id=6]
 
 [node name="Level0_0" instance=ExtResource( 1 )]
 
@@ -30,8 +31,11 @@ position = Vector2( 168, 24 )
 position = Vector2( 344, 72 )
 
 [node name="Mutant" parent="Enemies" index="0" instance=ExtResource( 5 )]
-position = Vector2( 680, 272 )
+position = Vector2( 680, 304 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 6 )]
+position = Vector2( 824, 320 )
 
 [node name="Water" parent="World" index="0"]
 show_behind_parent = false
@@ -59,6 +63,18 @@ polygon = PoolVector2Array( 1024, 128, 1024, 576, 1152, 576, 1152, 128 )
 
 [node name="Entry0" parent="." index="4"]
 position = Vector2( 128, 64 )
+
+[node name="Entry1" parent="." index="5"]
+position = Vector2( 800, 320 )
+
+[node name="ColorRect" type="ColorRect" parent="." index="10"]
+margin_left = 832.0
+margin_right = 1072.0
+margin_bottom = 768.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="World/Water/WaterBody"]
 

@@ -17,6 +17,12 @@ health = 2
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 2, 2 )
+animation = "idle"
+frame = 3
+flip_h = true
+
+[node name="PlayerDetector" parent="Sprite" index="0"]
+scale = Vector2( -1, 1 )
 
 [node name="CollisionShape2D" parent="Sprite/PlayerDetector" index="0"]
 position = Vector2( 49.8232, 7.14763 )
