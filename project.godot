@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Brave Little Vacuum"
 run/main_scene="res://Game.tscn"
-config/icon="res://_Shit/icon.png"
+config/icon="res://Player/Sprites/Hoover1.png"
 
 [autoload]
 
