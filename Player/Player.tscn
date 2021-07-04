@@ -360,6 +360,7 @@ __meta__ = {
 [node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
 frames = SubResource( 24 )
 animation = "Shocked"
+frame = 1
 playing = true
 script = ExtResource( 6 )
 
