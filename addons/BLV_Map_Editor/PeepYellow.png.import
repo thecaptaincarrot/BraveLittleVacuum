@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PeepYellow.png-a8ba172115c93271617412f12c4f23e9.stex"
+path="res://.import/PeepYellow.png-ba27bdd327cfffc2f942cd4daacf74ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/BLV_Map_Editor/PeepYellow.png"
-dest_files=[ "res://.import/PeepYellow.png-a8ba172115c93271617412f12c4f23e9.stex" ]
+source_file="res://Addons/BLV_Map_Editor/PeepYellow.png"
+dest_files=[ "res://.import/PeepYellow.png-ba27bdd327cfffc2f942cd4daacf74ef.stex" ]
 
 [params]
 

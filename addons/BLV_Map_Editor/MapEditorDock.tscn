@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://addons/BLV_Map_Editor/NodeScripts/MapEditorDock.gd" type="Script" id=1]
-[ext_resource path="res://addons/BLV_Map_Editor/Button.png" type="Texture" id=3]
-[ext_resource path="res://addons/BLV_Map_Editor/Button2.png" type="Texture" id=4]
+[ext_resource path="res://Addons/BLV_Map_Editor/NodeScripts/MapEditorDock.gd" type="Script" id=1]
+[ext_resource path="res://Addons/BLV_Map_Editor/Button.png" type="Texture" id=3]
+[ext_resource path="res://Addons/BLV_Map_Editor/Button2.png" type="Texture" id=4]
 
 [node name="MapEditor" type="Control"]
 anchor_right = 1.0
@@ -28,7 +28,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 211.0
-margin_bottom = 597.0
+margin_bottom = 615.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 margin_right = 204.0
@@ -80,35 +80,57 @@ text = "Archive Level"
 [node name="LevelStuff" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 margin_top = 138.0
 margin_right = 204.0
-margin_bottom = 590.0
+margin_bottom = 608.0
 
-[node name="LevelSelected" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
+[node name="CodeContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/LevelStuff"]
 margin_right = 204.0
 margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelCode" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff/CodeContainer"]
+margin_right = 78.0
+margin_bottom = 14.0
+text = "Level Code: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff/CodeContainer"]
+margin_left = 82.0
+margin_right = 90.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="LevelSelected" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
+margin_top = 18.0
+margin_right = 204.0
+margin_bottom = 32.0
 text = "Level Selected:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LevelName" type="LineEdit" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 18.0
+margin_top = 36.0
 margin_right = 204.0
-margin_bottom = 42.0
+margin_bottom = 60.0
 text = "Foobar"
 
 [node name="GridPosition" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 46.0
+margin_top = 64.0
 margin_right = 204.0
-margin_bottom = 60.0
+margin_bottom = 78.0
 text = "Grid Position"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridPositionContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 64.0
+margin_top = 82.0
 margin_right = 204.0
-margin_bottom = 88.0
+margin_bottom = 106.0
 
 [node name="GridPosX" type="SpinBox" parent="PanelContainer/VBoxContainer/LevelStuff/GridPositionContainer"]
 margin_right = 74.0
@@ -140,18 +162,18 @@ margin_bottom = 19.0
 text = "Y"
 
 [node name="GridSize" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 92.0
+margin_top = 110.0
 margin_right = 204.0
-margin_bottom = 106.0
+margin_bottom = 124.0
 text = "GridSize"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="GridSizeContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 110.0
+margin_top = 128.0
 margin_right = 204.0
-margin_bottom = 134.0
+margin_bottom = 152.0
 
 [node name="GridSizeX" type="SpinBox" parent="PanelContainer/VBoxContainer/LevelStuff/GridSizeContainer"]
 margin_right = 74.0
@@ -185,9 +207,9 @@ margin_bottom = 19.0
 text = "Y"
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 138.0
+margin_top = 156.0
 margin_right = 204.0
-margin_bottom = 158.0
+margin_bottom = 176.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/LevelStuff/CenterContainer"]
 margin_left = 75.0
@@ -212,43 +234,46 @@ margin_bottom = 20.0
 text = "+"
 
 [node name="ExitVContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 162.0
+margin_top = 180.0
 margin_right = 204.0
-margin_bottom = 162.0
+margin_bottom = 180.0
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 166.0
-margin_right = 204.0
-margin_bottom = 170.0
-
-[node name="Biome" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 174.0
+margin_top = 184.0
 margin_right = 204.0
 margin_bottom = 188.0
+
+[node name="Biome" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
+margin_top = 192.0
+margin_right = 204.0
+margin_bottom = 206.0
 text = "Biome"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 192.0
+margin_top = 210.0
 margin_right = 204.0
-margin_bottom = 212.0
+margin_bottom = 230.0
+text = "None"
+items = [ "None", null, false, 0, null, "City", null, false, 1, null ]
+selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 216.0
+margin_top = 234.0
 margin_right = 204.0
-margin_bottom = 230.0
+margin_bottom = 248.0
 text = "Icons"
 align = 1
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 234.0
+margin_top = 252.0
 margin_right = 204.0
-margin_bottom = 334.0
+margin_bottom = 352.0
 columns = 4
 
 [node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer/LevelStuff/GridContainer"]
@@ -318,16 +343,16 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 
 [node name="NotesTitle" type="Label" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 338.0
+margin_top = 356.0
 margin_right = 204.0
-margin_bottom = 352.0
+margin_bottom = 370.0
 text = "Notes:"
 align = 1
 
 [node name="Notes" type="TextEdit" parent="PanelContainer/VBoxContainer/LevelStuff"]
-margin_top = 356.0
+margin_top = 374.0
 margin_right = 204.0
-margin_bottom = 452.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 0, 96 )
 text = "Notes Go Here"
 wrap_enabled = true
@@ -335,6 +360,8 @@ wrap_enabled = true
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ReturnButton" to="." method="_on_ReturnButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/CreateLevelButton" to="." method="_on_CreateLevelButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/EnterLevel" to="." method="_on_EnterLevel_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ArchiveLevel" to="." method="_on_ArchiveLevel_pressed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/LevelStuff/LevelName" to="." method="_on_LevelName_text_changed"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/LevelStuff/GridPositionContainer/GridPosX" to="." method="_on_GridPosX_value_changed"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/LevelStuff/GridPositionContainer/GridPosY" to="." method="_on_GridPosY_value_changed"]
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/LevelStuff/GridSizeContainer/GridSizeX" to="." method="_on_GridSizeX_value_changed"]

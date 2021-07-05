@@ -2,12 +2,15 @@ tool
 extends Control
 
 const EXIT = preload("res://World/LevelExit.tscn")
-const EXITMENU = preload("res://addons/BLV_Map_Editor/ExitContainer.tscn")
+const EXITMENU = preload("res://Addons/BLV_Map_Editor/ExitContainer.tscn")
 
 signal ReturnToOrigin
 signal CreateLevel
 signal EnterLevel
 signal OpenLevel
+signal ArchiveLevel
+
+signal Save
 
 var selected_tile
 var selected_level = null
@@ -21,8 +24,7 @@ func _ready():
 	print("MAP EDITOR DOCK READY")
 	new_tile(Vector2(1,1))
 	
-	for biome in biomes:
-		$PanelContainer/VBoxContainer/LevelStuff/OptionButton.add_item(biome)
+	$PanelContainer/VBoxContainer/LevelStuff/OptionButton.add_item(biomes)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,8 +55,9 @@ func select_level(level_node):
 	$PanelContainer/VBoxContainer/LevelStuff.show()
 	selected_tile = level_node.grid_position
 	selected_level = level_node
-	emit_signal("OpenLevel",selected_level.levelpath)
+#	emit_signal("OpenLevel",selected_level.levelpath)
 	
+	$PanelContainer/VBoxContainer/LevelStuff/CodeContainer/Code.text = str(level_node.levelcode)
 	$PanelContainer/VBoxContainer/LevelStuff/LevelName.text = level_node.levelname
 	$PanelContainer/VBoxContainer/LevelStuff/GridPositionContainer/GridPosX.value = level_node.grid_position.x
 	$PanelContainer/VBoxContainer/LevelStuff/GridPositionContainer/GridPosY.value = level_node.grid_position.y
@@ -92,12 +95,14 @@ func _on_GridSizeX_value_changed(value):
 	if selected_level:
 		selected_level.grid_size.x = value
 		selected_level.update_rect()
+		emit_signal("Save")
 
 
 func _on_GridSizeY_value_changed(value):
 	if selected_level:
 		selected_level.grid_size.y = value
 		selected_level.update_rect()
+		emit_signal("Save")
 
 
 func _on_GridPosX_value_changed(value):
@@ -106,6 +111,7 @@ func _on_GridPosX_value_changed(value):
 		selected_tile = selected_level.grid_position
 		$PanelContainer/VBoxContainer/HBoxContainer/TileVector.text = str(selected_level.grid_position)
 		selected_level.update_rect()
+		emit_signal("Save")
 
 
 func _on_GridPosY_value_changed(value):
@@ -114,10 +120,12 @@ func _on_GridPosY_value_changed(value):
 		selected_tile = selected_level.grid_position
 		$PanelContainer/VBoxContainer/HBoxContainer/TileVector.text = str(selected_level.grid_position)
 		selected_level.update_rect()
+		emit_signal("Save")
 
 
 func _on_Notes_text_changed():
 	selected_level.notes = $PanelContainer/VBoxContainer/LevelStuff/Notes.text
+	emit_signal("Save")
 
 
 func _on_EnterLevel_pressed():
@@ -129,9 +137,20 @@ func _on_OptionButton_item_selected(index):
 	if selected_level:
 		selected_level.biome = $PanelContainer/VBoxContainer/LevelStuff/OptionButton.get_item_text(index) 
 		selected_level.update_rect()
+		emit_signal("Save")
 
 
 func _on_NewExitButton_pressed():
 	if selected_level:
-		emit_signal("OpenLevel",selected_level.levelpath)
+		pass
+#		emit_signal("OpenLevel",selected_level.levelpath)
 		
+
+
+func _on_LevelName_text_changed(new_text):
+	selected_level.levelname = $PanelContainer/VBoxContainer/LevelStuff/LevelName.text
+	emit_signal("Save")
+
+
+func _on_ArchiveLevel_pressed():
+	pass # Replace with function body.

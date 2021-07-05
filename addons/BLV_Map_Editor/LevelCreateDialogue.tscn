@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://addons/BLV_Map_Editor/NodeScripts/LevelCreateDialogue.gd" type="Script" id=1]
+[ext_resource path="res://Addons/BLV_Map_Editor/NodeScripts/LevelCreateDialogue.gd" type="Script" id=1]
 
 [node name="LevelCreateDialogue" type="WindowDialog"]
 margin_right = 263.0

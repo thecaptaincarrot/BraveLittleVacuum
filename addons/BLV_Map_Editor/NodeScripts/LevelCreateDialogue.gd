@@ -16,6 +16,10 @@ var grid = Vector2()
 var offset = Vector2()
 
 var dock
+var decoder
+
+signal save
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,7 +53,8 @@ func _on_CreateLevel_pressed():
 	var level_size = Vector2($VBoxContainer/LevelSize/XSize.value,$VBoxContainer/LevelSize/YSize.value)
 	var level_biome = $VBoxContainer/Biome/OptionButton.get_item_text($VBoxContainer/Biome/OptionButton.selected) 
 	var level_name = $VBoxContainer/LevelNameBox/LevelName.text
-	var level_code = "Level" + str(grid.x)+"_"+str(grid.y)
+	var decoder_index = LevelDecoder.current_index
+	var level_code = "Level" + str(decoder_index)
 	var level_notes = $VBoxContainer/Notes.text
 	var level_path = LEVELDIRECTORY + level_code + ".tscn"
 	
@@ -61,15 +66,21 @@ func _on_CreateLevel_pressed():
 	new_tile.notes = level_notes
 	new_tile.levelpath = level_path
 	new_tile.offset = offset
+	new_tile.levelcode = LevelDecoder.current_index
 	
 	new_tile.connect("level_selected",dock,"select_level")
 	new_tile.connect("level_selected",panel_root,"select_level")
 	
 	var dir = Directory.new()
 	dir.copy(INHERITEDLEVEL,level_path)
+	LevelDecoder.add_level_to_dict(level_path)
+	LevelDecoder.save_dict()
 	
 	level_container.add_child(new_tile)
 	new_tile.update_rect()
+	
+	emit_signal("save")
+	
 	hide()
 
 #	var hack = EditorScript.instance()

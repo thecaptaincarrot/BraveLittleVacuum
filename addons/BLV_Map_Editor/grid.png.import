@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grid.png-677903622de06024fc2dbb3c81079134.stex"
+path="res://.import/grid.png-832aea8f1e455d15819363534f092884.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/BLV_Map_Editor/grid.png"
-dest_files=[ "res://.import/grid.png-677903622de06024fc2dbb3c81079134.stex" ]
+source_file="res://Addons/BLV_Map_Editor/grid.png"
+dest_files=[ "res://.import/grid.png-832aea8f1e455d15819363534f092884.stex" ]
 
 [params]
 

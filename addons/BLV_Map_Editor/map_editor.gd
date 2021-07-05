@@ -2,14 +2,19 @@ tool
 extends EditorPlugin
 
 
-const MAINWINDOW = preload("res://addons/BLV_Map_Editor/MainPanel.tscn")
-const DOCK = preload("res://addons/BLV_Map_Editor/MapEditorDock.tscn")
-const POPUP = preload("res://addons/BLV_Map_Editor/LevelCreateDialogue.tscn")
+const MAINWINDOW = preload("res://Addons/BLV_Map_Editor/MainPanel.tscn")
+const DOCK = preload("res://Addons/BLV_Map_Editor/MapEditorDock.tscn")
+const POPUP = preload("res://Addons/BLV_Map_Editor/LevelCreateDialogue.tscn")
+
+var Decoder
 
 var MainPanel
+var LevelDialouge
 var Dock
 
+
 func _enter_tree():
+	
 	MainPanel = MAINWINDOW.instance()
 	Dock = DOCK.instance()
 	# Add the main panel to the editor's main viewport.
@@ -19,15 +24,16 @@ func _enter_tree():
 	
 	MainPanel.dock = Dock
 	Dock.main_screen = MainPanel
-	MainPanel.get_node("Popups/WindowDialog").dock = Dock
-	print("dock check 2: ",MainPanel.get_node("Popups/WindowDialog").dock)
+	LevelDialouge = MainPanel.get_node("Popups/WindowDialog")
+	LevelDialouge.decoder = Decoder
+	LevelDialouge.dock = Dock
 	
 	#add loaded scene to dock
 	connect("main_screen_changed",self,"_on_main_screen_changed")
 	Dock.connect("EnterLevel",self,"go_to_level")
 	Dock.connect("OpenLevel",self,"open_level")
+	Dock.connect("Save",MainPanel,"save_tiles")
 	#add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
-	
 
 
 func _exit_tree():
@@ -41,6 +47,8 @@ func _exit_tree():
 
 
 func _ready():
+	LevelDecoder.load_dict()
+	MainPanel.load_tiles()
 	print("MAP EDITOR READY")
 	MainPanel.connect("tile_selected",self,"select_tile")
 	#Dock To Panel

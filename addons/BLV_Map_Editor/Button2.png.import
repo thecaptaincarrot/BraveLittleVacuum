@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Button2.png-03c2737a27f6036f36b41dceb6e5603a.stex"
+path="res://.import/Button2.png-837435e61ad1498e61b9a047b68bd92e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/BLV_Map_Editor/Button2.png"
-dest_files=[ "res://.import/Button2.png-03c2737a27f6036f36b41dceb6e5603a.stex" ]
+source_file="res://Addons/BLV_Map_Editor/Button2.png"
+dest_files=[ "res://.import/Button2.png-837435e61ad1498e61b9a047b68bd92e.stex" ]
 
 [params]
 

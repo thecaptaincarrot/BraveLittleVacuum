@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Outline.png-d958f57c1a00c1a2de44260fc80bd64a.stex"
+path="res://.import/Outline.png-e08a94608d36e868f4a0653921624015.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/BLV_Map_Editor/Outline.png"
-dest_files=[ "res://.import/Outline.png-d958f57c1a00c1a2de44260fc80bd64a.stex" ]
+source_file="res://Addons/BLV_Map_Editor/Outline.png"
+dest_files=[ "res://.import/Outline.png-e08a94608d36e868f4a0653921624015.stex" ]
 
 [params]
 
