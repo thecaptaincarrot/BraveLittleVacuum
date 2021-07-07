@@ -57,4 +57,5 @@ __meta__ = {
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 4 )]
 pause_mode = 1
+zoom = Vector2( 0.5, 0.5 )
 player_path = "/root/Game/Player/PlayerBody"
