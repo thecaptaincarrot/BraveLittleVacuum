@@ -56,7 +56,7 @@ func _on_CreateLevel_pressed():
 	var decoder_index = LevelDecoder.current_index
 	var level_code = "Level" + str(decoder_index)
 	var level_notes = $VBoxContainer/Notes.text
-	var level_path = LEVELDIRECTORY + level_code + ".tscn"
+	var level_path = LEVELDIRECTORY + level_name + ".tscn"
 	
 	var new_tile = TILE.instance()
 	new_tile.grid_position = grid

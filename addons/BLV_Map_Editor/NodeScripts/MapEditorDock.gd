@@ -4,6 +4,8 @@ extends Control
 const EXIT = preload("res://World/LevelExit.tscn")
 const EXITMENU = preload("res://Addons/BLV_Map_Editor/ExitContainer.tscn")
 
+const LEVELPATH = "res://World/Levels/"
+
 signal ReturnToOrigin
 signal CreateLevel
 signal EnterLevel
@@ -148,9 +150,35 @@ func _on_NewExitButton_pressed():
 
 
 func _on_LevelName_text_changed(new_text):
-	selected_level.levelname = $PanelContainer/VBoxContainer/LevelStuff/LevelName.text
-	emit_signal("Save")
+	if selected_level:
+		var levelcode = selected_level.levelcode
+		var old_path = selected_level.levelpath
+		print(old_path)
+		
+		selected_level.levelname = $PanelContainer/VBoxContainer/LevelStuff/LevelName.text
+		
+		var new_path = LEVELPATH + new_text + ".tscn"
+		selected_level.levelpath = new_path
+		
+		var dir = Directory.new()
+		dir.rename(old_path,new_path)
+		
+		LevelDecoder.level_dict[levelcode] = new_path
+		
+		emit_signal("Save")
 
 
 func _on_ArchiveLevel_pressed():
-	pass # Replace with function body.
+	if selected_level:
+		var level_path = selected_level.levelpath
+		var level_code = selected_level.levelcode
+		
+		var dir = Directory.new()
+		var new_path ="res://World/Levels/LevelArchive/Level" + level_code + ".tscn"
+		dir.rename(level_path,new_path)
+		
+		LevelDecoder.level_dict[level_code] = new_path
+		
+		selected_level.queue_free()
+		selected_level = null
+		
