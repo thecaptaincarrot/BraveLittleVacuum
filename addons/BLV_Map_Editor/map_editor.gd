@@ -12,6 +12,7 @@ var MainPanel
 var LevelDialouge
 var Dock
 
+var FileSystem
 
 func _enter_tree():
 	
@@ -34,6 +35,10 @@ func _enter_tree():
 	Dock.connect("OpenLevel",self,"open_level")
 	Dock.connect("Save",MainPanel,"save_tiles")
 	#add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
+	
+	FileSystem = get_editor_interface().get_resource_filesystem ( )
+	
+	Dock.connect("Save",FileSystem,"scan")
 
 
 func _exit_tree():

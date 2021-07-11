@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Addons/BLV_Map_Editor/NodeScripts/LevelCreateDialogue.gd" type="Script" id=1]
+[ext_resource path="res://Addons/BLV_Map_Editor/NodeScripts/LevelAddDialogue.gd" type="Script" id=1]
 
 [node name="LevelCreateDialogue" type="WindowDialog"]
+visible = true
 margin_right = 263.0
 margin_bottom = 332.0
 script = ExtResource( 1 )
@@ -165,4 +166,17 @@ margin_right = 243.0
 margin_bottom = 316.0
 text = "Create Recharge Room"
 
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 407.0
+margin_bottom = 233.0
+window_title = "Select Level To Add"
+mode = 0
+current_dir = "res://World/Levels"
+current_path = "res://World/Levels/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="about_to_show" from="." to="." method="_on_LevelCreateDialogue_about_to_show"]
 [connection signal="pressed" from="VBoxContainer/CreateLevel" to="." method="_on_CreateLevel_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]

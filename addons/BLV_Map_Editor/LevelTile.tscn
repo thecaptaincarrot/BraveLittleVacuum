@@ -33,5 +33,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 8.0
+margin_bottom = 14.0
+text = "SAMPLE"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="mouse_entered" from="." to="." method="_on_LevelTile_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_LevelTile_mouse_exited"]

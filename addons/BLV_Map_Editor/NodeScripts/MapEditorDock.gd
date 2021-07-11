@@ -153,7 +153,6 @@ func _on_LevelName_text_changed(new_text):
 	if selected_level:
 		var levelcode = selected_level.levelcode
 		var old_path = selected_level.levelpath
-		print(old_path)
 		
 		selected_level.levelname = $PanelContainer/VBoxContainer/LevelStuff/LevelName.text
 		
@@ -161,11 +160,12 @@ func _on_LevelName_text_changed(new_text):
 		selected_level.levelpath = new_path
 		
 		var dir = Directory.new()
-		dir.rename(old_path,new_path)
-		
-		LevelDecoder.level_dict[levelcode] = new_path
-		
-		emit_signal("Save")
+		if !dir.file_exists(new_path):
+			dir.rename(old_path,new_path)
+			LevelDecoder.level_dict[levelcode] = new_path
+			emit_signal("Save")
+		else:
+			print("***ERROR: CANNOT OVERWRITE EXISTING LEVEL NAME ",new_path, "***")
 
 
 func _on_ArchiveLevel_pressed():

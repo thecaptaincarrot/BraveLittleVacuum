@@ -24,8 +24,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$Label.text = levelname
 
 
 func _gui_input(event):
@@ -41,7 +41,7 @@ func add_exit(grid_position):
 
 
 func update_rect():
-	rect_position = Vector2(32 + (grid_position.x + offset.x) * 64, 32 + (grid_position.y + offset.y) * 64)
+	rect_position = Vector2(-32 + (grid_position.x + offset.x) * 64, -32 + (grid_position.y + offset.y) * 64)
 	rect_size = grid_size * 64
 	match biome:
 		"None":

@@ -94,3 +94,11 @@ func _on_CreateLevel_pressed():
 #	label.name = "This Is A Brand New Label"
 #	get_scene().add_child(label)
 #	abel.set_owner(get_scene())
+
+
+func _on_LevelCreateDialogue_about_to_show():
+	$VBoxContainer/LevelSize/X.value = 1
+	$VBoxContainer/LevelSize/Y.value = 1
+	
+	$VBoxContainer/Notes.text = ""
+	$VBoxContainer/Biome/OptionButton.select(0)

@@ -18,6 +18,9 @@ var level_tiles = {} #I'm a fuck head and the only key is "tiles"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ScrollContainer/PanelContainer/Yaxis.clear_points()
+	$ScrollContainer/PanelContainer/Xaxis.clear_points()
+	
 	$ScrollContainer/PanelContainer/Yaxis.add_point(Vector2(-32 + grid_offset.x * 64,0))
 	$ScrollContainer/PanelContainer/Yaxis.add_point(Vector2(-32 + grid_offset.x * 64,99 * 64))
 
@@ -26,7 +29,7 @@ func _ready():
 	
 	$Popups/WindowDialog.panel_root = self
 	$Popups/WindowDialog.level_container = $ScrollContainer/PanelContainer/LevelContainer
-	$Popups/WindowDialog.offset = grid_offset - Vector2(1,1)
+	$Popups/WindowDialog.offset = grid_offset
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
