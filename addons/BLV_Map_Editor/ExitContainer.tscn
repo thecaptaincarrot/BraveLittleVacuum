@@ -1,0 +1,35 @@
+[gd_scene format=2]
+
+[node name="ExitContainer" type="HBoxContainer"]
+margin_right = 199.0
+margin_bottom = 24.0
+
+[node name="XSpinbox" type="SpinBox" parent="."]
+margin_right = 74.0
+margin_bottom = 24.0
+
+[node name="X" type="Label" parent="."]
+margin_left = 78.0
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 19.0
+text = "X"
+
+[node name="YSpinbox" type="SpinBox" parent="."]
+margin_left = 90.0
+margin_right = 164.0
+margin_bottom = 24.0
+min_value = -200.0
+
+[node name="Y" type="Label" parent="."]
+margin_left = 168.0
+margin_top = 5.0
+margin_right = 175.0
+margin_bottom = 19.0
+text = "Y"
+
+[node name="AddExitButton" type="Button" parent="."]
+margin_left = 179.0
+margin_right = 199.0
+margin_bottom = 24.0
+text = "+"

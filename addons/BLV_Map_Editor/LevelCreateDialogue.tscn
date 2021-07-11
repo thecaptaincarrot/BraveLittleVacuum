@@ -1,0 +1,170 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Addons/BLV_Map_Editor/NodeScripts/LevelCreateDialogue.gd" type="Script" id=1]
+
+[node name="LevelCreateDialogue" type="WindowDialog"]
+visible = true
+margin_right = 263.0
+margin_bottom = 332.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 251.0
+margin_bottom = 324.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridPosition" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 243.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/GridPosition"]
+margin_right = 95.0
+margin_bottom = 14.0
+text = "Grid Position: ("
+
+[node name="X" type="Label" parent="VBoxContainer/GridPosition"]
+margin_left = 99.0
+margin_right = 107.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="comma" type="Label" parent="VBoxContainer/GridPosition"]
+margin_left = 111.0
+margin_right = 115.0
+margin_bottom = 14.0
+text = ","
+
+[node name="Y" type="Label" parent="VBoxContainer/GridPosition"]
+margin_left = 119.0
+margin_right = 127.0
+margin_bottom = 14.0
+text = "0"
+
+[node name=")" type="Label" parent="VBoxContainer/GridPosition"]
+margin_left = 131.0
+margin_right = 135.0
+margin_bottom = 14.0
+text = ")"
+
+[node name="LevelSize" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 243.0
+margin_bottom = 42.0
+
+[node name="SizeText" type="Label" parent="VBoxContainer/LevelSize"]
+margin_top = 5.0
+margin_right = 64.0
+margin_bottom = 19.0
+text = "LevelSize:"
+
+[node name="XSize" type="SpinBox" parent="VBoxContainer/LevelSize"]
+margin_left = 68.0
+margin_right = 142.0
+margin_bottom = 24.0
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="X" type="Label" parent="VBoxContainer/LevelSize"]
+margin_left = 146.0
+margin_top = 5.0
+margin_right = 154.0
+margin_bottom = 19.0
+text = "X"
+
+[node name="YSize" type="SpinBox" parent="VBoxContainer/LevelSize"]
+margin_left = 158.0
+margin_right = 232.0
+margin_bottom = 24.0
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="Y" type="Label" parent="VBoxContainer/LevelSize"]
+margin_left = 236.0
+margin_top = 5.0
+margin_right = 243.0
+margin_bottom = 19.0
+text = "Y"
+
+[node name="Biome" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 46.0
+margin_right = 243.0
+margin_bottom = 66.0
+
+[node name="BiomeText" type="Label" parent="VBoxContainer/Biome"]
+margin_top = 3.0
+margin_right = 42.0
+margin_bottom = 17.0
+text = "Biome"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Biome"]
+margin_left = 46.0
+margin_right = 109.0
+margin_bottom = 20.0
+text = "None"
+items = [ "None", null, false, 0, null, "City", null, false, 1, null ]
+selected = 0
+
+[node name="LevelNameBox" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 243.0
+margin_bottom = 94.0
+
+[node name="NameText" type="Label" parent="VBoxContainer/LevelNameBox"]
+margin_top = 5.0
+margin_right = 72.0
+margin_bottom = 19.0
+text = "LevelName"
+
+[node name="LevelName" type="LineEdit" parent="VBoxContainer/LevelNameBox"]
+margin_left = 76.0
+margin_right = 204.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 98.0
+margin_right = 243.0
+margin_bottom = 112.0
+text = "Notes:"
+align = 1
+
+[node name="Notes" type="TextEdit" parent="VBoxContainer"]
+margin_top = 116.0
+margin_right = 243.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 0, 128 )
+wrap_enabled = true
+
+[node name="CreateLevel" type="Button" parent="VBoxContainer"]
+margin_top = 248.0
+margin_right = 243.0
+margin_bottom = 268.0
+text = "Create Level"
+
+[node name="CreateSaveRoom" type="Button" parent="VBoxContainer"]
+margin_top = 272.0
+margin_right = 243.0
+margin_bottom = 292.0
+text = "Creae Save Room"
+
+[node name="CreateRechargeRoom" type="Button" parent="VBoxContainer"]
+margin_top = 296.0
+margin_right = 243.0
+margin_bottom = 316.0
+text = "Create Recharge Room"
+
+[connection signal="about_to_show" from="." to="." method="_on_LevelCreateDialogue_about_to_show"]
+[connection signal="pressed" from="VBoxContainer/CreateLevel" to="." method="_on_CreateLevel_pressed"]

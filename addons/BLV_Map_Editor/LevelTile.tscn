@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Addons/BLV_Map_Editor/NodeScripts/LevelTile.gd" type="Script" id=1]
+[ext_resource path="res://Addons/BLV_Map_Editor/Outline.png" type="Texture" id=2]
+
+[node name="LevelTile" type="ColorRect"]
+margin_right = 64.0
+margin_bottom = 64.0
+color = Color( 1, 1, 1, 0.752941 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitLines" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 64, 64 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 8.0
+margin_bottom = 14.0
+text = "SAMPLE"
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_LevelTile_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_LevelTile_mouse_exited"]
