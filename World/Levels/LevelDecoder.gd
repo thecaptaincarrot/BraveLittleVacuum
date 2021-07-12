@@ -6,6 +6,11 @@ var level_dict = {}
 var current_index = 0
 
 
+func _ready():
+	if !Engine.editor_hint:
+		load_dict()
+
+
 func add_level_to_dict(level_path):
 	level_dict[current_index] = level_path
 	current_index += 1

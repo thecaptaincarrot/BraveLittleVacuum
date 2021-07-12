@@ -45,18 +45,18 @@ func nozzle_shoot(body):
 func new_game():
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
-	current_level = add_level(Vector2(0,0))
+	current_level = add_level(0)
 	player.place_body(current_level.get_entry(0))
 	$Overlay/ColorOverlay.fadeout = false
 	player.activate()
 
 
-func goto_new_level(level_vector : Vector2, exit : int):
+func goto_new_level(levelcode, exit : int):
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	current_level.queue_free()
-	current_level = add_level(level_vector)
+	current_level = add_level(levelcode)
 	print("went to new level: ",current_level.name)
 	player.place_body(current_level.get_entry(exit))
 	$PlayerCamera.position = player.body.position
@@ -65,8 +65,9 @@ func goto_new_level(level_vector : Vector2, exit : int):
 	player.activate()
 	
 
-func add_level(level_vector : Vector2):
-	var new_level_path = level_path + str(level_vector.x) + "_" + str(level_vector.y) + str(".tscn")
+func add_level(levelcode):
+	print()
+	var new_level_path = LevelDecoder.level_dict[str(levelcode)]
 	print("Level path: ", new_level_path )
 	var new_level = load(new_level_path).instance()
 	print ("Added new level ", new_level.name)
