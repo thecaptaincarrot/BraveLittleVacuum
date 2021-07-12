@@ -3,7 +3,7 @@
 [ext_resource path="res://PlayerCamera.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 37.0453, 52.5003 )
+extents = Vector2( 21.3612, 23.6095 )
 
 [node name="PlayerCamera" type="Camera2D"]
 current = true
@@ -15,5 +15,6 @@ player_path = "/root/RobotTest/Player/PlayerBody"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

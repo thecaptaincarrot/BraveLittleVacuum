@@ -1,3 +1,4 @@
+tool
 extends Area2D
 
 export var level_code = Vector2(0,0)
@@ -16,6 +17,6 @@ func _ready():
 
 
 func _on_LevelExit_body_entered(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and Engine.editor_hint:
 		print("Emitting Signal")
 		emit_signal("level_exit",level_code,target_exit)

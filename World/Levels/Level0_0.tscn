@@ -86,13 +86,18 @@ polygon = PoolVector2Array( 1024, 256, 768, 256, 768, 0, 0, 0, 0, -128, 1024, -1
 [node name="CollisionPolygon2D" parent="World/TestCollider3" index="1"]
 polygon = PoolVector2Array( 1024, 128, 1024, 576, 1152, 576, 1152, 128 )
 
+[node name="TestCollider4" parent="World" index="4" instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" parent="World/TestCollider4" index="1"]
+polygon = PoolVector2Array( 320, 256, 384, 256, 384, 320, 256, 320, 256, 288, 320, 288 )
+
 [node name="Entry0" parent="." index="4"]
 position = Vector2( 128, 64 )
 
 [node name="Entry1" parent="." index="5"]
 position = Vector2( 725.047, 330.607 )
 
-[node name="ColorRect" type="ColorRect" parent="." index="10"]
+[node name="ColorRect" type="ColorRect" parent="." index="9"]
 margin_left = 832.0
 margin_right = 1072.0
 margin_bottom = 768.0
@@ -105,3 +110,4 @@ __meta__ = {
 [editable path="World/TestCollider"]
 [editable path="World/TestCollider2"]
 [editable path="World/TestCollider3"]
+[editable path="World/TestCollider4"]

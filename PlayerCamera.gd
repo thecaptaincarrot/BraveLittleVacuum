@@ -4,7 +4,7 @@ export var player_path = ""
 var player
 var nozzle 
 
-var camera_drag = .03
+var camera_drag = .05
 var nozzle_reduction = 3
 
 var player_in = true
