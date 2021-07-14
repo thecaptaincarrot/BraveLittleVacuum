@@ -34,6 +34,7 @@ func _enter_tree():
 	Dock.connect("EnterLevel",self,"go_to_level")
 	Dock.connect("OpenLevel",self,"open_level")
 	Dock.connect("Save",MainPanel,"save_tiles")
+	Dock.connect("Save",LevelDecoder,"save_dict")
 	#add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL,Dock)
 	
 	FileSystem = get_editor_interface().get_resource_filesystem ( )

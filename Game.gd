@@ -45,7 +45,7 @@ func nozzle_shoot(body):
 func new_game():
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
-	current_level = add_level(0)
+	current_level = add_level(9)
 	player.place_body(current_level.get_entry(0))
 	$Overlay/ColorOverlay.fadeout = false
 	player.activate()
@@ -56,7 +56,12 @@ func goto_new_level(levelcode, exit : int):
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	current_level.queue_free()
-	current_level = add_level(levelcode)
+	if LevelDecoder.level_dict.has(levelcode):
+		current_level = add_level(levelcode)
+	else:
+		print("***ERROR TRIED TO GO TO INVALID LEVEL ",levelcode,"***")
+		current_level = add_level(0)
+		print(LevelDecoder.level_dict)
 	print("went to new level: ",current_level.name)
 	player.place_body(current_level.get_entry(exit))
 	$PlayerCamera.position = player.body.position
@@ -67,12 +72,11 @@ func goto_new_level(levelcode, exit : int):
 
 func add_level(levelcode):
 	print()
-	var new_level_path = LevelDecoder.level_dict[str(levelcode)]
+	var new_level_path = LevelDecoder.level_dict[levelcode]
 	print("Level path: ", new_level_path )
 	var new_level = load(new_level_path).instance()
 	print ("Added new level ", new_level.name)
 	for N in new_level.get_exits():
-		print(N.name)
 		N.connect("level_exit",self,"goto_new_level")
 	$LevelHolder.add_child(new_level)
 	return new_level

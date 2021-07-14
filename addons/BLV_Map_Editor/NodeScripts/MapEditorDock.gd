@@ -151,7 +151,7 @@ func _on_NewExitButton_pressed():
 
 func _on_LevelName_text_changed(new_text):
 	if selected_level:
-		var levelcode = selected_level.levelcode
+		var levelcode = int(selected_level.levelcode)
 		var old_path = selected_level.levelpath
 		
 		selected_level.levelname = $PanelContainer/VBoxContainer/LevelStuff/LevelName.text
@@ -163,6 +163,9 @@ func _on_LevelName_text_changed(new_text):
 		if !dir.file_exists(new_path):
 			dir.rename(old_path,new_path)
 			LevelDecoder.level_dict[levelcode] = new_path
+			print(typeof(levelcode))
+			print("New Level Decoder Path for code", levelcode, " : ", LevelDecoder.level_dict[levelcode])
+			print(LevelDecoder.level_dict)
 			emit_signal("Save")
 		else:
 			print("***ERROR: CANNOT OVERWRITE EXISTING LEVEL NAME ",new_path, "***")

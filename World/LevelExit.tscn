@@ -20,9 +20,18 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( -19.1591, 64.3286 )
 scale = Vector2( 2.75, 128 )
 texture = SubResource( 3 )
 
+[node name="Destination" type="Label" parent="."]
+margin_left = -24.0
+margin_top = -80.0
+margin_right = 24.0
+margin_bottom = -66.0
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="." to="." method="_on_LevelExit_body_entered"]

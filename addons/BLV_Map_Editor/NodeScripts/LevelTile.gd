@@ -7,7 +7,7 @@ var grid_position : Vector2
 var grid_size : Vector2
 var levelname : String
 var levelpath : String
-var levelcode
+var levelcode : int
 var biome
 var exits = []
 var icons = []

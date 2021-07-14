@@ -30,6 +30,7 @@ func save_dict():
 
 
 func load_dict():
+	level_dict = {}
 	var save_game = File.new()
 	if not save_game.file_exists("res://Addons/BLV_Map_Editor/level_decoder.json"):
 		print("No Save Data Found")
@@ -37,7 +38,13 @@ func load_dict():
 	
 	save_game.open("res://Addons/BLV_Map_Editor/level_decoder.json", File.READ)
 	
-	level_dict = parse_json(save_game.get_line())
+	var str_level_dict = parse_json(save_game.get_line())
+	
+	for key in str_level_dict.keys():
+		level_dict[int(key)]=str_level_dict[key]
+	
+	for key in level_dict.keys():
+		print(typeof(key)," ", key)
 	
 	current_index = len(level_dict)
 	print("new index: ", level_dict)
