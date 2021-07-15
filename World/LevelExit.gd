@@ -10,8 +10,8 @@ signal level_exit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.show()
-	set_process_input(true)
+	if !Engine.editor_hint:
+		$Node2D/Destination.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -45,8 +45,9 @@ func nozzle_shoot(body):
 func new_game():
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
-	current_level = add_level(0)
-	player.place_body(current_level.get_entry(0))
+	goto_new_level(0,0)
+#	current_level = add_level(0)
+#	player.place_body(current_level.get_entry(0))
 	$Overlay/ColorOverlay.fadeout = false
 	player.activate()
 
@@ -55,7 +56,8 @@ func goto_new_level(levelcode, exit : int):
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
-	current_level.queue_free()
+	if current_level:
+		current_level.queue_free()
 	if LevelDecoder.level_dict.has(levelcode):
 		current_level = add_level(levelcode)
 	else:
