@@ -107,6 +107,7 @@ func movement(delta):
 	#need to check whether jumping has been unlocked globally
 	if Input.is_action_just_pressed("Jump") and is_on_floor() and Upgrades.jump:
 		print("JUMP")
+		motion.y = 0
 		motion.y -= jump_impulse
 	
 	#Hover

@@ -17,8 +17,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Engine.editor_hint:
-		if $Destination.text != str(level_code):
-			$Destination.text = str(level_code)
+		if $Node2D/Destination.text != str(level_code):
+			$Node2D/Destination.text = str(level_code)
 			
 
 
