@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Player/Scripts/PlayerBody.gd" type="Script" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Player/Sprites/Vacuum-Sheet.png" type="Texture" id=12]
 [ext_resource path="res://Player/Scripts/HoverSound.gd" type="Script" id=13]
 [ext_resource path="res://Player/Sounds/vacuum_hover_complete.wav" type="AudioStream" id=14]
+[ext_resource path="res://Player/PlayerCamera.gd" type="Script" id=15]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.50197
@@ -360,7 +361,7 @@ __meta__ = {
 [node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
 frames = SubResource( 24 )
 animation = "Shocked"
-frame = 1
+frame = 2
 playing = true
 script = ExtResource( 6 )
 
@@ -377,8 +378,8 @@ one_shot = true
 autostart = true
 
 [node name="GroundNormal" type="RayCast2D" parent="PlayerBody"]
-visible = false
 enabled = true
+cast_to = Vector2( 0, 30 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody"]
 visible = false
@@ -410,6 +411,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody/HitBox"]
 shape = SubResource( 54 )
+
+[node name="PlayerCamera" type="Camera2D" parent="PlayerBody"]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+editor_draw_drag_margin = true
+script = ExtResource( 15 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

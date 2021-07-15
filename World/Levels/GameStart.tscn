@@ -18,3 +18,9 @@ position = Vector2( 112, 168 )
 
 [node name="Entry1" parent="." index="5"]
 position = Vector2( 720, 488 )
+
+[node name="CameraBound" parent="." index="9"]
+margin_left = -120.0
+margin_top = -64.0
+margin_right = 840.0
+margin_bottom = 768.0

@@ -35,7 +35,7 @@ var test
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main = get_node(main_path)
-	camera = main.get_node("PlayerCamera")
+	camera = $PlayerBody/PlayerCamera
 	create_hose_skeleton(Upgrades.hose_length)
 	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
 	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")

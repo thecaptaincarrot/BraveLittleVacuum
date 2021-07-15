@@ -63,8 +63,18 @@ func goto_new_level(levelcode, exit : int):
 		current_level = add_level(0)
 		print(LevelDecoder.level_dict)
 	print("went to new level: ",current_level.name)
+	#Camera stuff
+	var bounding_box_pos = current_level.get_camera_bounds()[0]
+	var bounding_box_size = current_level.get_camera_bounds()[1]
+	
+	player.camera.limit_left = bounding_box_pos.x
+	player.camera.limit_right = bounding_box_pos.x + bounding_box_size.x
+	player.camera.limit_top = bounding_box_pos.y
+	player.camera.limit_bottom = bounding_box_pos.y + bounding_box_size.y
+	
+	print(player.camera.limit_left)
+	#Palyer stuff
 	player.place_body(current_level.get_entry(exit))
-	$PlayerCamera.position = player.body.position
 	yield(get_tree().create_timer(0.5), "timeout")
 	$Overlay/ColorOverlay.fadeout = false
 	player.activate()

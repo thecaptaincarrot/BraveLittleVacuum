@@ -111,6 +111,9 @@ func movement(delta):
 		motion.y -= jump_impulse
 	
 	#Hover
+	if is_on_floor():
+		is_hovering = false
+
 	if !is_on_floor() and can_hover and Input.is_action_just_pressed("Jump"):
 		print("I am hovering")
 		is_hovering = true
