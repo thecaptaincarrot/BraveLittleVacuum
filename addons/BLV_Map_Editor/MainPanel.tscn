@@ -47,11 +47,11 @@ __meta__ = {
 }
 
 [node name="Yaxis" type="Line2D" parent="ScrollContainer/PanelContainer"]
-points = PoolVector2Array( 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 1056, 0, 1056, 6336 )
+points = PoolVector2Array( 992, 0, 992, 6336 )
 default_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 
 [node name="Xaxis" type="Line2D" parent="ScrollContainer/PanelContainer"]
-points = PoolVector2Array( 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 992, 6336, 992, 0, 1056, 6336, 1056 )
+points = PoolVector2Array( 0, 992, 6336, 992 )
 default_color = Color( 0.12549, 0.12549, 0.12549, 1 )
 
 [node name="LevelContainer" type="Control" parent="ScrollContainer/PanelContainer"]
@@ -68,5 +68,4 @@ margin_left = 256.0
 margin_top = 256.0
 margin_right = 519.0
 margin_bottom = 588.0
-
 [connection signal="save" from="Popups/WindowDialog" to="." method="_on_WindowDialog_save"]

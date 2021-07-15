@@ -9,6 +9,7 @@ var viewport_position
 var panel_offset = Vector2(0,0)
 var grid_offset = Vector2(16,16)
 
+var plugin
 var dock
 
 signal tile_selected
@@ -125,3 +126,4 @@ func load_tiles():
 		
 		new_tile.connect("level_selected",dock,"select_level")
 		new_tile.connect("level_selected",self,"select_level")
+		new_tile.connect("enter_level",plugin,"go_to_level_from_tile")

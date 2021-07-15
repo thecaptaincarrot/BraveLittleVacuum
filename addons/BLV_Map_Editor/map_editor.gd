@@ -24,6 +24,7 @@ func _enter_tree():
 	make_visible(false)
 	
 	MainPanel.dock = Dock
+	MainPanel.plugin = self
 	Dock.main_screen = MainPanel
 	LevelDialouge = MainPanel.get_node("Popups/WindowDialog")
 	LevelDialouge.decoder = Decoder
@@ -85,6 +86,13 @@ func get_plugin_icon():
 func select_tile(grid_position : Vector2):
 	print("Selected Map tile: ", grid_position)
 	Dock.new_tile(grid_position)
+
+
+func go_to_level_from_tile(tile):
+	var level_path = tile.levelpath
+	var editor = get_editor_interface()
+	editor.open_scene_from_path(level_path)
+	editor.set_main_screen_editor("2D")
 
 
 func go_to_level(level_path):

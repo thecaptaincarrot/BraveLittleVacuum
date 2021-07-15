@@ -16,6 +16,7 @@ var notes : String
 var mouse_in
 
 signal level_selected
+signal enter_level
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,9 +31,12 @@ func _process(delta):
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed and mouse_in:
-		print("clicked on ", name)
-		emit_signal("level_selected",self)
-		pass
+		if $Timer.is_stopped():
+			print("clicked on ", name)
+			emit_signal("level_selected",self)
+			$Timer.start()
+		else:
+			emit_signal("enter_level",self)
 
 
 func add_exit(grid_position):
