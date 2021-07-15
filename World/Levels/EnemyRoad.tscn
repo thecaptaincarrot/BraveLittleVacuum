@@ -1,24 +1,42 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/LevelExit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Mutants/Mutant_1.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Level" instance=ExtResource( 1 )]
 
-[node name="Exits" parent="." index="2"]
-z_index = -1
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Enemies" index="0"]
+position = Vector2( 481.625, 447.721 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+flip_h = true
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( -80, 424 )
 level_code = 9
 target_exit = 1
-
-[node name="Sprite" parent="Exits/LevelExit" index="1"]
-position = Vector2( 16, 0 )
-scale = Vector2( -2.75, 128 )
-
-[node name="Destination" parent="Exits/LevelExit" index="2"]
-text = "9"
 
 [node name="LevelExit2" parent="Exits" index="1" instance=ExtResource( 2 )]
 position = Vector2( 920, 424 )
@@ -32,5 +50,3 @@ position = Vector2( 0, 432 )
 
 [node name="Entry1" parent="." index="5"]
 position = Vector2( 832, 432 )
-
-[editable path="Exits/LevelExit"]

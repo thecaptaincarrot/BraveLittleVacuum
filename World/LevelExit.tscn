@@ -20,6 +20,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.840897, 64.3287 )
 scale = Vector2( 2.75, 128 )
 texture = SubResource( 3 )
 
@@ -34,4 +35,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="body_entered" from="." to="." method="_on_LevelExit_body_entered"]
