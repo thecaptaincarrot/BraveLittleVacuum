@@ -83,10 +83,10 @@ func update_health():
 
 func deactivate():
 	invulnerable = true
-	$PlayerBody.set_process(false)
-	$PlayerBody.set_physics_process(false)
-	$PlayerBody.set_process_input(false)
-	$PlayerBody.motion = Vector2(0,0)
+#	$PlayerBody.set_process(false)
+#	$PlayerBody.set_physics_process(false)
+#	$PlayerBody.set_process_input(false)
+#	$PlayerBody.motion = Vector2(0,0)
 	
 	nozzle.set_process(false)
 	nozzle.set_physics_process(false)
@@ -95,6 +95,7 @@ func deactivate():
 
 func activate():
 	invulnerable = false
+	$PlayerBody.force_move = false
 	$PlayerBody.set_process(true)
 	$PlayerBody.set_physics_process(true)
 	$PlayerBody.set_process_input(true)

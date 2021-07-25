@@ -3,6 +3,9 @@ extends KinematicBody2D
 var motion = Vector2()
 
 var inactive = false
+var force_move = false
+
+var force_move_vector = Vector2(0,0)
 
 var gravity = 9.8
 var acceleration = 4
@@ -40,7 +43,11 @@ func _process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	movement(delta)
+	if force_move:
+		motion = force_move_vector
+		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+	else:
+		movement(delta)
 	
 	var floor_normal = Vector2(0,-1)
 	var angle = 0
