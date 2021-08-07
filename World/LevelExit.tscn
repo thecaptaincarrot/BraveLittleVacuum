@@ -29,4 +29,5 @@ __meta__ = {
 [node name="RayCast2D" type="RayCast2D" parent="Node2D"]
 scale = Vector2( 10, 10 )
 cast_to = Vector2( -5, 0 )
+
 [connection signal="body_entered" from="." to="." method="_on_LevelExit_body_entered"]

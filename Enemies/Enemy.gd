@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum {DEFAULT}
+enum {DEFAULT, HURT}
 
 export var health = 1
 
@@ -28,6 +28,7 @@ func collision(body,collision_speed):
 		var damage = 1
 		hurt(damage)
 		print("new_health: ", health)
+		state = HURT
 		if health <= 0:
 			die()
 

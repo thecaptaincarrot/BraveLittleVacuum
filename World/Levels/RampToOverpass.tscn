@@ -7,9 +7,9 @@
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( 32, 424 )
-scale = Vector2( -1, 1 )
-level_code = 2
+level_code = 1
 target_exit = 1
+enter_direction = "RIGHT"
 
 [node name="TileMap" parent="World" index="1"]
 z_index = -2
@@ -20,3 +20,7 @@ position = Vector2( 120, 424 )
 
 [node name="Entry1" parent="." index="5"]
 position = Vector2( 1472, 192 )
+
+[node name="CameraBound" parent="." index="9"]
+margin_left = 56.0
+margin_right = 1584.0

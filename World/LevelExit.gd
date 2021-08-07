@@ -52,5 +52,5 @@ func _on_LevelExit_body_entered(body):
 					vector = Vector2(0,-1)
 				"DOWN":
 					vector = Vector2(0,1)
-			print(body.max_speed * -vector)
+			print("Vector ",body.max_speed * -vector)
 			body.force_move_vector = body.max_speed * -vector

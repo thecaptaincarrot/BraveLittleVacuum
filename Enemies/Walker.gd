@@ -1,12 +1,16 @@
 extends "res://Enemies/Enemy.gd"
 
-enum {IDLE, WALK, HURT, DEAD}
+enum {IDLE, ATTACK, DEAD, WALK}
 
 enum DIRECTIONS {RIGHT,LEFT}
 
 var walk_speed = 5
 var max_speed = 30
 var direction = DIRECTIONS.RIGHT
+
+var player_for_hurting = null
+
+export var asymetrical = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,21 +20,51 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	match direction:
-		DIRECTIONS.RIGHT:
-			$Sprite.flip_h = false
-		DIRECTIONS.LEFT:
-			$Sprite.flip_h = true
-	
-	match state:
-		IDLE:
-			$Sprite.animation = "idle"
-		WALK:
-			$Sprite.animation = "walk"
-		HURT:
-			$Sprite.animation = "hurt"
-		DEAD:
-			pass
+	if asymetrical:
+		match direction:
+			DIRECTIONS.RIGHT:
+				match state:
+					IDLE:
+						$Sprite.animation = "idleR"
+					WALK:
+						$Sprite.animation = "walkR"
+					ATTACK:
+						$Sprite.animation = "attackR"
+					HURT:
+						print("oof")
+						$Sprite.animation = "hurtR"
+					DEAD:
+						$Sprite.animation = "dieR"
+			DIRECTIONS.LEFT:
+				match state:
+					IDLE:
+						$Sprite.animation = "idleL"
+					WALK:
+						$Sprite.animation = "walkL"
+					ATTACK:
+						$Sprite.animation = "attackL"
+					HURT:
+						print("oof")
+						$Sprite.animation = "hurtL"
+					DEAD:
+						$Sprite.animation = "dieL"
+	else:
+		match direction:
+			DIRECTIONS.RIGHT:
+				$Sprite.flip_h = false
+			DIRECTIONS.LEFT:
+				$Sprite.flip_h = true
+		
+		match state:
+			IDLE:
+				$Sprite.animation = "idle"
+			WALK:
+				$Sprite.animation = "walk"
+			HURT:
+				$Sprite.animation = "hurt"
+			DEAD:
+				$Sprite.animation = "die"
+
 
 
 func _physics_process(delta):
@@ -41,6 +75,8 @@ func _physics_process(delta):
 		WALK:
 			if motion.length() < max_speed:
 				motion += walk()
+		ATTACK:
+			motion.x = 0
 		HURT:
 			motion.x = 0
 		DEAD:
@@ -78,5 +114,16 @@ func die():
 
 
 func _on_Sprite_animation_finished():
-	if $Sprite.animation == "die":
-		$Sprite.animation = "dead"
+	if asymetrical:
+		if $Sprite.animation == "dieL":
+			$Sprite.animation = "deadL"
+		elif $Sprite.animation == "dieR":
+			$Sprite.animation = "deadR"
+		elif $Sprite.animation == "attackR" or $Sprite.animation == "attackL":
+			state = WALK
+		
+	else:
+		if $Sprite.animation == "die":
+			$Sprite.animation = "dead"
+		elif $Sprite.animation == "attack":
+			state = WALK
