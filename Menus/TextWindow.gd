@@ -1,8 +1,7 @@
-extends Node
+tool
+extends NinePatchRect
 
-const GRAVITY = 9.8
-
-var PLAYER = null
+export var text = "Ding Dong"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,5 +9,6 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if $MarginContainer/Label.text != text:
+		$MarginContainer/Label.text = text

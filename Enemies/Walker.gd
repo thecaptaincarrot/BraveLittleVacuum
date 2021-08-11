@@ -1,6 +1,6 @@
 extends "res://Enemies/Enemy.gd"
 
-enum {IDLE, ATTACK, DEAD, WALK}
+enum {IDLE, ATTACK, DEAD, WALK, HURT}
 
 enum DIRECTIONS {RIGHT,LEFT}
 
@@ -17,70 +17,20 @@ func _ready():
 	state = IDLE #Is this necessesarily the case
 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if asymetrical:
-		match direction:
-			DIRECTIONS.RIGHT:
-				match state:
-					IDLE:
-						$Sprite.animation = "idleR"
-					WALK:
-						$Sprite.animation = "walkR"
-					ATTACK:
-						$Sprite.animation = "attackR"
-					HURT:
-						print("oof")
-						$Sprite.animation = "hurtR"
-					DEAD:
-						$Sprite.animation = "dieR"
-			DIRECTIONS.LEFT:
-				match state:
-					IDLE:
-						$Sprite.animation = "idleL"
-					WALK:
-						$Sprite.animation = "walkL"
-					ATTACK:
-						$Sprite.animation = "attackL"
-					HURT:
-						print("oof")
-						$Sprite.animation = "hurtL"
-					DEAD:
-						$Sprite.animation = "dieL"
-	else:
-		match direction:
-			DIRECTIONS.RIGHT:
-				$Sprite.flip_h = false
-			DIRECTIONS.LEFT:
-				$Sprite.flip_h = true
-		
-		match state:
-			IDLE:
-				$Sprite.animation = "idle"
-			WALK:
-				$Sprite.animation = "walk"
-			HURT:
-				$Sprite.animation = "hurt"
-			DEAD:
-				$Sprite.animation = "die"
-
-
-
 func _physics_process(delta):
-	
-	match state: #All actions are possible. AI is handled one floor down.
-		IDLE:
-			motion.x = 0
-		WALK:
-			if motion.length() < max_speed:
-				motion += walk()
-		ATTACK:
-			motion.x = 0
-		HURT:
-			motion.x = 0
-		DEAD:
-			motion.x = 0
+	pass
+#	match state: #All actions are possible. AI is handled one floor down.
+#		IDLE:
+#			motion.x = 0
+#		WALK:
+#			if motion.length() < max_speed:
+#				motion += walk()
+#		ATTACK:
+#			motion.x = 0
+#		HURT:
+#			motion.x = 0
+#		DEAD:
+#			motion.x = 0
 			
 	
 	if is_on_floor():
@@ -102,28 +52,10 @@ func walk():
 			walk_vector = horizontal_vector * walk_speed
 		DIRECTIONS.LEFT:
 			walk_vector = -horizontal_vector * walk_speed
-	print(walk_vector)
 	return walk_vector
-		
 
 
 func die():
-	$Sprite.animation = "die"
+	print("DEAD")
 	state = DEAD
 	collision_layer = 0
-
-
-func _on_Sprite_animation_finished():
-	if asymetrical:
-		if $Sprite.animation == "dieL":
-			$Sprite.animation = "deadL"
-		elif $Sprite.animation == "dieR":
-			$Sprite.animation = "deadR"
-		elif $Sprite.animation == "attackR" or $Sprite.animation == "attackL":
-			state = WALK
-		
-	else:
-		if $Sprite.animation == "die":
-			$Sprite.animation = "dead"
-		elif $Sprite.animation == "attack":
-			state = WALK

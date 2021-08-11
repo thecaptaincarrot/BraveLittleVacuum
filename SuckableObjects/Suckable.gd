@@ -3,7 +3,7 @@ extends RigidBody2D
 const suckable = true
 export var size = 0
 export var identifier = "Default"
-var damaging = true
+var damaging = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

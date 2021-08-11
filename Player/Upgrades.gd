@@ -3,7 +3,7 @@ extends Node
 var PLAYER = null
 
 var blow_force = 500
-var suck_strength = 20
+var suck_strength = 5
 var hose_length = 8
 
 #booleans

@@ -277,8 +277,18 @@ func uncollide_hose():
 		N.collision_layer = 0
 		N.collision_mask = 0
 
-#SIGNALS
+#Menu stuff
+func hide_UI():
+	for child in $CanvasLayer.get_children():
+		child.hide()
 
+
+func show_UI():
+	for child in $CanvasLayer.get_children():
+		child.show()
+
+
+#SIGNALS
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("Water"):
 		is_in_water = true
@@ -292,3 +302,8 @@ func _on_HitBox_area_exited(area):
 func _on_HitBox_body_entered(body):
 	if body.is_in_group("Enemy"):
 		hurt(40.0)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "MenuClose":
+		show_UI()

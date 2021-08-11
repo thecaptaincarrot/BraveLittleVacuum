@@ -16,7 +16,7 @@ var upgrade_on_deck = null
 func _ready():
 	player = $Player
 	Upgrades.PLAYER = $Player
-	
+	Globals.PLAYER = $Player
 	new_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +30,11 @@ func _input(event):
 			system_pause()
 		else:
 			system_unpause()
+	if event.is_action_pressed("ui_gamemenu"):
+		if !get_tree().paused:
+			mainmenu_pause()
+		else:
+			mainmenu_unpause()
 
 
 func nozzle_shoot(body):
@@ -37,6 +42,7 @@ func nozzle_shoot(body):
 	new_rock.position = nozzle.global_position
 	new_rock.collision_layer = 0
 	new_rock.collision_mask = 5
+	new_rock.damaging = true
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$LevelHolder.get_child(0).get_node("Clutter").call_deferred("add_child",new_rock)
 	new_rock.apply_central_impulse(vector * Upgrades.blow_force)
@@ -98,6 +104,21 @@ func menu_unpause():
 	if upgrade_on_deck != null:
 		Upgrades.upgrade(upgrade_on_deck)
 		upgrade_on_deck = null
+
+
+func mainmenu_pause():
+	$Overlay/InGameMenus/MainMenu.open()
+	player.hide_UI()
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func mainmenu_unpause():
+	$Overlay/InGameMenus/MainMenu.close()
+	if !paused:
+		get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#	player.show_UI() #done by signal
 
 
 func system_pause(): #This will obsolete when menu is fleshed out

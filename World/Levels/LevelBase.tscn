@@ -309,7 +309,9 @@ z_index = -1
 [node name="Water" type="Node2D" parent="World"]
 show_behind_parent = true
 
-[node name="TileMap" type="TileMap" parent="World"]
+[node name="TileMap" type="TileMap" parent="World" groups=[
+"World",
+]]
 z_index = -1
 tile_set = SubResource( 21 )
 cell_size = Vector2( 48, 48 )
