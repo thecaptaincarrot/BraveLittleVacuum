@@ -1,16 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menus/CenterTopMainMenu.png" type="Texture" id=1]
 [ext_resource path="res://Menus/MainMenuNinePatch.png" type="Texture" id=2]
 [ext_resource path="res://Menus/ExplodedDiagram.png" type="Texture" id=3]
-[ext_resource path="res://Menus/TextWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/SelectionRect.gd" type="Script" id=4]
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=5]
 [ext_resource path="res://UI/Draxel.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://UI/NinePatch.png" type="Texture" id=7]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "MenuClose"
-length = 0.75
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("NinePatchRect:rect_position")
@@ -19,7 +19,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.75 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -20, -74 ) ]
@@ -31,7 +31,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.75 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 640, 512 ), Vector2( 680, 609 ) ]
@@ -43,7 +43,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 0.75 ),
+"times": PoolRealArray( 0, 0.25, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 640, 512 ), Vector2( 640, 16 ), Vector2( 0, 16 ) ]
@@ -55,7 +55,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 0.75 ),
+"times": PoolRealArray( 0, 0.25, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 248 ), Vector2( 320, 248 ) ]
@@ -67,7 +67,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.75 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
@@ -138,8 +138,14 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 20
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
@@ -154,7 +160,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/MenuClose = SubResource( 3 )
+anims/MenuClose = SubResource( 1 )
 anims/MenuOpen = SubResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -162,29 +168,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 320.0
-margin_top = 248.0
-margin_right = 320.0
-margin_bottom = 264.0
+margin_right = 640.0
+margin_bottom = 512.0
 color = Color( 0, 0.141176, 0.239216, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MenuElements" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExplodedDiagram" type="Sprite" parent="MenuElements"]
+[node name="UpgradeMenu" type="Control" parent="MenuElements"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExplodedDiagram" type="Sprite" parent="MenuElements/UpgradeMenu"]
 position = Vector2( 337.533, 261.018 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 3 )
 
-[node name="Title" type="NinePatchRect" parent="MenuElements"]
+[node name="Title" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
 margin_left = 208.76
 margin_top = 7.4528
 margin_right = 437.76
@@ -198,7 +206,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MenuElements/Title"]
+[node name="Label" type="Label" parent="MenuElements/UpgradeMenu/Title"]
 modulate = Color( 0, 0.678431, 0.270588, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -206,7 +214,7 @@ margin_left = 6.0
 margin_top = 6.0
 margin_right = -6.0
 margin_bottom = -6.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Diagnostics Menu"
 align = 1
 valign = 2
@@ -216,83 +224,423 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChassiUpgrades" parent="MenuElements" instance=ExtResource( 4 )]
+[node name="NozzleUpgrades" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+margin_left = 24.4388
+margin_top = 156.857
+margin_right = 253.439
+margin_bottom = 281.857
+texture = ExtResource( 7 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/NozzleUpgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer"]
+margin_right = 213.0
+margin_bottom = 112.0
+
+[node name="NozzleUpgrades" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_right = 213.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 5 )
+text = "Nozzle Upgrades"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HSeparator" type="HSeparator" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 20.0
+margin_right = 213.0
+margin_bottom = 24.0
+
+[node name="BasicSuck" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 28.0
+margin_right = 213.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 5 )
+text = "Suck and Blow Motors"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/BasicSuck"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PoweredEjection" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 48.0
+margin_right = 213.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 5 )
+text = "Powered Ejection Accelerator"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/PoweredEjection"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Railgun" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 68.0
+margin_right = 213.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 5 )
+text = "Magnetic Rail Ejection System"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/Railgun"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 88.0
+margin_right = 213.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 5 )
+text = "------------------"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/Label5"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChassiUpgrades" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
 margin_left = 25.2063
 margin_top = 305.914
 margin_right = 254.206
 margin_bottom = 408.914
+texture = ExtResource( 7 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" parent="MenuElements/ChassiUpgrades/MarginContainer" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/ChassiUpgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer"]
+margin_right = 212.0
+margin_bottom = 92.0
+
+[node name="ChassisUpgrades" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_right = 212.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 5 )
+text = "Body Upgrades"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HSeparator2" type="HSeparator" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 20.0
+margin_right = 212.0
+margin_bottom = 24.0
+
+[node name="AuxPower" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 28.0
+margin_right = 212.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 5 )
+text = "Auxiliary Power Supply"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer/AuxPower"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Waterproofing" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 48.0
+margin_right = 212.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 5 )
+text = "Waterproofing"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer/Waterproofing"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Armor" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 68.0
+margin_right = 212.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 5 )
+text = "Dent-Resistant Coating"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer/Armor"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WheelUpgrades" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+margin_left = 387.0
+margin_top = 295.0
+margin_right = 616.0
+margin_bottom = 418.0
+texture = ExtResource( 7 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/WheelUpgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer"]
 margin_right = 213.0
-margin_bottom = 87.0
-text = "Chassis Upgrades
--Waterproofing
--Battery Packs
----------------
-----------------"
+margin_bottom = 107.0
 
-[node name="NozzleUpgrades" parent="MenuElements" instance=ExtResource( 4 )]
-margin_left = 24.9269
-margin_top = 149.284
-margin_right = 253.927
-margin_bottom = 252.284
-
-[node name="Label" parent="MenuElements/NozzleUpgrades/MarginContainer" index="0"]
+[node name="ChassisUpgrades" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_right = 213.0
-margin_bottom = 87.0
-text = "Nozzle Upgrades
--Basic Suction Motor
--Powered Ejection Accelerator
--------------------
--------------------"
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 5 )
+text = "Chassis Upgrades"
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="WheelUpgrades" parent="MenuElements" instance=ExtResource( 4 )]
-margin_left = 386.506
-margin_top = 294.696
-margin_right = 615.506
-margin_bottom = 397.696
-
-[node name="Label" parent="MenuElements/WheelUpgrades/MarginContainer" index="0"]
+[node name="HSeparator3" type="HSeparator" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 20.0
 margin_right = 213.0
-margin_bottom = 87.0
-text = "Wheel Upgrades
--Spring Actuators
--Hover Nozzles
--Speed Limit Delimiters
-----------------"
+margin_bottom = 24.0
 
-[node name="InfoPanel" parent="MenuElements" instance=ExtResource( 4 )]
-margin_left = 384.661
-margin_top = 122.137
-margin_right = 613.661
-margin_bottom = 225.137
-
-[node name="Label" parent="MenuElements/InfoPanel/MarginContainer" index="0"]
+[node name="LowFrictionCasters" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 28.0
 margin_right = 213.0
-margin_bottom = 87.0
-text = "Information
--Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 5 )
+text = "Low Friction Casters"
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Line2D" type="Line2D" parent="MenuElements"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/LowFrictionCasters"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpringActuators" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 48.0
+margin_right = 213.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 5 )
+text = "Spring Actuators"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/SpringActuators"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedDelimiters" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 68.0
+margin_right = 213.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 5 )
+text = "Speed Delimiters"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/SpeedDelimiters"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoverNozzles" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 88.0
+margin_right = 213.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 5 )
+text = "Hover Nozzles"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/HoverNozzles"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.470588 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoPanel" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+margin_left = 385.0
+margin_top = 122.0
+margin_right = 614.0
+margin_bottom = 231.0
+texture = ExtResource( 7 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/InfoPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuElements/UpgradeMenu/InfoPanel/MarginContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_right = 213.0
+margin_bottom = 93.0
+custom_fonts/normal_font = SubResource( 4 )
+text = "Information:
+"
+
+[node name="Line2D" type="Line2D" parent="MenuElements/UpgradeMenu"]
 points = PoolVector2Array( 248.745, 405.105, 294.598, 355.014 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
-[node name="Line2D2" type="Line2D" parent="MenuElements"]
+[node name="Line2D2" type="Line2D" parent="MenuElements/UpgradeMenu"]
 points = PoolVector2Array( 391.248, 393.089, 330.598, 412.116 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
-[node name="Line2D3" type="Line2D" parent="MenuElements"]
-points = PoolVector2Array( 248.591, 247.722, 311.276, 182.977 )
+[node name="Line2D3" type="Line2D" parent="MenuElements/UpgradeMenu"]
+points = PoolVector2Array( 248.635, 276.888, 311.276, 182.977 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = -20.0
-margin_top = -74.0
-margin_right = 660.0
-margin_bottom = 535.0
+margin_right = 640.0
+margin_bottom = 512.0
 texture = ExtResource( 2 )
 patch_margin_left = 20
 patch_margin_top = 140
@@ -314,10 +662,3 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-
-[editable path="MenuElements/ChassiUpgrades"]
-[editable path="MenuElements/NozzleUpgrades"]
-[editable path="MenuElements/WheelUpgrades"]
-[editable path="MenuElements/InfoPanel"]

@@ -115,9 +115,6 @@ func mainmenu_pause():
 
 func mainmenu_unpause():
 	$Overlay/InGameMenus/MainMenu.close()
-	if !paused:
-		get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 #	player.show_UI() #done by signal
 
 
@@ -148,3 +145,10 @@ func _on_UpgradeSphere_upgrade_collected(upgrade):
 	new_window.connect("menu_unpause",$Player/PlayerBody,"menu_unpause")
 	$Overlay/InGameMenus.add_child(new_window)
 	upgrade_on_deck = upgrade
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "MenuClose":
+			if !paused:
+				get_tree().paused = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
