@@ -12,11 +12,11 @@ func _ready():
 func _process(delta):
 	if fade:
 		if color.a > 0.05:
-			color.a -= 2 * delta / 3
+			color.a -= delta / 2 
 		else:
 			fade = false
 	elif !fade:
-		if color.a < 0.3:
-			color.a += 2 * delta / 3
+		if color.a < 0.4:
+			color.a += delta / 2
 		else:
 			fade = true

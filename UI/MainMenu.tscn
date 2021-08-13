@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Menus/CenterTopMainMenu.png" type="Texture" id=1]
 [ext_resource path="res://Menus/MainMenuNinePatch.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=5]
 [ext_resource path="res://UI/Draxel.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://UI/NinePatch.png" type="Texture" id=7]
+[ext_resource path="res://UI/DiagnosticsMenu.gd" type="Script" id=8]
+[ext_resource path="res://UI/DiagnosticsInfoPanel.gd" type="Script" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "MenuClose"
@@ -142,10 +144,10 @@ tracks/4/keys = {
 size = 20
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
@@ -168,31 +170,35 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_right = 640.0
-margin_bottom = 512.0
+margin_left = 320.0
+margin_top = 248.0
+margin_right = 320.0
+margin_bottom = 264.0
 color = Color( 0, 0.141176, 0.239216, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MenuElements" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpgradeMenu" type="Control" parent="MenuElements"]
+[node name="DiagnosticsMenu" type="Control" parent="MenuElements"]
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExplodedDiagram" type="Sprite" parent="MenuElements/UpgradeMenu"]
+[node name="ExplodedDiagram" type="Sprite" parent="MenuElements/DiagnosticsMenu"]
 position = Vector2( 337.533, 261.018 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 3 )
 
-[node name="Title" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+[node name="Title" type="NinePatchRect" parent="MenuElements/DiagnosticsMenu"]
 margin_left = 208.76
 margin_top = 7.4528
 margin_right = 437.76
@@ -206,7 +212,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MenuElements/UpgradeMenu/Title"]
+[node name="Label" type="Label" parent="MenuElements/DiagnosticsMenu/Title"]
 modulate = Color( 0, 0.678431, 0.270588, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -224,7 +230,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NozzleUpgrades" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+[node name="NozzleUpgrades" type="NinePatchRect" parent="MenuElements/DiagnosticsMenu"]
 margin_left = 24.4388
 margin_top = 156.857
 margin_right = 253.439
@@ -238,7 +244,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/NozzleUpgrades"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -249,38 +255,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer"]
 margin_right = 213.0
-margin_bottom = 112.0
+margin_bottom = 109.0
 
-[node name="NozzleUpgrades" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+[node name="NozzleUpgrades" type="Label" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_right = 213.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Nozzle Upgrades"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HSeparator" type="HSeparator" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 20.0
 margin_right = 213.0
 margin_bottom = 24.0
 
-[node name="BasicSuck" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+[node name="BasicSuck" type="Label" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 28.0
 margin_right = 213.0
 margin_bottom = 44.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Suck and Blow Motors"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/BasicSuck"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer/BasicSuck"]
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -290,18 +296,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PoweredEjection" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+[node name="PoweredEjection" type="Label" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 48.0
 margin_right = 213.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Powered Ejection Accelerator"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/PoweredEjection"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer/PoweredEjection"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -311,18 +318,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Railgun" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+[node name="Railgun" type="Label" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 68.0
 margin_right = 213.0
 margin_bottom = 84.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Magnetic Rail Ejection System"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/Railgun"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer/Railgun"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -332,18 +340,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label5" type="Label" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 88.0
 margin_right = 213.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/NozzleUpgrades/MarginContainer/VBoxContainer/Label5"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/NozzleUpgrades/MarginContainer/VBoxContainer/Label5"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -353,7 +362,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChassiUpgrades" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+[node name="ChassiUpgrades" type="NinePatchRect" parent="MenuElements/DiagnosticsMenu"]
 margin_left = 25.2063
 margin_top = 305.914
 margin_right = 254.206
@@ -367,7 +376,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/ChassiUpgrades"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -378,38 +387,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer"]
 margin_right = 212.0
-margin_bottom = 92.0
+margin_bottom = 87.0
 
-[node name="ChassisUpgrades" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+[node name="ChassisUpgrades" type="Label" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_right = 212.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Body Upgrades"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HSeparator2" type="HSeparator" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 20.0
 margin_right = 212.0
 margin_bottom = 24.0
 
-[node name="AuxPower" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+[node name="AuxPower" type="Label" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 28.0
 margin_right = 212.0
 margin_bottom = 44.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Auxiliary Power Supply"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer/AuxPower"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer/AuxPower"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -419,18 +429,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Waterproofing" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+[node name="Waterproofing" type="Label" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 48.0
 margin_right = 212.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Waterproofing"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer/Waterproofing"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer/Waterproofing"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -440,18 +451,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Armor" type="Label" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
+[node name="Armor" type="Label" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 68.0
 margin_right = 212.0
 margin_bottom = 84.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Dent-Resistant Coating"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/ChassiUpgrades/MarginContainer/VBoxContainer/Armor"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/ChassiUpgrades/MarginContainer/VBoxContainer/Armor"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -461,7 +473,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WheelUpgrades" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+[node name="WheelUpgrades" type="NinePatchRect" parent="MenuElements/DiagnosticsMenu"]
 margin_left = 387.0
 margin_top = 295.0
 margin_right = 616.0
@@ -475,7 +487,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/WheelUpgrades"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/DiagnosticsMenu/WheelUpgrades"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -486,38 +498,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer"]
 margin_right = 213.0
 margin_bottom = 107.0
 
-[node name="ChassisUpgrades" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+[node name="ChassisUpgrades" type="Label" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_right = 213.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Chassis Upgrades"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HSeparator3" type="HSeparator" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 20.0
 margin_right = 213.0
 margin_bottom = 24.0
 
-[node name="LowFrictionCasters" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+[node name="LowFrictionCasters" type="Label" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 28.0
 margin_right = 213.0
 margin_bottom = 44.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Low Friction Casters"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/LowFrictionCasters"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer/LowFrictionCasters"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -527,18 +540,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpringActuators" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+[node name="SpringActuators" type="Label" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 48.0
 margin_right = 213.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Spring Actuators"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/SpringActuators"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer/SpringActuators"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -548,18 +562,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpeedDelimiters" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+[node name="SpeedDelimiters" type="Label" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 68.0
 margin_right = 213.0
 margin_bottom = 84.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Speed Delimiters"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/SpeedDelimiters"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer/SpeedDelimiters"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -569,18 +584,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HoverNozzles" type="Label" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
+[node name="HoverNozzles" type="Label" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_top = 88.0
 margin_right = 213.0
 margin_bottom = 104.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Hover Nozzles"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SelectionRect" type="ColorRect" parent="MenuElements/UpgradeMenu/WheelUpgrades/MarginContainer/VBoxContainer/HoverNozzles"]
+[node name="SelectionRect" type="ColorRect" parent="MenuElements/DiagnosticsMenu/WheelUpgrades/MarginContainer/VBoxContainer/HoverNozzles"]
+visible = false
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -590,21 +606,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InfoPanel" type="NinePatchRect" parent="MenuElements/UpgradeMenu"]
+[node name="InfoPanel" type="NinePatchRect" parent="MenuElements/DiagnosticsMenu"]
 margin_left = 385.0
 margin_top = 122.0
 margin_right = 614.0
-margin_bottom = 231.0
+margin_bottom = 238.0
 texture = ExtResource( 7 )
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuElements/UpgradeMenu/InfoPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="MenuElements/DiagnosticsMenu/InfoPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -615,32 +632,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MenuElements/UpgradeMenu/InfoPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuElements/DiagnosticsMenu/InfoPanel/MarginContainer"]
+margin_right = 213.0
+margin_bottom = 100.0
+
+[node name="Title" type="Label" parent="MenuElements/DiagnosticsMenu/InfoPanel/MarginContainer/VBoxContainer"]
 self_modulate = Color( 0, 0.678431, 0.270588, 1 )
 margin_right = 213.0
-margin_bottom = 93.0
-custom_fonts/normal_font = SubResource( 4 )
-text = "Information:
-"
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+custom_fonts/font = SubResource( 5 )
+text = "Information:"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Line2D" type="Line2D" parent="MenuElements/UpgradeMenu"]
+[node name="InfoBubble" type="Label" parent="MenuElements/DiagnosticsMenu/InfoPanel/MarginContainer/VBoxContainer"]
+self_modulate = Color( 0, 0.678431, 0.270588, 1 )
+margin_top = 20.0
+margin_right = 213.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 80 )
+custom_fonts/font = SubResource( 5 )
+text = "Stock vacuum suction motor. Right Click to suck objects into your tank and left click to fire them out."
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bubble" type="Timer" parent="MenuElements/DiagnosticsMenu/InfoPanel"]
+wait_time = 0.003
+
+[node name="Line2D" type="Line2D" parent="MenuElements/DiagnosticsMenu"]
 points = PoolVector2Array( 248.745, 405.105, 294.598, 355.014 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
-[node name="Line2D2" type="Line2D" parent="MenuElements/UpgradeMenu"]
+[node name="Line2D2" type="Line2D" parent="MenuElements/DiagnosticsMenu"]
 points = PoolVector2Array( 391.248, 393.089, 330.598, 412.116 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
-[node name="Line2D3" type="Line2D" parent="MenuElements/UpgradeMenu"]
+[node name="Line2D3" type="Line2D" parent="MenuElements/DiagnosticsMenu"]
 points = PoolVector2Array( 248.635, 276.888, 311.276, 182.977 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_right = 640.0
-margin_bottom = 512.0
+margin_left = -20.0
+margin_top = -74.0
+margin_right = 660.0
+margin_bottom = 535.0
 texture = ExtResource( 2 )
 patch_margin_left = 20
 patch_margin_top = 140
@@ -662,3 +707,5 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[connection signal="timeout" from="MenuElements/DiagnosticsMenu/InfoPanel/Bubble" to="MenuElements/DiagnosticsMenu/InfoPanel" method="_on_bubble_timeout"]
