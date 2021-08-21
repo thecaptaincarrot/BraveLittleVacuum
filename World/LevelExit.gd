@@ -11,13 +11,12 @@ export (String, "RIGHT", "LEFT", "UP", "DOWN" ) var enter_direction #Direction t
 var mouse_in = false
 
 signal level_exit
+signal level_exit_exit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if !Engine.editor_hint:
 		$Node2D.hide()
-	
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,3 +53,8 @@ func _on_LevelExit_body_entered(body):
 					vector = Vector2(0,1)
 			print("Vector ",body.max_speed * -vector)
 			body.force_move_vector = body.max_speed * -vector
+
+
+func _on_LevelExit_body_exited(body):
+	if body.is_in_group("Player"):
+		emit_signal("level_exit_exit")

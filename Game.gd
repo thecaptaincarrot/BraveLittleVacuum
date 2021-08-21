@@ -59,6 +59,7 @@ func new_game():
 
 
 func goto_new_level(levelcode, exit : int):
+	print("Level Code: ", levelcode)
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -81,6 +82,7 @@ func goto_new_level(levelcode, exit : int):
 	player.camera.limit_bottom = bounding_box_pos.y + bounding_box_size.y
 	
 	print(player.camera.limit_left)
+	print(current_level.name)
 	#Palyer stuff
 	player.place_body(current_level.get_entry(exit))
 	yield(get_tree().create_timer(0.5), "timeout")

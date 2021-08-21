@@ -31,3 +31,4 @@ scale = Vector2( 10, 10 )
 cast_to = Vector2( -5, 0 )
 
 [connection signal="body_entered" from="." to="." method="_on_LevelExit_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_LevelExit_body_exited"]

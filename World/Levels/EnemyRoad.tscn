@@ -24,12 +24,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Level" instance=ExtResource( 1 )]
+[node name="EnemyRoad" instance=ExtResource( 1 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Enemies" index="0"]
 position = Vector2( 481.625, 447.721 )
 frames = SubResource( 4 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
@@ -50,7 +50,7 @@ tile_data = PoolIntArray( 65551, 0, 0, 720892, 0, 65536, 720893, 0, 2, 720894, 0
 position = Vector2( 0, 432 )
 
 [node name="Entry1" parent="." index="5"]
-position = Vector2( 920.674, 425.265 )
+position = Vector2( 822.674, 419.265 )
 
 [node name="CameraBound" parent="." index="9"]
 margin_left = -56.0
