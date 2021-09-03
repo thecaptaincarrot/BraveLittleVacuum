@@ -2,7 +2,7 @@ extends Control
 
 signal animation_finished
 
-enum {DIAGNOSTICS}
+enum {DIAGNOSTICS, MAP, MAINMENU}
 
 var open_menu = DIAGNOSTICS
 
@@ -16,6 +16,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	pass
+
+
+func change_menu(new_menu):#new_menu is an enum
 	pass
 
 
@@ -36,3 +40,5 @@ func close():
 func  hide_all():
 	for menu in $MenuElements.get_children():
 		menu.hide()
+
+

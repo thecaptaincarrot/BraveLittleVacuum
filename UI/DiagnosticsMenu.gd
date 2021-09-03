@@ -12,6 +12,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !visible:
+		return
 	var information
 	var new_selection
 	match upgrade_selection:
