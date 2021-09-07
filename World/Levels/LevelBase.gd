@@ -30,6 +30,10 @@ func get_entry(entry_number):
 			return $Entry4.position
 
 
+func get_exit(exit_number):
+	return $Exits.get_child(exit_number)
+
+
 func get_exits():
 	return $Exits.get_children()
 

@@ -35,6 +35,10 @@ func _process(delta):
 				$Node2D/RayCast2D.cast_to = Vector2(0,5)
 
 
+func monitor_timeout():
+	$Timer.start()
+
+
 func _on_LevelExit_body_entered(body):
 	if body.is_in_group("Player"):
 		print("Emitting Signal")
@@ -58,3 +62,8 @@ func _on_LevelExit_body_entered(body):
 func _on_LevelExit_body_exited(body):
 	if body.is_in_group("Player"):
 		emit_signal("level_exit_exit")
+
+
+func _on_Timer_timeout():
+	monitoring = true
+	monitorable = true

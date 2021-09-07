@@ -321,16 +321,6 @@ compatibility_mode = true
 format = 1
 tile_data = PoolIntArray( 65551, 0, 0 )
 
-[node name="Entry0" type="Position2D" parent="."]
-
-[node name="Entry1" type="Position2D" parent="."]
-
-[node name="Entry2" type="Position2D" parent="."]
-
-[node name="Entry3" type="Position2D" parent="."]
-
-[node name="Entry4" type="Position2D" parent="."]
-
 [node name="CameraBound" type="Control" parent="."]
 margin_left = -136.0
 margin_right = 864.0

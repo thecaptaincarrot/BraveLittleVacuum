@@ -19,13 +19,14 @@ var update_line = false
 
 var gravity = 9.8
 var inertia = 100
-var hurt_damage_vector = Vector2(500,-500)
+var hurt_damage_vector = Vector2(200,-200)
 
 var health = 100.0
 var max_health = 100.0
 var invulnerable = false
 
 var is_in_water = false
+var input_disabled = false
 
 signal shoot
 
@@ -74,6 +75,8 @@ func hurt(damage):
 	else:
 		var new_vector = Vector2(-hurt_damage_vector.x, hurt_damage_vector.y)
 		$PlayerBody.motion = new_vector
+	input_disabled = true
+	$PlayerBody/InputEater.start()
 
 
 func update_health():
@@ -83,6 +86,7 @@ func update_health():
 
 func deactivate():
 	invulnerable = true
+	input_disabled = true
 #	$PlayerBody.set_process(false)
 #	$PlayerBody.set_physics_process(false)
 #	$PlayerBody.set_process_input(false)
@@ -93,13 +97,15 @@ func deactivate():
 	nozzle.set_process_input(false)
 
 
+func queue_activate():
+	yield(get_tree().create_timer(0.5),"timeout")
+	activate()
+
+
 func activate():
 	invulnerable = false
 	$PlayerBody.force_move = false
-	$PlayerBody.set_process(true)
-	$PlayerBody.set_physics_process(true)
-	$PlayerBody.set_process_input(true)
-	$PlayerBody.motion = Vector2(0,0)
+	input_disabled = false
 	
 	nozzle.set_process(true)
 	nozzle.set_physics_process(true)
@@ -307,3 +313,7 @@ func _on_HitBox_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "MenuClose":
 		show_UI()
+
+
+func _on_InputEater_timeout():
+	input_disabled = false

@@ -44,8 +44,14 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if force_move:
-		motion = force_move_vector
+		if force_move_vector.y == 0:
+			motion.x = force_move_vector.x
+			motion.y += Globals.GRAVITY
+		else:
+			motion = force_move_vector
 		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+		print("motion: ",motion)
+		print("force_move: ",force_move_vector)
 	else:
 		movement(delta)
 	
@@ -82,6 +88,11 @@ func movement(delta):
 			motion.y += gravity / 5
 	else:
 		motion.y = 0
+	
+	if get_parent().input_disabled:
+		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+		return
+		
 	
 	#"""Horizontal""" movement
 	var horizontal_vector = Vector2(1,0)

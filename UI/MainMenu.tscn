@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Menus/CenterTopMainMenu.png" type="Texture" id=1]
 [ext_resource path="res://Menus/MainMenuNinePatch.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://UI/Placeholder.gd" type="Script" id=10]
 [ext_resource path="res://UI/SystemMenu.gd" type="Script" id=11]
 [ext_resource path="res://UI/MainMenuSelectors.png" type="Texture" id=12]
+[ext_resource path="res://UI/MapMenu.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "MenuClose"
@@ -177,8 +178,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_right = 640.0
-margin_bottom = 512.0
+margin_left = 320.0
+margin_top = 248.0
+margin_right = 320.0
+margin_bottom = 264.0
 color = Color( 0, 0.141176, 0.239216, 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -186,6 +189,7 @@ __meta__ = {
 }
 
 [node name="MenuElements" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -193,6 +197,7 @@ __meta__ = {
 }
 
 [node name="DiagnosticsMenu" type="Control" parent="MenuElements"]
+visible = false
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -686,8 +691,65 @@ points = PoolVector2Array( 248.635, 276.888, 311.276, 182.977 )
 width = 4.0
 default_color = Color( 0, 0.698039, 0.270588, 1 )
 
-[node name="SystemMenu" type="Control" parent="MenuElements"]
+[node name="MapMenu" type="Control" parent="MenuElements"]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="NinePatchRect" parent="MenuElements/MapMenu"]
+margin_left = 208.76
+margin_top = 7.4528
+margin_right = 437.76
+margin_bottom = 101.453
+texture = ExtResource( 7 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MenuElements/MapMenu/Title"]
+modulate = Color( 0, 0.678431, 0.270588, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+custom_fonts/font = SubResource( 3 )
+text = "Map Menu"
+align = 1
+valign = 2
+clip_text = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Label" parent="MenuElements/MapMenu"]
+modulate = Color( 0, 0.678431, 0.270588, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 216.0
+margin_top = 128.0
+margin_right = 424.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 6 )
+text = "PLACEHOLDER"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SystemMenu" type="Control" parent="MenuElements"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
@@ -718,7 +780,7 @@ margin_top = 6.0
 margin_right = -6.0
 margin_bottom = -6.0
 custom_fonts/font = SubResource( 3 )
-text = "Main Menu"
+text = "System Menu"
 align = 1
 valign = 2
 clip_text = true
@@ -762,8 +824,8 @@ __meta__ = {
 }
 
 [node name="Placeholder" type="Label" parent="MenuElements/SystemMenu"]
-visible = false
 modulate = Color( 0, 0.678431, 0.270588, 1 )
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 216.0
@@ -803,8 +865,10 @@ scale = Vector2( 0.283626, 0.283626 )
 texture = ExtResource( 12 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_right = 640.0
-margin_bottom = 512.0
+margin_left = -20.0
+margin_top = -74.0
+margin_right = 660.0
+margin_bottom = 535.0
 texture = ExtResource( 2 )
 patch_margin_left = 20
 patch_margin_top = 140
@@ -826,4 +890,9 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[connection signal="next" from="MenuElements/DiagnosticsMenu" to="." method="go_to_map"]
+[connection signal="previous" from="MenuElements/DiagnosticsMenu" to="." method="go_to_system"]
 [connection signal="timeout" from="MenuElements/DiagnosticsMenu/InfoPanel/Bubble" to="MenuElements/DiagnosticsMenu/InfoPanel" method="_on_bubble_timeout"]
+[connection signal="next" from="MenuElements/MapMenu" to="." method="go_to_system"]
+[connection signal="previous" from="MenuElements/MapMenu" to="." method="go_to_diagnostics"]

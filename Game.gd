@@ -29,7 +29,7 @@ func _input(event):
 		if !get_tree().paused:
 			system_pause()
 		else:
-			system_unpause()
+			mainmenu_unpause()
 	if event.is_action_pressed("ui_gamemenu"):
 		if !get_tree().paused:
 			mainmenu_pause()
@@ -65,6 +65,7 @@ func goto_new_level(levelcode, exit : int):
 	yield(get_tree().create_timer(0.5), "timeout")
 	if current_level:
 		current_level.queue_free()
+		current_level = null
 	if LevelDecoder.level_dict.has(levelcode):
 		current_level = add_level(levelcode)
 	else:
@@ -72,6 +73,10 @@ func goto_new_level(levelcode, exit : int):
 		current_level = add_level(0)
 		print(LevelDecoder.level_dict)
 	print("went to new level: ",current_level.name)
+	
+	var exit_obj = current_level.get_exit(exit)
+	exit_obj.monitoring = false
+	exit_obj.monitorable = false
 	#Camera stuff
 	var bounding_box_pos = current_level.get_camera_bounds()[0]
 	var bounding_box_size = current_level.get_camera_bounds()[1]
@@ -80,14 +85,26 @@ func goto_new_level(levelcode, exit : int):
 	player.camera.limit_right = bounding_box_pos.x + bounding_box_size.x
 	player.camera.limit_top = bounding_box_pos.y
 	player.camera.limit_bottom = bounding_box_pos.y + bounding_box_size.y
-	
-	print(player.camera.limit_left)
-	print(current_level.name)
 	#Palyer stuff
-	player.place_body(current_level.get_entry(exit))
-	yield(get_tree().create_timer(0.5), "timeout")
+	player.place_body(exit_obj.global_position)
+	player.body.motion = Vector2(0,0)
 	$Overlay/ColorOverlay.fadeout = false
-	player.activate()
+	player.body.force_move_vector = Vector2(0,0)
+	print("Enter Direction: ", exit_obj.enter_direction)
+	match exit_obj.enter_direction:
+		"RIGHT":
+			print("Right")
+			player.body.force_move_vector = Vector2(150,0)
+		"LEFT":
+			print("Left")
+			player.body.force_move_vector = Vector2(-150,0)
+			print(player.body.force_move)
+		"UP":
+			player.body.force_move_vector = Vector2(0,-100)
+		"DOWN":
+			player.body.force_move_vector = Vector2(0,100)
+	player.queue_activate()
+	exit_obj.monitor_timeout()
 	
 
 func add_level(levelcode):
@@ -121,18 +138,10 @@ func mainmenu_unpause():
 
 
 func system_pause(): #This will obsolete when menu is fleshed out
-	$Overlay/InGameMenus.pause_mode = Node.PAUSE_MODE_STOP
+	$Overlay/InGameMenus/MainMenu.open_system_menu()
+	player.hide_UI()
 	get_tree().paused = true
-	$Overlay/UI/Pause.show()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-
-func system_unpause():
-	$Overlay/InGameMenus.pause_mode = Node.PAUSE_MODE_PROCESS
-	if !paused:
-		get_tree().paused = false
-	$Overlay/UI/Pause.hide()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _on_UpgradeSphere_upgrade_collected(upgrade):

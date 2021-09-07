@@ -1,6 +1,10 @@
 extends Control
 
 var selection = 0
+var active = false
+
+signal close_menu
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,3 +30,13 @@ func _unhandled_input(event):
 			selection = 0
 		else:
 			selection += 1
+	elif event.is_action_pressed("ui_accept"):
+		match selection:
+			0:
+				emit_signal("close_menu")
+			1:
+				$Placeholder.self_modulate.a = 1.0
+			2:
+				get_tree().quit()
+	elif event.is_action_pressed("ui_cancel"):
+		pass #exit menu

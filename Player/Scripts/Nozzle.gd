@@ -77,7 +77,7 @@ func _physics_process(delta):
 	else:
 #		emit_signal("collide_hose")
 		collision_layer = 2
-		collision_mask = 2
+		collision_mask = 3
 
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)

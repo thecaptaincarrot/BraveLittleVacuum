@@ -3,6 +3,11 @@ extends Control
 var upgrade_selection = Vector2(0,0)
 var selected_label
 
+var active = false
+
+signal next
+signal previous
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,27 +68,27 @@ func _process(delta):
 func _unhandled_input(event):
 	if !visible:
 		return
+	print("diagnostic input detected")
 	if event.is_action_pressed("ui_down"):
 		upgrade_selection.y += 1
 		if upgrade_selection == Vector2(0,7):
 			upgrade_selection = Vector2(0,0)
 		elif upgrade_selection == Vector2(1,7):
 			upgrade_selection = Vector2(1,3)
-	if event.is_action_pressed("ui_up"):
+	elif event.is_action_pressed("ui_up"):
 		upgrade_selection.y -= 1
 		if upgrade_selection == Vector2(0,-1):
 			upgrade_selection = Vector2(0,6)
 		elif upgrade_selection == Vector2(1,2):
 			upgrade_selection = Vector2(1,6)
-	if event.is_action_pressed("ui_left"):
+	elif event.is_action_pressed("ui_left"):
 		if upgrade_selection.x == 0:
 			pass
 			#go left on the menu
 		else: upgrade_selection.x = 0
-	if event.is_action_pressed("ui_right"):
+	elif event.is_action_pressed("ui_right"):
 		if upgrade_selection.x == 1:
-			pass
-			#go left on the menu
+			emit_signal("next")
 		else: 
 			upgrade_selection.x = 1
 			if upgrade_selection.y < 3:

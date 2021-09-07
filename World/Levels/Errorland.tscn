@@ -67,12 +67,8 @@ position = Vector2( 279.493, 255.921 )
 [node name="Rock20" parent="Clutter" index="19" instance=ExtResource( 4 )]
 position = Vector2( 279.493, 255.921 )
 
-[node name="Mutant" parent="Enemies" index="0" groups=[
-"Enemy",
-] instance=ExtResource( 3 )]
+[node name="Mutant" parent="Enemies" index="0" instance=ExtResource( 3 )]
 position = Vector2( 681.235, 434.91 )
-collision_layer = 4
-asymetrical = true
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1144, 160 )

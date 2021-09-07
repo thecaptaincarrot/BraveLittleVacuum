@@ -33,25 +33,18 @@ frame = 2
 playing = true
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
-position = Vector2( -80, 424 )
+position = Vector2( -80, 472 )
 level_code = 9
-target_exit = 1
 enter_direction = "RIGHT"
 
 [node name="LevelExit2" parent="Exits" index="1" instance=ExtResource( 2 )]
-position = Vector2( 920, 424 )
+position = Vector2( 920, 464 )
 level_code = 2
 enter_direction = "LEFT"
 
 [node name="TileMap" parent="World" index="1"]
 tile_data = PoolIntArray( 65551, 0, 0, 720892, 0, 65536, 720893, 0, 2, 720894, 0, 2, 720895, 0, 2, 655360, 0, 2, 655361, 0, 2, 655362, 0, 2, 655363, 0, 2, 655364, 0, 2, 655365, 0, 2, 655366, 0, 2, 655367, 0, 2, 655368, 0, 2, 655369, 0, 2, 655370, 0, 2, 655371, 0, 2, 655372, 0, 2, 655373, 0, 2, 655374, 0, 2, 655375, 0, 2, 655376, 0, 2, 655377, 0, 2, 655378, 0, 2, 655379, 0, 2, 655380, 0, 3, 786428, 0, 262145, 786429, 0, 262146, 786430, 0, 262146, 786431, 0, 262146, 720896, 0, 262146, 720897, 0, 262146, 720898, 0, 262146, 720899, 0, 262146, 720900, 0, 262146, 720901, 0, 262146, 720902, 0, 262146, 720903, 0, 262146, 720904, 0, 262146, 720905, 0, 262146, 720906, 0, 262146, 720907, 0, 262146, 720908, 0, 262146, 720909, 0, 262146, 720910, 0, 262146, 720911, 0, 262146, 720912, 0, 262146, 720913, 0, 262146, 720914, 0, 262146, 720915, 0, 262146, 720916, 0, 196612 )
 
-[node name="Entry0" parent="." index="4"]
-position = Vector2( 0, 432 )
-
-[node name="Entry1" parent="." index="5"]
-position = Vector2( 822.674, 419.265 )
-
-[node name="CameraBound" parent="." index="9"]
-margin_left = -56.0
-margin_right = 896.0
+[node name="CameraBound" parent="." index="4"]
+margin_left = -57.3348
+margin_right = 894.665
