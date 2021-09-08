@@ -68,7 +68,6 @@ func _process(delta):
 func _unhandled_input(event):
 	if !visible:
 		return
-	print("diagnostic input detected")
 	if event.is_action_pressed("ui_down"):
 		upgrade_selection.y += 1
 		if upgrade_selection == Vector2(0,7):

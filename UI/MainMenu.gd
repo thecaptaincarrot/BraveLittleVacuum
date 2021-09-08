@@ -76,11 +76,9 @@ func  hide_all():
 	for menu in $MenuElements.get_children():
 		menu.hide()
 		menu.active = false
-		print(menu.visible)
 
 
 func go_to_diagnostics():
-	print("go_to_diadnostics")
 	hide_all()
 	open_menu = DIAGNOSTICS
 	$MenuElements/DiagnosticsMenu.show()
@@ -89,7 +87,6 @@ func go_to_diagnostics():
 
 
 func go_to_system():
-	print("go to system")
 	hide_all()
 	open_menu = SYSTEM
 	$MenuElements/SystemMenu.show()
@@ -98,7 +95,6 @@ func go_to_system():
 
 
 func go_to_map():
-	print("go to map")
 	hide_all()
 	open_menu = MAP
 	$MenuElements/MapMenu.show()

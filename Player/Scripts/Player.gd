@@ -87,10 +87,6 @@ func update_health():
 func deactivate():
 	invulnerable = true
 	input_disabled = true
-#	$PlayerBody.set_process(false)
-#	$PlayerBody.set_physics_process(false)
-#	$PlayerBody.set_process_input(false)
-#	$PlayerBody.motion = Vector2(0,0)
 	
 	nozzle.set_process(false)
 	nozzle.set_physics_process(false)
@@ -114,9 +110,11 @@ func activate():
 
 func place_body(new_position):
 	$PlayerBody.position = new_position
-	nozzle.position = Vector2(0,-64)
+#	nozzle.position = Vector2(0,-64)
 	for segment in hose_segments:
-		segment.position = Vector2(0,-16)
+		if segment.name != "HoseStart":
+			pass
+
 
 #HOSE STUFF
 func create_hose_skeleton(length):

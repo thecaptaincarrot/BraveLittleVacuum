@@ -63,20 +63,22 @@ func goto_new_level(levelcode, exit : int):
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
+	var new_level = null
 	if current_level:
 		current_level.queue_free()
 		current_level = null
 	if LevelDecoder.level_dict.has(levelcode):
-		current_level = add_level(levelcode)
+		new_level = add_level(levelcode)
+		current_level = new_level
 	else:
 		print("***ERROR TRIED TO GO TO INVALID LEVEL ",levelcode,"***")
-		current_level = add_level(0)
+		new_level = add_level(0)
+		current_level = new_level
 		print(LevelDecoder.level_dict)
 	print("went to new level: ",current_level.name)
 	
-	var exit_obj = current_level.get_exit(exit)
-	exit_obj.monitoring = false
-	exit_obj.monitorable = false
+	var exit_obj = new_level.get_exit(exit)
+	exit_obj.active = false
 	#Camera stuff
 	var bounding_box_pos = current_level.get_camera_bounds()[0]
 	var bounding_box_size = current_level.get_camera_bounds()[1]
@@ -87,24 +89,11 @@ func goto_new_level(levelcode, exit : int):
 	player.camera.limit_bottom = bounding_box_pos.y + bounding_box_size.y
 	#Palyer stuff
 	player.place_body(exit_obj.global_position)
-	player.body.motion = Vector2(0,0)
+	player.body.inactive = true
+	yield(get_tree().create_timer(0.5),"timeout")
+	player.body.inactive = false
 	$Overlay/ColorOverlay.fadeout = false
-	player.body.force_move_vector = Vector2(0,0)
 	print("Enter Direction: ", exit_obj.enter_direction)
-	match exit_obj.enter_direction:
-		"RIGHT":
-			print("Right")
-			player.body.force_move_vector = Vector2(150,0)
-		"LEFT":
-			print("Left")
-			player.body.force_move_vector = Vector2(-150,0)
-			print(player.body.force_move)
-		"UP":
-			player.body.force_move_vector = Vector2(0,-100)
-		"DOWN":
-			player.body.force_move_vector = Vector2(0,100)
-	player.queue_activate()
-	exit_obj.monitor_timeout()
 	
 
 func add_level(levelcode):

@@ -4,6 +4,7 @@ var motion = Vector2()
 
 var inactive = false
 var force_move = false
+var exiting = false
 
 var force_move_vector = Vector2(0,0)
 
@@ -28,6 +29,10 @@ func _ready():
 
 
 func _process(delta):
+	if inactive: 
+		print("inactive")
+		return
+		
 	if is_on_floor() and (!can_hover or $HoverTimer.time_left < $HoverTimer.wait_time):
 		can_hover = true
 		$HoverTimer.paused = false
@@ -43,15 +48,16 @@ func _process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if inactive: return
 	if force_move:
+		print(force_move)
+		print(force_move_vector)
 		if force_move_vector.y == 0:
 			motion.x = force_move_vector.x
 			motion.y += Globals.GRAVITY
 		else:
 			motion = force_move_vector
 		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
-		print("motion: ",motion)
-		print("force_move: ",force_move_vector)
 	else:
 		movement(delta)
 	
@@ -124,7 +130,6 @@ func movement(delta):
 	#Jumping
 	#need to check whether jumping has been unlocked globally
 	if Input.is_action_just_pressed("Jump") and is_on_floor() and Upgrades.jump:
-		print("JUMP")
 		motion.y = 0
 		motion.y -= jump_impulse
 	
@@ -133,7 +138,6 @@ func movement(delta):
 		is_hovering = false
 
 	if !is_on_floor() and can_hover and Input.is_action_just_pressed("Jump"):
-		print("I am hovering")
 		is_hovering = true
 		can_hover = false
 		if $HoverTimer.is_stopped():
@@ -141,7 +145,6 @@ func movement(delta):
 		else:
 			$HoverTimer.paused = false
 	if is_hovering and !Input.is_action_pressed("Jump"):
-		print("I stopped hovering on purpose")
 		is_hovering = false
 		if !$HoverTimer.is_stopped():
 			can_hover = true
@@ -155,5 +158,4 @@ func menu_unpause():
 
 
 func _on_HoverTimer_timeout():
-	print("Fuck I fell out of the sky!")
 	is_hovering = false

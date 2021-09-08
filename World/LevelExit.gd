@@ -6,6 +6,8 @@ export var target_exit = 0
 
 var exit_speed = 200 #should this be done on the player level?
 
+var active = true
+
 export (String, "RIGHT", "LEFT", "UP", "DOWN" ) var enter_direction #Direction to enter, exit is opposite
 
 var mouse_in = false
@@ -41,11 +43,27 @@ func monitor_timeout():
 
 func _on_LevelExit_body_entered(body):
 	if body.is_in_group("Player"):
-		print("Emitting Signal")
-		emit_signal("level_exit",level_code,target_exit)
-		if !body.force_move:
+		if active and !body.exiting:
+			print("Emitting Signal")
+			emit_signal("level_exit",level_code,target_exit)
+			if !body.force_move:
+				body.force_move = true
+				var vector = Vector2(0,0)
+				match enter_direction:
+					"RIGHT":
+						vector = Vector2(1,0)
+					"LEFT":
+						vector = Vector2(-1,0)
+					"UP":
+						vector = Vector2(0,-1)
+					"DOWN":
+						vector = Vector2(0,1)
+				print("Vector ",body.max_speed * -vector)
+				body.force_move_vector = body.max_speed * -vector
+				body.exiting = true
+		elif !active:
 			body.force_move = true
-			var vector = Vector2(0,0)
+			var vector = Vector2(1,0)
 			match enter_direction:
 				"RIGHT":
 					vector = Vector2(1,0)
@@ -55,13 +73,16 @@ func _on_LevelExit_body_entered(body):
 					vector = Vector2(0,-1)
 				"DOWN":
 					vector = Vector2(0,1)
-			print("Vector ",body.max_speed * -vector)
-			body.force_move_vector = body.max_speed * -vector
-
+			print("Vector ",body.max_speed * vector)
+			body.force_move_vector = body.max_speed * vector
 
 func _on_LevelExit_body_exited(body):
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and !active:
+		print("Bye Player")
 		emit_signal("level_exit_exit")
+		active = true
+		body.get_parent().activate()
+		body.exiting = false
 
 
 func _on_Timer_timeout():
