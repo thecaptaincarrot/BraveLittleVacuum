@@ -81,5 +81,5 @@ tile_data = PoolIntArray( 65533, 0, 1, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 
 
 [node name="CameraBound" parent="." index="4"]
 margin_left = -64.0
-margin_right = 1304.0
+margin_right = 1120.0
 margin_bottom = 640.0
