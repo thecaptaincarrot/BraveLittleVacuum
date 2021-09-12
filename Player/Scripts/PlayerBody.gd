@@ -114,6 +114,8 @@ func movement(delta):
 			motion -= horizontal_vector * (acceleration)
 	
 	elif is_on_floor():
+		if is_hovering:
+			is_hovering = false
 		motion.x = lerp(motion.x, 0,(max_speed / motion.length()) * neutral_drag)
 	
 	#Clamp
@@ -127,8 +129,10 @@ func movement(delta):
 	#Jumping
 	#need to check whether jumping has been unlocked globally
 	if Input.is_action_just_pressed("Jump") and is_on_floor() and Upgrades.jump:
+		$JumpSound.play()
 		motion.y = 0
 		motion.y -= jump_impulse
+		
 	
 	#Hover
 	if is_on_floor():

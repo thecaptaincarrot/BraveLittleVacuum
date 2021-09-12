@@ -24,10 +24,8 @@ func _physics_process(delta):
 
 
 func collision(body,collision_speed):
-	print(body)
 	if body.damaging:
 		var damage = 1
-		hurt(damage)
 		print("new_health: ", health)
 		if health <= 0:
 			die()

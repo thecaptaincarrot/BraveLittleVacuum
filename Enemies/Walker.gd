@@ -56,6 +56,5 @@ func walk():
 
 
 func die():
-	print("DEAD")
 	state = DEAD
 	collision_layer = 0

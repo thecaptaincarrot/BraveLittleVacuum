@@ -87,7 +87,6 @@ func _process(delta):
 
 
 func hurt(damage):
-	print("Ouch")
 	if state != ATTACK:
 		state = HURT
 	health -= damage
