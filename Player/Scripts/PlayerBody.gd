@@ -21,7 +21,7 @@ var downhill = false
 var can_hover = true
 var is_hovering = false
 
-var jump_impulse = 300
+var jump_impulse = 340
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +30,6 @@ func _ready():
 
 func _process(delta):
 	if inactive: 
-		print("inactive")
 		return
 		
 	if is_on_floor() and (!can_hover or $HoverTimer.time_left < $HoverTimer.wait_time):
@@ -50,8 +49,6 @@ func _process(delta):
 func _physics_process(delta):
 	if inactive: return
 	if force_move:
-		print(force_move)
-		print(force_move_vector)
 		if force_move_vector.y == 0:
 			motion.x = force_move_vector.x
 			motion.y += Globals.GRAVITY
