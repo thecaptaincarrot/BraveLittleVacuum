@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mutant_1_sheet-Sheet.png-e288ca7982b472615f50550be4f991cc.stex"
+path="res://.import/Mutant_1_sheet.png-6dba8edb8013bf8de9cc72acb3a68e98.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Mutants/Mutant_1_sheet-Sheet.png"
-dest_files=[ "res://.import/Mutant_1_sheet-Sheet.png-e288ca7982b472615f50550be4f991cc.stex" ]
+source_file="res://Enemies/Mutants/Mutant_1_sheet.png"
+dest_files=[ "res://.import/Mutant_1_sheet.png-6dba8edb8013bf8de9cc72acb3a68e98.stex" ]
 
 [params]
 

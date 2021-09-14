@@ -92,7 +92,14 @@ func _physics_process(delta):
 		if movement_vector.length() > 50.0:
 			rotation = to_angle
 		else:
+			#fix snap around
+			if rotation > 1.57 and to_angle < -1.57: #PI/2 clockwise
+				to_angle += 2 * PI
+			if rotation < -1.57 and to_angle > 1.57: #PI/2 clockwise
+				to_angle -= 2 * PI
+			
 			rotation = lerp(rotation,to_angle,movement_vector.length()/400.0)
+		print(rotation)
 
 
 func _input(event):

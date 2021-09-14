@@ -27,6 +27,7 @@ func collision(body,collision_speed):
 	if body.damaging:
 		var damage = 1
 		print("new_health: ", health)
+		hurt(damage)
 		if health <= 0:
 			die()
 
