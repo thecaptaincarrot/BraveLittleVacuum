@@ -99,7 +99,6 @@ func _physics_process(delta):
 				to_angle -= 2 * PI
 			
 			rotation = lerp(rotation,to_angle,movement_vector.length()/400.0)
-		print(rotation)
 
 
 func _input(event):

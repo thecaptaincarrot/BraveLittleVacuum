@@ -108,7 +108,7 @@ texture = ExtResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Overlay/InGameMenus/MainMenu"]
