@@ -10,7 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if fadeout and color.a <=1.0:
+	if fadeout and color.a <1.0:
 		color.a += delta * multiplier
-	elif !fadeout and color.a >= 0.0:
+	elif !fadeout and color.a > 0.0:
 		color.a -= delta * multiplier
