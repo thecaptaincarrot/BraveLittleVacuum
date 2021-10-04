@@ -12,6 +12,7 @@ size = 1
 identifier = "Rock"
 
 [node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
