@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends StaticBody2D
 
 
 # Declare member variables here. Examples:
@@ -17,10 +17,22 @@ func _ready():
 
 
 func activate(): #Generic activate function. Can do anything
-	
-	pass
+	print("I have been activated")
+	$ChestSprite.play("Open")
+	$MainCollision.disabled = true
 
 
 func _on_PlayerDetectionZone_body_entered(body):
 	if body.is_in_group("Player"):
 		activate()
+
+
+func _on_CollissionDetectionZone_body_entered(body):
+	print(body)
+	if body.is_in_group("Bodies"):
+		activate()
+
+
+func _on_ChestSprite_animation_finished():
+	if $ChestSprite.animation == "Open":
+		$UpgradeSphere.active = true

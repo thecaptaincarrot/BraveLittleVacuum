@@ -71,6 +71,7 @@ height = 25.7011
 ]]
 frames = SubResource( 12 )
 animation = "Active"
+frame = 7
 playing = true
 script = ExtResource( 3 )
 

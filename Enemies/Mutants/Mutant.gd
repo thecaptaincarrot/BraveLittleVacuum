@@ -19,6 +19,7 @@ func _process(delta):
 	#Animations and actions
 	match direction:
 		DIRECTIONS.RIGHT:
+			$Sprite.offset.x = 0
 			match state:
 				IDLE:
 					motion.x = 0
@@ -36,9 +37,12 @@ func _process(delta):
 					motion.x = 0
 					$Sprite.animation = "hurtR"
 				DEAD:
+					collision_layer = 0
+					collision_mask = 1
 					motion.x = 0
 					$Sprite.animation = "dieR"
 		DIRECTIONS.LEFT:
+			$Sprite.offset.x = -22
 			match state:
 				IDLE:
 					motion.x = 0
@@ -56,6 +60,8 @@ func _process(delta):
 					motion.x = 0
 					$Sprite.animation = "hurtL"
 				DEAD:
+					collision_layer = 0
+					collision_mask = 1
 					motion.x = 0
 					$Sprite.animation = "dieL"
 	#AI Flowchart
