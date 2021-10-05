@@ -1,6 +1,5 @@
 extends AnimatedSprite
-
-export var ugrade_type = "DEFAULT"
+var upgrade_type = "DEFAULT"
 var active = false
 var collectable = false
 
@@ -24,15 +23,15 @@ func _process(delta):
 		t += delta
 	elif active:
 		if position.y > -24:
-			position.y -= delta * 24
+			position.y = lerp(position.y, -26, .02)
 		else:
 			collectable = true
 
 
 func _on_CollectionArea_body_entered(body):
 	if body.is_in_group("Player") and collectable:
-		print("Yo, found and upgrade: ",ugrade_type)
-		emit_signal("upgrade_collected",ugrade_type)
+		print("Yo, found and upgrade: ",upgrade_type)
+		emit_signal("upgrade_collected",upgrade_type)
 		body.motion = Vector2(0,0)
 		
 		collectable = false

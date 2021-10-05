@@ -11,7 +11,7 @@ region = Rect2( 52, 65, 52, 32 )
 radius = 6.65123
 height = 26.3061
 
-[node name="DefaultSuckableObject" instance=ExtResource( 1 )]
+[node name="ChestLid" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )

@@ -1,14 +1,14 @@
 extends StaticBody2D
 
+export var upgrade_type = "DEFAULT"
+signal upgrade_collected
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+onready var LID = preload("res://SuckableObjects/ChestLid.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$UpgradeSphere.upgrade_type = upgrade_type
+	$HintText.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,7 +19,6 @@ func _ready():
 func activate(): #Generic activate function. Can do anything
 	print("I have been activated")
 	$ChestSprite.play("Open")
-	$MainCollision.disabled = true
 
 
 func _on_PlayerDetectionZone_body_entered(body):
@@ -35,4 +34,16 @@ func _on_CollissionDetectionZone_body_entered(body):
 
 func _on_ChestSprite_animation_finished():
 	if $ChestSprite.animation == "Open":
+		
+		$MainCollision.set_deferred("disabled",true)
+		$OpenCollision.set_deferred("disabled",false)
+		
+		var new_lid = LID.instance()
+		new_lid.position = Vector2(0,-3)
+		add_child(new_lid)
+		new_lid.apply_central_impulse(Vector2(-100,-400))
 		$UpgradeSphere.active = true
+
+
+func _on_UpgradeSphere_upgrade_collected(type):
+	emit_signal("upgrade_collected",upgrade_type)

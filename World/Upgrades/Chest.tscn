@@ -1,106 +1,110 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://World/Upgrades/UpgradeChest.png" type="Texture" id=1]
 [ext_resource path="res://World/Upgrades/UpgradeChest.gd" type="Script" id=2]
 [ext_resource path="res://World/Upgrades/Jar_boy.png" type="Texture" id=3]
 [ext_resource path="res://World/Upgrades/UpgradeSphere.gd" type="Script" id=4]
+[ext_resource path="res://World/Upgrades/HintText.gd" type="Script" id=5]
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 18, 18 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ SubResource( 21 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=23]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 52, 33 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 52, 0, 52, 33 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 104, 0, 52, 33 )
+[sub_resource type="CapsuleShape2D" id=3]
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 156, 0, 52, 33 )
+region = Rect2( 0, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 208, 0, 52, 33 )
+region = Rect2( 52, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 260, 0, 52, 33 )
+region = Rect2( 104, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 312, 0, 52, 33 )
+region = Rect2( 156, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 312, 0, 52, 33 )
+region = Rect2( 208, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 33, 52, 33 )
+region = Rect2( 260, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 52, 33, 52, 33 )
+region = Rect2( 312, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 104, 33, 52, 33 )
+region = Rect2( 312, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 156, 33, 52, 33 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 66, 52, 33 )
+region = Rect2( 0, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
+region = Rect2( 52, 33, 52, 33 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 104, 33, 52, 33 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 156, 33, 52, 33 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
 region = Rect2( 0, 66, 52, 33 )
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 66, 52, 33 )
+
+[sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 1 ), SubResource( 1 ), SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 7 ), SubResource( 7 ) ],
+"frames": [ SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ) ],
 "loop": true,
 "name": "Default",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 20 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
 "name": "Open",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 13 ) ],
+"frames": [ SubResource( 17 ) ],
 "loop": true,
 "name": "Done",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=19]
 radius = 200.16
 
-[sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 14.2938, 19.9728 )
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 15, 20 )
 
-[sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 25.0972, 18.7529 )
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 10, 20 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 25.0972, 14.7446 )
 
 [node name="Chest" type="StaticBody2D"]
 collision_layer = 4
@@ -109,20 +113,22 @@ script = ExtResource( 2 )
 
 [node name="UpgradeSphere" type="AnimatedSprite" parent="."]
 z_index = -1
-frames = SubResource( 22 )
+frames = SubResource( 2 )
 script = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="UpgradeSphere"]
+[node name="CollectionArea" type="Area2D" parent="UpgradeSphere"]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeSphere/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpgradeSphere/CollectionArea"]
 position = Vector2( 0.25, 10 )
-shape = SubResource( 23 )
+shape = SubResource( 3 )
 
 [node name="ChestSprite" type="AnimatedSprite" parent="."]
 z_index = -1
-frames = SubResource( 14 )
+frames = SubResource( 18 )
 animation = "Default"
-frame = 3
+frame = 4
 playing = true
 offset = Vector2( 0, -2 )
 
@@ -132,14 +138,19 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionZone"]
-shape = SubResource( 15 )
+shape = SubResource( 19 )
 disabled = true
 
 [node name="MainCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0.166855, -2.68793 )
+position = Vector2( 0, -2.5 )
 rotation = 1.5708
-shape = SubResource( 18 )
+shape = SubResource( 20 )
+
+[node name="OpenCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+rotation = 1.5708
+shape = SubResource( 22 )
+disabled = true
 
 [node name="CollissionDetectionZone" type="Area2D" parent="."]
 visible = false
@@ -149,8 +160,21 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollissionDetectionZone"]
 position = Vector2( -0.0756149, -3.81549 )
-shape = SubResource( 19 )
+shape = SubResource( 21 )
 
+[node name="HintText" type="Label" parent="."]
+margin_left = -53.0
+margin_top = -39.0
+margin_right = 52.0
+margin_bottom = -22.0
+text = "DEFAULT"
+align = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="upgrade_collected" from="UpgradeSphere" to="." method="_on_UpgradeSphere_upgrade_collected"]
+[connection signal="body_entered" from="UpgradeSphere/CollectionArea" to="UpgradeSphere" method="_on_CollectionArea_body_entered"]
 [connection signal="animation_finished" from="ChestSprite" to="." method="_on_ChestSprite_animation_finished"]
 [connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_entered"]
 [connection signal="body_entered" from="CollissionDetectionZone" to="." method="_on_CollissionDetectionZone_body_entered"]

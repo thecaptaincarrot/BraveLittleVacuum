@@ -8,5 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if text != get_parent().ugrade_type:
-		text = get_parent().ugrade_type
+	if text != get_parent().upgrade_type:
+		text = get_parent().upgrade_type
