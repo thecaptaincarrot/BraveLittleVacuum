@@ -29,6 +29,7 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -38,7 +39,9 @@ __meta__ = {
 pause_mode = 2
 margin_right = 40.0
 margin_bottom = 40.0
+rect_scale = Vector2( -0.101667, 1.16389 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -108,6 +111,7 @@ __meta__ = {
 texture = ExtResource( 8 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]
 
