@@ -38,5 +38,9 @@ func get_exits():
 	return $Exits.get_children()
 
 
+func get_upgrades():
+	return $World/Upgrades.get_children()
+
+
 func get_camera_bounds():
 	return [$CameraBound.rect_position,$CameraBound.rect_size]

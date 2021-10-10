@@ -4,6 +4,7 @@ const UPGRADE = preload("res://UI/Popup window.tscn")
 
 var level_path = "res://World/Levels/Level"
 var current_level = null
+var current_levelcode = 0
 
 var player
 var nozzle
@@ -70,11 +71,12 @@ func goto_new_level(levelcode, exit : int):
 	if LevelDecoder.level_dict.has(levelcode):
 		new_level = add_level(levelcode)
 		current_level = new_level
+		current_levelcode = levelcode
 	else:
 		print("***ERROR TRIED TO GO TO INVALID LEVEL ",levelcode,"***")
 		new_level = add_level(0)
 		current_level = new_level
-		print(LevelDecoder.level_dict)
+		current_levelcode = 0
 	print("went to new level: ",current_level.name)
 	
 	var exit_obj = new_level.get_exit(exit)
@@ -94,7 +96,7 @@ func goto_new_level(levelcode, exit : int):
 	player.body.inactive = false
 	$Overlay/ColorOverlay.fadeout = false
 	print("Enter Direction: ", exit_obj.enter_direction)
-	
+
 
 func add_level(levelcode):
 	print()
@@ -104,8 +106,12 @@ func add_level(levelcode):
 	print ("Added new level ", new_level.name)
 	for N in new_level.get_exits():
 		N.connect("level_exit",self,"goto_new_level")
+	for Upgrade in new_level.get_upgrades():
+		Upgrade.connect("upgrade_collected",self, "collect_upgrade")
+		
 	$LevelHolder.add_child(new_level)
 	return new_level
+
 
 func menu_unpause():
 	get_tree().paused = false
@@ -133,7 +139,7 @@ func system_pause(): #This will obsolete when menu is fleshed out
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func _on_UpgradeSphere_upgrade_collected(upgrade):
+func collect_upgrade(upgrade):
 	pass # Replace with function body.
 	#1. pause
 	paused = true #The game should not be unpaused if a menu is opened

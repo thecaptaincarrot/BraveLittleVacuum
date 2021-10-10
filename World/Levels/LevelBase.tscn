@@ -321,6 +321,8 @@ compatibility_mode = true
 format = 1
 tile_data = PoolIntArray( 65551, 0, 0 )
 
+[node name="Upgrades" type="Node2D" parent="World"]
+
 [node name="CameraBound" type="Control" parent="."]
 margin_left = -136.0
 margin_right = 864.0

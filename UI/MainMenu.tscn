@@ -189,7 +189,6 @@ __meta__ = {
 }
 
 [node name="MenuElements" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -197,7 +196,6 @@ __meta__ = {
 }
 
 [node name="DiagnosticsMenu" type="Control" parent="MenuElements"]
-visible = false
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -312,7 +310,7 @@ margin_top = 48.0
 margin_right = 213.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 4 )
-text = "Powered Ejection Accelerator"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -334,7 +332,7 @@ margin_top = 68.0
 margin_right = 213.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 4 )
-text = "Magnetic Rail Ejection System"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -423,7 +421,7 @@ margin_top = 28.0
 margin_right = 212.0
 margin_bottom = 44.0
 custom_fonts/font = SubResource( 4 )
-text = "Auxiliary Power Supply"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -445,7 +443,7 @@ margin_top = 48.0
 margin_right = 212.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 4 )
-text = "Waterproofing"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -467,7 +465,7 @@ margin_top = 68.0
 margin_right = 212.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 4 )
-text = "Dent-Resistant Coating"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -556,7 +554,7 @@ margin_top = 48.0
 margin_right = 213.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 4 )
-text = "Spring Actuators"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -578,7 +576,7 @@ margin_top = 68.0
 margin_right = 213.0
 margin_bottom = 84.0
 custom_fonts/font = SubResource( 4 )
-text = "Speed Delimiters"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -600,7 +598,7 @@ margin_top = 88.0
 margin_right = 213.0
 margin_bottom = 104.0
 custom_fonts/font = SubResource( 4 )
-text = "Hover Nozzles"
+text = "------------------"
 __meta__ = {
 "_edit_lock_": true
 }

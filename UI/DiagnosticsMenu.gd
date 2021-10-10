@@ -5,6 +5,10 @@ var selected_label
 
 var active = false
 
+enum {INFO, FLAVOR}
+var mode = INFO
+var old_mode = INFO
+
 signal next
 signal previous
 
@@ -21,41 +25,82 @@ func _process(delta):
 		return
 	var information
 	var new_selection
+	information = "ERROR UPGRADE NOT INSTALLED.  PLEASE SEE YOUR LOCAL DEALERSHIP"
 	match upgrade_selection:
 		Vector2(0,0):
 			new_selection = $NozzleUpgrades/MarginContainer/VBoxContainer/BasicSuck
-			information = "Stock vacuum suction motor. Right Click to suck objects into your tank and left click to fire them out."
+			if mode == INFO:
+				information = "Press RMB to suck objects into your tank\npresss LMB to shoot objects from your tank"
+			elif mode == FLAVOR:
+				information = "Sucks stuff up and spits it back out into the proper receptacle.\nWARNING! Objects are expelled at dangerous speeds!"
 		Vector2(0,1):
 			new_selection = $NozzleUpgrades/MarginContainer/VBoxContainer/PoweredEjection
-			information = "Overcharges the Ejection System, allowing objects to be expelled at dangerous speeds. Consumes power."
+			if Upgrades.accelerator:
+				if mode == INFO:
+					information = "Select the Nozzle with E or Q\nObjects fired will cause extra damage. Consumes Power."
+				elif mode == FLAVOR:
+					information = "An aftermarket Nozzle attachment with no real practical use, but very fun.\nWARNING! Objects expelled from the tank may be travelling at unwise speeds"
 		Vector2(0,2):
 			new_selection = $NozzleUpgrades/MarginContainer/VBoxContainer/Railgun
-			information = "Objects fired from the railgun attachment travel so fast as to be nearly immune to gravity."
+			if Upgrades.railgun:
+				if mode == INFO:
+					information = "Select the Nozzle with E or Q\nMust be charged up before firing by holding LMB.  Does a lot of extra damage and consumes power."
+				elif mode == FLAVOR:
+					information = "Originally designed with its military applications in mind before it was discovered that it was more economical to just build dedicated war robots than to repurpose household assistants."
 		Vector2(0,3):
 			new_selection = $NozzleUpgrades/MarginContainer/VBoxContainer/Label5
 			information = "ERROR UPGRADE NOT INSTALLED.  PLEASE SEE YOUR LOCAL DEALERSHIP"
 		Vector2(0,4):
 			new_selection = $ChassiUpgrades/MarginContainer/VBoxContainer/AuxPower
-			information = "Provides additional power to specialized attachments. Must be recharged after prolonged use."
+			if Upgrades.power:
+				if mode == INFO:
+					information = "Provides power to special upgrades.\n1 Power Supply upgrade collected"
+				elif mode == FLAVOR:
+					information = "Provides high wattage, but limited, auxiliary power to modules that may be unable to run off the Suckmate stock Perpetual Power Supply"
 		Vector2(0,5):
 			new_selection = $ChassiUpgrades/MarginContainer/VBoxContainer/Waterproofing
-			information = "Insulates all vulnerable electrical components against water damage, making the vacuum fully submersible"
+			if Upgrades.waterproof:
+				if mode == INFO:
+					information = "Prevents damage from being submerged in water"
+				elif mode == FLAVOR:
+					information = "Great for areas prone to the recently more frequent storms and flooding.  Continue to clean even when under 20 feet of water!"
 		Vector2(0,6):
 			new_selection = $ChassiUpgrades/MarginContainer/VBoxContainer/Armor
-			information = "For heavy duty applications, makes the vacuum twice as resistant to damage"
+			if Upgrades.armor:
+				if mode == INFO:
+					information = "Incoming damage is halved"
+				elif mode == FLAVOR:
+					information = "Made from an extremely resistant and durable polymer, bumps and scrapes that would normally damage the unit are instead effortlessly repelled.\nUnfortunately, even a small can of it costs as much as most houses."
 		Vector2(1,3):
 			new_selection = $WheelUpgrades/MarginContainer/VBoxContainer/LowFrictionCasters
-			information = "Standard nearly lossless wheels allow unfettered mobility in any environment or terrain"
+			if mode == INFO:
+				information = "Use the Arrow keys to move left and right"
+			elif mode == FLAVOR:
+				information = "Low-current brushless motors will keep your SuckMate effortlessly navigating your home for efficient cleaning"
 		Vector2(1,4):
 			new_selection = $WheelUpgrades/MarginContainer/VBoxContainer/SpringActuators
-			information = "Clean in hard to reach places by pressing SPACE to leap into the air"
+			if Upgrades.jump:
+				if mode == INFO:
+					information = "Press Space to jump"
+				elif mode == FLAVOR:
+					information = "Keep places that were once unreachable clean, saves a bundle by not having to buy an entirely SuckMate per floor of your hose.\nNot that many people can afford houses with more than one floor these days"
 		Vector2(1,5):
 			new_selection = $WheelUpgrades/MarginContainer/VBoxContainer/SpeedDelimiters
-			information = "An aftermarket attachment that stops the auto-brakes from engaging on downhill slopes. Can break through walls and enemies"
+			if Upgrades.downhill:
+				if mode == INFO:
+					information = "When travelling downhill, pick up speed to damage enemies and break barriers."
+				elif mode == FLAVOR:
+					information = "During the skateboard shortage of '99, this popular black market mod allowed many hooligans to still shred using the most unlikely of vehicles.  Many fatalaties were reported."
 		Vector2(1,6):
 			new_selection = $WheelUpgrades/MarginContainer/VBoxContainer/HoverNozzles
-			information = "Press SPACEBAR while in the air to hover for a short distance"
-	if new_selection != selected_label and new_selection != null:
+			if Upgrades.hover:
+				print("Hover")
+				print(mode)
+				if mode == INFO:
+					information = "Press Space when in the air to hover for a short time."
+				elif mode == FLAVOR:
+					information = "Placeholder hover nozzle flavor text"
+	if (new_selection != selected_label and new_selection != null) or mode != old_mode:
 		selected_label.get_node("SelectionRect").hide()
 		new_selection.get_node("SelectionRect").show()
 		selected_label = new_selection
@@ -63,6 +108,12 @@ func _process(delta):
 		$InfoPanel.clear()
 		$InfoPanel/Bubble.start()
 		$InfoPanel.text = information
+		match mode:
+			INFO:
+				$InfoPanel/MarginContainer/VBoxContainer/Title.text = "Information:"
+			FLAVOR:
+				$InfoPanel/MarginContainer/VBoxContainer/Title.text = "User Manual:"
+		old_mode = mode
 
 
 func _unhandled_input(event):
@@ -92,3 +143,29 @@ func _unhandled_input(event):
 			upgrade_selection.x = 1
 			if upgrade_selection.y < 3:
 				upgrade_selection.y = 3
+	elif event.is_action_pressed("ui_accept"):
+		print("Yui")
+		if mode == FLAVOR:
+			print("Uh")
+			mode = INFO
+		elif mode == INFO:
+			print("oh")
+			mode = FLAVOR
+
+func refresh_upgrades():
+	if Upgrades.accelerator:
+		$NozzleUpgrades/MarginContainer/VBoxContainer/PoweredEjection.text = "Ejection Accelerator"
+	if Upgrades.railgun:
+		$NozzleUpgrades/MarginContainer/VBoxContainer/Railgun.text = "Magnetic Rail Ejector"
+	if Upgrades.jump:
+		$WheelUpgrades/MarginContainer/VBoxContainer/SpringActuators.text = "Spring Actuators"
+	if Upgrades.downhill:
+		$WheelUpgrades/MarginContainer/VBoxContainer/SpeedDelimiters.text = "Downhill Delimiters"
+	if Upgrades.hover:
+		$WheelUpgrades/MarginContainer/VBoxContainer/HoverNozzles.text = "Hover Jets"
+	if Upgrades.waterproof:
+		$ChassiUpgrades/MarginContainer/VBoxContainer/Waterproofing.text = "Waterproofing"
+	if Upgrades.armor:
+		$ChassiUpgrades/MarginContainer/VBoxContainer/Armor.text = "Dent-Resistant Paint"
+	if Upgrades.power:
+		$ChassiUpgrades/MarginContainer/VBoxContainer/AuxPower.text = "Peripheral Power Supply"

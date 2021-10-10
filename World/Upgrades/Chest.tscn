@@ -50,27 +50,27 @@ region = Rect2( 312, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 312, 0, 52, 33 )
+region = Rect2( 0, 66, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 33, 52, 33 )
+region = Rect2( 312, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 52, 33, 52, 33 )
+region = Rect2( 0, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 104, 33, 52, 33 )
+region = Rect2( 52, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 156, 33, 52, 33 )
+region = Rect2( 104, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 66, 52, 33 )
+region = Rect2( 156, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
@@ -83,15 +83,15 @@ animations = [ {
 "name": "Default",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
-"loop": false,
-"name": "Open",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 17 ) ],
+"frames": [ SubResource( 11 ) ],
 "loop": true,
 "name": "Done",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "Open",
+"speed": 10.0
 } ]
 
 [sub_resource type="CircleShape2D" id=19]
@@ -100,10 +100,10 @@ radius = 200.16
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 15, 20 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 10, 20 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 25.0972, 14.7446 )
 
 [node name="Chest" type="StaticBody2D"]
@@ -128,7 +128,7 @@ shape = SubResource( 3 )
 z_index = -1
 frames = SubResource( 18 )
 animation = "Default"
-frame = 4
+frame = 2
 playing = true
 offset = Vector2( 0, -2 )
 
@@ -149,7 +149,7 @@ shape = SubResource( 20 )
 [node name="OpenCollision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
 rotation = 1.5708
-shape = SubResource( 22 )
+shape = SubResource( 21 )
 disabled = true
 
 [node name="CollissionDetectionZone" type="Area2D" parent="."]
@@ -160,7 +160,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollissionDetectionZone"]
 position = Vector2( -0.0756149, -3.81549 )
-shape = SubResource( 21 )
+shape = SubResource( 22 )
 
 [node name="HintText" type="Label" parent="."]
 margin_left = -53.0
@@ -173,6 +173,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="upgrade_collected" from="UpgradeSphere" to="." method="_on_UpgradeSphere_upgrade_collected"]
 [connection signal="body_entered" from="UpgradeSphere/CollectionArea" to="UpgradeSphere" method="_on_CollectionArea_body_entered"]
 [connection signal="animation_finished" from="ChestSprite" to="." method="_on_ChestSprite_animation_finished"]

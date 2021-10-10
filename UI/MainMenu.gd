@@ -44,6 +44,7 @@ func change_menu(new_menu):#new_menu is an enum
 func open():
 	#Check upgrades for diagnostics menu here
 	hide_all()
+	$MenuElements/DiagnosticsMenu.refresh_upgrades()
 	$AnimationPlayer.play("MenuOpen")
 	match open_menu:
 		DIAGNOSTICS:

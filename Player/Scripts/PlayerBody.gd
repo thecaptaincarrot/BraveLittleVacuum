@@ -138,7 +138,7 @@ func movement(delta):
 	if is_on_floor():
 		is_hovering = false
 
-	if !is_on_floor() and can_hover and Input.is_action_just_pressed("Jump"):
+	if !is_on_floor() and can_hover and Input.is_action_just_pressed("Jump") and Upgrades.hover:
 		is_hovering = true
 		can_hover = false
 		if $HoverTimer.is_stopped():

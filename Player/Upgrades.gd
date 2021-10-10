@@ -7,9 +7,19 @@ var suck_strength = 5
 var hose_length = 8
 
 #booleans
-var jump = true
-var hover = true
+#Nozzle
+var accelerator = false
+var railgun = false
+
+#Chassis
+var jump = false
+var hover = false
+var downhill = false
+
+#Body
 var waterproof = false
+var armor = false
+var power = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
