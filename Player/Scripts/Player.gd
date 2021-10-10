@@ -81,7 +81,7 @@ func hurt(damage):
 
 func update_health():
 	var health_percentage = health/max_health
-	$CanvasLayer/HealthBar.update_bar(health_percentage)
+	$CanvasLayer/HealthBar.value = health
 
 
 func deactivate():

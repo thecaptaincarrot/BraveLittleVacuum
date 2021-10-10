@@ -112,6 +112,7 @@ collision_mask = 12
 script = ExtResource( 2 )
 
 [node name="UpgradeSphere" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 2 )
 z_index = -1
 frames = SubResource( 2 )
 script = ExtResource( 4 )
@@ -128,7 +129,7 @@ shape = SubResource( 3 )
 z_index = -1
 frames = SubResource( 18 )
 animation = "Default"
-frame = 2
+frame = 5
 playing = true
 offset = Vector2( 0, -2 )
 

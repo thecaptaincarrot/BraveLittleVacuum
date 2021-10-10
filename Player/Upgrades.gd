@@ -40,3 +40,6 @@ func upgrade(collected_upgrade):
 			print("hose length up")
 			hose_length += 5 #Adjust as needed
 			PLAYER.regenerate_hose(hose_length)
+		"JUMP":
+			print("Jump")
+			jump = true

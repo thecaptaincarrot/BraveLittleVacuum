@@ -10,6 +10,7 @@ var player
 var nozzle
 
 var paused = false
+var upgrade_paused = false
 
 var upgrade_on_deck = null
 
@@ -27,15 +28,17 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_pause"):
-		if !get_tree().paused:
-			system_pause()
-		else:
-			mainmenu_unpause()
+		if !upgrade_paused:
+			if !get_tree().paused:
+				system_pause()
+			else:
+				mainmenu_unpause()
 	if event.is_action_pressed("ui_gamemenu"):
-		if !get_tree().paused:
-			mainmenu_pause()
-		else:
-			mainmenu_unpause()
+		if !upgrade_paused:
+			if !get_tree().paused:
+				mainmenu_pause()
+			else:
+				mainmenu_unpause()
 
 
 func nozzle_shoot(body):
@@ -108,6 +111,7 @@ func add_level(levelcode):
 		N.connect("level_exit",self,"goto_new_level")
 	for Upgrade in new_level.get_upgrades():
 		Upgrade.connect("upgrade_collected",self, "collect_upgrade")
+		Upgrade.check_upgrade()
 		
 	$LevelHolder.add_child(new_level)
 	return new_level
@@ -115,6 +119,7 @@ func add_level(levelcode):
 
 func menu_unpause():
 	get_tree().paused = false
+	upgrade_paused = false
 	if upgrade_on_deck != null:
 		Upgrades.upgrade(upgrade_on_deck)
 		upgrade_on_deck = null
@@ -142,7 +147,7 @@ func system_pause(): #This will obsolete when menu is fleshed out
 func collect_upgrade(upgrade):
 	pass # Replace with function body.
 	#1. pause
-	paused = true #The game should not be unpaused if a menu is opened
+	upgrade_paused = true #The game should not be unpaused if a menu is opened
 				  #Realistically, do not allow them to open the system menu at this stage
 	get_tree().paused = true
 	#2. open menu

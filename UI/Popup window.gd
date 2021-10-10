@@ -3,6 +3,8 @@ extends NinePatchRect
 var expand_speed = 300
 var complete = false
 
+var text
+
 signal menu_unpause
 
 # Called when the node enters the scene tree for the first time.
