@@ -12,8 +12,8 @@ var accelerator = false
 var railgun = false
 
 #Chassis
-var jump = false
-var hover = false
+var jump = true
+var hover = true
 var downhill = false
 
 #Body
