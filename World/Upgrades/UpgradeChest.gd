@@ -19,7 +19,6 @@ func _ready():
 
 
 func activate(): #Generic activate function. Can do anything
-	print("I have been activated")
 	active = false
 	$ChestSprite.play("Open")
 
@@ -40,7 +39,6 @@ func _on_PlayerDetectionZone_body_entered(body):
 
 
 func _on_CollissionDetectionZone_body_entered(body):
-	print(body)
 	if body.is_in_group("Bodies") and active:
 		activate()
 
@@ -54,7 +52,7 @@ func _on_ChestSprite_animation_finished():
 		var new_lid = LID.instance()
 		new_lid.position = Vector2(0,-3)
 		add_child(new_lid)
-		new_lid.apply_central_impulse(Vector2(-100,-400))
+		new_lid.apply_central_impulse(Vector2(-100,-250))
 		$UpgradeSphere.active = true
 
 

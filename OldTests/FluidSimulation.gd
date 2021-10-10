@@ -16,4 +16,3 @@ func _process(delta):
 		new_drop.position = get_global_mouse_position()
 		add_child(new_drop)
 		i += 1
-		print(i)

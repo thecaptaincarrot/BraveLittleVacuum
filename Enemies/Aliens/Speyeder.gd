@@ -112,6 +112,5 @@ func die():
 
 
 func _on_ShootTimer_timeout():
-	print("done shooting")
 	$EyeSprite/EyeBeam.hide()
 	state = SEEKING

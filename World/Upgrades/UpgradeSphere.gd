@@ -9,6 +9,8 @@ var t_offset = 8
 var start_position
 var default_position
 
+var player_in = false
+
 signal upgrade_collected
 
 # Called when the node enters the scene tree for the first time.
@@ -26,14 +28,20 @@ func _process(delta):
 			position.y = lerp(position.y, -26, .02)
 		else:
 			collectable = true
-
-
-func _on_CollectionArea_body_entered(body):
-	if body.is_in_group("Player") and collectable:
-		print("Yo, found and upgrade: ",upgrade_type)
+	
+	
+	if player_in and active:
 		emit_signal("upgrade_collected",upgrade_type)
-		body.motion = Vector2(0,0)
-		
+
 		collectable = false
 		active = false
 		hide()
+
+func _on_CollectionArea_body_entered(body):
+	if body.is_in_group("Player"):
+		player_in = true
+
+
+func _on_CollectionArea_body_exited(body):
+	if body.is_in_group("Player"):
+		player_in = false

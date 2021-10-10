@@ -44,7 +44,6 @@ func monitor_timeout():
 func _on_LevelExit_body_entered(body):
 	if body.is_in_group("Player"):
 		if active and !body.exiting:
-			print("Emitting Signal")
 			emit_signal("level_exit",level_code,target_exit)
 			if !body.force_move:
 				body.force_move = true
@@ -58,7 +57,6 @@ func _on_LevelExit_body_entered(body):
 						vector = Vector2(0,-1)
 					"DOWN":
 						vector = Vector2(0,1)
-				print("Vector ",body.max_speed * -vector)
 				body.force_move_vector = body.max_speed * -vector
 				body.exiting = true
 		elif !active:
@@ -73,7 +71,6 @@ func _on_LevelExit_body_entered(body):
 					vector = Vector2(0,-1)
 				"DOWN":
 					vector = Vector2(0,1)
-			print("Vector ",body.max_speed * vector)
 			body.force_move_vector = body.max_speed * vector
 
 func _on_LevelExit_body_exited(body):

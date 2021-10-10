@@ -98,15 +98,11 @@ func goto_new_level(levelcode, exit : int):
 	yield(get_tree().create_timer(0.5),"timeout")
 	player.body.inactive = false
 	$Overlay/ColorOverlay.fadeout = false
-	print("Enter Direction: ", exit_obj.enter_direction)
 
 
 func add_level(levelcode):
-	print()
 	var new_level_path = LevelDecoder.level_dict[levelcode]
-	print("Level path: ", new_level_path )
 	var new_level = load(new_level_path).instance()
-	print ("Added new level ", new_level.name)
 	for N in new_level.get_exits():
 		N.connect("level_exit",self,"goto_new_level")
 	for Upgrade in new_level.get_upgrades():

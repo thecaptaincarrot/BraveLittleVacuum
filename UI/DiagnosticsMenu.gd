@@ -94,8 +94,6 @@ func _process(delta):
 		Vector2(1,6):
 			new_selection = $WheelUpgrades/MarginContainer/VBoxContainer/HoverNozzles
 			if Upgrades.hover:
-				print("Hover")
-				print(mode)
 				if mode == INFO:
 					information = "Press Space when in the air to hover for a short time."
 				elif mode == FLAVOR:
@@ -146,10 +144,8 @@ func _unhandled_input(event):
 	elif event.is_action_pressed("ui_accept"):
 		print("Yui")
 		if mode == FLAVOR:
-			print("Uh")
 			mode = INFO
 		elif mode == INFO:
-			print("oh")
 			mode = FLAVOR
 
 func refresh_upgrades():

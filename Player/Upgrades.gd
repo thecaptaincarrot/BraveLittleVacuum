@@ -32,14 +32,11 @@ func _ready():
 
 
 func upgrade(collected_upgrade):
-	print(collected_upgrade)
 	match collected_upgrade:
 		"DEFAULT":
 			print("Saw default upgrade. I probably shouldn't have if this wasn't a test")
 		"HOSE LENGTH":
-			print("hose length up")
 			hose_length += 5 #Adjust as needed
 			PLAYER.regenerate_hose(hose_length)
 		"JUMP":
-			print("Jump")
 			jump = true
