@@ -4,7 +4,7 @@
 [ext_resource path="res://SuckableObjects/ERROR.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.544, 16.3663 )
+extents = Vector2( 15, 15 )
 
 [node name="DefaultSuckableObject" type="RigidBody2D" groups=[
 "Bodies",
@@ -20,7 +20,6 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.264862, 0 )
 shape = SubResource( 1 )
 
 [node name="CollideTimer" type="Timer" parent="."]
