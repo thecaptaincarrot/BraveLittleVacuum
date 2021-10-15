@@ -22,6 +22,7 @@ var local_mouse
 var global_mouse
 
 var suckables = []
+var stuck_object = null
 
 var water_source = null
 var is_in_liquid = false
@@ -85,7 +86,11 @@ func _physics_process(delta):
 	movement_vector.x = lerp(movement_vector.x,0,drag)
 	movement_vector.y = lerp(movement_vector.y,0,drag)
 	
-	if !(Input.is_action_pressed("suck") or Input.is_action_pressed("blow")):
+	if stuck_object:
+		stuck_object.global_position = global_position + (Vector2(0,-3)+stuck_object.get_node("SuckPosition").position).rotated(rotation)
+		stuck_object.rotation = rotation
+	
+	if !((Input.is_action_pressed("suck") or Input.is_action_pressed("blow")) and !stuck_object):
 		var to_angle = movement_vector.angle() + PI/2
 		if to_angle > PI:
 			to_angle -= 2 * PI #Could just fix this by changing the sprite
@@ -109,8 +114,11 @@ func _input(event):
 		movement_vector += event.relative
 		
 	if event.is_action_released("suck"):
+		if stuck_object and $StuckObjectTimer.is_stopped():
+			$StuckObjectTimer.start()
 		for object in suckables:
 			object.gravity_scale = 1
+	
 
 
 func vector_projection(origin_vector):
@@ -138,41 +146,29 @@ func get_midpoint(vector_array):
 
 
 func suck():
-	$Suck/Polygon2D.show()
-
-#	if water_source != null and !is_in_liquid:
-#		var position_arr = []
-#		for cast in $RayCasts.get_children():
-#			if cast.is_colliding():
-#				var local_position = cast.get_collision_point()
-#				position_arr.append(local_position)
-#		if position_arr != [] and $LiquidSpawn.is_stopped(): 
-#			var new_pos = get_midpoint(position_arr)
-#			var new_water = WATER.instance()
-#			new_water.position = new_pos
-#			new_water.connect("freed",self,"water_freed")
-#			get_node("/root/RobotTest/Clutter").add_child(new_water)
-#			$LiquidSpawn.start()
-		
-	
-	for object in suckables:
-		object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
-		object.gravity_scale = 0
+	if !stuck_object:
+		$Suck/Polygon2D.show()
+		for object in suckables:
+			print(object.name)
+			object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
+			if object.is_in_group("Suckables"):
+				object.gravity_scale = 0
+			else:
+				object.gravity_scale = 0.5
+	else:
+		if !$StuckObjectTimer.is_stopped():
+			$StuckObjectTimer.stop()
 
 func blow():
 	pass
 
 
-func water_freed(water):
-	suckables.erase(water)
-
-
-func _on_Area2D_body_entered(body):
+func _on_Suck_body_entered(body):
 	if body.is_in_group("Bodies"):
 		suckables.append(body)
 
 
-func _on_Area2D_body_exited(body):
+func _on_Suck_body_exited(body):
 	suckables.erase(body)
 	if body.is_in_group("Bodies"):
 		body.gravity_scale = 1
@@ -180,33 +176,12 @@ func _on_Area2D_body_exited(body):
 
 func _on_NozzleHole_body_entered(body):
 	if Input.is_action_pressed("suck"):
-		if body.is_in_group("Bodies"):
+		if body.is_in_group("Suckables"):
 			emit_signal("sucked",body)
-#		if body.is_in_group("Liquid"):
-#			emit_signal("liquid_sucked",body)
+		if body.is_in_group("Large"):
+			stuck_object = body
 
 
-func _on_Suck_area_entered(area):
-	pass
-#	if area.is_in_group("Water"):
-#		water_source = area
-
-
-func _on_Suck_area_exited(area):
-	pass
-#	if area == water_source: #This is going to cause weird behaviors
-#		water_source = null
-
-
-func _on_NozzleHole_area_entered(area):
-	pass
-#	if area.is_in_group("Water"):
-#		print("entered Liquid")
-#		is_in_liquid = true
-
-
-func _on_NozzleHole_area_exited(area):
-	pass
-#	if area.is_in_group("Water"):
-#		print("Exitted liquid")
-#		is_in_liquid = false
+func _on_StuckObjectTimer_timeout():
+	stuck_object.gravity_scale = 1
+	stuck_object = null
