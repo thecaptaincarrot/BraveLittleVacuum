@@ -1,5 +1,5 @@
 extends "res://Enemies/Enemy.gd"
-
+#this is a basic scene for anything affected by gravity
 enum {IDLE, ATTACK, DEAD, WALK, HURT}
 
 enum DIRECTIONS {RIGHT,LEFT}
@@ -14,25 +14,12 @@ export var asymetrical = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	state = IDLE #Is this necessesarily the case
+	pass
 
 
 func _physics_process(delta):
 	pass
-#	match state: #All actions are possible. AI is handled one floor down.
-#		IDLE:
-#			motion.x = 0
-#		WALK:
-#			if motion.length() < max_speed:
-#				motion += walk()
-#		ATTACK:
-#			motion.x = 0
-#		HURT:
-#			motion.x = 0
-#		DEAD:
-#			motion.x = 0
-			
-	
+
 	if is_on_floor():
 		motion.y += Globals.GRAVITY * 0.2
 	else:

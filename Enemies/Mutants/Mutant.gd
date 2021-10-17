@@ -9,8 +9,9 @@ var can_attack_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	state = IDLE
 	direction = initial_direction
-	walk_speed =30
+	walk_speed = 40
 	max_speed = 30
 
 
@@ -87,9 +88,9 @@ func _process(delta):
 	#
 	match direction: #Detection Facing
 		DIRECTIONS.RIGHT:
-			$Sprite/Hitboxes.scale.x = -1.0
+			$Hitboxes.scale.x = -1.0
 		DIRECTIONS.LEFT:
-			$Sprite/Hitboxes.scale.x = 1.0
+			$Hitboxes.scale.x = 1.0
 
 
 func hurt(damage):
