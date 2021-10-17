@@ -13,7 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(get_local_mouse_position())
 	var target = get_local_mouse_position()
 	
 	apply_central_impulse(target.normalized())

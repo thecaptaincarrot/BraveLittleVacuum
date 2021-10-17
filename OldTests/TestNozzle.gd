@@ -23,8 +23,6 @@ func _physics_process(delta):
 		to_angle -= 2 * PI
 	
 	rotation = lerp(rotation,to_angle,angular_drag)
-	
-	print("current rotation: ", str(rotation), " to rotation: ", str(to_angle))
 
 func _input(event):
 	if event is InputEventMouseMotion:

@@ -56,7 +56,6 @@ func _exit_tree():
 func _ready():
 	LevelDecoder.load_dict()
 	MainPanel.load_tiles()
-	print("MAP EDITOR READY")
 	MainPanel.connect("tile_selected",self,"select_tile")
 	#Dock To Panel
 	Dock.connect("ReturnToOrigin",MainPanel,"origin_return")

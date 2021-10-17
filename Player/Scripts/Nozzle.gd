@@ -82,7 +82,7 @@ func _physics_process(delta):
 
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)
-	
+
 	movement_vector.x = lerp(movement_vector.x,0,drag)
 	movement_vector.y = lerp(movement_vector.y,0,drag)
 	
@@ -149,7 +149,6 @@ func suck():
 	if !stuck_object:
 		$Suck/Polygon2D.show()
 		for object in suckables:
-			print(object.name)
 			object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
 			if object.is_in_group("Suckables"):
 				object.gravity_scale = 0

@@ -5,33 +5,28 @@
 [ext_resource path="res://Enemies/Walker.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/Mutants/Mutant_1_sheet.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 375, 100, 125, 100 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
 region = Rect2( 500, 100, 125, 100 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
 region = Rect2( 625, 100, 125, 100 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 4 )
 region = Rect2( 750, 100, 125, 100 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "die",
-"speed": 10.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -44,23 +39,29 @@ animations = [ {
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "dead",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Attack",
 "speed": 5.0
 } ]
 
 [node name="Walker" instance=ExtResource( 1 )]
+collision_mask = 1
 script = ExtResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
-frames = SubResource( 22 )
+frames = SubResource( 5 )
 animation = "Attack"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -71,5 +72,7 @@ cast_to = Vector2( 0, 30 )
 [node name="Hitboxes" type="Node2D" parent="." index="3"]
 
 [node name="PlayerDetector" type="Area2D" parent="Hitboxes" index="0"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/PlayerDetector" index="0"]

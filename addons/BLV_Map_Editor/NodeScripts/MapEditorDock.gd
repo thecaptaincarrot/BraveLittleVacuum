@@ -48,7 +48,6 @@ func select_level(level_node):
 	#The selected tile will have all the information.
 	#It must!
 	deselect()
-	print(level_node)
 	$PanelContainer/VBoxContainer/HBoxContainer/TileVector.text = str(level_node.grid_position)
 	$PanelContainer/VBoxContainer/CreateLevelButton.disabled = false
 	$PanelContainer/VBoxContainer/AddExistingButton.disabled = false
@@ -163,9 +162,7 @@ func _on_LevelName_text_changed(new_text):
 		if !dir.file_exists(new_path):
 			dir.rename(old_path,new_path)
 			LevelDecoder.level_dict[levelcode] = new_path
-			print(typeof(levelcode))
 			print("New Level Decoder Path for code", levelcode, " : ", LevelDecoder.level_dict[levelcode])
-			print(LevelDecoder.level_dict)
 			emit_signal("Save")
 		else:
 			print("***ERROR: CANNOT OVERWRITE EXISTING LEVEL NAME ",new_path, "***")
