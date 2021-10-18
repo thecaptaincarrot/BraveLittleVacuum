@@ -45,7 +45,7 @@ func nozzle_shoot(body):
 	var new_rock = SuckableObjects.decode_to_world(body).instance()
 	new_rock.position = nozzle.global_position
 	new_rock.collision_layer = 8
-	new_rock.collision_mask = 5
+	new_rock.collision_mask = 12
 	new_rock.damaging = true
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$LevelHolder.get_child(0).get_node("Clutter").call_deferred("add_child",new_rock)

@@ -47,14 +47,14 @@ animations = [ {
 
 [node name="Rock7" parent="Clutter" index="0" instance=ExtResource( 4 )]
 position = Vector2( 608, 208 )
-collision_mask = 9
+collision_mask = 0
 
 [node name="Dog" parent="Enemies" index="0" groups=[
 "Enemy",
 ] instance=ExtResource( 6 )]
 position = Vector2( 472, 456 )
 collision_layer = 4
-collision_mask = 11
+collision_mask = 1
 default_state = "RunningL"
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
