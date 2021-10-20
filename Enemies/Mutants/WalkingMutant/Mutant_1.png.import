@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RegularZombieSheet.png-97dac93b73bf1d030624ad77fd98e6a3.stex"
+path="res://.import/Mutant_1.png-08d61464fa1793546540674b24134e3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Sprite/RegularZombieSheet.png"
-dest_files=[ "res://.import/RegularZombieSheet.png-97dac93b73bf1d030624ad77fd98e6a3.stex" ]
+source_file="res://Enemies/Mutants/WalkingMutant/Mutant_1.png"
+dest_files=[ "res://.import/Mutant_1.png-08d61464fa1793546540674b24134e3e.stex" ]
 
 [params]
 

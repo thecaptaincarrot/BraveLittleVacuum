@@ -3,7 +3,7 @@
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Sprite/Doggo.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Walker.gd" type="Script" id=3]
-[ext_resource path="res://Enemies/Mutants/Mutant_1_sheet.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/Mutants/WalkingMutant/Mutant_1_sheet.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -29,14 +29,14 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "die",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "hurt",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -61,7 +61,7 @@ script = ExtResource( 3 )
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 5 )
 animation = "Attack"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

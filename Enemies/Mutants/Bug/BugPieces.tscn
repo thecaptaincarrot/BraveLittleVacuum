@@ -1,0 +1,108 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Enemies/Mutants/Bug/little_bug.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/Mutants/Bug/BugPieces.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+hue_variation = 0.29
+hue_variation_random = 0.28
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 2.77257
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 2.60049
+height = 11.251
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 3.10434
+height = 12.3353
+
+[node name="BugPieces" type="Node2D"]
+z_index = -1
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 2 )
+
+[node name="Head" type="RigidBody2D" parent="."]
+position = Vector2( 11.3779, -0.233073 )
+collision_layer = 0
+
+[node name="BloodParticles" type="Particles2D" parent="Head"]
+modulate = Color( 0.662745, 0.027451, 0.294118, 1 )
+local_coords = false
+process_material = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Head"]
+position = Vector2( -0.33371, -0.834274 )
+texture = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource( 4 )
+
+[node name="Body" type="RigidBody2D" parent="."]
+position = Vector2( 3.00339, 6.6742 )
+collision_layer = 0
+
+[node name="BloodParticles" type="Particles2D" parent="Body"]
+modulate = Color( 0.662745, 0.027451, 0.294118, 1 )
+position = Vector2( 0, 1.116 )
+local_coords = false
+process_material = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Body"]
+position = Vector2( -1.16798, 0.667423 )
+texture = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2( -1.32433, 1.05946 )
+rotation = 0.860039
+shape = SubResource( 6 )
+
+[node name="Wing" type="RigidBody2D" parent="."]
+position = Vector2( -0.307434, -6.76774 )
+collision_layer = 0
+
+[node name="BloodParticles" type="Particles2D" parent="Wing"]
+modulate = Color( 0.662745, 0.027451, 0.294118, 1 )
+local_coords = false
+process_material = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Wing"]
+position = Vector2( 0.222559, 0.73364 )
+texture = SubResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wing"]
+position = Vector2( -0.598957, 0.749451 )
+rotation = -0.901821
+shape = SubResource( 8 )

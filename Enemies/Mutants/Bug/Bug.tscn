@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemies/Mutants/Bug/Bug.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Flier.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 241.593
+
+[node name="Bug" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+max_speed = 50
+
+[node name="Sprite" parent="." index="0"]
+animation = "Idle"
+
+[node name="Collider" parent="." index="1"]
+visible = false
+
+[node name="PlayerDetectorShape" parent="Hitboxes/PlayerDetector" index="0"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

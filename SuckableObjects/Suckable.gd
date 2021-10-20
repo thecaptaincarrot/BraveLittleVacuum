@@ -11,9 +11,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	print(collision_layer)
-	print(collision_mask)
+#func _process(delta):
+#	print(collision_layer)
+#	print(collision_mask)
 
 
 
