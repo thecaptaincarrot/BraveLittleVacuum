@@ -30,6 +30,7 @@ func _process(delta):
 			$Sprite.flip_h = false
 			$Hitboxes.scale.x = 1.0
 	
+	#Behavior and AI
 	match state:
 		IDLE:
 			motion.x = 0
@@ -45,7 +46,19 @@ func _process(delta):
 			collision_mask = 1
 			motion.x = 0
 			$Sprite.animation = "dead"
-
+	
+	#Animations
+	match state:
+		IDLE:
+			$Sprite.animation = "Idle"
+		WALK:
+			if is_on_floor():
+				$Sprite.animaion = "walk"
+			else:
+				if motion.y < 0:
+					$Sprite.animaion = "attack"
+				else:
+					$Sprite.animation = "land"
 
 
 func _on_WallDetector_body_entered(body):
@@ -63,3 +76,9 @@ func _on_WallDetector_body_entered(body):
 
 func hurt(damage):
 	health -= damage
+
+
+func _on_PlayerDetector_body_entered(body):
+	if body.is_in_group("Player") and state == IDLE:
+		state = WALK
+		#Move in the direction of player too I guess
