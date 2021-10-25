@@ -45,7 +45,7 @@ func nozzle_shoot(body):
 	var new_rock = SuckableObjects.decode_to_world(body).instance()
 	new_rock.position = nozzle.global_position
 	new_rock.collision_layer = 8
-	new_rock.collision_mask = 5
+	new_rock.collision_mask = 12
 	new_rock.damaging = true
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$LevelHolder.get_child(0).get_node("Clutter").call_deferred("add_child",new_rock)
@@ -63,7 +63,6 @@ func new_game():
 
 
 func goto_new_level(levelcode, exit : int):
-	print("Level Code: ", levelcode)
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -80,8 +79,6 @@ func goto_new_level(levelcode, exit : int):
 		new_level = add_level(0)
 		current_level = new_level
 		current_levelcode = 0
-	print("went to new level: ",current_level.name)
-	
 	var exit_obj = new_level.get_exit(exit)
 	exit_obj.active = false
 	#Camera stuff

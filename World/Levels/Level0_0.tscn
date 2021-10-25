@@ -4,8 +4,9 @@
 [ext_resource path="res://World/TestCollider.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://WaterBody.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/Mutants/Mutant_1.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/Mutants/WalkingMutant/Mutant_1.png" type="Texture" id=5]
 [ext_resource path="res://World/LevelExit.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 5 )

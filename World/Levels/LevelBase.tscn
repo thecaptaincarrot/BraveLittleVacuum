@@ -318,6 +318,7 @@ cell_size = Vector2( 48, 48 )
 cell_quadrant_size = 48
 cell_custom_transform = Transform2D( 48, 0, 0, 48, 0, 0 )
 compatibility_mode = true
+collision_mask = 9
 format = 1
 tile_data = PoolIntArray( 65551, 0, 0 )
 

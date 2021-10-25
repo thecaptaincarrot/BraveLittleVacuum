@@ -244,7 +244,6 @@ func update_line():
 	var line = $PlayerBody/Hose/Line2D
 	
 	if len(hose_segments) >= len(line.points):
-		print("mismatch between ", len(hose_segments), " ", len(line.points))
 		line.clear_points()
 		line.add_point(Vector2(0,0))
 		for j in range(len(hose_segments)):

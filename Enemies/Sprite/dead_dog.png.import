@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mutant_1.png-63c1d107ca866ce524b0c4b54b7e3fe3.stex"
+path="res://.import/dead_dog.png-9556f5d38c3a011bd099df56d9f8873c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Mutants/Mutant_1.png"
-dest_files=[ "res://.import/Mutant_1.png-63c1d107ca866ce524b0c4b54b7e3fe3.stex" ]
+source_file="res://Enemies/Sprite/dead_dog.png"
+dest_files=[ "res://.import/dead_dog.png-9556f5d38c3a011bd099df56d9f8873c.stex" ]
 
 [params]
 

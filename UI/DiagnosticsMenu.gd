@@ -142,7 +142,6 @@ func _unhandled_input(event):
 			if upgrade_selection.y < 3:
 				upgrade_selection.y = 3
 	elif event.is_action_pressed("ui_accept"):
-		print("Yui")
 		if mode == FLAVOR:
 			mode = INFO
 		elif mode == INFO:

@@ -75,7 +75,6 @@ func _on_LevelExit_body_entered(body):
 
 func _on_LevelExit_body_exited(body):
 	if body.is_in_group("Player") and !active:
-		print("Bye Player")
 		emit_signal("level_exit_exit")
 		active = true
 		body.get_parent().activate()

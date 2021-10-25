@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -8,11 +8,11 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Head.apply_central_impulse(Vector2(100,-100))
+	$Body.apply_central_impulse(Vector2(-100,-100))
+	$Wing.apply_central_impulse(Vector2(-100,0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var target = get_local_mouse_position()
-	
-	apply_central_impulse(target.normalized())
+#func _process(delta):
+#	pass

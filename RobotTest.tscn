@@ -8,8 +8,9 @@
 [ext_resource path="res://UI/Overlay.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Aliens/Speyeder.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemies/Mutants/Mutant.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/Mutants/WalkingMutant/Mutant.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Upgrades/HoseLengthUp.tscn" type="PackedScene" id=10]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 2.625
