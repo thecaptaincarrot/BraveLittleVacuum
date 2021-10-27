@@ -1,6 +1,6 @@
 extends "res://Enemies/Enemy.gd"
 #this is a basic scene for anything affected by gravity
-enum {IDLE, ATTACK, DEAD, WALK, HURT}
+enum {IDLE, ATTACK, DEAD, WALK, HURT, LOOKING}
 
 enum DIRECTIONS {RIGHT,LEFT}
 

@@ -45,20 +45,19 @@ func _process(delta):
 			collision_layer = 0
 			collision_mask = 1
 			motion.x = 0
-			$Sprite.animation = "dead"
+			$Sprite.animation = "Dead"
 	
 	#Animations
 	match state:
 		IDLE:
 			$Sprite.animation = "Idle"
 		WALK:
-			if is_on_floor():
-				$Sprite.animaion = "walk"
-			else:
-				if motion.y < 0:
-					$Sprite.animaion = "attack"
-				else:
-					$Sprite.animation = "land"
+			$Sprite.animation = "Walk"
+#			else:
+#				if motion.y < 3:
+#					$Sprite.animation = "Attack"
+#				else:
+#					$Sprite.animation = "Land"
 
 
 func _on_WallDetector_body_entered(body):
@@ -80,5 +79,17 @@ func hurt(damage):
 
 func _on_PlayerDetector_body_entered(body):
 	if body.is_in_group("Player") and state == IDLE:
-		state = WALK
+		state = LOOKING
+		print(LOOKING)
+		print(state)
+		match direction:
+			DIRECTIONS.LEFT: #NEed to test if player is behind too
+				$Sprite.play("LookL")
+			DIRECTIONS.RIGHT:
+				$Sprite.play("LookL")
 		#Move in the direction of player too I guess
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "LookL":
+		state = WALK
