@@ -8,14 +8,11 @@ func _ready():
 	max_speed = 160
 	match default_state:
 		"Idle":
-			print("Idle")
 			state = IDLE
 		"RunningR":
-			print("Running")
 			state = WALK
 			direction = DIRECTIONS.RIGHT
 		"RunningL":
-			print("Running L ")
 			state = WALK
 			direction = DIRECTIONS.LEFT
 
@@ -37,7 +34,6 @@ func _process(delta):
 		WALK:
 			if motion.length() < max_speed:
 				motion += walk()
-				print(motion)
 			else:
 				if is_on_floor():
 					motion = motion.clamped(max_speed)
@@ -45,7 +41,7 @@ func _process(delta):
 			collision_layer = 0
 			collision_mask = 1
 			motion.x = 0
-			$Sprite.animation = "dead"
+			$Sprite.animation = "Dead"
 	
 	#Animations
 	match state:
@@ -53,25 +49,21 @@ func _process(delta):
 			$Sprite.animation = "Idle"
 		WALK:
 			if is_on_floor():
-				$Sprite.animaion = "walk"
+				$Sprite.animation = "Walk"
 			else:
 				if motion.y < 0:
-					$Sprite.animaion = "attack"
+					$Sprite.animation = "Attack"
 				else:
-					$Sprite.animation = "land"
+					$Sprite.animation = "Land"
 
 
 func _on_WallDetector_body_entered(body):
 	print(body)
 	motion = Vector2(0,0)
 	if direction == DIRECTIONS.RIGHT:
-		print("Right")
 		direction = DIRECTIONS.LEFT
-		print(direction)
 	elif direction == DIRECTIONS.LEFT:
-		print("Left")
 		direction = DIRECTIONS.RIGHT
-		print(direction)
 
 
 func hurt(damage):

@@ -4,8 +4,8 @@
 [ext_resource path="res://World/LevelExit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Upgrades/Jar_boy-Sheet.png" type="Texture" id=3]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/Mutants/Bug/Bug.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/Mutants/EvilDog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/Mutants/BomberBird/BomberBird.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/Mutants/BomberBird/BirdBomb.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -50,20 +50,16 @@ animations = [ {
 position = Vector2( 608, 208 )
 collision_mask = 0
 
-[node name="Dog" parent="Enemies" index="0" groups=[
+[node name="Walker" parent="Enemies" index="0" instance=ExtResource( 5 )]
+position = Vector2( 496, 400 )
+collision_mask = 1
+
+[node name="BirdBomb" parent="Enemies" index="1" groups=[
 "Enemy",
 ] instance=ExtResource( 6 )]
-position = Vector2( 472, 456 )
+position = Vector2( 200, 232 )
 collision_layer = 4
-collision_mask = 1
-default_state = "RunningL"
-
-[node name="Bug" parent="Enemies" index="1" groups=[
-"Enemy",
-] instance=ExtResource( 5 )]
-position = Vector2( 200, 320 )
-collision_layer = 4
-collision_mask = 11
+collision_mask = 4
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1144, 160 )

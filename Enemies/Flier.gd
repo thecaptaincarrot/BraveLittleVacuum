@@ -3,7 +3,7 @@ extends "res://Enemies/Enemy.gd"
 enum {IDLE, FLY, DEAD, HURT}
 
 export var fly_acceleration = .5
-export var max_speed = 10
+export var max_speed = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,3 +22,7 @@ func fly_towards(destination : Vector2):
 	fly_vector = direction_vector * fly_acceleration
 	
 	return fly_vector
+
+func die():
+	state = DEAD
+	collision_layer = 0
