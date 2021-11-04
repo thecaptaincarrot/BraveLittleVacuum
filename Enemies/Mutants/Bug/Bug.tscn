@@ -8,7 +8,6 @@ radius = 241.593
 
 [node name="Bug" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-max_speed = 50
 
 [node name="Sprite" parent="." index="0"]
 animation = "Idle"
