@@ -16,8 +16,15 @@ func _process(delta):
 		IDLE:
 			motion = Vector2(0,0)
 		FLY:
-			if player_body != null:
-				motion += fly_towards(player_body.position)
+			if Globals.PLAYER:
+				$VisionRay.cast_to = Globals.PLAYER.body.position - position
+				if !$VisionRay.get_collider():
+					#This should be its own "Fly towards player" function
+					motion += fly_towards(player_body.position)
+				else: #Also meed to fly to last known player location rather than just stopping.... AI yay
+					motion = lerp(motion, Vector2(0,0),.05)
+					#need random flight behavior
+				
 				if motion.length() > max_speed:
 					motion = motion.normalized() * max_speed
 	#Animation

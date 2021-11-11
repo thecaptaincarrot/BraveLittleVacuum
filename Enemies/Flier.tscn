@@ -6,11 +6,11 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
@@ -24,12 +24,12 @@ region = Rect2( 32, 0, 32, 32 )
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
-"name": "Fall",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Fly",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
@@ -39,7 +39,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Fly",
+"name": "Fall",
 "speed": 5.0
 } ]
 
@@ -57,7 +57,11 @@ animation = "Fly"
 position = Vector2( -0.264862, 3.61893 )
 shape = SubResource( 6 )
 
-[node name="Hitboxes" type="Node2D" parent="." index="2"]
+[node name="VisionRay" type="RayCast2D" parent="." index="2"]
+enabled = true
+cast_to = Vector2( 0, 250 )
+
+[node name="Hitboxes" type="Node2D" parent="." index="3"]
 
 [node name="PlayerDetector" type="Area2D" parent="Hitboxes" index="0"]
 

@@ -13,7 +13,6 @@ func _process(delta):
 
 	match state:
 		IDLE:
-			print("IDLE")
 			motion = Vector2(0,Globals.GRAVITY)
 			if !$BombReleaseTimer.is_stopped:
 				$BombReleaseTimer.stop()
@@ -21,14 +20,13 @@ func _process(delta):
 			if $BombReleaseTimer.is_stopped():
 				$BombReleaseTimer.start()
 		DEAD:
-			if !$BombReleaseTimer.is_stopped:
+			if !$BombReleaseTimer.is_stopped():
 				$BombReleaseTimer.stop()
 			$Sprite.animation = "Dead"
 			modulate = Color.darkgray
 
 
 func _on_BombReleaseTimer_timeout():
-	print("Bomb release")
 	var bomb = BOMB.instance()
 	bomb.add_collision_exception_with(self)
 	bomb.global_position = $Hitboxes/Position2D.global_position

@@ -20,7 +20,7 @@ func _process(delta):
 	#Animations and actions
 	match direction:
 		DIRECTIONS.RIGHT:
-			$Sprite.offset.x = 0
+			$Sprite.offset.x = 8
 			match state:
 				IDLE:
 					motion.x = 0
@@ -32,6 +32,8 @@ func _process(delta):
 				ATTACK:
 					motion.x = 0
 					$Sprite.animation = "attackR"
+					if can_attack_player and $Sprite.frame == 2:
+						Globals.PLAYER.hurt(10)
 					if $AttackWinddown.is_stopped():
 						$AttackWinddown.start()
 				HURT:
@@ -43,7 +45,7 @@ func _process(delta):
 					motion.x = 0
 					$Sprite.animation = "dieR"
 		DIRECTIONS.LEFT:
-			$Sprite.offset.x = -22
+			$Sprite.offset.x = -12
 			match state:
 				IDLE:
 					motion.x = 0
@@ -155,3 +157,9 @@ func _on_Sprite_animation_finished():
 			else:
 				$WalkTimer.start()
 				state = WALK
+
+
+func _on_Sprite_frame_changed():
+	if state == ATTACK:
+		if can_attack_player and $Sprite.frame == 4 and ($Sprite.animation == "attackL" or $Sprite.animation == "attackR"):
+			Globals.PLAYER.hurt(10)
