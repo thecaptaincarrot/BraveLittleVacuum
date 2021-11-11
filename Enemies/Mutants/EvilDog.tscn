@@ -4,143 +4,142 @@
 [ext_resource path="res://Enemies/Mutants/EvilDog.gd" type="Script" id=4]
 [ext_resource path="res://Enemies/Sprite/dog-Sheet.png" type="Texture" id=6]
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 100, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 6 )
 region = Rect2( 70, 100, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 100, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 150, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 6 )
 region = Rect2( 70, 150, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 6 )
 region = Rect2( 140, 150, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 6 )
 region = Rect2( 210, 150, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 100, 70, 50 )
-
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 6 )
-region = Rect2( 280, 100, 70, 50 )
+region = Rect2( 140, 100, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 6 )
-region = Rect2( 0, 50, 70, 50 )
+region = Rect2( 210, 100, 70, 50 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 70, 50, 70, 50 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 70, 50 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 70, 0, 70, 50 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 140, 0, 70, 50 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 6 )
+region = Rect2( 210, 0, 70, 50 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 280, 100, 70, 50 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 100, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 6 )
-region = Rect2( 70, 50, 70, 50 )
+region = Rect2( 0, 50, 70, 50 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 70, 50 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 6 )
-region = Rect2( 70, 0, 70, 50 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 6 )
-region = Rect2( 140, 0, 70, 50 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 6 )
-region = Rect2( 210, 0, 70, 50 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
-region = Rect2( 140, 100, 70, 50 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 6 )
-region = Rect2( 210, 100, 70, 50 )
+region = Rect2( 0, 100, 70, 50 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "Hurt",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 7 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
-"name": "Dead",
+"name": "Attack",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ) ],
-"loop": true,
-"name": "Land",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ) ],
-"loop": false,
-"name": "LookL",
-"speed": 1.0
-}, {
-"frames": [ SubResource( 16 ) ],
-"loop": false,
-"name": "Die",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 10 ) ],
 "loop": false,
 "name": "LookR",
 "speed": 1.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 15 ) ],
 "loop": true,
-"name": "Attack",
+"name": "Land",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 16 ) ],
+"loop": true,
+"name": "Dead",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 17 ) ],
+"loop": false,
+"name": "LookL",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 18 ) ],
+"loop": false,
+"name": "Die",
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=20]
-radius = 13.4541
-height = 14.7257
-
-[sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 112, 64 )
+radius = 15.9949
+height = 8.89632
 
 [sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 79.9477, 43.6439 )
+
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 8, 7.4511 )
 
 [node name="Dog" instance=ExtResource( 1 )]
-collision_mask = 4
 script = ExtResource( 4 )
 health = 3
 
@@ -148,23 +147,23 @@ health = 3
 position = Vector2( 0, -4.76837e-07 )
 frames = SubResource( 19 )
 animation = "Walk"
-frame = 2
+frame = 3
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( -1.83101, 7.49458 )
+[node name="Collider" parent="." index="1"]
+position = Vector2( -1.98425, 4.96063 )
 rotation = 1.5708
 shape = SubResource( 20 )
 
-[node name="CollisionShape2D" parent="Hitboxes/PlayerDetector" index="0"]
-position = Vector2( -112, -32.1984 )
-shape = SubResource( 21 )
+[node name="PlayerDetectorCollider" parent="Hitboxes/PlayerDetector" index="0"]
+position = Vector2( -100.794, -5.03967 )
+shape = SubResource( 22 )
 
 [node name="WallDetector" type="Area2D" parent="Hitboxes" index="1"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/WallDetector" index="0"]
 position = Vector2( -35.2582, 4.91077 )
-shape = SubResource( 22 )
+shape = SubResource( 21 )
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_entered" from="Hitboxes/WallDetector" to="." method="_on_WallDetector_body_entered"]

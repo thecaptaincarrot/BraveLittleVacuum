@@ -16,6 +16,6 @@ animation = "Idle"
 visible = false
 
 [node name="PlayerDetectorShape" parent="Hitboxes/PlayerDetector" index="0"]
+visible = false
 shape = SubResource( 1 )
-
 [connection signal="body_entered" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

@@ -36,9 +36,8 @@ func die():
 	state = DEAD
 	var new_pieces = PIECES.instance()
 	new_pieces.position = position
-	get_parent().add_child(new_pieces)
+	get_parent().call_deferred("add_child",new_pieces)
 	queue_free()
-	
 
 
 func _on_PlayerDetector_body_entered(body):
