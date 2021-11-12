@@ -8,49 +8,49 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 32, 32 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 32, 32 )
+region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 666, 733 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
 region = Rect2( 666, 0, 666, 733 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 5 )
 region = Rect2( 1332, 0, 666, 733 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 5 )
 region = Rect2( 1998, 0, 666, 733 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 5 )
 region = Rect2( 2664, 0, 666, 733 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 5 )
 region = Rect2( 3330, 0, 666, 733 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "Die",
 "speed": 12.0
@@ -61,7 +61,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=10]
 radius = 11.8658
 
 [node name="BirdBomb" instance=ExtResource( 1 )]
@@ -71,7 +71,7 @@ max_speed = 100
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.03, 0.03 )
-frames = SubResource( 4 )
+frames = SubResource( 9 )
 playing = true
 
 [node name="Collider" parent="." index="1"]
@@ -82,7 +82,16 @@ gravity_point = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/PlayerCollisionDetector" index="0"]
 position = Vector2( 0.89291, -1.28976 )
-shape = SubResource( 11 )
+shape = SubResource( 10 )
 
+[node name="DeathTimer" type="Timer" parent="." index="4"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="FlyRandomPause" type="Timer" parent="." index="5"]
+one_shot = true
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="Hitboxes/PlayerCollisionDetector" to="." method="_on_PlayerCollisionDetector_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="FlyRandomPause" to="." method="_on_FlyRandomPause_timeout"]

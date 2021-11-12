@@ -19,4 +19,9 @@ visible = false
 visible = false
 shape = SubResource( 1 )
 
+[node name="FlyRandomPause" type="Timer" parent="." index="4"]
+wait_time = 10.0
+one_shot = true
 [connection signal="body_entered" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_exited" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="timeout" from="FlyRandomPause" to="." method="_on_FlyRandomPause_timeout"]

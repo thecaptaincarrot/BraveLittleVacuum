@@ -11,7 +11,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 #func _process(delta):
+#	print(position)
 #	print(collision_layer)
 #	print(collision_mask)
 
@@ -24,3 +26,8 @@ func _on_DefaultSuckableObject_body_entered(body):
 	elif body.is_in_group("World"):
 		collision_mask = 8
 		damaging = false
+
+
+func to_tank():
+	collision_layer = 32
+	collision_mask = 32

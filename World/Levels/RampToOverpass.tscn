@@ -49,21 +49,20 @@ position = Vector2( 1008, 384 )
 ] instance=ExtResource( 3 )]
 position = Vector2( 1008, 192 )
 collision_layer = 4
-collision_mask = 4
 
 [node name="Dog" parent="Enemies" index="1" groups=[
 "Enemy",
 ] instance=ExtResource( 4 )]
 position = Vector2( 408, 528 )
 collision_layer = 4
-collision_mask = 4
+collision_mask = 2147483648
 
 [node name="Dog2" parent="Enemies" index="2" groups=[
 "Enemy",
 ] instance=ExtResource( 4 )]
 position = Vector2( 1232, 392 )
 collision_layer = 4
-collision_mask = 4
+collision_mask = 2147483648
 default_state = "Idle"
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]

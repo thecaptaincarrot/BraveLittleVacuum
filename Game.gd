@@ -42,14 +42,15 @@ func _input(event):
 
 
 func nozzle_shoot(body):
-	var new_rock = SuckableObjects.decode_to_world(body).instance()
-	new_rock.position = nozzle.global_position
-	new_rock.collision_layer = 8
-	new_rock.collision_mask = 12
-	new_rock.damaging = true
+	var new_shoot = load(body.filename).instance()
+	new_shoot.position = nozzle.global_position
+	new_shoot.collision_layer = 8
+	new_shoot.collision_mask = 12
+
+	new_shoot.damaging = true
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
-	$LevelHolder.get_child(0).get_node("Clutter").call_deferred("add_child",new_rock)
-	new_rock.apply_central_impulse(vector * Upgrades.blow_force)
+	$LevelHolder.get_child(0).get_node("Clutter").call_deferred("add_child",new_shoot)
+	new_shoot.apply_central_impulse(vector * Upgrades.blow_force)
 
 
 func new_game():

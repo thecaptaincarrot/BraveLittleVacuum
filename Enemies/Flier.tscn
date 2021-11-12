@@ -29,7 +29,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Fly",
+"name": "Fall",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
@@ -39,7 +39,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Fall",
+"name": "Fly",
 "speed": 5.0
 } ]
 

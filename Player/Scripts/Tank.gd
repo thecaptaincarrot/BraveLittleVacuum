@@ -50,9 +50,11 @@ func _process(delta):
 
 func add_suckable(body):
 	if current_size + body.size <= size:
+		var new_contents = load(body.filename).instance()
 		body.queue_free()
-		var new_contents = SuckableObjects.decode_to_tank(body).instance()
+		print(new_contents.position)
 		new_contents.position.y -= 35
+		new_contents.to_tank()
 		current_size += body.size
 		$Contents.call_deferred("add_child",new_contents)
 

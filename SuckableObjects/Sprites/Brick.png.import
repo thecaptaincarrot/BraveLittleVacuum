@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Eye.png-52b0f41549d41728c7a1658818147ea6.stex"
+path="res://.import/Brick.png-cdb56365e6c8641b210d23e4a7847e21.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SuckableObjects/Eye.png"
-dest_files=[ "res://.import/Eye.png-52b0f41549d41728c7a1658818147ea6.stex" ]
+source_file="res://SuckableObjects/Sprites/Brick.png"
+dest_files=[ "res://.import/Brick.png-cdb56365e6c8641b210d23e4a7847e21.stex" ]
 
 [params]
 

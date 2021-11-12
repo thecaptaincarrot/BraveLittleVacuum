@@ -88,7 +88,6 @@ range_layer_max = 10
 __meta__ = {
 "_edit_lock_": true
 }
-
 [connection signal="timeout" from="Watercolum/WaterTimer" to="." method="_on_WaterTimer_timeout"]
 [connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
 [connection signal="body_exited" from="Exit" to="." method="_on_Exit_body_exited"]
