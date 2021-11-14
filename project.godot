@@ -21,7 +21,6 @@ config/icon="res://Player/Sprites/Hoover1.png"
 
 [autoload]
 
-SuckableObjects="*res://SuckableObjects/SuckableObjects.gd"
 Globals="*res://Globals.gd"
 Upgrades="*res://Player/Upgrades.gd"
 LevelDecoder="*res://World/Levels/LevelDecoder.gd"

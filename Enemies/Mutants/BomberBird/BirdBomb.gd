@@ -1,5 +1,7 @@
 extends "res://Enemies/Flier.gd"
 
+var player_detected = false
+
 var last_known_position = Vector2(0,0)
 export var damage = 10
 
@@ -28,7 +30,7 @@ func _process(delta):
 		FLYBLIND:
 			modulate = Color.red
 			if player_body:
-				if !$VisionRay.get_collider(): #regain line of sight
+				if !$VisionRay.get_collider() and player_detected: #regain line of sight
 					state = FLY
 					#two behaviors:
 					#1. fly towards last known position
@@ -44,7 +46,7 @@ func _process(delta):
 		SEARCHING: #Fly towards last known player position
 			modulate = Color.blue
 			if player_body:
-				if !$VisionRay.get_collider(): #has line of sight
+				if !$VisionRay.get_collider() and player_detected: #has line of sight
 					$FlyRandomPause.stop()
 					state = FLY
 			#fly_random to find the fly_towards position
@@ -69,6 +71,11 @@ func _process(delta):
 			$Sprite.animation = "Die"
 
 
+func _physics_process(delta):
+	if Globals.PLAYER:
+		$VisionRay.cast_to = Globals.PLAYER.body.position - position
+
+
 func die():
 	state = DEAD
 
@@ -90,3 +97,13 @@ func _on_DeathTimer_timeout():
 
 func _on_FlyRandomPause_timeout():
 	fly_random(12.0) # Generate new fly_random vector #change radius to do
+
+
+func _on_PlayerDetector_body_entered(body):
+	if body.is_in_group("Player"):
+		player_detected = true
+
+
+func _on_PlayerDetector_body_exited(body):
+	if body.is_in_group("Player"):
+		player_detected = false

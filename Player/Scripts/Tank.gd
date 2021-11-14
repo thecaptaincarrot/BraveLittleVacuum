@@ -1,8 +1,7 @@
 extends Sprite
 
-var blow_force = 20
+var upward_force = 40
 
-var size = 10
 var current_size = 0
 
 var liquid_level = 0
@@ -23,7 +22,7 @@ func _process(delta):
 	if Input.is_action_pressed("blow"):
 		for object in $Contents.get_children():
 			var vector = $Exit.position - object.position
-			object.apply_central_impulse(vector.normalized() * blow_force)
+			object.apply_central_impulse(vector.normalized() * upward_force)
 			if $SolidShotTimer.is_stopped():
 				if !to_shoot == []:
 					to_shoot.shuffle()
@@ -41,15 +40,15 @@ func _process(delta):
 			emit_signal("liquidshoot",null)
 	
 	#liquid level
-	$Water.scale.y = lerp($Water.scale.y,liquid_level / float(size),.1)
-	$Water.position.y = lerp($Water.position.y,45 - (liquid_level / float(size) * 32.0),.1)
+#	$Water.scale.y = lerp($Water.scale.y,liquid_level / float(size),.1)
+#	$Water.position.y = lerp($Water.position.y,45 - (liquid_level / float(size) * 32.0),.1)
 #	$Watercolum.scale.y = lerp($Watercolum.scale.y, 1.0 - .4* (liquid_level / float(size)),.1)
 #	$Watercolum.position.y = lerp($Watercolum.position.y,13 - 35 * (liquid_level / float(size)),.1)
 #	print($Watercolum.scale.y)
 
 
 func add_suckable(body):
-	if current_size + body.size <= size:
+	if current_size + body.size <= Upgrades.tank_size:
 		var new_contents = load(body.filename).instance()
 		body.queue_free()
 		print(new_contents.position)
@@ -60,7 +59,7 @@ func add_suckable(body):
 
 
 func add_liquid(body):
-	if liquid_level < size:
+	if liquid_level < Upgrades.tank_size:
 		body.queue_free()
 		liquid_level += 1
 		$Watercolum/WaterTimer.start()

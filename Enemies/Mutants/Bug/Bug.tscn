@@ -8,6 +8,9 @@ radius = 241.593
 
 [node name="Bug" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+collision_damage = 8.0
+fly_acceleration = 5.0
+max_speed = 75
 
 [node name="Sprite" parent="." index="0"]
 animation = "Idle"

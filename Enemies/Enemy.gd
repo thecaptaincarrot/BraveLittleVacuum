@@ -3,6 +3,7 @@ extends KinematicBody2D
 enum {DEFAULT}
 
 export var health = 1
+export var collision_damage = 5.0
 
 var motion = Vector2(0,0)
 var state = DEFAULT

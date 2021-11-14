@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 const suckable = true
-export var size = 0
+export var size = 0.0
 export var identifier = "Default"
 var damaging = false
 

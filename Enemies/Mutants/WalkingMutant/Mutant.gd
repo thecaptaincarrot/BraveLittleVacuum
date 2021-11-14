@@ -11,8 +11,8 @@ var can_attack_player = false
 func _ready():
 	state = IDLE
 	direction = initial_direction
-	walk_speed = 40
-	max_speed = 30
+	walk_speed = 30
+	max_speed = 44
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -162,4 +162,4 @@ func _on_Sprite_animation_finished():
 func _on_Sprite_frame_changed():
 	if state == ATTACK:
 		if can_attack_player and $Sprite.frame == 4 and ($Sprite.animation == "attackL" or $Sprite.animation == "attackR"):
-			Globals.PLAYER.hurt(10)
+			Globals.PLAYER.hurt(20.0)

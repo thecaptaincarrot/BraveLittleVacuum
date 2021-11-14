@@ -5,17 +5,19 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
-region = Rect2( 64, 0, 32, 32 )
+region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 3.58878
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 3.32599
+height = 13.9785
 
-[node name="BugHead" instance=ExtResource( 1 )]
-size = 0.25
+[node name="BugWing" instance=ExtResource( 1 )]
+size = 1.0
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0.21022, 0.840893 )
+position = Vector2( -2.11893, -0.397305 )
+rotation = -0.961676
 shape = SubResource( 2 )

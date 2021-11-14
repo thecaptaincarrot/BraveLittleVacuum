@@ -16,6 +16,16 @@ animations = [ {
 "name": "Hurt",
 "speed": 6.0
 }, {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Idle",
@@ -30,16 +40,6 @@ animations = [ {
 "loop": true,
 "name": "Attack",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 1 ) ],
-"loop": true,
-"name": "Dead",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]

@@ -21,6 +21,8 @@ var gravity = 9.8
 var inertia = 100
 var hurt_damage_vector = Vector2(200,-200)
 
+var enemies_in_hitbox = []
+
 var health = 100.0
 var max_health = 100.0
 var invulnerable = false
@@ -47,6 +49,9 @@ func _ready():
 func _process(delta):
 	if is_in_water and !Upgrades.waterproof:
 		health -= 10.0 * delta #10 is a placeholder
+	if !enemies_in_hitbox.empty():
+		hurt(enemies_in_hitbox[0].collision_damage)
+		pass
 	update_health()
 
 
@@ -76,6 +81,8 @@ func hurt(damage):
 		var new_vector = Vector2(-hurt_damage_vector.x, hurt_damage_vector.y)
 		$PlayerBody.motion = new_vector
 	input_disabled = true
+	invulnerable = true
+	$iFrameTimer.start()
 	$PlayerBody/InputEater.start()
 
 
@@ -271,8 +278,8 @@ func check_hose_length():
 
 func collide_hose():
 	for N in hose_segments:
-		N.collision_layer = 4
-		N.collision_mask = 4
+		N.collision_layer = 0
+		N.collision_mask = 1
 	
 
 func uncollide_hose():
@@ -304,7 +311,14 @@ func _on_HitBox_area_exited(area):
 
 func _on_HitBox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		hurt(40.0)
+		print(enemies_in_hitbox)
+		enemies_in_hitbox.append(body)
+
+
+func _on_HitBox_body_exited(body):
+	if enemies_in_hitbox.has(body):
+		print(enemies_in_hitbox)
+		enemies_in_hitbox.erase(body)
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -314,3 +328,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_InputEater_timeout():
 	input_disabled = false
+
+
+func _on_iFrameTimer_timeout():
+	invulnerable = false
