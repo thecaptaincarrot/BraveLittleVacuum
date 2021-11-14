@@ -68,6 +68,10 @@ func goto_new_level(levelcode, exit : int):
 	$Overlay/ColorOverlay.fadeout = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	var new_level = null
+	var object_to_keep = null
+	if Globals.PLAYER.nozzle.stuck_object:
+		object_to_keep = Globals.PLAYER.nozzle.stuck_object
+		object_to_keep.get_parent().remove_child(object_to_keep)
 	if current_level:
 		current_level.queue_free()
 		current_level = null
@@ -80,6 +84,10 @@ func goto_new_level(levelcode, exit : int):
 		new_level = add_level(0)
 		current_level = new_level
 		current_levelcode = 0
+	
+	if object_to_keep:
+		new_level.get_node("Clutter").add_child(object_to_keep)
+	
 	var exit_obj = new_level.get_exit(exit)
 	exit_obj.active = false
 	#Camera stuff
