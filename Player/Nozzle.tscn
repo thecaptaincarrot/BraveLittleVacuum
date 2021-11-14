@@ -108,10 +108,13 @@ color = Color( 1, 1, 1, 0.231373 )
 position = Vector2( 0, -8 )
 frames = SubResource( 15 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="MainCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3.26941 )
 rotation = 1.5708
 shape = SubResource( 16 )
+
+[node name="StuckObjectCollisionShape" type="CollisionShape2D" parent="."]
+z_index = 10
 
 [node name="NozzleHole" type="Area2D" parent="."]
 rotation = 1.5708
@@ -202,6 +205,7 @@ one_shot = true
 visible = false
 enabled = true
 cast_to = Vector2( 0, -1000 )
+
 [connection signal="body_entered" from="Suck" to="." method="_on_Suck_body_entered"]
 [connection signal="body_exited" from="Suck" to="." method="_on_Suck_body_exited"]
 [connection signal="area_entered" from="NozzleHole" to="." method="_on_NozzleHole_area_entered"]

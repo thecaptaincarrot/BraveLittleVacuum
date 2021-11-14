@@ -86,10 +86,6 @@ func _physics_process(delta):
 	movement_vector.x = lerp(movement_vector.x,0,drag)
 	movement_vector.y = lerp(movement_vector.y,0,drag)
 	
-	if stuck_object:
-		stuck_object.global_position = global_position + (Vector2(0,-3)+stuck_object.get_node("SuckPosition").position).rotated(rotation)
-		stuck_object.rotation = rotation
-	
 	if !((Input.is_action_pressed("suck") or Input.is_action_pressed("blow")) and !stuck_object):
 		var to_angle = movement_vector.angle() + PI/2
 		if to_angle > PI:
@@ -104,6 +100,14 @@ func _physics_process(delta):
 				to_angle -= 2 * PI
 			
 			rotation = lerp(rotation,to_angle,movement_vector.length()/400.0)
+	
+	if stuck_object:
+		var stuck_position = global_position
+		stuck_object.stick(stuck_position, rotation)
+		if $StuckObjectCollisionShape.shape == null:
+			$StuckObjectCollisionShape.shape = stuck_object.get_node("CollisionShape2D").shape
+			$StuckObjectCollisionShape.position = stuck_object.get_suck_position() + Vector2(0,-3)
+
 
 
 func _input(event):
@@ -118,6 +122,8 @@ func _input(event):
 			$StuckObjectTimer.start()
 		for object in suckables:
 			object.gravity_scale = 1
+	elif event.is_action_pressed("blow"):
+		pass
 	
 
 
@@ -159,7 +165,16 @@ func suck():
 			$StuckObjectTimer.stop()
 
 func blow():
-	pass
+	if stuck_object:
+		$StuckObjectTimer.stop()
+		stuck_object.unstick()
+		var force_impulse = Upgrades.blow_force * Vector2(0,-1).rotated(rotation)
+		stuck_object.apply_central_impulse(force_impulse)
+		stuck_object.apply_torque_impulse(rand_range(-200,200))
+		stuck_object.damaging = true
+		stuck_object = null
+		$StuckObjectCollisionShape.shape = null
+		
 
 
 func _on_Suck_body_entered(body):
@@ -182,5 +197,6 @@ func _on_NozzleHole_body_entered(body):
 
 
 func _on_StuckObjectTimer_timeout():
-	stuck_object.gravity_scale = 1
+	stuck_object.unstick()
 	stuck_object = null
+	$StuckObjectCollisionShape.shape = null

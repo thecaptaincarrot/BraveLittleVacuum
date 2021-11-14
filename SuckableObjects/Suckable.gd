@@ -20,6 +20,7 @@ func _ready():
 
 
 func _on_DefaultSuckableObject_body_entered(body):
+	print("Bang Pw")
 	if body.is_in_group("Enemy"):
 		body.collision(self,linear_velocity)
 		damaging = false
