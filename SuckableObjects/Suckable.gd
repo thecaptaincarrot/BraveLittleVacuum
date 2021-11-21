@@ -12,15 +12,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-#func _process(delta):
-#	print(position)
-#	print(collision_layer)
-#	print(collision_mask)
-
 
 
 func _on_DefaultSuckableObject_body_entered(body):
-	print("Bang Pw")
 	if body.is_in_group("Enemy"):
 		body.collision(self,linear_velocity)
 		damaging = false

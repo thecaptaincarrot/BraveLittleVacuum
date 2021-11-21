@@ -50,27 +50,27 @@ region = Rect2( 312, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 66, 52, 33 )
+region = Rect2( 312, 0, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 312, 0, 52, 33 )
+region = Rect2( 0, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 33, 52, 33 )
+region = Rect2( 52, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 1 )
-region = Rect2( 52, 33, 52, 33 )
+region = Rect2( 104, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 1 )
-region = Rect2( 104, 33, 52, 33 )
+region = Rect2( 156, 33, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 1 )
-region = Rect2( 156, 33, 52, 33 )
+region = Rect2( 0, 66, 52, 33 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 1 )
@@ -83,15 +83,15 @@ animations = [ {
 "name": "Default",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 11 ) ],
-"loop": true,
-"name": "Done",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
 "name": "Open",
 "speed": 10.0
+}, {
+"frames": [ SubResource( 17 ) ],
+"loop": true,
+"name": "Done",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=19]
@@ -129,7 +129,7 @@ shape = SubResource( 3 )
 z_index = -1
 frames = SubResource( 18 )
 animation = "Default"
-frame = 3
+frame = 5
 playing = true
 offset = Vector2( 0, -2 )
 

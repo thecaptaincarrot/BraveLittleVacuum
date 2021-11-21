@@ -1,7 +1,7 @@
 extends ColorRect
 
 var fadeout = false
-var multiplier = 2
+var multiplier = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

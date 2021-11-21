@@ -7,59 +7,59 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
-region = Rect2( 120, 0, 20, 32 )
+region = Rect2( 0, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
-region = Rect2( 140, 0, 20, 32 )
+region = Rect2( 20, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
-region = Rect2( 160, 0, 20, 32 )
+region = Rect2( 40, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 4 )
-region = Rect2( 180, 0, 20, 32 )
+region = Rect2( 60, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
-region = Rect2( 200, 0, 20, 32 )
+region = Rect2( 80, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
-region = Rect2( 220, 0, 20, 32 )
+region = Rect2( 100, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 20, 32 )
+region = Rect2( 120, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 4 )
-region = Rect2( 260, 0, 20, 32 )
+region = Rect2( 140, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 20, 32 )
+region = Rect2( 160, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 4 )
-region = Rect2( 20, 0, 20, 32 )
+region = Rect2( 180, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
-region = Rect2( 40, 0, 20, 32 )
+region = Rect2( 200, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
-region = Rect2( 60, 0, 20, 32 )
+region = Rect2( 220, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 4 )
-region = Rect2( 80, 0, 20, 32 )
+region = Rect2( 240, 0, 20, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 100, 0, 20, 32 )
+region = Rect2( 260, 0, 20, 32 )
 
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
@@ -68,15 +68,15 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "RailCharge",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": false,
 "name": "RailExpose",
 "speed": 24.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "RailCharge",
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=16]
@@ -208,7 +208,5 @@ cast_to = Vector2( 0, -1000 )
 
 [connection signal="body_entered" from="Suck" to="." method="_on_Suck_body_entered"]
 [connection signal="body_exited" from="Suck" to="." method="_on_Suck_body_exited"]
-[connection signal="area_entered" from="NozzleHole" to="." method="_on_NozzleHole_area_entered"]
-[connection signal="area_exited" from="NozzleHole" to="." method="_on_NozzleHole_area_exited"]
 [connection signal="body_entered" from="NozzleHole" to="." method="_on_NozzleHole_body_entered"]
 [connection signal="timeout" from="StuckObjectTimer" to="." method="_on_StuckObjectTimer_timeout"]

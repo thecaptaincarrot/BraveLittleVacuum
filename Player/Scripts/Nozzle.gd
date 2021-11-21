@@ -106,6 +106,7 @@ func _physics_process(delta):
 		stuck_object.stick(stuck_position, rotation)
 		if $StuckObjectCollisionShape.shape == null:
 			$StuckObjectCollisionShape.shape = stuck_object.get_node("CollisionShape2D").shape
+			$StuckObjectCollisionShape.rotation = stuck_object.get_node("CollisionShape2D").rotation
 			$StuckObjectCollisionShape.position = stuck_object.get_suck_position() + Vector2(0,-3)
 
 
@@ -164,6 +165,7 @@ func suck():
 		if !$StuckObjectTimer.is_stopped():
 			$StuckObjectTimer.stop()
 
+
 func blow():
 	if stuck_object:
 		$StuckObjectTimer.stop()
@@ -189,7 +191,7 @@ func _on_Suck_body_exited(body):
 
 
 func _on_NozzleHole_body_entered(body):
-	if Input.is_action_pressed("suck"):
+	if Input.is_action_pressed("suck") and !stuck_object:
 		if body.is_in_group("Suckables"):
 			emit_signal("sucked",body)
 		if body.is_in_group("Large"):

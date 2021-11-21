@@ -5,6 +5,9 @@ var next_segment = self
 var force = 1
 export var size = 4
 
+var change_position = false
+var integration_position = Vector2(0,0)
+
 var i = 0
 
 var collision_limit
@@ -25,3 +28,14 @@ func _process(delta):
 		collision_mask = 0
 	else:
 		collision_mask = 1
+
+
+func _integrate_forces(state):
+	if change_position:
+		state.transform = Transform2D(0.0, integration_position)
+		change_position = false
+
+
+func reset_position(new_position):
+	integration_position = new_position
+	change_position = true

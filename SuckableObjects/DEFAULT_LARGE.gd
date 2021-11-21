@@ -15,6 +15,9 @@ func _ready():
 func _integrate_forces(state):
 	if stuck:
 		state.transform = Transform2D(stuck_rotation, stuck_position)
+		print($Sprite.global_position)
+		print(global_position)
+		print($Sprite.visible)
 		if unstick:
 			stuck = false
 			unstick = false
@@ -22,7 +25,7 @@ func _integrate_forces(state):
 
 func stick(nozzle_position, nozzle_rotation):
 	stuck_rotation = nozzle_rotation + PI
-	stuck_position = nozzle_position - ($SuckPosition.position + Vector2(0,-3)).rotated(stuck_rotation)
+	stuck_position = nozzle_position - ($SuckPosition.position).rotated(stuck_rotation)
 	
 	stuck = true
 	
@@ -49,9 +52,7 @@ func get_suck_position():
 
 
 func _on_DefaultLargeObject_body_entered(body):
-	print("A big boy hit ", body)
 	if body.is_in_group("Enemy"):
-		print ("BANG")
 		body.collision(self,linear_velocity)
 		damaging = false
 	elif body.is_in_group("World"):

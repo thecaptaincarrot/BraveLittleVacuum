@@ -44,3 +44,8 @@ func get_upgrades():
 
 func get_camera_bounds():
 	return [$CameraBound.rect_position,$CameraBound.rect_size]
+
+
+func add_clutter(clutter_to_add):
+	$Clutter.add_child(clutter_to_add)
+	print(clutter_to_add)

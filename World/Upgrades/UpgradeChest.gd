@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+signal add_clutter
+
 export var upgrade_type = "DEFAULT"
 signal upgrade_collected
 
@@ -50,9 +52,10 @@ func _on_ChestSprite_animation_finished():
 		$OpenCollision.set_deferred("disabled",false)
 		
 		var new_lid = LID.instance()
-		new_lid.position = Vector2(0,-3)
-		add_child(new_lid)
+		new_lid.position = Vector2(0,-3) + position
+		emit_signal("add_clutter",new_lid)
 		new_lid.apply_central_impulse(Vector2(-100,-250))
+		
 		$UpgradeSphere.active = true
 
 

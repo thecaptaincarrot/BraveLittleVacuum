@@ -10,6 +10,7 @@ var main
 var camera
 
 var hose_segments = []
+var hose_positions = []
 
 var motion = Vector2(0,0)
 
@@ -116,11 +117,10 @@ func activate():
 
 
 func place_body(new_position):
+	get_hose_relative_positions()
 	$PlayerBody.position = new_position
 #	nozzle.position = Vector2(0,-64)
-	for segment in hose_segments:
-		if segment.name != "HoseStart":
-			pass
+	reset_hose_position()
 
 
 #HOSE STUFF
@@ -154,7 +154,6 @@ func create_hose_skeleton(length):
 
 
 func remove_hose():
-	
 	nozzle.set_physics_process(false)
 	for hose in hose_segments:
 		hose.set_process(false)
@@ -213,6 +212,19 @@ func add_nozzle(parent):
 	
 	$PlayerBody/Hose.add_child(new_nozzle)
 	return new_nozzle
+
+
+func get_hose_relative_positions():
+	hose_positions.clear()
+	for hose in hose_segments:
+		hose_positions.append(hose.position)
+
+func reset_hose_position():
+	var i = 0
+	for hose in hose_segments:
+		if hose.name != "HoseStart":
+			hose.reset_position(hose_positions[i] + body.global_position)
+			i += 1
 
 
 func add_anchor_pin(parent,child):
@@ -311,13 +323,11 @@ func _on_HitBox_area_exited(area):
 
 func _on_HitBox_body_entered(body):
 	if body.is_in_group("Enemy"):
-		print(enemies_in_hitbox)
 		enemies_in_hitbox.append(body)
 
 
 func _on_HitBox_body_exited(body):
 	if enemies_in_hitbox.has(body):
-		print(enemies_in_hitbox)
 		enemies_in_hitbox.erase(body)
 
 

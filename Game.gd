@@ -69,7 +69,7 @@ func goto_new_level(levelcode, exit : int):
 	yield(get_tree().create_timer(0.5), "timeout")
 	var new_level = null
 	var object_to_keep = null
-	if Globals.PLAYER.nozzle.stuck_object:
+	if Globals.PLAYER.nozzle.stuck_object: #keep large object stuck to nozzle between levels
 		object_to_keep = Globals.PLAYER.nozzle.stuck_object
 		object_to_keep.get_parent().remove_child(object_to_keep)
 	if current_level:
@@ -99,6 +99,7 @@ func goto_new_level(levelcode, exit : int):
 	player.camera.limit_top = bounding_box_pos.y
 	player.camera.limit_bottom = bounding_box_pos.y + bounding_box_size.y
 	#Palyer stuff
+	player.get_hose_relative_positions()
 	player.place_body(exit_obj.global_position)
 	player.body.inactive = true
 	yield(get_tree().create_timer(0.5),"timeout")
@@ -113,6 +114,7 @@ func add_level(levelcode):
 		N.connect("level_exit",self,"goto_new_level")
 	for Upgrade in new_level.get_upgrades():
 		Upgrade.connect("upgrade_collected",self, "collect_upgrade")
+		Upgrade.connect("add_clutter",new_level,"add_clutter")
 		Upgrade.check_upgrade()
 		
 	$LevelHolder.add_child(new_level)
