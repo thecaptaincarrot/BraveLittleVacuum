@@ -206,6 +206,10 @@ visible = false
 enabled = true
 cast_to = Vector2( 0, -1000 )
 
+[node name="PlayerCaster" type="RayCast2D" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+enabled = true
+
 [connection signal="body_entered" from="Suck" to="." method="_on_Suck_body_entered"]
 [connection signal="body_exited" from="Suck" to="." method="_on_Suck_body_exited"]
 [connection signal="body_entered" from="NozzleHole" to="." method="_on_NozzleHole_body_entered"]

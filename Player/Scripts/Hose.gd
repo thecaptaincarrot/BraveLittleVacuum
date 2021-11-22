@@ -16,7 +16,7 @@ var collision_limit
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(false)
-	$CollisionShape2D.shape.radius = size
+	$CollisionShape2D.shape.extents.y = size
 	collision_limit = (size + 2 ) * 2
 
 

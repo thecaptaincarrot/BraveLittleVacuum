@@ -93,9 +93,8 @@ func movement(delta):
 		motion.y = 0
 	
 	if get_parent().input_disabled:
-		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+		motion = move_and_slide(motion,Vector2(0,-1),false,4,.78, false)#Up vector never changes?
 		return
-		
 	
 	#"""Horizontal""" movement
 	var horizontal_vector = Vector2(1,0)

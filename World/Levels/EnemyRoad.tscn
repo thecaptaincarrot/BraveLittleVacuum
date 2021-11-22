@@ -36,20 +36,40 @@ size = 0.0
 position = Vector2( 560, 424 )
 size = 0.0
 
-[node name="Mutant" parent="Enemies" index="0" instance=ExtResource( 3 )]
+[node name="Mutant" parent="Enemies" index="0" groups=[
+"Enemy",
+] instance=ExtResource( 3 )]
 position = Vector2( 432, 440 )
+collision_layer = 4
+collision_mask = 2147483652
 
-[node name="Bug" parent="Enemies" index="1" instance=ExtResource( 5 )]
+[node name="Bug" parent="Enemies" index="1" groups=[
+"Enemy",
+] instance=ExtResource( 5 )]
 position = Vector2( 264, 440 )
+collision_layer = 4
+collision_mask = 2147483652
 
-[node name="Bug2" parent="Enemies" index="2" instance=ExtResource( 5 )]
+[node name="Bug2" parent="Enemies" index="2" groups=[
+"Enemy",
+] instance=ExtResource( 5 )]
 position = Vector2( 680, 408 )
+collision_layer = 4
+collision_mask = 2147483652
 
-[node name="Bug3" parent="Enemies" index="3" instance=ExtResource( 5 )]
+[node name="Bug3" parent="Enemies" index="3" groups=[
+"Enemy",
+] instance=ExtResource( 5 )]
 position = Vector2( 640, 488 )
+collision_layer = 4
+collision_mask = 2147483652
 
-[node name="Bug4" parent="Enemies" index="4" instance=ExtResource( 5 )]
+[node name="Bug4" parent="Enemies" index="4" groups=[
+"Enemy",
+] instance=ExtResource( 5 )]
 position = Vector2( 576, 456 )
+collision_layer = 4
+collision_mask = 2147483652
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( -80, 472 )

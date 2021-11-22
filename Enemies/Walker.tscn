@@ -30,8 +30,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "walk",
-"speed": 8.0
+"name": "hurt",
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
@@ -40,8 +40,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "hurt",
-"speed": 6.0
+"name": "walk",
+"speed": 8.0
 }, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
@@ -60,15 +60,13 @@ script = ExtResource( 3 )
 [node name="Sprite" type="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 5 )
 animation = "Attack"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Collider" type="CollisionShape2D" parent="." index="1"]
 
 [node name="FloorNormal" type="RayCast2D" parent="." index="2"]
 cast_to = Vector2( 0, 30 )
-
-[node name="Hitboxes" type="Node2D" parent="." index="3"]
 
 [node name="PlayerDetector" type="Area2D" parent="Hitboxes" index="0"]
 collision_layer = 2

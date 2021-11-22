@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Player/Scripts/Hose.gd" type="Script" id=1]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 4 )
 
 [node name="Hose" type="RigidBody2D"]
 collision_layer = 0

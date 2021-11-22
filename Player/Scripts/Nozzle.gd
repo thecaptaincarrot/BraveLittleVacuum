@@ -41,6 +41,9 @@ func _ready():
 
 
 func _process(delta):
+	if player_body:
+		$PlayerCaster.cast_to = -position.rotated(-rotation)
+	
 	if Input.is_action_pressed("suck"):
 		$Suck/Polygon2D.show()
 		suck()
@@ -79,7 +82,17 @@ func _physics_process(delta):
 #		emit_signal("collide_hose")
 		collision_layer = 2
 		collision_mask = 3
-
+	
+	
+	#get around terrain
+	if $PlayerCaster.is_colliding():
+		target = -position.normalized() * 1000
+		collision_layer = 0
+		collision_mask = 0
+	else:
+		collision_layer = 2
+		collision_mask = 3
+	
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)
 

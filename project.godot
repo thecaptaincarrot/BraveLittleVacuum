@@ -159,6 +159,7 @@ ui_next={
 2d_physics/layer_4="Suckables"
 2d_physics/layer_5="Water"
 2d_physics/layer_6="Tank"
+2d_physics/layer_10="EnemyUnstick"
 
 [physics]
 

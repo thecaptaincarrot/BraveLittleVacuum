@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemies/Mutants/Bug/Bug.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Flier.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 241.593
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 5.22415
 
 [node name="Bug" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -22,9 +25,14 @@ visible = false
 visible = false
 shape = SubResource( 1 )
 
+[node name="UnstickShape2D" parent="Hitboxes/UnstickArea" index="0"]
+position = Vector2( 1.55907, 4.1204 )
+shape = SubResource( 2 )
+
 [node name="FlyRandomPause" type="Timer" parent="." index="4"]
 wait_time = 10.0
 one_shot = true
+
 [connection signal="body_entered" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_exited" from="Hitboxes/PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
 [connection signal="timeout" from="FlyRandomPause" to="." method="_on_FlyRandomPause_timeout"]

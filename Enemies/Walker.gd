@@ -18,8 +18,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	pass
-
 	if is_on_floor():
 		motion.y += Globals.GRAVITY * 0.2
 	else:

@@ -29,17 +29,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Fall",
+"name": "Fly",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "Die",
+"name": "Fall",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Fly",
+"name": "Die",
 "speed": 5.0
 } ]
 
@@ -60,8 +60,6 @@ shape = SubResource( 6 )
 [node name="VisionRay" type="RayCast2D" parent="." index="2"]
 enabled = true
 cast_to = Vector2( 0, 250 )
-
-[node name="Hitboxes" type="Node2D" parent="." index="3"]
 
 [node name="PlayerDetector" type="Area2D" parent="Hitboxes" index="0"]
 
