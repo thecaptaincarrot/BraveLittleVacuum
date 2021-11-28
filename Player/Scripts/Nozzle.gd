@@ -4,13 +4,16 @@ const WATER = preload("res://Player/WaterAnimator.tscn")
 
 var player_body = null 
 var inactive = false
+var hose_segment =  null
 
 var returning = false
 var anchor
 var force = 1
 
+var true_limit = 100
 var limit = 100
-var collision_limit = 130
+var collision_limit = 105
+
 
 var movement_vector = Vector2(0,0)
 var direction = 0
@@ -27,6 +30,10 @@ var stuck_object = null
 var water_source = null
 var is_in_liquid = false
 
+var pivot_point = Vector2(0,0)
+var pivoting = false
+var pivotlength = 0
+
 signal uncollide_hose
 signal collide_hose
 signal sucked
@@ -35,7 +42,9 @@ signal shoot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pivot_point = anchor.position
 	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
+	limit = true_limit
 	collision_limit = limit + 5
 	set_physics_process(false)
 
@@ -62,17 +71,26 @@ func _physics_process(delta):
 	#First, check movement
 	var target = Vector2()
 	
-	if (global_position - anchor.global_position).length() > collision_limit: #Snapback
+	if (position - anchor.position).length() > collision_limit: #Snapback
 		returning = true
-	elif (global_position - anchor.global_position).length() > limit and (global_position + movement_vector - anchor.global_position).length() > collision_limit: #Orthogonal
+	elif position.distance_to(pivot_point) > limit and (position + movement_vector - pivot_point).length() > limit + 5: #Orthogonal
 		returning = false
-		target = vector_projection(global_position - anchor.global_position)
+		target = vector_projection(position - pivot_point)
 	else: #Normal Movement
 		returning = false
 		target = movement_vector #Normal Moement
+
+#	if (position - anchor.position).length() > collision_limit: #Snapback
+#		returning = true
+#	elif hose_segment.get_distance_to_previous() > 80.0: #Orthogonal
+#		returning = false
+#		target = vector_projection(position - pivot_point) + (pivot_point - position)
+#	else: #Normal Movement
+#		returning = false
+#		target = movement_vector #Normal Moement
 	
 	if returning:
-		target = (anchor.global_position - global_position)
+		target = (pivot_point - position)
 		target.x = target.x * 2
 		target.y = target.y * 2
 #		emit_signal("uncollide_hose")
@@ -82,17 +100,6 @@ func _physics_process(delta):
 #		emit_signal("collide_hose")
 		collision_layer = 2
 		collision_mask = 3
-	
-	
-	#get around terrain
-	if $PlayerCaster.is_colliding():
-		target = -position.normalized() * 1000
-		collision_layer = 0
-		collision_mask = 0
-	else:
-		collision_layer = 2
-		collision_mask = 3
-	
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)
 

@@ -1,0 +1,56 @@
+[gd_scene format=2]
+
+[node name="Skeleton2D" type="Skeleton2D"]
+position = Vector2( 128.445, 100.627 )
+rotation = -19.5409
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="Hose" type="Bone2D" parent="."]
+position = Vector2( 0.15749, 0.15749 )
+rotation = 25.9394
+rest = Transform2D( 1, 0, 0, 1, 0.15749, 0.15749 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Hose2" type="Bone2D" parent="Hose"]
+position = Vector2( 14.4891, -0.31498 )
+rotation = -0.0740423
+rest = Transform2D( 1, 0, 0, 1, 14.4891, -0.31498 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Hose3" type="Bone2D" parent="Hose/Hose2"]
+position = Vector2( 16.064, 0.15749 )
+rotation = -0.0725687
+rest = Transform2D( 1, 0, 0, 1, 16.064, 0.15749 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Hose4" type="Bone2D" parent="Hose/Hose2/Hose3"]
+position = Vector2( 14.1741, 0.15749 )
+rotation = -0.0457917
+rest = Transform2D( 1, 0, 0, 1, 14.1741, 0.15749 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Hose5" type="Bone2D" parent="Hose/Hose2/Hose3/Hose4"]
+position = Vector2( 13.0717, -0.15749 )
+rotation = -0.0887245
+rest = Transform2D( 1, 0, 0, 1, 13.0717, -0.15749 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Hose6" type="Bone2D" parent="Hose/Hose2/Hose3/Hose4/Hose5"]
+position = Vector2( 13.3867, 0.472466 )
+rotation = 0.125278
+rest = Transform2D( 1, 0, 0, 1, 13.3867, 0.472466 )
+__meta__ = {
+"_edit_bone_": true
+}

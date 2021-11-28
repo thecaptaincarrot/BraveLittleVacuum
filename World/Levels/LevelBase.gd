@@ -47,5 +47,4 @@ func get_camera_bounds():
 
 
 func add_clutter(clutter_to_add):
-	$Clutter.add_child(clutter_to_add)
-	print(clutter_to_add)
+	$Clutter.call_deferred("add_child",clutter_to_add)

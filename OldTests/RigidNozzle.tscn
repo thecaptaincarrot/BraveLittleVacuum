@@ -33,6 +33,5 @@ polygon = PoolVector2Array( -3.29623, -3.95748, -42.7981, -66.5062, 52.9767, -67
 [node name="Polygon2D" type="Polygon2D" parent="Area2D"]
 color = Color( 1, 1, 1, 0.231373 )
 polygon = PoolVector2Array( -3.20417, -4.10081, -42.7354, -66.6091, 52.8149, -67.3375, 9.1121, -3.6373 )
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

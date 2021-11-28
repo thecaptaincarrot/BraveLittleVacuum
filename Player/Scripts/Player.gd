@@ -201,12 +201,13 @@ func add_nozzle(parent):
 	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
 	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
 	
-	new_nozzle.limit = (hose_size + 1) * Upgrades.hose_length * 2
+	new_nozzle.true_limit = (hose_size + 1) * Upgrades.hose_length * 2
 	new_nozzle.collision_limit = new_nozzle.limit + 5
 	
 	main.nozzle = new_nozzle #fix this to be the Main variable, as it were
 	camera.nozzle = new_nozzle
 	new_nozzle.player_body = $PlayerBody
+	new_nozzle.hose_segment = parent
 	
 	new_nozzle.add_collision_exception_with($PlayerBody)
 	

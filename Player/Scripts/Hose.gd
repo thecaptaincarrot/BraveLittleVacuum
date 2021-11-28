@@ -16,8 +16,8 @@ var collision_limit
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(false)
-	$CollisionShape2D.shape.extents.y = size
-	collision_limit = (size + 2 ) * 2
+	$CollisionShape2D.shape.radius = size
+	collision_limit = (size + 2 ) * 4
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +28,7 @@ func _process(delta):
 		collision_mask = 0
 	else:
 		collision_mask = 1
+	pass
 
 
 func _integrate_forces(state):
@@ -39,3 +40,7 @@ func _integrate_forces(state):
 func reset_position(new_position):
 	integration_position = new_position
 	change_position = true
+
+
+func get_distance_to_previous():
+	return global_position.distance_squared_to(previous_segment.global_position)

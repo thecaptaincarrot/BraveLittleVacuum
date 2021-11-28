@@ -24,6 +24,11 @@ func _physics_process(delta):
 		motion.y += Globals.GRAVITY
 	
 	motion = move_and_slide(motion, Vector2(0,-1))
+	if motion.x > max_speed:
+		motion.x = max_speed
+	if motion.x < -max_speed:
+		motion.x = -max_speed
+	
 
 
 func walk():

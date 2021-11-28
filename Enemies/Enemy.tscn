@@ -18,6 +18,5 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="UnstickShape2D" type="CollisionShape2D" parent="Hitboxes/UnstickArea"]
-
 [connection signal="area_entered" from="Hitboxes/UnstickArea" to="." method="_on_UnstickArea_area_entered"]
 [connection signal="area_exited" from="Hitboxes/UnstickArea" to="." method="_on_UnstickArea_area_exited"]

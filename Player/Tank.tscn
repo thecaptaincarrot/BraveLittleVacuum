@@ -9,7 +9,7 @@
 [ext_resource path="res://Player/Sprites/TankMask.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 45.6996, 10 )
+extents = Vector2( 45.6996, 17.5927 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 9.4812
@@ -45,15 +45,14 @@ texture = ExtResource( 3 )
 script = ExtResource( 6 )
 
 [node name="TankSTatic" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TankSTatic"]
-polygon = PoolVector2Array( -23.75, -35, -25.7085, -22.716, -28.7761, 28.7252, -20.2812, 39.9337, -9.78063, 43.9452, 7.44508, 44.2991, 22.3111, 39.4618, 29.0362, 29.3151, 25.7326, -22.834, 24, -34.75, 14.5, -42, 13.75, -48.5, 43.9761, -49.661, 41.0897, 56.091, -42.7897, 56.9319, -46.5336, -50.0145, -13.25, -48.25, -14, -41.75 )
+polygon = PoolVector2Array( -23.75, -35, -25.7085, -22.716, -28.7761, 28.7252, -20.2812, 39.9337, -9.78063, 43.9452, 7.44508, 44.2991, 22.3111, 39.4618, 29.0362, 29.3151, 25.7326, -22.834, 24, -34.75, 14.5, -42, 12.6217, -83.5163, 43.9761, -49.661, 41.0897, 56.091, -42.7897, 56.9319, -46.5336, -50.0145, -11.7258, -83.5163, -14, -41.75 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankSTatic"]
-position = Vector2( 0.33252, -57.6829 )
+position = Vector2( -1.16579, -65.9236 )
 shape = SubResource( 1 )
 
 [node name="Exit" type="Area2D" parent="."]

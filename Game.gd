@@ -56,7 +56,7 @@ func nozzle_shoot(body):
 func new_game():
 	player.deactivate()
 	$Overlay/ColorOverlay.fadeout = true
-	goto_new_level(9,0)
+	goto_new_level(9,1)
 #	current_level = add_level(0)
 #	player.place_body(current_level.get_entry(0))
 	$Overlay/ColorOverlay.fadeout = false

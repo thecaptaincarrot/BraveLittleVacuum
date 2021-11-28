@@ -4,7 +4,7 @@ var PLAYER = null
 
 var blow_force = 500
 var suck_strength = 8
-var hose_length = 8
+var hose_length = 4
 
 var tank_size = 15
 
@@ -14,8 +14,8 @@ var accelerator = false
 var railgun = false
 
 #Chassis
-var jump = true
-var hover = true
+var jump = false
+var hover = false
 var downhill = false
 
 #Body

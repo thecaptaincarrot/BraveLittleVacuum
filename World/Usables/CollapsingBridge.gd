@@ -3,6 +3,8 @@ extends StaticBody2D
 onready var BRICK1 = preload("res://SuckableObjects/Brick1.tscn")
 onready var BRICK2 = preload("res://SuckableObjects/Brick2.tscn")
 
+signal add_clutter
+
 var fade_out = false
 
 # Called when the node enters the scene tree for the first time.
@@ -24,16 +26,18 @@ func hide():
 
 
 func collapse():
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.call_deferred("set_disabled",true)
+	$CollapseDetector/CollisionShape2D.call_deferred("set_disabled",true)
 	collision_layer = 0
-	for i in range(0,4):
+	for i in 7:
 		var new_brick1 = BRICK1.instance()
 		var new_brick2 = BRICK2.instance()
 		
-		new_brick1.position = Vector2(-99 + i * 48, -5)
-		new_brick2.position = Vector2(-99 + i * 48, 13)
-		add_child(new_brick1)
-		add_child(new_brick2)
+		new_brick1.position = Vector2(-72 + i * 24, -2.5) + position
+		new_brick2.position = Vector2(-72 + i * 24, 6.5) + position
+		
+		get_node("/root/Game").current_level.add_clutter(new_brick1)
+		get_node("/root/Game").current_level.add_clutter(new_brick2)
 	
 	$BridgeSprite.self_modulate.a = 0
 	fade_out = true

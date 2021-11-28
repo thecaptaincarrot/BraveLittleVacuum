@@ -50,63 +50,63 @@ region = Rect2( 0, 144, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 8 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 48, 144, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 8 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 8 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 8 )
-region = Rect2( 0, 48, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 12 )
-region = Rect2( 48, 144, 48, 48 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 12 )
-region = Rect2( 96, 144, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 12 )
-region = Rect2( 144, 144, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 8 )
-region = Rect2( 48, 96, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 8 )
-region = Rect2( 96, 96, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 8 )
-region = Rect2( 144, 96, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 144, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 8 )
-region = Rect2( 48, 144, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 8 )
 region = Rect2( 48, 48, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 8 )
 region = Rect2( 96, 48, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 12 )
+region = Rect2( 48, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 12 )
+region = Rect2( 96, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 12 )
+region = Rect2( 144, 144, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 8 )
+region = Rect2( 48, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 8 )
+region = Rect2( 96, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 8 )
+region = Rect2( 144, 96, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 144, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=23]
 animations = [ {
@@ -115,35 +115,35 @@ animations = [ {
 "name": "Hover",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "Sucking",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
-"loop": true,
-"name": "Shocked",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "HoverLoop",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 19 ) ],
+"frames": [ SubResource( 8 ) ],
 "loop": true,
 "name": "HoverSpent",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "Sucking",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "Default",
 "speed": 4.0
 }, {
-"frames": [ SubResource( 22 ) ],
+"frames": [ SubResource( 15 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Shocked",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "HoverLoop",
+"speed": 12.0
 } ]
 
 [sub_resource type="AtlasTexture" id=24]
@@ -168,31 +168,31 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 240, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 240, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 240, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 192, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 240, 48, 48 )
+region = Rect2( 240, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 192, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 240, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 4 )
@@ -200,7 +200,7 @@ region = Rect2( 192, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 240, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 4 )
@@ -208,39 +208,39 @@ region = Rect2( 192, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 240, 48, 48 )
+region = Rect2( 240, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 240, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=41]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 48, 48, 48 )
+region = Rect2( 144, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=42]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 240, 48, 48 )
+region = Rect2( 192, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 192, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=44]
 atlas = ExtResource( 4 )
-region = Rect2( 96, 0, 48, 48 )
+region = Rect2( 240, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=45]
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 48, 48 )
+region = Rect2( 192, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=46]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 0, 48, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=47]
 atlas = ExtResource( 4 )
-region = Rect2( 240, 0, 48, 48 )
+region = Rect2( 144, 240, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=48]
 atlas = ExtResource( 4 )
@@ -248,11 +248,11 @@ region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 4 )
-region = Rect2( 144, 0, 48, 48 )
+region = Rect2( 96, 0, 48, 48 )
 
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 48, 48 )
+region = Rect2( 48, 0, 48, 48 )
 
 [sub_resource type="SpriteFrames" id=51]
 animations = [ {
@@ -261,54 +261,54 @@ animations = [ {
 "name": "Happydoubleblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
-"loop": false,
-"name": "Sadblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 32 ) ],
+"frames": [ SubResource( 29 ) ],
 "loop": false,
 "name": "Happy",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 33 ) ],
-"loop": false,
-"name": "Sad",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 34 ) ],
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 30 ) ],
 "loop": false,
 "name": "Nblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ) ],
+"frames": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
 "loop": false,
 "name": "Saddoubleblink",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 41 ), SubResource( 42 ) ],
-"loop": true,
-"name": "Hurt",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ],
-"loop": false,
-"name": "Happyblink",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 46 ) ],
+"frames": [ SubResource( 37 ) ],
 "loop": false,
 "name": "Neutral",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 47 ), SubResource( 48 ) ],
+"frames": [ SubResource( 38 ) ],
+"loop": false,
+"name": "Sad",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 39 ), SubResource( 40 ) ],
 "loop": false,
 "name": "XD",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 49 ), SubResource( 50 ), SubResource( 49 ) ],
+"frames": [ SubResource( 41 ), SubResource( 42 ), SubResource( 41 ), SubResource( 42 ), SubResource( 41 ) ],
 "loop": false,
 "name": "Ndoubleblink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ],
+"loop": false,
+"name": "Sadblink",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "Hurt",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ) ],
+"loop": false,
+"name": "Happyblink",
 "speed": 12.0
 } ]
 
@@ -339,7 +339,7 @@ script = ExtResource( 1 )
 [node name="PlayerSprite" type="AnimatedSprite" parent="PlayerBody"]
 frames = SubResource( 23 )
 animation = "Shocked"
-frame = 2
+frame = 1
 playing = true
 script = ExtResource( 6 )
 
@@ -474,7 +474,6 @@ script = ExtResource( 13 )
 [node name="iFrameTimer" type="Timer" parent="."]
 wait_time = 1.4
 one_shot = true
-
 [connection signal="animation_finished" from="PlayerBody/PlayerSprite" to="PlayerBody/PlayerSprite" method="_on_PlayerSprite_animation_finished"]
 [connection signal="timeout" from="PlayerBody/PlayerSprite/PlayerScreen/NewAnimation" to="PlayerBody/PlayerSprite/PlayerScreen" method="_on_NewAnimation_timeout"]
 [connection signal="area_entered" from="PlayerBody/HitBox" to="." method="_on_HitBox_area_entered"]
