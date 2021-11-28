@@ -9,12 +9,13 @@ var hose_segment =  null
 var returning = false
 var anchor
 var force = 1
+var mouse_scalar = 1.0
 
 var true_limit = 100
 var limit = 100
 var collision_limit = 105
 
-
+var mouse_vector = Vector2(0,0)
 var movement_vector = Vector2(0,0)
 var direction = 0
 
@@ -50,8 +51,6 @@ func _ready():
 
 
 func _process(delta):
-	if player_body:
-		$PlayerCaster.cast_to = -position.rotated(-rotation)
 	
 	if Input.is_action_pressed("suck"):
 		$Suck/Polygon2D.show()
@@ -68,26 +67,22 @@ func _physics_process(delta):
 	local_mouse = get_local_mouse_position()
 	global_mouse = get_global_mouse_position()
 	
+	var orthogonal_mode = false
+	
 	#First, check movement
 	var target = Vector2()
 	
 	if (position - anchor.position).length() > collision_limit: #Snapback
 		returning = true
-	elif position.distance_to(pivot_point) > limit and (position + movement_vector - pivot_point).length() > limit + 5: #Orthogonal
+	elif position.distance_to(pivot_point) > limit and\
+	 (vector_projection(position - pivot_point)).length() > limit + 5 and\
+	vector_projection(position - pivot_point).normalized() + (position - pivot_point).normalized() != Vector2(0,0): #Orthogonal
 		returning = false
-		target = vector_projection(position - pivot_point)
+		target = vector_rejection(position - pivot_point)
+		orthogonal_mode = true
 	else: #Normal Movement
 		returning = false
 		target = movement_vector #Normal Moement
-
-#	if (position - anchor.position).length() > collision_limit: #Snapback
-#		returning = true
-#	elif hose_segment.get_distance_to_previous() > 80.0: #Orthogonal
-#		returning = false
-#		target = vector_projection(position - pivot_point) + (pivot_point - position)
-#	else: #Normal Movement
-#		returning = false
-#		target = movement_vector #Normal Moement
 	
 	if returning:
 		target = (pivot_point - position)
@@ -102,7 +97,8 @@ func _physics_process(delta):
 		collision_mask = 3
 	
 	move_and_slide(target,Vector2(0,-1),false,4,.78, false)
-
+	
+	#Drag on movement vector when mouse is not moving
 	movement_vector.x = lerp(movement_vector.x,0,drag)
 	movement_vector.y = lerp(movement_vector.y,0,drag)
 	
@@ -128,16 +124,19 @@ func _physics_process(delta):
 			$StuckObjectCollisionShape.shape = stuck_object.get_node("CollisionShape2D").shape
 			$StuckObjectCollisionShape.rotation = stuck_object.get_node("CollisionShape2D").rotation
 			$StuckObjectCollisionShape.position = stuck_object.get_suck_position() + Vector2(0,-3)
-
-
+	
+	$PlayerCaster.cast_to = movement_vector
+	$PlayerCaster.rotation = -rotation
+	
 
 func _input(event):
 	if inactive:
 		return
 	
 	if event is InputEventMouseMotion:
-		movement_vector += event.relative
-		
+		mouse_vector = event.relative
+		movement_vector += event.relative * mouse_scalar
+	
 	if event.is_action_released("suck"):
 		if stuck_object and $StuckObjectTimer.is_stopped():
 			$StuckObjectTimer.start()
@@ -148,14 +147,21 @@ func _input(event):
 	
 
 
-func vector_projection(origin_vector):
+func vector_projection(origin_vector): #Projects the movement vector onto the position of the nozzle
 	var theta = origin_vector.angle()
 	var unit = origin_vector
-	var mouse_vector = movement_vector #from nozzle to mouse position
 	
-	var projection = (mouse_vector.dot(origin_vector)/origin_vector.dot(origin_vector)) * origin_vector
+	var projection = (movement_vector.dot(origin_vector)/origin_vector.dot(origin_vector)) * origin_vector
+	return projection
+
+
+func vector_rejection(origin_vector):
+	var theta = origin_vector.angle()
+	var unit = origin_vector
 	
-	var rejection = mouse_vector - projection
+	var projection = (movement_vector.dot(origin_vector)/origin_vector.dot(origin_vector)) * origin_vector
+	
+	var rejection = movement_vector - projection
 	return rejection
 
 
