@@ -13,8 +13,13 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "walk",
-"speed": 8.0
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
@@ -28,17 +33,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "dead",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 5.0
+"name": "walk",
+"speed": 8.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 8.68537
+radius = 13.5194
 height = 11.336
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -53,7 +53,7 @@ scale = Vector2( 0.08, 0.08 )
 frames = SubResource( 3 )
 
 [node name="Collider" parent="." index="1"]
-position = Vector2( -0.0151978, 0.0555038 )
+position = Vector2( -1.12882, -4.28763 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -63,4 +63,5 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/TerrainDetector" index="0"]
 position = Vector2( -17.6395, -10.107 )
 shape = SubResource( 2 )
+
 [connection signal="body_entered" from="Hitboxes/TerrainDetector" to="." method="_on_TerrainDetector_body_entered"]

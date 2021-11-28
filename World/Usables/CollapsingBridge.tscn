@@ -26,7 +26,18 @@ texture = ExtResource( 1 )
 show_behind_parent = true
 margin_left = -96.0
 margin_right = 96.0
-margin_bottom = 248.0
+margin_bottom = 465.0
+color = Color( 0.231373, 0.0941176, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background2" type="ColorRect" parent="BridgeSprite"]
+show_behind_parent = true
+margin_left = -96.0
+margin_top = 150.0
+margin_right = 548.0
+margin_bottom = 494.0
 color = Color( 0.231373, 0.0941176, 0.180392, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -39,4 +50,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollapseDetector"]
 position = Vector2( 0, -8 )
 shape = SubResource( 2 )
+
 [connection signal="body_entered" from="CollapseDetector" to="." method="_on_CollapseDetector_body_entered"]
