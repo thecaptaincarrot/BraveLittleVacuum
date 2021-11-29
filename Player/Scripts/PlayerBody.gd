@@ -9,8 +9,8 @@ var exiting = false
 var force_move_vector = Vector2(0,0)
 
 var gravity = 9.8
-var acceleration = 4
-var skid_friction = 1.0
+var acceleration = 4.0
+var skid_friction = 3.0
 
 var neutral_drag = 0.01
 
@@ -22,7 +22,7 @@ var downhill = false
 var can_hover = true
 var is_hovering = false
 
-var jump_impulse = 340
+var jump_impulse = 400
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

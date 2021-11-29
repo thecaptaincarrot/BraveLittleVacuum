@@ -9,7 +9,7 @@ var hose_segment =  null
 var returning = false
 var anchor
 var force = 1
-var mouse_scalar = 1.0
+var mouse_scalar = 1.6
 
 var true_limit = 100
 var limit = 100
@@ -106,13 +106,13 @@ func _physics_process(delta):
 		var to_angle = movement_vector.angle() + PI/2
 		if to_angle > PI:
 			to_angle -= 2 * PI #Could just fix this by changing the sprite
-		if movement_vector.length() > 50.0:
+		if movement_vector.length() > 30.0:
 			rotation = to_angle
 		else:
 			#fix snap around
-			if rotation > 1.57 and to_angle < -1.57: #PI/2 clockwise
+			if rotation > PI/2 and to_angle < -PI/2: #PI/2 clockwise
 				to_angle += 2 * PI
-			if rotation < -1.57 and to_angle > 1.57: #PI/2 clockwise
+			if rotation < -PI/2 and to_angle > PI/2: #PI/2 clockwise
 				to_angle -= 2 * PI
 			
 			rotation = lerp(rotation,to_angle,movement_vector.length()/400.0)

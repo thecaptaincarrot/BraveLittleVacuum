@@ -77,7 +77,6 @@ position = Vector2( 504, 520 )
 upgrade_type = "JUMP"
 
 [node name="CollapsingBridge" parent="World" index="4" instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 216, 204 )
 
 [node name="Van" parent="World/Objects" index="0" instance=ExtResource( 7 )]
