@@ -16,6 +16,7 @@ func _ready():
 func _process(delta):
 	if fade_out and $BridgeSprite/Background.modulate.a > 0:
 		$BridgeSprite/Background.modulate.a -= delta
+		$BridgeSprite/Background2.modulate.a -= delta
 
 
 func hide():

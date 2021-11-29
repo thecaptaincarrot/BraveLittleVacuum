@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Sprites/Placeholder/spr_bluecar_0.png" type="Texture" id=1]
+
+[node name="SedanCar" type="StaticBody2D"]
+collision_mask = 13
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -128, 8, -96, -8, -56, -8, -8, -32, 48, -32, 88, -16, 120, -16, 120, 40, -128, 40 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

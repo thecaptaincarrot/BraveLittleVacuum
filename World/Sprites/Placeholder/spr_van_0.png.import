@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Animal Mutant final 01.jpg-1b1d36b94a3fbbfd8426a76258fd3beb.stex"
+path="res://.import/spr_van_0.png-ff288fd26075f6d704a86806179107f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ConceptArt/Animal Mutant final 01.jpg"
-dest_files=[ "res://.import/Animal Mutant final 01.jpg-1b1d36b94a3fbbfd8426a76258fd3beb.stex" ]
+source_file="res://World/Sprites/Placeholder/spr_van_0.png"
+dest_files=[ "res://.import/spr_van_0.png-ff288fd26075f6d704a86806179107f0.stex" ]
 
 [params]
 

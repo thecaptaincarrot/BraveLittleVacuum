@@ -15,9 +15,6 @@ func _ready():
 func _integrate_forces(state):
 	if stuck:
 		state.transform = Transform2D(stuck_rotation, stuck_position)
-		print($Sprite.global_position)
-		print(global_position)
-		print($Sprite.visible)
 		if unstick:
 			stuck = false
 			unstick = false
@@ -42,7 +39,6 @@ func unstick():
 
 
 func get_suck_position():
-	print($SuckPosition.position)
 	return $SuckPosition.position
 
 

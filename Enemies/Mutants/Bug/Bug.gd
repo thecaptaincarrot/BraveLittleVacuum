@@ -31,7 +31,7 @@ func _process(delta):
 			if motion.length() > max_speed:
 				motion = motion.normalized() * max_speed
 		FLYBLIND:
-			modulate = Color.red
+#			modulate = Color.red
 			if player_body:
 				if !$VisionRay.get_collider() and player_detected: #regain line of sight
 					state = FLY
@@ -42,12 +42,11 @@ func _process(delta):
 			if position.distance_to(last_known_position) <= 32.0: #Perhaps change distance tolerance
 				fly_random_anchor = position
 				fly_random(12.0)
-				print("New Fly Random: ", fly_random_destination)
 				state = SEARCHING
 			if motion.length() > max_speed:
 				motion = motion.normalized() * max_speed
 		SEARCHING: #Fly towards last known player position
-			modulate = Color.blue
+#			modulate = Color.blue
 			if player_body:
 				if !$VisionRay.get_collider() and player_detected: #has line of sight
 					$FlyRandomPause.stop()
@@ -100,4 +99,3 @@ func _on_PlayerDetector_body_exited(body):
 
 func _on_FlyRandomPause_timeout():
 	fly_random(12.0) # Generate new fly_random vector #change radius to do
-	print("New Fly Random: ", fly_random_destination)

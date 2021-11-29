@@ -44,7 +44,7 @@ func load_dict():
 		level_dict[int(key)]=str_level_dict[key]
 	
 	for key in level_dict.keys():
-		print(typeof(key)," ", key)
+		pass
 	
 	current_index = len(level_dict)
 	print("new index: ", level_dict)

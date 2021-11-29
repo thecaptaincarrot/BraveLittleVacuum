@@ -17,6 +17,7 @@ var neutral_drag = 0.01
 var max_speed = 200
 var inertia = 100
 
+var grounded = true
 var downhill = false
 var can_hover = true
 var is_hovering = false
@@ -43,6 +44,15 @@ func _process(delta):
 	elif motion.x < -10:
 		$PlayerSprite.flip_h = true
 		$PlayerSprite/PlayerScreen.flip_h = true
+	
+	if is_on_floor():  #this is a finger put into the dam. Do not put this in the final game.
+		grounded = true
+		$CoyoteTime.stop()
+	else:
+		if $CoyoteTime.is_stopped() and grounded:
+			$CoyoteTime.start()
+		grounded = false
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -127,7 +137,7 @@ func movement(delta):
 		motion.x = -max_speed
 	#Jumping
 	#need to check whether jumping has been unlocked globally
-	if Input.is_action_just_pressed("Jump") and is_on_floor() and Upgrades.jump:
+	if Input.is_action_just_pressed("Jump") and (is_on_floor() or !$CoyoteTime.is_stopped()) and Upgrades.jump:
 		$JumpSound.play()
 		motion.y = 0
 		motion.y -= jump_impulse

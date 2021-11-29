@@ -35,6 +35,13 @@ func _process(delta):
 		IDLE:
 			motion.x = 0
 		WALK:
+			if is_on_wall() and is_on_floor():
+				motion = Vector2(0,0)
+				if direction == DIRECTIONS.RIGHT:
+					direction = DIRECTIONS.LEFT
+				elif direction == DIRECTIONS.LEFT:
+					direction = DIRECTIONS.RIGHT
+			
 			if motion.length() < max_speed:
 				motion += walk()
 				print(motion)
@@ -60,16 +67,10 @@ func _process(delta):
 #					$Sprite.animation = "Land"
 
 
-func _on_WallDetector_body_entered(body):
-	motion = Vector2(0,0)
-	if direction == DIRECTIONS.RIGHT:
-		direction = DIRECTIONS.LEFT
-	elif direction == DIRECTIONS.LEFT:
-		direction = DIRECTIONS.RIGHT
-
-
 func hurt(damage):
 	health -= damage
+	if state == IDLE and health > 0.0:
+		state = WALK
 
 
 func die():

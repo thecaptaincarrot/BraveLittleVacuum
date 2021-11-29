@@ -14,6 +14,7 @@ script = ExtResource( 1 )
 z_index = -1
 
 [node name="World" type="Node2D" parent="."]
+z_index = -1
 
 [node name="Water" type="Node2D" parent="World"]
 show_behind_parent = true
@@ -25,9 +26,7 @@ cell_size = Vector2( 24, 24 )
 cell_custom_transform = Transform2D( 24, 0, 0, 24, 0, 0 )
 format = 1
 
-[node name="TileMap" type="TileMap" parent="World" groups=[
-"World",
-]]
+[node name="TileMap" type="TileMap" parent="World" groups=["World"]]
 z_index = -2
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 24, 24 )
@@ -39,6 +38,8 @@ format = 1
 tile_data = PoolIntArray( 65551, 0, 0 )
 
 [node name="Upgrades" type="Node2D" parent="World"]
+
+[node name="Objects" type="Node2D" parent="World"]
 
 [node name="CameraBound" type="Control" parent="."]
 margin_left = -136.0

@@ -12,11 +12,6 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "die",
 "speed": 10.0
@@ -25,6 +20,11 @@ animations = [ {
 "loop": true,
 "name": "hurt",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,

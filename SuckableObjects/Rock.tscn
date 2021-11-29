@@ -8,7 +8,6 @@ radius = 3.34657
 height = 8.70347
 
 [node name="Rock" instance=ExtResource( 2 )]
-size = 1
 identifier = "Rock"
 
 [node name="Sprite" parent="." index="0"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Animal Mutant final 01.jpg-1b1d36b94a3fbbfd8426a76258fd3beb.stex"
+path="res://.import/streetlight.png-46c2dd7a5d1a896d6bc72dc9c6fe2dbc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ConceptArt/Animal Mutant final 01.jpg"
-dest_files=[ "res://.import/Animal Mutant final 01.jpg-1b1d36b94a3fbbfd8426a76258fd3beb.stex" ]
+source_file="res://World/Sprites/Placeholder/streetlight.png"
+dest_files=[ "res://.import/streetlight.png-46c2dd7a5d1a896d6bc72dc9c6fe2dbc.stex" ]
 
 [params]
 

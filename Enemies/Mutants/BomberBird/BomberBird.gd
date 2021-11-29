@@ -5,6 +5,7 @@ var BOMB = preload("res://Enemies/Mutants/BomberBird/BirdBomb.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state = ATTACK # Replace with function body.
+	gravity = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,7 +14,7 @@ func _process(delta):
 
 	match state:
 		IDLE:
-			motion = Vector2(0,Globals.GRAVITY)
+#			motion = Vector2(0,Globals.GRAVITY)
 			if !$BombReleaseTimer.is_stopped:
 				$BombReleaseTimer.stop()
 		ATTACK:
@@ -23,6 +24,8 @@ func _process(delta):
 			if !$BombReleaseTimer.is_stopped():
 				$BombReleaseTimer.stop()
 			$Sprite.animation = "Dead"
+			gravity = true
+			motion = Vector2(0,Globals.GRAVITY)
 			modulate = Color.darkgray
 
 

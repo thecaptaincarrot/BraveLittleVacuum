@@ -4,7 +4,7 @@ var PLAYER = null
 
 var blow_force = 500
 var suck_strength = 8
-var hose_length = 4
+var hose_length = 5
 
 var tank_size = 15
 

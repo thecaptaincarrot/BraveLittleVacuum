@@ -12,7 +12,7 @@ func _ready():
 	state = IDLE
 	direction = initial_direction
 	walk_speed = 30
-	max_speed = 44
+	max_speed = 50
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

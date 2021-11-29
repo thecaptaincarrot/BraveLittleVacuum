@@ -4,6 +4,8 @@ enum {IDLE, ATTACK, DEAD, WALK, HURT, LOOKING}
 
 enum DIRECTIONS {RIGHT,LEFT}
 
+var gravity = true
+
 var walk_speed = 5
 var max_speed = 30
 var direction = DIRECTIONS.RIGHT
@@ -18,10 +20,11 @@ func _ready():
 
 
 func _physics_process(delta):
-	if is_on_floor():
-		motion.y += Globals.GRAVITY * 0.2
-	else:
-		motion.y += Globals.GRAVITY
+	if gravity:
+		if is_on_floor():
+			motion.y += Globals.GRAVITY * 0.2
+		else:
+			motion.y += Globals.GRAVITY
 	
 	motion = move_and_slide(motion, Vector2(0,-1))
 	if motion.x > max_speed:
