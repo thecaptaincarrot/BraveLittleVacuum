@@ -58,19 +58,18 @@ func _process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if inactive: return
-	if force_move:
-		if force_move_vector.y == 0:
-			motion.x = force_move_vector.x
-			motion.y += Globals.GRAVITY
-		else:
-			motion = force_move_vector
-		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
+#	if force_move:
+#		if force_move_vector.y == 0:
+#			motion.x = force_move_vector.x
+#			motion.y += Globals.GRAVITY
+#		else:
+#			motion = force_move_vector
+#		motion = move_and_slide(motion,Vector2(0,-1)) #Up vector never changes?
 	else:
 		movement(delta)
 	
 	var floor_normal = Vector2(0,-1)
 	var angle = 0
-	
 	
 	if $GroundNormal.is_colliding():
 		floor_normal = $GroundNormal.get_collision_normal()
@@ -81,6 +80,9 @@ func _physics_process(delta):
 		$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.10)
 	else:
 		$PlayerSprite.rotation = lerp($PlayerSprite.rotation,0,.10)
+	
+	print(motion)
+	
 #	rotation = lerp(rotation,angle,.25)
 	
 #	for index in get_slide_count():
@@ -98,7 +100,7 @@ func movement(delta):
 		if !is_on_floor():
 			motion.y += gravity
 		else:
-			motion.y += gravity / 5
+			motion.y += gravity / 2
 	else:
 		motion.y = 0
 	
@@ -110,7 +112,7 @@ func movement(delta):
 	var horizontal_vector = Vector2(1,0)
 	if is_on_floor():
 		horizontal_vector = get_floor_normal().rotated(PI/2)
-		
+	
 	if Input.is_action_pressed("move_right"):
 		if motion.x < 0:
 			motion += horizontal_vector * (acceleration + acceleration * skid_friction)

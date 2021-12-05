@@ -15,12 +15,7 @@ func _ready():
 func _process(delta):
 	if PlayerNode.is_in_water:
 		animation = "Shocked"
-	elif PlayerBody.is_on_floor():
-		if Input.is_action_pressed("suck") or Input.is_action_pressed("blow"):
-			animation = "Sucking"
-		else:
-			animation = "Default"
-	else:
+	elif !PlayerBody.is_on_floor():
 		if PlayerBody.is_hovering:
 			if hover_start:
 				animation = "Hover"
@@ -31,6 +26,11 @@ func _process(delta):
 		else:
 			hover_start = true
 			animation = "Jump"
+	else:
+		if Input.is_action_pressed("suck") or Input.is_action_pressed("blow"):
+			animation = "Sucking"
+		else:
+			animation = "Default"
 	
 
 
