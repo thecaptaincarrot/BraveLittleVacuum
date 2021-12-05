@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player/Sprites/Nozzle.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Nozzle.gd" type="Script" id=2]
 [ext_resource path="res://Player/Sprites/RailNozzle.png" type="Texture" id=3]
 [ext_resource path="res://Player/Sprites/RailNozzle-Sheet.png" type="Texture" id=4]
+[ext_resource path="res://Player/Sprites/Untitled.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -193,9 +194,9 @@ visible = false
 enabled = true
 cast_to = Vector2( 0, -1000 )
 
-[node name="PlayerCaster" type="RayCast2D" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-enabled = true
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, -192 )
+texture = ExtResource( 5 )
 
 [connection signal="body_entered" from="Suck" to="." method="_on_Suck_body_entered"]
 [connection signal="body_exited" from="Suck" to="." method="_on_Suck_body_exited"]

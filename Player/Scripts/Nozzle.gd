@@ -124,10 +124,7 @@ func _physics_process(delta):
 			$StuckObjectCollisionShape.shape = stuck_object.get_node("CollisionShape2D").shape
 			$StuckObjectCollisionShape.rotation = stuck_object.get_node("CollisionShape2D").rotation
 			$StuckObjectCollisionShape.position = stuck_object.get_suck_position() + Vector2(0,-3)
-	
-	$PlayerCaster.cast_to = movement_vector
-	$PlayerCaster.rotation = -rotation
-	
+
 
 func _input(event):
 	if inactive:
@@ -144,7 +141,6 @@ func _input(event):
 			object.gravity_scale = 1
 	elif event.is_action_pressed("blow"):
 		pass
-	
 
 
 func vector_projection(origin_vector): #Projects the movement vector onto the position of the nozzle
@@ -174,7 +170,7 @@ func get_midpoint(vector_array):
 	
 	x = x / len(vector_array)
 	y = y / len(vector_array)
-
+	
 	return Vector2(x,y)
 
 
@@ -202,7 +198,6 @@ func blow():
 		stuck_object.damaging = true
 		stuck_object = null
 		$StuckObjectCollisionShape.shape = null
-		
 
 
 func _on_Suck_body_entered(body):
