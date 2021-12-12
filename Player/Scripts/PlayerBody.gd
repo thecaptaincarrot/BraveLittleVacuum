@@ -80,9 +80,6 @@ func _physics_process(delta):
 		$PlayerSprite.rotation = lerp($PlayerSprite.rotation,angle,.10)
 	else:
 		$PlayerSprite.rotation = lerp($PlayerSprite.rotation,0,.10)
-	
-	print(motion)
-	
 #	rotation = lerp(rotation,angle,.25)
 	
 #	for index in get_slide_count():

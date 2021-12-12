@@ -43,14 +43,15 @@ func _input(event):
 
 func nozzle_shoot(body):
 	var new_shoot = load(body.filename).instance()
+	new_shoot.gravity_scale = 0.0
 	new_shoot.position = nozzle.global_position
 	new_shoot.collision_layer = 8
 	new_shoot.collision_mask = 12
-
 	new_shoot.damaging = true
 	var vector = Vector2(cos(nozzle.rotation - PI/2),sin(nozzle.rotation - PI/2))
 	$LevelHolder.get_child(0).get_node("Clutter").call_deferred("add_child",new_shoot)
 	new_shoot.apply_central_impulse(vector * Upgrades.blow_force)
+	new_shoot.start_timer()
 
 
 func new_game():
@@ -164,6 +165,6 @@ func collect_upgrade(upgrade):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "MenuClose":
-			if !paused:
-				get_tree().paused = false
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if !paused:
+			get_tree().paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -138,7 +138,8 @@ func _input(event):
 		if stuck_object and $StuckObjectTimer.is_stopped():
 			$StuckObjectTimer.start()
 		for object in suckables:
-			object.gravity_scale = 1
+			object.custom_integrator = false
+			object.captured = false
 	elif event.is_action_pressed("blow"):
 		pass
 
@@ -178,11 +179,16 @@ func suck():
 	if !stuck_object:
 		$Suck/Polygon2D.show()
 		for object in suckables:
-			object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
-			if object.is_in_group("Suckables"):
-				object.gravity_scale = 0
-			else:
-				object.gravity_scale = 0.5
+			object.capture_point = global_position
+			if !object.captured:
+				object.custom_integrator = true
+				object.captured = true
+				object.relative_position = object.global_position - global_position
+#			object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
+#			if object.is_in_group("Suckables"):
+#				object.gravity_scale = 0
+#			else:
+#				object.gravity_scale = 0.5
 	else:
 		if !$StuckObjectTimer.is_stopped():
 			$StuckObjectTimer.stop()
@@ -202,18 +208,26 @@ func blow():
 
 func _on_Suck_body_entered(body):
 	if body.is_in_group("Bodies"):
+		body.can_sleep = false
+		body.sleeping = false
+		
 		suckables.append(body)
+		print(suckables)
 
 
 func _on_Suck_body_exited(body):
 	suckables.erase(body)
 	if body.is_in_group("Bodies"):
-		body.gravity_scale = 1
+		body.can_sleep = true
+		body.custom_integrator = false
+		body.captured = false
 
 
 func _on_NozzleHole_body_entered(body):
 	if Input.is_action_pressed("suck") and !stuck_object:
 		if body.is_in_group("Suckables"):
+			body.custom_integrator = false
+			body.captured = false
 			emit_signal("sucked",body)
 		if body.is_in_group("Large"):
 			stuck_object = body
