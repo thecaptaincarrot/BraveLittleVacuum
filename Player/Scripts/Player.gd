@@ -2,6 +2,7 @@ extends Node2D
 
 const HOSE = preload("res://Player/Hose.tscn")
 const NOZZLE = preload("res://Player/Nozzle.tscn")
+const RETICLENOZZLE = preload("res://Player/ReticleNozzle.tscn")
 
 onready var body = $PlayerBody
 
@@ -43,7 +44,7 @@ func _ready():
 	create_hose_skeleton(Upgrades.hose_length)
 	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
 	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	update_line = true
 
 
@@ -141,7 +142,8 @@ func create_hose_skeleton(length):
 		hose_segments.append(child)
 		parent = child
 	
-	child = add_nozzle(parent)
+	child = add_reticle_nozzle(parent)
+#	child = add_nozzle(parent)
 	nozzle = child
 	add_pin_nozzle(parent,child)
 	
@@ -199,7 +201,7 @@ func add_nozzle(parent):
 	new_nozzle.anchor = $PlayerBody/Hose/HoseStart
 	
 	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
-	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
+#	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
 	
 	new_nozzle.true_limit = (hose_size + 1) * Upgrades.hose_length * 2
 	new_nozzle.collision_limit = new_nozzle.limit + 5
@@ -213,6 +215,32 @@ func add_nozzle(parent):
 	
 	$PlayerBody/Hose.add_child(new_nozzle)
 	return new_nozzle
+
+
+func add_reticle_nozzle(parent):
+	var new_nozzle = RETICLENOZZLE.instance()
+	new_nozzle.position = parent.position
+	
+	new_nozzle.anchor = $PlayerBody/Hose/HoseStart
+	new_nozzle.reticle =$CanvasLayer/Reticle
+	new_nozzle.camera = $PlayerBody/PlayerCamera
+	
+	new_nozzle.connect("sucked", $CanvasLayer/Tank, "add_suckable")
+#	new_nozzle.connect("liquid_sucked", $CanvasLayer/Tank, "add_liquid")
+	
+	new_nozzle.true_limit = (hose_size + 1) * Upgrades.hose_length * 2
+	new_nozzle.collision_limit = new_nozzle.limit + 5
+	
+	main.nozzle = new_nozzle #fix this to be the Main variable, as it were
+	camera.nozzle = new_nozzle
+	new_nozzle.player_body = $PlayerBody
+	new_nozzle.hose_segment = parent
+	
+	new_nozzle.add_collision_exception_with($PlayerBody)
+	
+	$PlayerBody/Hose.add_child(new_nozzle)
+	return new_nozzle
+
 
 
 func get_hose_relative_positions():

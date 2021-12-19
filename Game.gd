@@ -167,4 +167,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "MenuClose":
 		if !paused:
 			get_tree().paused = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

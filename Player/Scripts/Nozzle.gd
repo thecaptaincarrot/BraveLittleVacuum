@@ -103,7 +103,7 @@ func _physics_process(delta):
 	movement_vector.y = lerp(movement_vector.y,0,drag)
 	
 	if !((Input.is_action_pressed("suck") or Input.is_action_pressed("blow")) and !stuck_object):
-		var to_angle = movement_vector.angle() + PI/2
+		var to_angle = movement_vector.angle()
 		if to_angle > PI:
 			to_angle -= 2 * PI #Could just fix this by changing the sprite
 		if movement_vector.length() > 30.0:

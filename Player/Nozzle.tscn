@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player/Sprites/Nozzle.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Nozzle.gd" type="Script" id=2]
 [ext_resource path="res://Player/Sprites/RailNozzle.png" type="Texture" id=3]
 [ext_resource path="res://Player/Sprites/RailNozzle-Sheet.png" type="Texture" id=4]
-[ext_resource path="res://Player/Sprites/Untitled.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
@@ -96,30 +95,29 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Suck"]
+position = Vector2( 3.105, -2.875 )
+rotation = 1.5708
 polygon = PoolVector2Array( 3.04723, -0.0756054, -36.895, -69.0625, -26.77, -74.125, -16.77, -78, -7.02, -79.0625, 3.48, -79.9375, 13.73, -79, 23.2925, -78.0625, 33.1675, -74.125, 43.1675, -68.8125 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Suck"]
 color = Color( 1, 1, 1, 0.231373 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 8, 0 )
 frames = SubResource( 15 )
 
 [node name="MainCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3.26941 )
-rotation = 1.5708
+position = Vector2( -3, 0 )
 shape = SubResource( 16 )
 
 [node name="StuckObjectCollisionShape" type="CollisionShape2D" parent="."]
 z_index = 10
 
 [node name="NozzleHole" type="Area2D" parent="."]
-rotation = 1.5708
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NozzleHole"]
-position = Vector2( 0.00108337, 0.107731 )
 shape = SubResource( 17 )
 
 [node name="RayCasts" type="Node2D" parent="."]
@@ -190,13 +188,9 @@ wait_time = 0.5
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
 enabled = true
-cast_to = Vector2( 0, -1000 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 0, -192 )
-texture = ExtResource( 5 )
+exclude_parent = false
+cast_to = Vector2( 100, 0 )
 
 [connection signal="body_entered" from="Suck" to="." method="_on_Suck_body_entered"]
 [connection signal="body_exited" from="Suck" to="." method="_on_Suck_body_exited"]
