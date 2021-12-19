@@ -14,7 +14,7 @@ var accelerator = false
 var railgun = false
 
 #Chassis
-var jump = true
+var jump = false
 var hover = false
 var downhill = false
 

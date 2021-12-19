@@ -220,7 +220,8 @@ func _on_Suck_body_exited(body):
 	if body.is_in_group("Bodies"):
 		body.can_sleep = true
 		body.custom_integrator = false
-		body.captured = false
+		if body.is_in_group("Suckables"):
+			body.captured = false
 
 
 func _on_NozzleHole_body_entered(body):

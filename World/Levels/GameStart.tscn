@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/Levels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/LevelExit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SuckableObjects/Rock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Levels/GameStart.gd" type="Script" id=4]
+[ext_resource path="res://SuckableObjects/Brick1.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 224.009, 39.9489 )
@@ -19,6 +20,9 @@ position = Vector2( 512, 528 )
 [node name="GravityTimer" parent="Clutter/Rock" index="2"]
 wait_time = 1.0
 autostart = false
+
+[node name="Brick1" parent="Clutter" index="1" instance=ExtResource( 5 )]
+position = Vector2( 432, 512 )
 
 [node name="LevelExit" parent="Exits" index="0" instance=ExtResource( 2 )]
 position = Vector2( 864, 520 )

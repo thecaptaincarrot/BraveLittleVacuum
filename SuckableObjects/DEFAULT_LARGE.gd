@@ -7,6 +7,9 @@ var stuck = false
 var unstick = false
 var damaging = true
 
+var captured = false #unused
+var capture_point = Vector2(0,0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -21,7 +24,7 @@ func _integrate_forces(state):
 
 
 func stick(nozzle_position, nozzle_rotation):
-	stuck_rotation = nozzle_rotation + PI
+	stuck_rotation = nozzle_rotation - PI/2
 	stuck_position = nozzle_position - ($SuckPosition.position).rotated(stuck_rotation)
 	
 	stuck = true

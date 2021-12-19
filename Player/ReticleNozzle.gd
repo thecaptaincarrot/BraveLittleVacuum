@@ -16,6 +16,9 @@ var bounding_box_limits
 var screensize
 
 var motion = Vector2(0,0)
+var inactive = false
+
+var suckables = []
 
 signal sucked
 
@@ -27,11 +30,20 @@ func _ready():
 	
 	bounding_box_limits = sqrt((pow(limit, 2.0)) / 2.0)
 	screensize = get_viewport().size 
+	
+	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
+	$Suck/Polygon2D.transform = $Suck/CollisionPolygon2D.transform
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if Input.is_action_pressed("suck"):
+		$Suck/Polygon2D.show()
+		suck()
+	elif Input.is_action_pressed("blow"):
+		blow()
+	else:
+		$Suck/Polygon2D.hide()
 
 
 func _physics_process(delta):
@@ -46,6 +58,8 @@ func _physics_process(delta):
 		
 		#Cast checker to reticle
 		$TargetRay.cast_to = relative_mouse
+		$TargetRay/DownCast.cast_to = relative_mouse
+		$TargetRay/UpCast.cast_to = relative_mouse
 		$TargetRay.rotation = -rotation
 		#Face towards Reticle
 		rotation = relative_mouse.angle()
@@ -57,27 +71,113 @@ func _physics_process(delta):
 		var rest_position = Vector2(0,-30)
 		var target_position = Vector2(x_coordinate * bounding_box_limits, y_coordinate * bounding_box_limits) + rest_position
 		
+		#check if target is obscured
+		if $TargetRay.is_colliding():
+			print("I can't hit the target")
+			$TargetRay/DownCast.enabled = true
+			$TargetRay/UpCast.enabled = true
+			print($TargetRay/DownCast.get_collision_point())
+			if $TargetRay/DownCast.is_colliding() and !$TargetRay/DownCast.is_colliding():
+				target_position.y -= 5.0
+				print("move_up")
+			elif !$TargetRay/DownCast.is_colliding() and $TargetRay/DownCast.is_colliding():
+				print("move_down")
+				target_position.y += 5.0
+		else:
+			$TargetRay/DownCast.enabled = false
+			$TargetRay/UpCast.enabled = false
+			
 		var motion = (target_position - position) * 5.0
-		
-		print(target_position)
-		
 		move_and_slide(motion,Vector2(0,-1),false,4,.78, false)
+	#Stuck objects
+	if stuck_object:
+		var stuck_position = global_position
+		stuck_object.stick(stuck_position, rotation)
+		if $StuckObjectCollisionShape.shape == null:
+			$StuckObjectCollisionShape.shape = stuck_object.get_node("CollisionShape2D").shape
+			$StuckObjectCollisionShape.rotation = stuck_object.get_node("CollisionShape2D").rotation
+			$StuckObjectCollisionShape.position = stuck_object.get_suck_position() + Vector2(0,-3)
 
 
+func _input(event):
+	if inactive:
+		return
+	
+	if event.is_action_released("suck"):
+		if stuck_object and $StuckObjectTimer.is_stopped():
+			$StuckObjectTimer.start()
+		for object in suckables:
+			if object.is_in_group("Suckables"):
+				object.custom_integrator = false
+				object.captured = false
+	elif event.is_action_pressed("blow"):
+		pass
 
 
+func suck():
+	if !stuck_object:
+		$Suck/Polygon2D.show()
+		for object in suckables:
+			object.capture_point = global_position
+			if !object.captured:
+				if object.is_in_group("Suckables"):
+					object.custom_integrator = true
+					object.captured = true
+					object.relative_position = object.global_position - global_position
+				else:
+					object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
+					object.gravity_scale = 0.5
+#			object.apply_central_impulse((global_position - object.global_position).normalized() * Upgrades.suck_strength)
+#			if object.is_in_group("Suckables"):
+#				object.gravity_scale = 0
+#			else:
+#				object.gravity_scale = 0.5
+	else:
+		if !$StuckObjectTimer.is_stopped():
+			$StuckObjectTimer.stop()
 
 
+func blow():
+	if stuck_object:
+		$StuckObjectTimer.stop()
+		stuck_object.unstick()
+		var force_impulse = Upgrades.blow_force * Vector2(1,0).rotated(rotation)
+		stuck_object.apply_central_impulse(force_impulse)
+		stuck_object.apply_torque_impulse(rand_range(-200,200))
+		stuck_object.damaging = true
+		stuck_object = null
+		$StuckObjectCollisionShape.shape = null
 
 
+func _on_Suck_body_entered(body):
+	if body.is_in_group("Bodies"):
+		body.can_sleep = false
+		body.sleeping = false
+		
+		suckables.append(body)
+		print(suckables)
 
 
+func _on_Suck_body_exited(body):
+	suckables.erase(body)
+	if body.is_in_group("Bodies"):
+		body.can_sleep = true
+		body.custom_integrator = false
+		if body.is_in_group("Suckables"):
+			body.captured = false
 
 
+func _on_NozzleHole_body_entered(body):
+	if Input.is_action_pressed("suck") and !stuck_object:
+		if body.is_in_group("Suckables"):
+			body.custom_integrator = false
+			body.captured = false
+			emit_signal("sucked",body)
+		if body.is_in_group("Large"):
+			stuck_object = body
 
 
-
-
-
-
-
+func _on_StuckObjectTimer_timeout():
+	stuck_object.unstick()
+	stuck_object = null
+	$StuckObjectCollisionShape.shape = null
