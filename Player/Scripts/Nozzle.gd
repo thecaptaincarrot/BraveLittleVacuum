@@ -212,7 +212,6 @@ func _on_Suck_body_entered(body):
 		body.sleeping = false
 		
 		suckables.append(body)
-		print(suckables)
 
 
 func _on_Suck_body_exited(body):

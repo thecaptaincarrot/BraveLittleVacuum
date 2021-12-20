@@ -19,7 +19,7 @@ resource_name = "MenuClose"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("NinePatchRect:rect_position")
+tracks/0/path = NodePath("OutsideRect:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,7 +31,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -20, -74 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("NinePatchRect:rect_size")
+tracks/1/path = NodePath("OutsideRect:rect_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -84,7 +84,7 @@ resource_name = "MenuOpen"
 length = 0.75
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("NinePatchRect:rect_position")
+tracks/0/path = NodePath("OutsideRect:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "values": [ Vector2( -20, -74 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("NinePatchRect:rect_size")
+tracks/1/path = NodePath("OutsideRect:rect_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -169,6 +169,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRectTween" type="Tween" parent="."]
+
+[node name="OutsideRectTween" type="Tween" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/MenuClose = SubResource( 1 )
 anims/MenuOpen = SubResource( 2 )
@@ -189,7 +193,6 @@ __meta__ = {
 }
 
 [node name="MenuElements" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -197,6 +200,7 @@ __meta__ = {
 }
 
 [node name="DiagnosticsMenu" type="Control" parent="MenuElements"]
+visible = false
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -749,6 +753,7 @@ __meta__ = {
 }
 
 [node name="SystemMenu" type="Control" parent="MenuElements"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 11 )
@@ -863,7 +868,7 @@ position = Vector2( 320, 144 )
 scale = Vector2( 0.283626, 0.283626 )
 texture = ExtResource( 12 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="OutsideRect" type="NinePatchRect" parent="."]
 margin_left = -20.0
 margin_top = -74.0
 margin_right = 660.0
@@ -878,7 +883,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+[node name="TextureRect" type="TextureRect" parent="OutsideRect"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -35.5

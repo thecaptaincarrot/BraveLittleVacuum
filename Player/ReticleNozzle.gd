@@ -73,10 +73,8 @@ func _physics_process(delta):
 		
 		#check if target is obscured
 		if $TargetRay.is_colliding():
-			print("I can't hit the target")
 			$TargetRay/DownCast.enabled = true
 			$TargetRay/UpCast.enabled = true
-			print($TargetRay/DownCast.get_collision_point())
 			if $TargetRay/DownCast.is_colliding() and !$TargetRay/DownCast.is_colliding():
 				target_position.y -= 5.0
 				print("move_up")

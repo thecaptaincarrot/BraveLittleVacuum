@@ -16,6 +16,8 @@ var upgrade_on_deck = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	
 	player = $Player
 	Upgrades.PLAYER = $Player
 	Globals.PLAYER = $Player
@@ -163,8 +165,7 @@ func collect_upgrade(upgrade):
 	upgrade_on_deck = upgrade
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "MenuClose":
-		if !paused:
-			get_tree().paused = false
+func _on_MainMenu_animation_finished():
+	if !paused:
+		get_tree().paused = false
 #		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

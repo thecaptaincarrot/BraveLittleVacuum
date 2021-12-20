@@ -6,12 +6,16 @@ enum {DIAGNOSTICS, MAP, SYSTEM}
 
 var open_menu = DIAGNOSTICS
 
+var outside_tween
+var color_tween
+
 #Upgrade menu stuff
 var upgrade_selection = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	outside_tween = $OutsideRectTween
+	color_tween = $ColorRectTween
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,9 +49,32 @@ func open():
 	#Check upgrades for diagnostics menu here
 	hide_all()
 	$MenuElements/DiagnosticsMenu.refresh_upgrades()
-	$AnimationPlayer.play("MenuOpen")
+	var screen_size = get_viewport().size
+	
+	outside_tween.remove_all()
+	color_tween.remove_all()
+	
+	outside_tween.interpolate_property($OutsideRect,"rect_position",Vector2(-20,-74),Vector2(0,0),0.75)
+	outside_tween.interpolate_property($OutsideRect,"rect_size",Vector2(screen_size.x + 40,screen_size.y + 97),screen_size,0.75)
+	
+	color_tween.interpolate_property($ColorRect,"rect_position",Vector2(screen_size.x / 2,screen_size.y / 2 - 8),Vector2(0,screen_size.y / 2 - 8),0.25)
+	color_tween.interpolate_property($ColorRect,"rect_size",Vector2(0,16),Vector2(screen_size.x,16),0.25)
+	
+	outside_tween.start()
+	color_tween.start()
+	
+	yield(color_tween, "tween_all_completed")
+	color_tween.remove_all()
+	
+	color_tween.interpolate_property($ColorRect,"rect_position",Vector2(0,screen_size.y / 2 - 8),Vector2(0,0),0.5)
+	color_tween.interpolate_property($ColorRect,"rect_size",Vector2(screen_size.x,16),screen_size,0.5)
+	
+	color_tween.start()
+	yield(color_tween, "tween_all_completed")
+	
 	match open_menu:
 		DIAGNOSTICS:
+			print("Ugh")
 			$MenuElements/DiagnosticsMenu.show()
 			$MenuElements/DiagnosticsMenu.active = true
 		MAP:
@@ -69,8 +96,33 @@ func open_diagnostics_menu():
 
 
 func close():
-	$AnimationPlayer.play("MenuClose")
 	hide_all()
+	$MenuElements/DiagnosticsMenu.refresh_upgrades()
+	var screen_size = get_viewport().size
+	
+	outside_tween.remove_all()
+	color_tween.remove_all()
+	print(screen_size)
+	
+	outside_tween.interpolate_property($OutsideRect,"rect_position",Vector2(0,0),Vector2(-20,-74),0.75)
+	outside_tween.interpolate_property($OutsideRect,"rect_size",screen_size,Vector2(screen_size.x + 40,screen_size.y + 97),0.75)
+	
+	color_tween.interpolate_property($ColorRect,"rect_position",Vector2(0,0),Vector2(0,screen_size.y / 2 - 8),0.5)
+	color_tween.interpolate_property($ColorRect,"rect_size",screen_size,Vector2(screen_size.x,16),0.5)
+	
+	outside_tween.start()
+	color_tween.start()
+	
+	yield(color_tween, "tween_all_completed")
+	color_tween.remove_all()
+	
+	color_tween.interpolate_property($ColorRect,"rect_position",Vector2(0,screen_size.y / 2 - 8),Vector2(screen_size.x / 2,screen_size.y / 2 - 8),0.25)
+	color_tween.interpolate_property($ColorRect,"rect_size",Vector2(screen_size.x,16),Vector2(0,16),0.25)
+	
+	color_tween.start()
+	
+	yield(color_tween, "tween_all_completed")
+	emit_signal("animation_finished")
 
 
 func  hide_all():
