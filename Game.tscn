@@ -110,8 +110,8 @@ __meta__ = {
 }
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.9, 1 )
-motion_offset = Vector2( 0, 208 )
+motion_scale = Vector2( 0.8, 1 )
+motion_offset = Vector2( 0, 160 )
 motion_mirroring = Vector2( 640, 0 )
 __meta__ = {
 "_edit_lock_": true
@@ -126,7 +126,6 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu" to="." method="_on_MainMenu_animation_finished"]
 [connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="Overlay/InGameMenus/MainMenu/AnimationPlayer" to="Player" method="_on_AnimationPlayer_animation_finished"]

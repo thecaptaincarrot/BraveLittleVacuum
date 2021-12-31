@@ -44,7 +44,7 @@ func _ready():
 	create_hose_skeleton(Upgrades.hose_length)
 	$CanvasLayer/Tank.connect("shoot",main,"nozzle_shoot")
 	$CanvasLayer/Tank.connect("liquidshoot",main,"liquid_nozzle_shoot")
-#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	update_line = true
 
 
@@ -143,6 +143,7 @@ func create_hose_skeleton(length):
 		parent = child
 	
 	child = add_reticle_nozzle(parent)
+	
 #	child = add_nozzle(parent)
 	nozzle = child
 	add_pin_nozzle(parent,child)
@@ -195,6 +196,8 @@ func add_hose(parent):
 
 
 func add_nozzle(parent):
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	var new_nozzle = NOZZLE.instance()
 	new_nozzle.position = parent.position
 	

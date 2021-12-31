@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Animal Mutant final 01.jpg-1b1d36b94a3fbbfd8426a76258fd3beb.stex"
+path="res://.import/Animal Mutant final 01.jpg-bd23d91cde4029066532f2a8c85b57fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ConceptArt/Animal Mutant final 01.jpg"
-dest_files=[ "res://.import/Animal Mutant final 01.jpg-1b1d36b94a3fbbfd8426a76258fd3beb.stex" ]
+source_file="res://ConceptARt/Animal Mutant final 01.jpg"
+dest_files=[ "res://.import/Animal Mutant final 01.jpg-bd23d91cde4029066532f2a8c85b57fa.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

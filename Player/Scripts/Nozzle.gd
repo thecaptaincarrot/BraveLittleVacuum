@@ -45,6 +45,7 @@ signal shoot
 func _ready():
 	pivot_point = anchor.position
 	$Suck/Polygon2D.polygon = $Suck/CollisionPolygon2D.polygon
+	$Suck/Polygon2D.transform = $Suck/CollisionPolygon2D.transform
 	limit = true_limit
 	collision_limit = limit + 5
 	set_physics_process(false)
