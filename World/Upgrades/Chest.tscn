@@ -129,7 +129,7 @@ shape = SubResource( 3 )
 z_index = -1
 frames = SubResource( 18 )
 animation = "Default"
-frame = 5
+frame = 2
 playing = true
 offset = Vector2( 0, -2 )
 
@@ -174,7 +174,6 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="upgrade_collected" from="UpgradeSphere" to="." method="_on_UpgradeSphere_upgrade_collected"]
 [connection signal="body_entered" from="UpgradeSphere/CollectionArea" to="UpgradeSphere" method="_on_CollectionArea_body_entered"]
 [connection signal="body_exited" from="UpgradeSphere/CollectionArea" to="UpgradeSphere" method="_on_CollectionArea_body_exited"]

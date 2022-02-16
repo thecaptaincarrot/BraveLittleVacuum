@@ -64,6 +64,7 @@ enter_direction = "RIGHT"
 [node name="LevelExit2" parent="Exits" index="1" instance=ExtResource( 2 )]
 position = Vector2( 888, 136 )
 level_code = 4
+target_exit = 0
 enter_direction = "LEFT"
 
 [node name="Background" parent="World" index="1"]

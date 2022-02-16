@@ -65,6 +65,7 @@ enter_direction = "RIGHT"
 [node name="LevelExit2" parent="Exits" index="1" instance=ExtResource( 2 )]
 position = Vector2( 1688, 240 )
 level_code = 6
+target_exit = 0
 enter_direction = "LEFT"
 
 [node name="TileMap" parent="World" index="2"]
